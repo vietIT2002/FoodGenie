@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Nhân Viên </title>
+    <title>QL Nhân Viên </title>
    
 
 </head>
@@ -27,7 +27,7 @@
             
             <div class="buttons">
                     <a   href="admin.php?act=addnv">
-                        <i class="fa fa-plus" aria-hidden="true" > Thêm mới </i> 
+                        <i class="fa fa-plus" aria-hidden="true" > Thêm mới + </i> 
 
                        </a>
                 </div>
