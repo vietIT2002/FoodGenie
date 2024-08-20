@@ -5,7 +5,7 @@ session_start();
     if(isset($_GET['btnsend'])){
         echo 'welcome';
     
-    $conn=mysqli_connect("localhost","root","","abc");
+    $conn=mysqli_connect("localhost","root","","foodgennie");
     $masv=$_GET['txtmatv'];
     $tensv=$_GET['txthoten'];
     $diachi=$_GET['txtdiachi'];

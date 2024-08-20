@@ -34,19 +34,29 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // Tổng tiền hóa đơn theo khách hàng từ ngày 2021-05-01 đến 2021-05-31
     $strSQL= "SELECT id_khachhang,sum(tong_tien) FROM hoadon WHERE ngay_tao BETWEEN '2021-05-01' AND '2021-05-31' GROUP BY id_khachhang";
-    $tong = executeQuery("localhost","root","","bannuocdb",$strSQL);
+    $tong = executeQuery("localhost","root","","foodgennie",$strSQL);
     foreach($tong as $item){
         $array[]=$item;
     }
-    for($i=0;$i<count($array);$i++){
-        $labelarray[]=$array[$i]["id_khachhang"];
-        $dataarray[]=$array[$i]["sum(tong_tien)"];
+    // for($i=0;$i<count($array);$i++){
+    //     $labelarray[]=$array[$i]["id_khachhang"];
+    //     $dataarray[]=$array[$i]["sum(tong_tien)"];
+    // }
+    if (isset($array) && is_array($array)) {
+        for ($i = 0; $i < count($array); $i++) {
+            $labelarray[] = $array[$i]["id_khachhang"];
+            $dataarray[] = $array[$i]["sum(tong_tien)"];
+        }
+    } else {
+        // Xử lý trường hợp khi $array không tồn tại hoặc không phải là một mảng
     }
+    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     //Thống kê tổng tiền hóa dơn theo thể loại trong tháng 5
-    $strSQL2= "SELECT sanpham.id_the_loai as id, SUM(cthoadon.so_luong*sanpham.don_gia ) AS tong FROM cthoadon, hoadon,sanpham WHERE month(hoadon.ngay_tao)=5  and hoadon.id=cthoadon.id_hoadon AND cthoadon.id_sanpham=sanpham.id GROUP by sanpham.id_the_loai";
-    $month2='5';
+    $strSQL2= "SELECT sanpham.id_the_loai as id, SUM(cthoadon.so_luong*sanpham.don_gia ) AS tong FROM cthoadon, hoadon,sanpham WHERE month(hoadon.ngay_tao)=4  and hoadon.id=cthoadon.id_hoadon AND cthoadon.id_sanpham=sanpham.id GROUP by sanpham.id_the_loai";
+    $month2='4';
     if(isset($_GET['month2'])){
         $month2 = $_GET['month2'];
         if($month2!='')
@@ -54,7 +64,7 @@
             $strSQL2= "SELECT sanpham.id_the_loai as id, SUM(cthoadon.so_luong*sanpham.don_gia ) AS tong FROM cthoadon, hoadon,sanpham WHERE month(hoadon.ngay_tao) = '$month2'  and hoadon.id=cthoadon.id_hoadon AND cthoadon.id_sanpham=sanpham.id GROUP by sanpham.id_the_loai";
         }
     }
-    $theloai = executeQuery("localhost","root","","bannuocdb",$strSQL2);
+    $theloai = executeQuery("localhost","root","","foodgennie",$strSQL2);
     $m=mysqli_fetch_array($theloai);
     if($m!=NULL){
         foreach($theloai as $item2){
@@ -72,14 +82,22 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Thống kê tình hình kinh doanh trong một khoảng thời gian của các sản phẩm thuộc một loại / tất cả sản phẩm.
-    $strSQL= "SELECT sanpham.id, SUM(cthoadon.so_luong*sanpham.don_gia) as tongtien FROM hoadon,cthoadon,sanpham WHERE hoadon.ngay_tao BETWEEN '2021-05-01' AND '2021-05-31' AND hoadon.id=cthoadon.id_hoadon and cthoadon.id_sanpham=sanpham.id GROUP by sanpham.id";
-    $tinhhinhkinhdoanh = executeQuery("localhost","root","","bannuocdb",$strSQL);
+    $strSQL= "SELECT sanpham.id, SUM(cthoadon.so_luong*sanpham.don_gia) as tongtien FROM hoadon,cthoadon,sanpham WHERE hoadon.ngay_tao BETWEEN '2023-12-12' AND '2024-05-09' AND hoadon.id=cthoadon.id_hoadon and cthoadon.id_sanpham=sanpham.id GROUP by sanpham.id";
+    $tinhhinhkinhdoanh = executeQuery("localhost","root","","foodgennie",$strSQL);
     foreach($tinhhinhkinhdoanh as $item3){
         $array3[]=$item3;
     }
-    for($t=0;$t<count($array3);$t++){
-        $labelarray3[]=$array3[$t]["id"];
-        $dataarray3[]=$array3[$t]["tongtien"];
+    // for($t=0;$t<count($array3);$t++){
+    //     $labelarray3[]=$array3[$t]["id"];
+    //     $dataarray3[]=$array3[$t]["tongtien"];
+    // }
+    if (isset($array3) && is_array($array3)) {
+        for ($t = 0; $t < count($array3); $t++) {
+            $labelarray3[] = $array3[$t]["id"];
+            $dataarray3[] = $array3[$t]["tongtien"];
+        }
+    } else {
+        // Xử lý trường hợp khi $array3 không tồn tại hoặc không phải là một mảng
     }
     //////////////////////////////////////////////////////////////////////////////
 
@@ -100,16 +118,25 @@
         ) as tong
     WHERE maxtong.max=tong.tong and maxtong.month= tong.month";
 
-    $sanphambanchay = executeQuery("localhost","root","","bannuocdb",$strSQL);
+    $sanphambanchay = executeQuery("localhost","root","","foodgennie",$strSQL);
     
     foreach($sanphambanchay as $item4){
         $array4[]=$item4;
     }
-    for($t=0;$t<count($array4);$t++){
-        $masp[]=$array4[$t]["id_sanpham"];
-        $max[]=$array4[$t]["max"];
-        $month[]= $array4[$t]["month"];
+    // for($t=0;$t<count($array4);$t++){
+    //     $masp[]=$array4[$t]["id_sanpham"];
+    //     $max[]=$array4[$t]["max"];
+    //     $month[]= $array4[$t]["month"];
 
+    // }
+    if (isset($array4) && is_array($array4)) {
+        for ($t = 0; $t < count($array4); $t++) {
+            $masp[] = $array4[$t]["id_sanpham"];
+            $max[] = $array4[$t]["max"];
+            $month[] = $array4[$t]["month"];
+        }
+    } else {
+        // Xử lý trường hợp khi $array4 không tồn tại hoặc không phải là một mảng
     }
 ?>
 <!-- ----------------------------------------------------------------------- -->
@@ -144,13 +171,19 @@
 <html>
 
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="c3charts/c3.css">
-        <link rel="stylesheet" href="js/morris-bundle/morris.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhân Viên </title>
+    <link rel="stylesheet" type="text/css" href="css/admin_style.css">
+    <link rel="stylesheet" type="text/css" href="css/style_listProduct.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     </head>
-    <body style="width: 100%; height: 100%">
-<div class="wrapper">
+    <body style="width: 100%; height: 100% " >
+    <h1>THÔNG KÊ CỬA HÀNG</h1>
+<div class="wrapper" style=" margin : 50px">
 
     <div class="row">
                     <!-- ============================================================== -->
@@ -158,7 +191,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Tổng tiền hóa đơn theo khách hàng từ ngày 2021-05-01 đến 2021-05-31</h5>
+                            <h5 class="card-header">Tổng tiền hóa đơn theo khách hàng từ ngày 2023-12-12 đến 2024-04-09</h5>
                             <div class="card-body">
                                 <canvas id="chartjs_bar"></canvas>
                             </div>
@@ -172,10 +205,10 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">                        
-                            <form action="" onsubmit="return kiemtra2();">
+                            <!-- <form action="" onsubmit="return kiemtra2();">
                                 <input id="txmonth2" type="text" name="month2" placeholder="Tháng" maxlength="2" style="width:60px;" >
-                                <input id="btchart2" type="submit" name="submit" value="Đi">
-                            </form>
+                                <input id="btchart2" type="submit" name="submit" value="Hiển thị">
+                            </form> -->
                             <h5 class="card-header">Thống kê tổng tiền hóa đơn theo thể loại trong tháng <?php echo "$month2"?></h5>
                             
                             <div class="card-body">
@@ -193,7 +226,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Thống kê tình hình doanh thu từ ngày 2021-05-01 đến 2021-05-31</h5>
+                            <h5 class="card-header">Thống kê tình hình doanh thu từ ngày 2023-12-12 đến 2024-04-09</h5>
                             <div class="card-body">
                                 <canvas id="chartjs_bar3"></canvas>
                             </div>
@@ -202,27 +235,23 @@
                     <!-- ============================================================== -->
                     <!-- end bar chart  -->
                     <!-- ============================================================== -->
-                
-    </div>
-
-    <div class="row">
-                     <!-- ============================================================== -->
-                        <!--stacked chart  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <!-- ============================================================== -->
+                    <!-- bar chart  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Thống kê sản phẩm bán chạy nhất theo tháng trong năm 2021 </h5>
+                                <h5 class="card-header">Thống kê sản phẩm bán chạy nhất theo tháng trong năm 2024 </h5>
                                 <div class="card-body">
                                     <!-- <div id="morris_stacked"></div> -->
-                                    <div id="bar-chart"></div>
+                                    <div id="bar-chart" ></div>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
-                        <!--end stacked chart  -->
-                        <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- end bar chart  -->
+                    <!-- ============================================================== -->
     </div>
-                
     </div>
     </div>
     </body>
