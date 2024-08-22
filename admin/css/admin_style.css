@@ -102,7 +102,7 @@ h1 {
 
 .buttons a {
     transition      : 0.7s;
-    background-color: #337ab7;
+    background-color: #6f7071;
     color           : white;
     padding         : 12px 20px;
     border-radius   : 20px;
@@ -162,7 +162,6 @@ a:hover {
     margin-left: 20px;
 }
 
-.main-content h1 {}
 
 #admin-footer {
     background : #717171;
@@ -306,15 +305,16 @@ a:hover {
 
 .box-content {
     margin    : 0 auto;
-    width     : 800px;
-    border    : 1px solid #ccc;
+    width     : 900px;
+    border    : 2px solid #801818;
+    /* border    : 1px solid #ccc; */
     text-align: center;
     padding   : 20px;
 }
 
 .box-contentt {
     margin    : 0 auto;
-    width     : 500px;
+    width     : 900px;
     border    : 2px solid #ccc;
     text-align: left;
     padding   : 20px;
@@ -322,7 +322,7 @@ a:hover {
 
 /*                               css cac bang  */
 .product-items  table th{
-    background-color:#337ab7; 
+    background-color:#337ab7;
     text-align:center; 
     color:#FFF
 }
@@ -347,4 +347,22 @@ a:hover {
 .product-items table tr:hover{
 background-color:rgb(191, 197, 201);
 cursor:pointer;
+}
+
+/* CSS for desktop */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* CSS for mobile */
+@media only screen and (max-width: 767px) {
+    
+    /* Adjust table styles for better mobile display */
+    .table-responsive-sm {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-sm table {
+        width: 100%;
+    }
 }
