@@ -1,151 +1,92 @@
+<div id="extralarge-modal" tabindex="-1"
+    class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4 p-4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full">
+    <div class="relative  h-full max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-full">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <div class="divider mt-1"></div>
+                <p class="text-lg py-5 font-medium text-red-800 dark:text-white">
+                    Thông tin nhân vien
+                </p>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-toggle="extralarge-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+
+            <form name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+                class="p-4 md:p-5">
+                <div class="flex flex-wrap gap-4">
+                    <div class="w-full md:w-1/4 flex flex-col items-center">
+                        <img style="width: 200px; height: 200px;" id="imageDisplay" src="#" alt="Ảnh đại diện"
+                            class="mb-4">
+                        <input class="form-control file-input border-gray-300 rounded-md shadow-sm" type="file"
+                            name="image" id="fileInput" accept="image/*">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">ID Nhân viên:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none" type="text"
+                                name="id" value="">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">Tên Nhân viên:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none" type="text"
+                                name="name" value="">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">Email:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none"
+                                type="email" name="email" value="" placeholder="VD: abc@gmail.com">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">Số điện thoại:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none" type="tel"
+                                name="phone" value="" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">Mật khẩu:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none" type="text"
+                                name="mat_khau" required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$"
+                                title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt.">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 text-sm text-gray-900 dark:text-white">Tên đăng nhập:</label>
+                            <input class="w-2/3 w-96 pl-2 h-[38px] p-[9px 13px 9px 13px] focus:outline-none" type="text"
+                                name="tendangnhap" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="btn btn-danger text-lg bg-red-500 text-white px-4 py-2 rounded-md shadow-sm mr-2"
+                        name="btnnvadd" type="submit" title="Lưu nhân viên" value="Thêm">Thêm</button>
+                    <button class="btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm" type="reset"
+                        value="Hủy">Hủy</button>
+                </div>
+            </form>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-     .btnLuu {
-            margin-top: 20px;
-            width: 90%;
-            padding: 10px 20px;
+        </div>
+    </div>
+</div>
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const imageDisplay = document.getElementById('imageDisplay');
+
+    fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            imageDisplay.src = e.target.result;
         }
 
-        .wrap-field {
-            margin-top: 10px;
-            width: 100%;
-
-        } 
-        img {
-        max-width: 300px;
-        max-height: 300px;
-        margin-top: 10px;
-    }   
-    
-
-
-    </style>
-   
-   
-</head>
-<body>
-<?php 
-    $tk=mysqli_query($con,"SELECT `username` FROM `taikhoang` WHERE `taikhoang`.`trang_thai`=0 AND NOT EXISTS (SELECT `ten_dangnhap`FROM `nhanvien` WHERE `taikhoang`.`username`= `nhanvien`.`ten_dangnhap`)");
-?>
-
-
-   
-<div>
-                    <center>
-                    <br> <br>
-                        <h2>Thêm Nhân Viên</h2> <br>
-                    </center>
-            </div>
-    <div class="box-contentt">
-   
-    <form name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data">
-            
-            <div class="wrap-field form-group">
-                <div class="row">
-                    <div class="col-sm-5">
-                          
-                                <div class="col-sm-12">
-                                        <img style="width: 300px;height: 300px;" id="imageDisplay" src="#" alt="Ảnh đại diện">
-                                        <br>
-                                            <input  class="form-control" type="file" name="image"  id="fileInput" accept="image/*">
-                                </div>
-                    
-                    </div>
-                    <div class="col-sm-7">
-
-                            <div class="wrap-field form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">ID Nhân viên: </label>
-                                <div class="col-sm-8">
-                                     <input  class="form-control form-control-sm" type="text" name="id" value="" />
-                                </div>
-                            </div>
-                            <div class="wrap-field form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm">Tên Nhân viên: </label>
-                                <div class="col-sm-8">
-                                    <input  class="form-control form-control-sm"  type="text" name="name" value="" />
-                                </div>
-                            </div>
-                            <!-- <div class="wrap-field form-group row">
-                                <label class="col-sm-4 col-form-label col-form-label-sm" for="chucvu">Chức vụ: </label>
-                                <div class="col-sm-8">
-                                <select class="form-control" name="chuc_vu" id="chucvu">
-                                                <option value="Bán hàng" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'ban_hang' ? 'selected' : '') ?>>Bán hàng</option>
-                                                <option value="Tư vấn" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'tu_van' ? 'selected' : '') ?>>Tư vấn</option>
-                                                <option value="Quản lý sản phẩm" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_san_pham' ? 'selected' : '') ?>>Quản lý sản phẩm</option>
-                                                <option value="Quản lý khách hàng " <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_khach_hang' ? 'selected' : '') ?>>Quản lý khách hàng</option>
-                                                <option value="Quản lý bài blog" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_bai_blog' ? 'selected' : '') ?>>Quản lý bài blog</option>
-                                                <option value="kế toán" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'ke_toan' ? 'selected' : '') ?>>Kế toán</option>
-                                                <option value="Thống kê bán hàng" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'thong_ke_ban_hang' ? 'selected' : '') ?>>Thống kê bán hàng</option>
-                                            </select>
-                                </div>
-                            </div> -->
-                            <div class="wrap-field form-group row ">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Email: </label>
-                                    <div class="col-sm-8">
-                                            <input  class="form-control form-control-sm" type="email" name="email" value="" placeholder="VD: abc@gmail.com"/>
-                                    </div>
-                                    </div>
-                            <div class="wrap-field form-group row">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Số điện thoại </label>
-                                    <div class="col-sm-8">
-                                            <input  class="form-control form-control-sm" type="tel" name="phone" value="" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789" />
-                                        </div>
-                            
-                            </div>
-                            <div class="wrap-field form-group row">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Mật khẩu</label>
-                                    <div class="col-sm-8">
-                                            <input  class="form-control form-control-sm" type="text" name="mat_khau" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt."> 
-                                    
-                                        </div>
-                                        
-                            </div>
-                            <div class="wrap-field form-group row">
-                                    <label class="col-sm-4 col-form-label col-form-label-sm">Tên đăng nhập </label>
-                                    <div class="col-sm-8">
-                                            <input  class="form-control form-control-sm"type="text" name="tendangnhap" value="" />
-                                    </div>
-                            </div>
-                                            
-                    </div>
-                                   
-                    
-                        
-                                <center>
-                                            <button class="btn btn-danger btnLuu" name="btnnvadd" type="submit"title="Lưu nhân viên" value="Thêm">Thêm </button>
-                                            <button class="btn btn-primary btnLuu" type="reset" value="Hủy">Hủy</button>
-                                </center>                   
-                        
-                
-            </div>
-            <!-- <input class="btn btn-success btnLuu" name="btnadd" type="submit" title="Lưu sản phẩm" value="Lưu" /> -->
-        </form>
-        
-
-    </div>
-
-
-    <script>
-        const fileInput = document.getElementById('fileInput');
-        const imageDisplay = document.getElementById('imageDisplay');
-        
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                imageDisplay.src = e.target.result;
-            }
-            
-            reader.readAsDataURL(file);
-        });
-    </script>
-</body>
-</html>
+        reader.readAsDataURL(file);
+    });
+</script>
