@@ -1,0 +1,119 @@
+/* register */
+.title1, 
+.content-title1{
+    text-align: center;
+    font-family: Arial;
+}
+
+.title1{
+    font-size: 25px;
+}
+.content-title1{
+    font-size: 15px;
+}
+
+.row1 {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    padding: 15px;
+    margin: 30px auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.row1 label{
+    font-family: Arial;
+    font-weight: 500;
+    color: #212529;
+    font-size: 16px;
+}
+
+.row1 .form-group .input1{
+    display: block;
+    width: 270px;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    background-color: #f9f5f5;
+}
+
+.row1 form {
+    padding: 25px 0;  
+}
+
+.row1 .form-group {
+    padding-top: 10px;
+}
+
+.required1{
+    color: red;
+    font-weight: bold;
+}
+
+.btn-long {
+    background-color: #e1083a;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 70px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 120px;
+}
+
+.btn:hover {
+    background-color: #e52d61;
+    color: #fff;
+}
+
+/* login */
+.login-text{
+    margin-left: 3px;
+    font-size: 16px;
+}
+
+.register1{
+    font-family: Arial;
+    color: #ef476f;
+    font-weight: bold;
+}
+
+.register1:hover {
+   color: #ef476f;
+}
+
+.login-link {
+    position: absolute;
+    z-index: 1000;
+    top: 2%;
+    left: 92%; 
+    font-size: 18px; 
+    color: #333; 
+    text-decoration: none; 
+}
+
+.login-link:hover{
+    color: #333; 
+}
+
+span {
+    font-weight: 400;
+}
+
+/* Responsive web desin Login, register, change password*/
+@media (max-width: 576px) {
+    .row1 {
+        max-width: 90%; 
+        padding: 10px;  
+    }
+}
+

@@ -1,0 +1,118 @@
+/* Page admin login */
+.custom-frame {
+  max-width: 1060px; 
+  height: 626px; 
+  border-radius: 10px; 
+  margin: 20px auto; 
+  position: relative; 
+  top: 30px; 
+  background: linear-gradient(-180deg, #E6F6FB, #A7E9FF);
+  overflow: hidden; 
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.row_admin {
+  height: 100%;
+}
+
+.comlum1, .comlum2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comlum1 {
+  background: linear-gradient(180deg, #0096C7, #004961);
+  justify-content: flex-start;
+  position: relative;
+  border-radius: 10px; 
+}
+
+.text-title {
+  font-size: 35px;
+  font-weight: 40px;
+  text-align: center;
+}
+
+.text-content{
+  font-size: 20px;
+  color: #6D6666;
+  text-align: center;
+  padding-bottom: 25px;
+  font-weight: 500;
+}
+
+.comlum1 img {
+  position: relative;
+  left: 35px;
+  max-width: calc(100% - 20px);
+  height: auto; 
+}
+
+.comlum2 {
+  background: linear-gradient(-180deg, #E6F6FB, #A7E9FF);
+}
+
+.form-container {
+  width: 100%; 
+  max-width: 319px; 
+}
+
+.form-control, .btn-primary{
+  width: 100%; 
+  border-radius: 10px;
+  border: 2px solid #0096C7;
+  height: 53px;
+}
+
+.form-control::placeholder {
+  color: #0096C7; 
+  opacity: 0.5; 
+  font-size: 20px;
+}
+
+.form-group {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.btn-primary {
+  background-color: #0096C7;
+  font-size: 20px;
+  
+}
+
+#icon-user{
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #0096C7;
+}
+
+@media (max-width: 768px) {
+  .custom-frame {
+      margin: 10px auto; 
+      top: 10px; 
+      max-width: 100%;
+      height: auto;
+  }
+
+  .comlum1, .comlum2 {
+      padding: 10px; 
+  }
+  .comlum1 img {
+      position: relative;
+      top: auto; 
+      left: 0;
+      max-width: 100%; 
+      height: auto; 
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 20px; 
+  }
+}

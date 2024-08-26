@@ -100,12 +100,13 @@ ul, ol {
   background-color: #D10024;
   border: none;
   border-radius: 40px;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  
 }
 
 .primary-btn:hover, .primary-btn:focus {
@@ -1375,6 +1376,12 @@ textarea.input {
 /*----------------------------*\
 	Product view
 \*----------------------------*/
+#product-main-img {
+  border: 2px solid #0077b6; 
+  border-radius: 4px; 
+  overflow: hidden; 
+  padding: 5px;
+}
 
 #product-main-img .slick-prev {
   -webkit-transform: translateX(-15px);
@@ -1411,11 +1418,11 @@ textarea.input {
 
 #product-imgs .product-preview {
   margin: 0px 5px;
-  border: 1px solid #E4E7ED;
+  border: 2px solid #E4E7ED;
 }
 
 #product-imgs .product-preview.slick-current {
-  border-color: #D10024;
+  border-color:  #0077b6;
 }
 
 #product-imgs .slick-prev {
@@ -1449,10 +1456,18 @@ textarea.input {
 /*----------------------------*\
 	Product details
 \*----------------------------*/
+.col-md-5 .product-details {
+  padding: 20px;
+  border: 2px solid #0077b6;
+  border-radius: 5px;
+  height: 350px;
+}
 
 .product-details .product-name {
   text-transform: uppercase;
-  font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #0a0908;
 }
 
 .product-details .product-rating {
@@ -1465,7 +1480,7 @@ textarea.input {
 }
 
 .product-details .product-rating>i.fa-star {
-  color: #D10024;
+  color: #ffb703;
 }
 
 .product-details .review-link {
@@ -1477,11 +1492,11 @@ textarea.input {
   font-size: 24px;
   margin-top: 10px;
   margin-bottom: 15px;
-  color: #D10024;
+  color: #0a0908;
 }
 
 .product-details .product-price .product-old-price {
-  font-size: 70%;
+  font-size: 80%;
   font-weight: 400;
   color: #8D99AE;
 }
@@ -1491,7 +1506,7 @@ textarea.input {
   text-transform: uppercase;
   font-weight: 700;
   margin-left: 30px;
-  color: #D10024;
+  color: #023e8a;
 }
 
 .product-details .product-options {
@@ -1512,7 +1527,7 @@ textarea.input {
 }
 
 .product-details .add-to-cart {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .product-details .add-to-cart .add-to-cart-btn {
@@ -1553,18 +1568,77 @@ textarea.input {
   visibility: visible;
 }
 
-.product-details .add-to-cart .qty-label {
-  display: inline-block;
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  margin-right: 15px;
-  margin-bottom: 0px;
+.product-details .add-to-cart .qty-label .input-number {
+  width: 25px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.product-details .add-to-cart .qty-label .input-number {
-  width: 90px;
-  display: inline-block;
+.product-details .add-to-cart .qty-label .input-number input {
+  flex: 1;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #dcd9d9;
+  height: 32px;
+  width: 115px;
+  border-radius: 8px;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-up,
+.product-details .add-to-cart .qty-label .input-number .qty-down {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 25px;
+  background-color: #dcd9d9;
+  color: #12879e;;
+  border: none;
+  height: 32px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-up{
+  border-radius: 0 9px 9px 0;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-down{
+  border-radius: 9px 0 0 9px;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-up:hover,
+.product-details .add-to-cart .qty-label .input-number .qty-down:hover{
+  background-color:#979292;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-up {
+  right: -90px;
+}
+
+.product-details .add-to-cart .qty-label .input-number .qty-down {
+  left: 0;
+}
+
+#fonnt {
+  color: #0a0908; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  height: 40px;
+  width: 190px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  border: 2px solid #0096c7;
+}
+
+#fonnt:hover {
+  background-color: #48cae4; 
+color: white; 
 }
 
 .product-details .product-btns li {
@@ -1578,13 +1652,14 @@ textarea.input {
 }
 
 .product-details .product-links {
-  margin-top: 15px;
+  margin-top: 18px;
 }
+
 
 .product-details .product-links li {
   display: inline-block;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .product-details .product-links li+li {
@@ -1630,11 +1705,11 @@ textarea.input {
 #product-tab .tab-nav li a {
   display: block;
   font-weight: 700;
-  color: #8D99AE;
+  color: #6c8fcc;
 }
 
 #product-tab .tab-nav li.active a {
-  color: #D10024;
+  color: #0096c7;
 }
 
 #product-tab .tab-nav li a:after {
@@ -1642,13 +1717,52 @@ textarea.input {
   display: block;
   width: 0%;
   height: 2px;
-  background-color: #D10024;
+  background-color: #0096c7;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
 
+.col-md-12 #product-tab {
+  margin-top: 10px;
+}
+
+.col-md-12 .tab-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.col-md-12 .tab-nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.col-md-12 .tab-nav li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.col-md-12 .tab-content {
+  margin-top: 20px;
+}
+
 #product-tab .tab-nav li a:hover:after, #product-tab .tab-nav li a:focus:after, #product-tab .tab-nav li.active a:after {
   width: 100%;
+}
+
+.font-basic-tb{
+  font-family: "Arial", Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+#border-sass {
+  width: 90%; 
+  margin: 0 auto;
+}
+
+#border-sass th {
+  background-color:#f5f5f5;
+  font-weight: 550;
 }
 
 /*-- Rating --*/
@@ -1987,62 +2101,77 @@ textarea.input {
 	11 -> FOOTER
 ===========================================================*/
 
-/* #footer {
-  background: #2bbef9;
-  color: white;
+#footer {
+  font-family: 'Tohoma', sans-serif;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 30px 0;
+  margin-top: auto;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
 }
-
-#bottom-footer {
-  background: #1E1F29;
+.footer-container {
+  display: flex;
+  gap: 80px; 
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto; 
 }
-
-.footer {
-  margin: 30px 0px;
+.footer-column {
+  flex: 1;
+  max-width: 250px;
+  padding: 2px;
+  box-sizing: border-box;
+text-align: left;
+  color: #d1d3d6;
 }
-
-.footer .footer-title {
-  color: #FFF;
-  text-transform: uppercase;
-  font-size: 18px;
-  margin: 0px 0px 30px;
+.footer-column h3 {
+  color:  #ffffff;
+  border-bottom: 1px solid #fff; 
+  padding-bottom: 8px;
+  font-size: 20px;
 }
-
-.footer-links li+li {
+.footer-column p,
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.8;
   margin-top: 15px;
 }
-
-.footer-links li a {
-  color: white;
+.footer-column ul>li{
+  margin-top: 15px;
 }
-
-.footer-links li i {
-  margin-right: 15px;
-  color: #D10024;
-  width: 14px;
-  text-align: center;
+.footer-column a {
+  color: #ffff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
-
-.footer-links li a:hover {
-  color: #D10024;
+.footer-column a:hover {
+  color: #0077b6;
 }
-.footer-links li.active a::after {
-  color: #D10024;
+.logo-container img{
+  max-width: 28px; 
+  height: auto; 
+  margin: 8px; 
 }
-.copyright {
-  margin-top: 30px;
+.centered-image {
   display: block;
-  font-size: 12px;
+  margin: 0 auto; 
 }
 
-.footer-payments li {
-  display: inline-block;
-  margin-right: 5px;
+.footer-column ul>li i{
+  font-size: 8px;
 }
-
-.footer-payments li a {
-  color: #2bbef9;
-  font-size: 36px;
-  display: block; }*/
+.logo-image img{
+  height: auto; 
+  max-width: 180px;
+}
 
 /*=========================================================
 	12 -> SLICK STYLE
@@ -2162,6 +2291,15 @@ textarea.input {
   .section-tab-nav li {
     margin-top: 10px;
   }
+  .footer-container {
+      flex-direction: column;
+      gap: 20px; 
+  }
+
+  .footer-column {
+      max-width: 100%;
+      margin-bottom: 5px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -2177,3 +2315,4 @@ textarea.input {
     margin-top: 10px;
   }
 }
+

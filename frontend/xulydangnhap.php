@@ -7,7 +7,7 @@
 if (isset($_POST['dangnhap']))
 {
 //Kết nối tới database
-$conn = mysqli_connect('localhost', 'root', '', 'bannuocdb') or die ('Lỗi kết nối'); mysqli_set_charset($conn, "utf8");
+$conn = mysqli_connect('localhost', 'root', '', 'foodgennie') or die ('Lỗi kết nối'); mysqli_set_charset($conn, "utf8");
 
   
 //Lấy dữ liệu nhập vào
