@@ -179,23 +179,31 @@
     if (isset($_POST['btntladd'])) {
         if (isset($_POST['name']))
             if ($_POST['name'] != '') {
-                $namei = $_POST['name'];
-                $sql = "INSERT INTO `theloai`(`ten_tl`) VALUES ('$namei')";
-                $result = mysqli_query($con, $sql);
-                if ($result)
-                    header("location:./admin.php?act=addtltc&dk=yes");
-                else header("location:./admin.php?act=addtltc&dk=no");
+                if (isset($_POST['tong_sp']))
+                    if ($_POST['tong_sp'] != '') {
+                        $namei = $_POST['name'];
+                        $tong = $_POST['tong_sp'];
+                        $sql = "INSERT INTO `theloai`(`ten_tl`,`tong_sp`) VALUES ('$namei','$tong')";
+                        $result = mysqli_query($con, $sql);
+                        if ($result)
+                            header("location:./admin.php?act=addtltc&dk=yes");
+                        else header("location:./admin.php?act=addtltc&dk=no");
+                    } else header("location:./admin.php?act=addtltc&dk=no");
             } else header("location:./admin.php?act=addtltc&dk=no");
     }
     if (isset($_POST['btntlsua'])) {
         if (isset($_POST['name']))
             if ($_POST['name'] != '') {
-                $con = mysqli_connect("localhost", "root", "", "bannuocdb");
-                $result1 = mysqli_query($con, "UPDATE `theloai` SET `ten_tl` = '" . $_POST['name'] . "'WHERE `theloai`.`id` = " . $_GET['id'] . " ");
+                if (isset($_POST['tong_sp']))
+                if ($_POST['tong_sp'] != '') {
+                $con = mysqli_connect("localhost", "root", "", "foodgennie");
+                $result1 = mysqli_query($con, "UPDATE `theloai` SET `ten_tl` = '" . $_POST['name'] . "',`tong_sp` = '" . $_POST['tong_sp'] . "'WHERE `theloai`.`id` = " . $_GET['id'] . " ");
                 if ($result1)
                     header("location:./admin.php?act=suatltc&dk=yes");
+                
                 else header("location:./admin.php?act=suatltc&dk=no");
             } else header("location:./admin.php?act=suatltc&dk=no");
+        } else header("location:./admin.php?act=suatltc&dk=no");
     }
     if (isset($_POST['btnnccadd'])) {
         if (isset($_POST['name']))
@@ -235,47 +243,105 @@
         $result = execute($sql);
         header("location:./admin.php?act=khtttc&dk=yes");
     }
+
+
     if (isset($_POST['btnnvadd'])) {
+        if (isset($_POST['id']))
+            if ($_POST['id'] != '') {
         if (isset($_POST['name']))
             if ($_POST['name'] != '') {
-                if (isset($_POST['mat_khau'])) 
-                    if ($_POST['mat_khau'] != '') {
-                        if (isset($_POST['sdt']))
-                            if ($_POST['sdt'] != '') {
-                                if (isset($_POST['email']))
-                                    if ($_POST['email'] != '') {
-                                        if ($_POST['tendangnhap'] != '') $tendangnhap=null;
-                                        $sql1 = "INSERT INTO `nhanvien`(`ten_nv`,`ten_dangnhap`,`email`,`phone`,`mat_khau`) VALUES ('" . $_POST['name'] . "','" . $_POST['tendangnhap'] . "','" . $_POST['email'] . "','" . $_POST['sdt'] . "','" . $_POST['mat_khau'] . "')";
-                                        $result = mysqli_query($con, $sql1);
-                                        if ($result)
-                                            header("location:./admin.php?act=addnvtc&dk=yes");
-                                        else header("location:./admin.php?act=addnvtc&dk=no");
-                                    } else header("location:./admin.php?act=addnvtc&dk=no");
-                            } else header("location:./admin.php?act=addnvtc&dk=no");
-                    } else header("location:./admin.php?act=addnvtc&dk=no");
+                // if (isset($_POST['chuc_vu']))
+                //     if ($_POST['chuc_vu'] != '') {
+                        if (isset($_POST['mat_khau'])) 
+                            if ($_POST['mat_khau'] != '') {
+                                if (isset($_POST['phone']))
+                                    if ($_POST['phone'] != '') {
+                                        if (isset($_POST['email']))
+                                            if ($_POST['email'] != '') {
+                                                if ($_POST['tendangnhap'] != '') $tendangnhap=null;
+                                                $conn = mysqli_connect("localhost", "root", "", "bannuocdb");
+                                                $id = $_POST['id'];
+                                                $namei = $_POST['name'];
+                                                //  $chuc_vu = $_POST['chuc_vu'];
+                                                 $mat_khau = $_POST['mat_khau'];
+                                                 $phone = $_POST['phone'];
+                                                 $email = $_POST['email'];
+                                                 $tendangnhap = $_POST['tendangnhap'];
+                                                if ($_FILES['image']['name'] != NULL) {
+                                                    // Kiểm tra file up lên có phải là ảnh không
+                                                    if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
+
+                                                        // Nếu là ảnh tiến hành code upload
+                                                        $path1 = ""; // Ảnh sẽ lưu vào thư mục images
+                                                        $path2 = "../img/";
+                                                        $tmp_name = $_FILES['image']['tmp_name'];
+                                                        $name = $_FILES['image']['name'];
+                                                        // Upload ảnh vào thư mục images
+                                                        move_uploaded_file($tmp_name, $path2 . $name);
+                                                        $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+                                                        // Insert ảnh vào cơ sở dữ liệu
+
+
+                                                $sql1 = "INSERT INTO `nhanvien`(`id`,`ten_nv`, `hinh_anh`,  `ten_dangnhap`, `email`, `phone`, `mat_khau`) VALUES ('$id','$namei','$image_url','$tendangnhap','$email','$phone','$mat_khau')";
+                                                // $sql1 = "INSERT INTO `nhanvien`(`id`,`ten_nv`, `hinh_anh`, `chuc_vu`, `ten_dangnhap`, `email`, `phone`, `mat_khau`) VALUES ('$id','$namei','$image_url','$chuc_vu','$tendangnhap','$email','$phone','$mat_khau')";
+                                                
+                                                $result = mysqli_query($con, $sql1);
+                                                if ($result)
+                                                header("location:./admin.php?act=addnvtc&dk=yes");
+                                                else header("location:./admin.php?act=addnvtc&dk=no");
+                                            } else header("location:./admin.php?act=addnvtc&dk=no");
+                                            }}
+                                        } else header("location:./admin.php?act=addnvtc&dk=no");
+                                } else header("location:./admin.php?act=addnvtc&dk=no");
+                        } else header("location:./admin.php?act=addnvtc&dk=no");
                 // } else header("location:./admin.php?act=addnvtc&dk=no");
             } else header("location:./admin.php?act=addnvtc&dk=no");
-    }
-    if (isset($_POST['btnnvsua'])) {
-        if (isset($_POST['name']))
-            if ($_POST['name'] != '') {
-                if (isset($_POST['sdt']))
-                    if ($_POST['sdt'] != '') {
-                        if (isset($_POST['mat_khau']))
-                            if ($_POST['mat_khau'] != '') {
-                                if (isset($_POST['email']))
-                                    if ($_POST['email'] != '') {
-                                        if ($_POST['tendangnhap'] != '') $tendangnhap=null;
-                                        $con = mysqli_connect("localhost", "root", "", "bannuocdb");
-                                        $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `ten_nv` = '" . $_POST['name'] . "',`mat_khau` = '" . $_POST['mat_khau'] . "',`email` = '" . $_POST['email'] . "',`phone` = '" . $_POST['sdt'] . "',`ten_dangnhap` = '" . $_POST['tendangnhap'] . "' WHERE `nhanvien`.`id` = " . $_GET['id'] . " ");
-                                        if ($result1)
-                                            header("location:./admin.php?act=suanvtc&dk=yes");
-                                        else header("location:./admin.php?act=suanvtc&dk=no");
+        }
+  
+        if (isset($_POST['btnnvsua'])) {
+            if (isset($_POST['id']))
+                if ($_POST['id'] != '') {
+            if (isset($_POST['name']))
+                if ($_POST['name'] != '') {
+                    // if (isset($_POST['chuc_vu']))
+                    //     if ($_POST['chuc_vu'] != '') {
+                            if (isset($_POST['phone']))
+                                if ($_POST['phone'] != '') {
+                                    if (isset($_POST['mat_khau']))
+                                        if ($_POST['mat_khau'] != '') {
+                                            if (isset($_POST['email']))
+                                                if ($_POST['email'] != '') {
+                                                    if ($_POST['tendangnhap'] != '') $tendangnhap=null;
+                                                            $conn = mysqli_connect("localhost", "root", "", "foodgennie");
+                                                        
+                                                            if ($_FILES['image']['name'] != NULL) {
+                                                                // Kiểm tra file up lên có phải là ảnh không
+                                                                if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
+            
+                                                                    // Nếu là ảnh tiến hành code upload
+                                                                    $path1 = ""; // Ảnh sẽ lưu vào thư mục images
+                                                                    $path2 = "../img/";
+                                                                    $tmp_name = $_FILES['image']['tmp_name'];
+                                                                    $name = $_FILES['image']['name'];
+                                                                    // Upload ảnh vào thư mục images
+                                                                    move_uploaded_file($tmp_name, $path2 . $name);
+                                                                    $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+                                                                    // Insert ảnh vào cơ sở dữ liệu
+                                                                }
+                                                            }
+                                                            $con = mysqli_connect("localhost", "root", "", "foodgennie");
+                                                            $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `id` = '" . $_POST['id'] . "', `ten_nv` = '" . $_POST['name'] . "',`hinh_anh`='$image_url', `mat_khau` = '" . $_POST['mat_khau'] . "', `email` = '" . $_POST['email'] . "', `phone` = '" . $_POST['phone'] . "', `ten_dangnhap` = '" . $_POST['tendangnhap'] . "'  WHERE `nhanvien`.`id` = " . $_GET['id']);
+                                                                                                       
+                                                            if ($result1)
+                                                    header("location:./admin.php?act=suanvtc&dk=yes");
+                                                else header("location:./admin.php?act=suanvtc&dk=no");
+                                        } else header("location:./admin.php?act=suanvtc&dk=no");
                                     } else header("location:./admin.php?act=suanvtc&dk=no");
-                            } else header("location:./admin.php?act=suanvtc&dk=no");
-                    } else header("location:./admin.php?act=suanvtc&dk=no");
+                                } else header("location:./admin.php?act=suanvtc&dk=no");
+                        } else header("location:./admin.php?act=suanvtc&dk=no");
+                // } else header("location:./admin.php?act=suanvtc&dk=no");
             } else header("location:./admin.php?act=suanvtc&dk=no");
-    }
+        }
     if (isset($_POST['btntkmk'])) {
         if (isset($_POST['matkhaumoi']))
             if ($_POST['matkhaumoi'] != '') {

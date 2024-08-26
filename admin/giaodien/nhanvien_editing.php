@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,41 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
-    table{
-    width: 700px;
-        border:1px solid #868585;
-        border-collapse:collapse;
-        margin-left:30px;
-        font-size:25px;
-        text-align:left;
-       
-    }
-    table, th {height: 500px}
-    
-    
-    input {
-    color:#868585;
+     .btnLuu {
+            margin-top: 20px;
+            width: 90%;
+            padding: 10px 20px;
+        }
 
-    width:100%;
+        .wrap-field {
+            margin-top: 10px;
+            width: 100%;
 
-    }
-    td, th {
-    padding: 20px;
-}
-button{
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    background-color:#91C8EB;
-    border: 2px solid #91C8EB
-}
-button:hover{
-    background-color:  #67b1e0;
-  cursor: pointer;
-}
+        }    
+        img {
+        max-width: 300px;
+        max-height: 300px;
+        margin-top: 10px;}
+
+
     </style>
-    </style>
+   
 </head>
 <body>
 <?php
@@ -53,63 +36,120 @@ if (!empty($_GET['id'])) {
 ?>
 
 
+   
+            <div>
+                    <center>
+                    <br> <br>
+                    <h2>Sửa Nhân Viên</h2> 
+                    </center>
+            </div>
+            <div class="box-contentt">
+   
+            <form name="nhanvien-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>" enctype="multipart/form-data">    
+           <div class="wrap-field form-group">
+               <div class="row">
+                   <div class="col-sm-5">
+                         
+                               <div class="col-sm-12">
 
-<div class="blog_section layout_padding">
-    <div class="container-fluid">
-      <!-- <h2 class="blog_taital" style=" margin-left:30px;  margin-top:30px;">Chào mừng bạn đến trang Quản lý nhân viên </h2> -->
-    
-<center>
-<h2 class="blog_taital" style="   margin-top:30px;">Chào mừng bạn đến trang Quản lý nhân viên </h2>
-  <h2>Sửa Nhân Viên</h2> 
-  
-   <form name="nhanvien-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>" enctype="multipart/form-data">
-        <table style="margin:auto text-align:left width:100% " >
-            <tr>
-                <td><label>Username: </label></td>
-                <td>
-                <input type="text" name="tendangnhap" value="<?= (!empty($nhanvien) ? $nhanvien['ten_dangnhap'] : "") ?>" />
-               
-                </td>
-            </tr>
-            <tr>
-                <td><label>Tên Nhân Viên: </label></td>
-              <td> 
-              <input type="text" name="name" value="<?= (!empty($nhanvien) ? $nhanvien['ten_nv'] : "") ?>" />
-              </td>   
-            </tr>
-            
-           
-            <tr>
-                <td> <label>Email: </label></td>
-                <td> <input type="email" name="email" value="<?= (!empty($nhanvien) ? $nhanvien['email'] : "") ?>" /></td>
-                
-            </tr>
-           
-            <tr>
-                    <td><label>Số Điện Thoại: </label></td> 
-                    <td> <input type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789" value="<?= (!empty($nhanvien) ? $nhanvien['phone'] : "") ?>" /></td>
-               
-            </tr>
-            <tr>
-                <td><label>Password: </label></td>
-                <td>
-                <input type="text" name="mat_khau" value="<?= (!empty($nhanvien) ? $nhanvien['mat_khau'] : "") ?>" />
-                    
-</td>
-            </tr>
-            
-            <tr>
-                <td></td>
-                <td> <center>
-                <button name="btnnvsua" type="submit"title="Lưu nhân viên" value="Cập nhật">Cập nhật</button>
-                <button type="reset" value="Hủy">Hủy</button>
+                                        <?php if (!empty($nhanvien['hinh_anh'])) { ?>
+                                            <img style="width: 300px;height: 300px;" id="imageDisplay" src="../img/<?= $nhanvien['hinh_anh'] ?>" alt="Ảnh đại diện" /><br />
+                                            <?php } ?>
+                                            <input class="form-control" type="file" name="image"  id="fileInput" accept="image/*" value="<?= $nhanvien['hinh_anh'] ?>" /> 
+                                       
+                                          </div>
+                   
+                   </div>
+                   <div class="col-sm-7">
+
+                           <div class="wrap-field form-group row">
+                               <label class="col-sm-4 col-form-label col-form-label-sm">ID Nhân viên: </label>
+                               <div class="col-sm-8">
+                                    <input  class="form-control form-control-sm" type="text" name="id" value="<?= $_GET['id'] ?>" />
+                               </div>
+                           </div>
+                           <div class="wrap-field form-group row">
+                               <label class="col-sm-4 col-form-label col-form-label-sm">Tên Nhân viên: </label>
+                               <div class="col-sm-8">
+                                   <input  class="form-control form-control-sm"  type="text" name="name" value="<?= (!empty($nhanvien) ? $nhanvien['ten_nv'] : "") ?>" />
+                               </div>
+                           </div>
+                           <!-- <div class="wrap-field form-group row">
+                               <label class="col-sm-4 col-form-label col-form-label-sm" for="chucvu">Chức vụ: </label>
+                               <div class="col-sm-8">
+                               <select class="form-control" name="chuc_vu" id="chucvu">
+                                               <option value="Bán hàng" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'ban_hang' ? 'selected' : '') ?>>Bán hàng</option>
+                                               <option value="Tư vấn" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'tu_van' ? 'selected' : '') ?>>Tư vấn</option>
+                                               <option value="Quản lý sản phẩm" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_san_pham' ? 'selected' : '') ?>>Quản lý sản phẩm</option>
+                                               <option value="Quản lý khách hàng " <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_khach_hang' ? 'selected' : '') ?>>Quản lý khách hàng</option>
+                                               <option value="Quản lý bài blog" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'quan_ly_bai_blog' ? 'selected' : '') ?>>Quản lý bài blog</option>
+                                               <option value="kế toán" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'ke_toan' ? 'selected' : '') ?>>Kế toán</option>
+                                               <option value="Thống kê bán hàng" <?= (!empty($nhanvien) && $nhanvien['chuc_vu'] == 'thong_ke_ban_hang' ? 'selected' : '') ?>>Thống kê bán hàng</option>
+                                           </select>
+                               </div>
+                           </div> -->
+                           <div class="wrap-field form-group row ">
+                                   <label class="col-sm-4 col-form-label col-form-label-sm">Email: </label>
+                                   <div class="col-sm-8">
+                                           <input  class="form-control form-control-sm" type="email" name="email" value="<?= (!empty($nhanvien) ? $nhanvien['email'] : "") ?>" placeholder="VD: abc@gmail.com"/>
+                                   </div>
+                                   </div>
+                           <div class="wrap-field form-group row">
+                                   <label class="col-sm-4 col-form-label col-form-label-sm">Số điện thoại </label>
+                                   <div class="col-sm-8">
+                                           <input  class="form-control form-control-sm" type="tel" name="phone" value="<?= (!empty($nhanvien) ? $nhanvien['phone'] : "") ?>" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789" />
+                                       </div>
+                           
+                           </div>
+                           <div class="wrap-field form-group row">
+                                   <label class="col-sm-4 col-form-label col-form-label-sm">Mật khẩu</label>
+                                   <div class="col-sm-8">
+                                           <input  class="form-control form-control-sm" type="text" name="mat_khau" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt." value="<?= (!empty($nhanvien) ? $nhanvien['mat_khau'] : "") ?>"> 
+                                   
+                                       </div>
+                                       
+                           </div>
+                           <div class="wrap-field form-group row">
+                                   <label class="col-sm-4 col-form-label col-form-label-sm">Tên đăng nhập </label>
+                                   <div class="col-sm-8">
+                                           <input  class="form-control form-control-sm"type="text" name="tendangnhap" value="<?= (!empty($nhanvien) ? $nhanvien['ten_dangnhap'] : "") ?>" />
+                                   </div>
+                           </div>
+                                           
+                   </div>
+                                  
+                   
+                       
+                   <center>
+                        <button class="btn btn-danger btnLuu" name="btnnvsua" type="submit"title="Lưu nhân viên" value="Cập nhật">Cập nhật</button>
+                        <button class="btn btn-primary btnLuu" type="reset" value="Hủy">Hủy</button>
               
-                
-                </center>
-            </td>
-            </tr>
-        </table>
-    </form>
-    </center>
-    </body>
+                    </center>                  
+                       
+               
+           </div>
+           <!-- <input class="btn btn-success btnLuu" name="btnadd" type="submit" title="Lưu sản phẩm" value="Lưu" /> -->
+       </form>
+       
+
+   </div>
+
+
+   <script>
+       const fileInput = document.getElementById('fileInput');
+       const imageDisplay = document.getElementById('imageDisplay');
+       
+       fileInput.addEventListener('change', function(event) {
+           const file = event.target.files[0];
+           const reader = new FileReader();
+           
+           reader.onload = function(e) {
+               imageDisplay.src = e.target.result;
+           }
+           
+           reader.readAsDataURL(file);
+       });
+   </script>
+</body>
 </html>
+    
