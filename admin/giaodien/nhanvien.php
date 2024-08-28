@@ -29,14 +29,14 @@
 
         mysqli_close($con);
         ?>
-        <div class="flex justify-between items-center">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white">
+        <div class="flex justify-between items-center pb-4 p-8">
+            <p class="pb-4 pt-0 text-gray-900 text-4xl font-bold dark:text-white">
                 Quản lý nhân viên
             </p>
             <div class="flex">
                 <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-[50px] h-[100px] p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white" type="button">
-                    Toggle modal
+                class="w-40 h-20 p-2 rounded-full bg-red-600 hover:bg-rose-400 text-white" type="button">
+                Thêm mới
                 </button>
                 <!-- <a href="admin.php?act=addnv"
                     class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">
@@ -71,7 +71,7 @@
                             <?php while ($row = mysqli_fetch_array($nhanvien)) { ?>
                                 <tr class="  bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td class="pl-8 "><?= $row['id'] ?></td>
-                                    <td><img class="h-36 w-36 rounded-0" src="../img/<?= $row['hinh_anh'] ?>"
+                                    <td><img class="h-36 w-36 rounded-full" src="../img/<?= $row['hinh_anh'] ?>"
                                             alt="Ảnh nhân viên" />
                                     </td>
                                     <td><?= $row['ten_nv'] ?></td>
