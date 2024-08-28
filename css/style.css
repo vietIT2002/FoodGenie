@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 /*
 Template Name: Electro - HTML Ecommerce Template
 Author: yaminncco
@@ -838,16 +839,18 @@ textarea.input {
 .product {
   position: relative;
   margin: 15px 0px;
-  -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
-  box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  padding: 14px;
+  border-radius: 5px;
 }
 
 .product:hover {
   /* -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
   box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024; */
-  border: 1px solid #233a95;
+  border: 1.5px solid #0096c7;
 }
 
 .product .product-img {
@@ -862,12 +865,13 @@ textarea.input {
   position: absolute;
   top: 15px;
   right: 15px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .product .product-img .product-label>span {
   border: 2px solid;
   padding: 2px 10px;
-  font-size: 12px;
 }
 
 .product .product-img .product-label>span.sale {
@@ -880,13 +884,14 @@ textarea.input {
   background-color: #D10024;
   border-color: #D10024;
   color: #FFF;
+  border-radius: 10px 0 10px 0;
 }
 
 .product .product-body {
   position: relative;
-  padding: 15px;
+  padding: 10px;
   background-color: #FFF;
-  text-align: center;
+  /* text-align: center; */
   z-index: 20;
 }
 
@@ -894,24 +899,32 @@ textarea.input {
   text-transform: uppercase;
   font-size: 12px;
   color: #8D99AE;
+  text-align: center;
 }
 
 .product .product-body .product-name {
-  text-transform: uppercase;
-  font-size: 14px;
+  /* text-transform: uppercase; */
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
 }
 
 .product .product-body .product-name>a {
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .product .product-body .product-name>a:hover, .product .product-body .product-name>a:focus {
-  color: #D10024;
+  color: #0096c7;
 }
 
 .product .product-body .product-price {
   color: #D10024;
-  font-size: 18px;
+  font-size: 16px;
+}
+.product .product-body .product-pricece{
+  font-size: 14px;
+  color: #8D99AE;
+  font-weight: 500;
+  text-decoration: line-through;
 }
 
 .product .product-body .product-price .product-old-price {
@@ -920,10 +933,20 @@ textarea.input {
   color: #8D99AE;
 }
 
+.product-body .price-two {
+  display: flex; 
+}
+
+.price-two h4 {
+  margin: 0; 
+  margin-right: 10px; 
+}
+
 .product .product-body .product-rating {
   position: relative;
   margin: 15px 0px 10px;
   height: 20px;
+  text-align: center;
 }
 
 .product .product-body .product-rating>i {
@@ -1004,7 +1027,6 @@ textarea.input {
   right: 1px;
   bottom: 1px;
   padding: 15px;
-  
   text-align: center;
   -webkit-transform: translateY(0%);
   -ms-transform: translateY(0%);
@@ -1018,6 +1040,7 @@ textarea.input {
   -webkit-transform: translateY(100%);
   -ms-transform: translateY(100%);
   transform: translateY(100%);
+  background-color:#00b4d8;
 }
 
 .product .add-to-cart .add-to-cart-btn {

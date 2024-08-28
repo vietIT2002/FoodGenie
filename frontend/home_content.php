@@ -4,14 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<style>
-		.product .add-to-cart{
-			background-color: #7f0000;
-		}
-	</style>
 </head>
 <body>
-	<!-- SECTION -->
+
+<!-- SECTION -->
 <div class="section">
 			<!-- container -->
 			<div class="container">
@@ -61,14 +57,6 @@
 			<!-- /container -->
 
 			 <!-- Banner -->
-			 <div class="row">
-				<div class="col-md-12">
-					<div class="banner text-center mx-auto"> <!-- Thêm lớp "text-center" để căn giữa -->
-						<!-- Thay đổi đường dẫn và alt theo hình ảnh của banner bạn muốn sử dụng -->
-						<img src="./img/banner.png" alt="Your Banner" style="max-width: 75%; height: auto; display: inline-block;" class="img-fluid"> <!-- Thêm thuộc tính "display: inline-block;" -->
-					</div>
-				</div>
-			</div>
     <!-- /Banner -->
 		</div>
 		<!-- /SECTION -->
@@ -99,21 +87,30 @@
                                         <?php
                                         $sql='select * from sanpham where 1 limit 4, 5';
                                         $list=executeResult($sql);
-                                        foreach($list as $item){
+                                        foreach($list as $item){	
+											$gia_goc = $item['gia_goc'];
+											$don_gia = $item['don_gia'];								
+											
+										// Calculate the discount percentage
+											if($gia_goc > $don_gia) {
+												$phan_tram_giam = round((($gia_goc - $don_gia) / $gia_goc) * 100);
+											} else { 
+												$phan_tram_giam = 0;
+											}										
 											if($item['so_luong']==0 && $item['trangthai']==0){ // Hết hàng 
 												echo '
 												<div class="product">
 												<div class="product-img" style="height:250px">
 													<img src="./img/'.$item['hinh_anh'].'" alt="" style="height:100%">
 													<div class="product-label">
-														
 														<span class="new">HẾT HÀNG</span>
 													</div>
 												</div>
 												<div class="product-body">
 													<p class="product-category">SẢN PHẨM</p>
 													<h3 class="product-name"><a href="?act=product&id='.$item['id'].'">'.$item['ten_sp'].'</a></h3>
-													<h4 class="product-price">'.currency_format($item['don_gia']).' </h4>
+													<h4 class="product-price" id="price-sold">'.currency_format($item['don_gia']).' </h4>
+													
 													<div class="product-rating">
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>
@@ -131,15 +128,19 @@
                                             echo '<div class="product" >
 											<div class="product-img" style="height:250px" onclick="location=\'index.php?act=product&id='.$item['id'].'\'">
 												<img src="./img/'.$item['hinh_anh'].'" alt="" style="height:100%">
-												<div class="product-label">
-													
-													<span class="new">NEW</span>
-												</div>
+
+											<div class="product-label">
+												'.($phan_tram_giam > 0 ? '<span class="new">-'.$phan_tram_giam.'%</span>' : '').'
+											</div>
+
 											</div>
 											<div class="product-body">
 												<p class="product-category"><small>'.$item['sl_da_ban'].' đã bán</small></p>
 												<h3 class="product-name"><a href="?act=product&id='.$item['id'].'">'.$item['ten_sp'].'</a></h3>
-												<h4 class="product-price">'.currency_format($item['don_gia']).'</h4>
+												<div class="price-two">
+													<h4 class="product-price">'.currency_format($item['don_gia']).'</h4>
+													<h4 class="product-pricece" id="price-sold">'.currency_format($item['gia_goc']).' </h4>
+												</div>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -171,7 +172,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-
 </body>
 </html>
 
