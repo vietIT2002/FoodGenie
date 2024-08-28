@@ -10,7 +10,7 @@
     $act='';
     $search='';
     $id=0;
-    $title='Trang Chủ';
+    $title='Đổi mật khẩu';
     if(isset($_GET['act'])){
         $act=$_GET['act'];
     }
@@ -111,74 +111,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin "anonymous"></script>
+    <link rel="stylesheet" href="./css/login.css">
     <title><?=$title?></title>
-<style>
-    body{
-        background: url('./img/1.jpg');
-        background-size: 1600px 900px; /* Set the size of the background image */
-    }
-    .change-password-container {
-        max-width: 400px;
-        margin: 30px auto;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .change-password-title {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .change-password-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-
-    .change-password-input:focus {
-        border-color: #3498db;
-    }
-
-    .change-password-button {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .change-password-button:hover {
-        background-color: #2980b9;
-    }
-</style>
 </head>
 <body>
-<div id="wapper">
-        <div id="header">
-            <?php require_once('frontend/header.php'); ?>
-        </div>
-        
+<div class="row row1">
+<a href="index.php" class="login-link"><i class="fa-solid fa-house-user"></i></a>
+    <form action='change_password.php' method='POST'> 
+        <h3 class="title1">Đổi mật khẩu</h3>
 
-        <div class="change-password-container">
-        <form action='change_password.php' style="text-align:center;" class="change-password-form" method='POST'> 
-            <h3 class="change-password-title">ĐỔI MẬT KHẨU</h3>
-            
             <?php if (!empty($success_message)): ?>
-                <p style="color: green;"><?php echo $success_message; ?></p>
+                <p style="color:  #ef476f; text-align: center;"><?php echo $success_message; ?></p>
                 <script>
                     setTimeout(function(){
                         window.location.href = 'index.php';
@@ -189,28 +133,33 @@
             <?php if (isset($error_message)): ?>
                 <p style="color: red;"><?php echo $error_message; ?></p>
             <?php endif; ?>
+            
+            <div class="form-group" style="text-align: center;">
+                <!-- Display the current username, which cannot be changed -->
+                <span style=" color:  #ef476f; font-size: 16px; font-weight: 600;"><?php echo $ten_dangnhap; ?></span>
+            </div>
+                        
             <div class="form-group">
-    <!-- Display the current username, which cannot be changed -->
-    <span style="font-size: 18px; font-weight: bold;"><?php echo $ten_dangnhap; ?></span>
-</div>
+                <label for="old-ppass">Mật khẩu cũ<span class="required1">*</span></label>
+                <input class="input1" type='password' name='old_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
+            </div>
             
             <div class="form-group">
-    <input class="change-password-input" type='password' name='old_password' placeholder="Mật khẩu cũ" required />
-</div>
-<div class="form-group">
-    <input class="change-password-input" type='password' name='new_password' placeholder="Mật khẩu mới" required />
-</div>
-<div class="form-group">
-    <input class="change-password-input" type='password' name='confirm_password' placeholder="Xác nhận mật khẩu mới" required />
-</div>
-<input class="change-password-button" type='submit' name="doimatkhau" value='Đổi mật khẩu' />
-<a href="index.php" class="btn btn-primary">Thoát</a>
+                <label for="new-pass">Mật khẩu mới<span class="required1">*</span></label>
+                <input class="input1" type='password' name='new_password'
+                required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt." />
+            </div>
+            
+            <div class="form-group">
+            <label for="re-enter-pass">Nhập lại mật khẩu<span class="required1">*</span></label>
+                <input class="input1" type='password' name='confirm_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
+            </div>
+            <div><br>
+                <input class="btn btn-danger btn-long" type='submit' name="doimatkhau" value='Xác nhận' />
+            </div>
         </form>
-    </div>
-        <div id="footer">
-        <?php require_once('frontend/footer.php'); ?>
-        </div>
 </div>
+
 
     
 </body>

@@ -1,130 +1,18 @@
-<style>
-#product-main-img {
-    border: 2px solid #ddd; 
-    border-radius: 4px; 
-    overflow: hidden; 
-	padding: 5px;
-}
-/* Phần Product Details */
-.col-md-5 .product-details {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.col-md-5 .product-name {
-    font-size: 2em;
-    color: #333; /* Màu chữ */
-    margin-bottom: 10px; /* Khoảng cách với các phần khác */
-
-}
-
-.col-md-5 .product-rating {
-    color: #ffc107;
-}
-
-.col-md-5 .product-price {
-    font-size: 1.2em;
-}
-
-.col-md-5 .qty-label {
-    margin-top: 15px;
-}
-
-.col-md-5 .input-number {
-    display: flex;
-    align-items: center;
-}
-
-.col-md-5 .add-to-cart-btn {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-}
-
-
-.col-md-5 .product-details .textt{
-	font-size: 1.2em;
-	border-bottom: 0.5px solid #000;
-}
-
-.col-md-5 .product-links {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-}
-
-.col-md-5 .product-links li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.col-md-5 .product-links a:hover {
-    color: #4caf50;
-}
-
-
-#fonnt {
-    background-color: red; /* Màu nền trong suốt giống Shopee (màu cam với độ trong suốt 0.7) */
-    color: #fff; /* Màu chữ trắng */
-    padding: 10px 15px; /* Điều chỉnh kích thước padding theo ý muốn */
-    border: 1px solid #ff4d4d; /* Viền đỏ 1px */
-    border-radius: 4px; /* Bo tròn góc */
-    cursor: pointer; /* Biểu tượng con trỏ khi di chuột qua nút */
-}
-
-#fonnt:hover {
-    background-color: #cc4d00; /* Màu nền khi di chuột qua giống Shopee */
-    border: 1px solid #cc4d00; /* Viền đỏ khi di chuột qua */
-}
-
-
-/* Phần Product Tab */
-.col-md-12 #product-tab {
-    margin-top: 20px;
-}
-
-.col-md-12 .tab-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.col-md-12 .tab-nav li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.col-md-12 .tab-nav li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.col-md-12 .tab-nav li.active a {
-    color: #4caf50;
-}
-
-.col-md-12 .tab-content {
-    margin-top: 20px;
-}
-
-.col-md-12 .tab-content p {
-    margin-top: 10px;
-}
-    #tab1 {
-        border: 1px solid #ccc;
-        padding: 10px;
-    }
-</style>
-
+<link rel="stylesheet" href="./css/style.css">
 <!-- Lấy tên thể loại khi biết id sản phẩm -->
 <?php
 	$sql='select ten_sp, ten_tl, theloai.id as id_tl from sanpham, theloai where sanpham.id='.$id.' and theloai.id=sanpham.id_the_loai';
 	$listcate_pro=executeSingleResult($sql);
+
+	$sql = 'SELECT sp.ten_sp, ncc.ten_ncc, sp.id as id_sp, ncc.id as id_nha_cc 
+        FROM sanpham sp, nhacungcap ncc 
+        WHERE sp.id = ' . $id . ' 
+        AND ncc.id = sp.id_nha_cc';
+	$listcate_prot = executeSingleResult($sql);
+
 ?>
-<!-- /Lấy tên thể loại khi biết id sản phẩm -->
+<!-- /Lấy tên thể loại khi biết id nha cung cap -->
+
 
 <!-- Lấy thông tin chi tiết của sản phẩm -->
 <?php
@@ -206,33 +94,32 @@
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star-o"></i>
 								</div>
-								<a class="review-link" href="#"><?=$detailproduct['sl_da_ban']?> Đã bán</a>
+								<a class="review-link"><?=$detailproduct['sl_da_ban']?> Đã bán</a>
 							</div>
 							<div>
 								<h3 class="product-price"><?= currency_format($detailproduct['don_gia'])?> <del class="product-old-price"><?= currency_format($detailproduct['gia_goc'])?></del></h3>
 								<span class="product-available">còn hàng</span>
 							</div>
-							<p class="textt"><?=$detailproduct['noi_dung']?></p>
+
 							<div class="add-to-cart">
-                            <div class="qty-label">
-									Số Lượng
+								<div class="qty-label">
+
 									<div class="input-number">
 										<?php
 											$soLuongHienCoTrongGioHang=0;
 											if(isset($_SESSION['cart'][$id]))
-												$soLuongHienCoTrongGioHang=$_SESSION['cart'][$id]['qty'];
+											$soLuongHienCoTrongGioHang=$_SESSION['cart'][$id]['qty'];
 										?>
-										<input type="number" id="qtyAdd" value=1 onchange="kiemTraSoLuong(<?=$detailproduct['so_luong']-$soLuongHienCoTrongGioHang?>);">
+										<button class="qty-down">-</button>
+										<input type="number" id="qtyAdd" value="1" onchange="kiemTraSoLuong(<?=$detailproduct['so_luong']-$soLuongHienCoTrongGioHang?>);">
+										<button class="qty-up">+</button>
 										<div id="sl_tonkho<?=$id?>" style="display:none"><?=($detailproduct['so_luong']-$soLuongHienCoTrongGioHang)?></div>
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
 									</div>
 								</div>
 							</div>
-
 							<div>
-							<button id="fonnt" class="btn btn-default btn-sm btn-outline-danger" onclick="addCart(<?=$id?>,1);themThanhCong(<?=$id?>);"><i class="fa fa-shopping-cart"></i> <span id="messAddCart<?=$id?>">Thêm vào giỏ hàng</span></button>
-							<a class="review-link" href="#"><?=$detailproduct['so_luong']?> sản phẩm còn lại</a>
+							<button id="fonnt" class="btn btn-default btn-sm btn-outline-danger" onclick="addCart(<?=$id?>,1);themThanhCong(<?=$id?>);"><i class="fa fa-shopping-cart"></i> <span id="messAddCart<?=$id?>">THÊM VÀO GIỎ</span></button>
+							<a class="review-link" href="#">Còn <?=$detailproduct['so_luong']?> sản phẩm</a><br>
 							</div>
 							<div id="tbQty" style="color:red"></div>
 							
@@ -241,7 +128,6 @@
 								<li>Danh mục:</li>
 								
 								<li><a href="?act=category&id=<?=$listcate_pro['id_tl']?>"><?=$listcate_pro['ten_tl']?></a></li>
-								<li><a href=""><?=$listcate_pro['ten_sp']?></a></li>
 							</ul>
 
 							<ul class="product-links">
@@ -271,10 +157,35 @@
 							<div class="tab-content">
 								<!-- tab1  -->
 								<div id="tab1" class="tab-pane fade in active">
-									<div class="row">
-										<div class="col-md-12">
-											<p class="chufont"><?=$detailproduct['NoiDungChiTiet']?></p>
-										</div>
+									<div class="row font-basic-tb">
+										<table class="table table-bordered table-hover" id="border-sass">
+											<tbody>
+											<tr>
+												<th class="text-nowrap" scope="row">Mã sản phẩm</th>
+												<td><p class="product-id"><?= $detailproduct['id']?></p></td>
+											</tr>
+											<tr>
+												<th class="text-nowrap" scope="row">Thông tin</th>
+												<td><p class="product-name"><?= $detailproduct['noi_dung']?></p></td>
+											</tr>
+											<tr>
+												<th class="text-nowrap" scope="row">Loại sản phẩm</th>
+												<td><?= $listcate_pro['ten_tl'] ?></td>
+											</tr>
+											<tr>
+												<th class="text-nowrap" scope="row">Nhà cung cấp</th>
+												<td><?= $listcate_prot['ten_ncc'] ?></td>
+											</tr>
+											<tr>
+												<th class="text-nowrap"  scope="row">Khối lượng</th>
+												<td><p class="product-KL"><?= $detailproduct['khoi_luong']?></p></td>
+											</tr>
+											<tr>
+												<th class="text-nowrap" scope="row">Xuất xứ</th>
+												<td><p class="product-XX"><?= $detailproduct['xuat_xu']?></p></td>
+											</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 								<!-- /tab1  -->

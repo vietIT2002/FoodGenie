@@ -124,7 +124,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-		<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function(){
 			load_data();
 	

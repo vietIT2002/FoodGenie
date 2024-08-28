@@ -236,5 +236,3 @@
         </script>
 </body>
 </html>
-
-//Update Ta Quoc Viet
