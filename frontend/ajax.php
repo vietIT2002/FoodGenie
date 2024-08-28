@@ -1,3 +1,4 @@
+<link rel="stylesheet" href=".css/style.css">
 <?php
 include('../db/dbhelper.php');
 include('../common/utility.php');
@@ -72,13 +73,20 @@ if($act=='category'){
 $list=executeResult($sql);
 if(empty($list))echo '<h3>0 sản phẩm được tìm thấy.</h3>';
 foreach($list as $item){
+    $gia_goc = $item['gia_goc'];
+	$don_gia = $item['don_gia'];
+    // Tính phần trăm giảm giá
+    if($gia_goc > $don_gia) {
+        $phan_tram_giam = round((($gia_goc - $don_gia) / $gia_goc) * 100);
+    } else {
+        $phan_tram_giam = 0;
+    }				
     if($item['so_luong']==0 && $item['trangthai']==0){
         echo '<div class="col-md-4 col-xs-6">
         <div class="product">
-            <div class="product-img" style="height:250px">
+            <div class="product-img" style="height: 250px">
                 <img src="./img/'.$item['hinh_anh'].'" alt="" style="height:100%">
                 <div class="product-label">
-                    
                     <span class="new">HẾT HÀNG</span>
                 </div>
             </div>
@@ -106,14 +114,16 @@ foreach($list as $item){
         <div class="product-img" style="height:250px" onclick="location=\'index.php?act=product&id='.$item['id'].'\'">
             <img src="./img/'.$item['hinh_anh'].'" alt="" style="height:100%">
             <div class="product-label">
-                
-                <span class="new">NEW</span>
+                '.($phan_tram_giam > 0 ? '<span class="new">-'.$phan_tram_giam.'%</span>' : '').'
             </div>
         </div>
         <div class="product-body">
             <p class="product-category"><small>'.$item['sl_da_ban'].' đã bán</small></p>
             <h3 class="product-name"><a href="index.php?act=product&id='.$item['id'].'">'.$item['ten_sp'].'</a></h3>
-            <h4 class="product-price">'.currency_format($item['don_gia']).'</h4>
+            <div class="price-two">
+                <h4 class="product-price">'.currency_format($item['don_gia']).'</h4>
+                <h4 class="product-pricece" id="price-sold">'.currency_format($item['gia_goc']).' </h4>
+            </div>
             <div class="product-rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -121,7 +131,6 @@ foreach($list as $item){
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
             </div>
-            
         </div>
         <div class="add-to-cart">
             <button class="add-to-cart-btn" onclick=" addCart('.$item['id'].',1); themThanhCong('.$item['id'].'); "><i class="fa fa-shopping-cart"></i> <span id="messAddCart'.$item['id'].'">thêm vào giỏ</span></button>

@@ -177,11 +177,11 @@
 												<td><?= $listcate_prot['ten_ncc'] ?></td>
 											</tr>
 											<tr>
-												<th class="text-nowrap  scope="row">Khối lượng</th>
+												<th class="text-nowrap"  scope="row">Khối lượng</th>
 												<td><p class="product-KL"><?= $detailproduct['khoi_luong']?></p></td>
 											</tr>
 											<tr>
-												<th class="text-nowrap scope="row">Xuất xứ</th>
+												<th class="text-nowrap" scope="row">Xuất xứ</th>
 												<td><p class="product-XX"><?= $detailproduct['xuat_xu']?></p></td>
 											</tr>
 											</tbody>
