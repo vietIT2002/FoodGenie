@@ -1,3 +1,11 @@
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
 <?php
     include_once("./connect_db.php");
     if (!empty($_SESSION['nguoidung'])) {
@@ -12,64 +20,93 @@
         mysqli_close($con);
     ?>
 
-<div class="main-content">
-    <center>
-<br>
-    
-            <h1>Khách hàng</h1>
-            <div class="product-items">
-                <div class="table-responsive-sm ">
-                    <table class="table table-bordered table-striped table-hover" >
-                        <thead >
-                            <tr>
-                                <th>Tên khách hàng</th>
-                                <th>Email</th>
-                                <th>Địa chỉ</th>
-                                <th>SĐT</th>
-                                <th>Số tiền đã mua hàng</th>
-                                <th>Trạng thái</th>
-                                <th>Password</th>
-                                <th>Tên đăng nhập </th>
-                                <th>Thay đổi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             <?php
+
+<div class="flex justify-between items-center">
+    <div class="flex  pt-10 p pl-8">
+        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
+            Quản lý khách hàng
+        </p>
+
+    </div>
+
+
+    <div class="flex py-8 pr-6">
+        <!-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
+                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+                type="button">
+                Thêm mới
+            </button> -->
+        <!-- <div class="buttons">
+            <a href="admin.php?act=addncc"> <i class="fa fa-plus" aria-hidden="true"> Thêm nhà cung cấp </i> </a>
+        </div> -->
+    </div>
+</div>
+
+<div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
+
+
+    <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+            <table class=" min-w-full bg-white   ">
+                <thead class="h-20 bg-gray-300 ">
+                    <tr>
+                        <th class="font-normal px-6 py-3">Tên khách hàng</th>
+                        <th class="font-normal px-6 py-3">Email</th>
+                        <th class="font-normal px-6 py-3">Địa chỉ</th>
+                        <th class="font-normal px-6 py-3">SĐT</th>
+                        <th class="font-normal px-6 py-3">Số tiền đã mua hàng</th>
+                        <th class="font-normal px-6 py-3">Trạng thái</th>
+                        <th class="font-normal px-6 py-3">Password</th>
+                        <th class="font-normal px-6 py-3">Tên đăng nhập </th>
+                        <th class="font-normal px-6 py-3">Thay đổi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                             while ($row = mysqli_fetch_array($khachhang)) {
                             ?>
-                                <tr>                              
-                                    <td><?= $row['ten_kh'] ?></td>
-                                    <td><?= $row['email'] ?></td>
-                                    <td><?= $row['dia_chi'] ?></td>
-                                    <td><?= $row['phone'] ?></td>
-                                    <td><center>
-                                    <?= $row['tong_tien_muahang'] ?>
-                                    </center></td>
-                                    <td><center>
-                                            <form method="POST" action="./xulythem.php?id=<?= $row['id'] ?>">
-                                                <input type="checkbox" name="trangthai"<?php if($row['trangthai']==0) echo "checked";?> >
-                                    </center>
-                                    </td>
-                                    <td><?= $row['mat_khau'] ?></td>
-                                    <td><?= $row['ten_dangnhap'] ?></td>
-                                    <td><center>
-                                    <button type="submit" name="btnkhtt">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    </center></td></form>                                
-                                    <div class="clear-both"></div>
-                                </tr>
-                                <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        <?php
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4"><?= $row['ten_kh'] ?></td>
+                        <td class="px-6 py-4"><?= $row['email'] ?></td>
+                        <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
+                        <td class="px-6 py-4"><?= $row['phone'] ?></td>
+                        <td class="px-6 py-4">
+
+                            <?= $row['tong_tien_muahang'] ?>
+
+                        </td>
+                        <td class="px-6 py-4">
+
+                            <form method="POST" action="./xulythem.php?id=<?= $row['id'] ?>">
+                                <input type="checkbox" name="trangthai"
+                                    <?php if($row['trangthai']==0) echo "checked";?>>
+
+                        </td>
+                        <td class="px-6 py-4"><?= $row['mat_khau'] ?></td>
+                        <td class="px-6 py-4"><?= $row['ten_dangnhap'] ?></td>
+                        <td class="px-6 py-4">
+
+                            <button type="submit" name="btnkhtt">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>
+
+                        </td>
+                        </form>
+                        <div class="clear-both"></div>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php
         include './pagination.php';
         ?>
-        <div class="clear-both"></div>
-        </center>
-        </div>
-    <?php
+    <div class="clear-both"></div>
+    </center>
+</div>
+<?php
     }
     ?>
