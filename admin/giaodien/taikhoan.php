@@ -42,13 +42,13 @@ if (!empty($_SESSION['nguoidung'])) {
                 type="button">
                 Thêm mới
             </button> -->
-            <!-- <div class="buttons">
+            <div class="buttons">
                 <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
                     class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
                     type="button">
                     Thêm mới
                 </button>
-            </div> -->
+            </div>
             <div class="buttons">
                 <a href="admin.php?act=addtk"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm mới </a>
             </div>
@@ -131,6 +131,11 @@ if (!empty($_SESSION['nguoidung'])) {
     <?php
 }
 ?>
+    <?php
+
+    include 'taikhoan_adding.php';
+
+    ?>
 </body>
 
 </html>

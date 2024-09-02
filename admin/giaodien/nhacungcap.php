@@ -39,14 +39,14 @@
 
 
         <div class="flex py-8 pr-6">
-            <!-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
+            <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
                 class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
                 type="button">
                 Thêm mới
-            </button> -->
-            <div class="buttons">
+            </button>
+            <!-- <div class="buttons">
                 <a href="admin.php?act=addncc"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm nhà cung cấp </a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
@@ -119,7 +119,7 @@
 
     <?php
 
-    // include 'nhanvien_adding.php';
+    include 'nhacungcap_adding.php';
     // include 'nhanvien_editing.php';
     ?>
 

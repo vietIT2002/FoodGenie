@@ -78,17 +78,17 @@
     </div>
 </div>
 <script>
-const fileInput = document.getElementById('fileInput');
-const imageDisplay = document.getElementById('imageDisplay');
+    const fileInput = document.getElementById('fileInput');
+    const imageDisplay = document.getElementById('imageDisplay');
 
-fileInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+    fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
 
-    reader.onload = function(e) {
-        imageDisplay.src = e.target.result;
-    }
+        reader.onload = function (e) {
+            imageDisplay.src = e.target.result;
+        }
 
-    reader.readAsDataURL(file);
-});
+        reader.readAsDataURL(file);
+    });
 </script>

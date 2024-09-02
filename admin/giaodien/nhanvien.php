@@ -79,6 +79,11 @@
                             <td><?= $row['phone'] ?></td>
                             <td>
                                 <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" type="button">
+                                    <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"
+                                        class="text-red-600 hover:text-red-800">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
                             </td>
