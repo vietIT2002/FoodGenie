@@ -50,128 +50,128 @@
 
 
 
-    <div class="flex justify-between items-center">
-        <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
-                Quản lý sản phẩm
-            </p>
+        <div class="flex justify-between items-center">
+            <div class="flex  pt-10 p pl-8">
+                <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
+                    Quản lý sản phẩm
+                </p>
 
-        </div>
+            </div>
 
 
-        <div class="flex py-8 pr-6">
-            <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
-                type="button">
-                Thêm mới
-            </button>
-            <!-- <div class="buttons">
+            <div class="flex py-8 pr-6">
+                <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
+                    class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+                    type="button">
+                    Thêm mới
+                </button>
+                <!-- <div class="buttons">
                 <a href="admin.php?act=add"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm </a>
             </div> -->
+            </div>
         </div>
-    </div>
-    <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
+        <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-        <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+            <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
-            <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr>
-                            <th class="font-normal px-6 py-3">Id <a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idgiam"><i
-                                        class="pdl-5px fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idtang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Ảnh </th>
-                            <th class="font-normal px-6 py-3">Tên sản phẩm <a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tengiam"><i
-                                        class="pdl-5px fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tentang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Số lượng tồn <a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tongiam"><i
-                                        class="pdl-5px fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tontang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Số lượng bán <a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bangiam"><i
-                                        class="pdl-5px fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bantang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
+                <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+                    <table class=" min-w-full bg-white   ">
+                        <thead class="h-20 bg-gray-300 ">
+                            <tr>
+                                <th class="font-normal px-6 py-3">Id <a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idgiam"><i
+                                            class="pdl-5px fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idtang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">Ảnh </th>
+                                <th class="font-normal px-6 py-3">Tên sản phẩm <a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tengiam"><i
+                                            class="pdl-5px fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tentang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">Số lượng tồn <a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tongiam"><i
+                                            class="pdl-5px fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tontang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">Số lượng bán <a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bangiam"><i
+                                            class="pdl-5px fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bantang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
 
 
-                            <th class="font-normal px-6 py-3">Khối lượng </th>
-                            <th class="font-normal px-6 py-3">Xuất xứ</th>
-                            <th class="font-normal px-6 py-3">Trạng thái </th>
-                            <th class="font-normal px-6 py-3">Sửa</th>
-                            <th class="font-normal px-6 py-3">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                                <th class="font-normal px-6 py-3">Khối lượng </th>
+                                <th class="font-normal px-6 py-3">Xuất xứ</th>
+                                <th class="font-normal px-6 py-3">Trạng thái </th>
+                                <th class="font-normal px-6 py-3">Sửa</th>
+                                <th class="font-normal px-6 py-3">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             while ($row = mysqli_fetch_array($products)) {
                                 ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['id'] ?></div>
-                            </td>
-                            <td class="pst-rela d-flex">
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['id'] ?></div>
+                                    </td>
+                                    <td class="pst-rela d-flex">
 
-                                <img class="h-28 w-328 rounded-full" src="../img/<?= $row['hinh_anh'] ?>" />
-                                <?php !empty($row['name']) ? $row['name'] : '' ?>
+                                        <img class="h-28 w-328 rounded-full" src="../img/<?= $row['hinh_anh'] ?>" />
+                                        <?php !empty($row['name']) ? $row['name'] : '' ?>
 
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['ten_sp'] ?></div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['so_luong'] ?>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['sl_da_ban'] ?></div>
-                            </td>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['ten_sp'] ?></div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['so_luong'] ?>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['sl_da_ban'] ?></div>
+                                    </td>
 
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['khoi_luong'] ?></div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['xuat_xu'] ?></div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><?php if ($row['trangthai'] == '0')
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['khoi_luong'] ?></div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?= $row['xuat_xu'] ?></div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl"><?php if ($row['trangthai'] == '0')
                                             echo "Hiển thị";
                                         else
                                             echo "Bị ẩn" ?></div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl"><a class="btn btn-outline-success"
-                                        href="admin.php?act=sua&id=<?= $row['id'] ?>"><i
-                                            class=" update_product fa-solid fa-pen-to-square"></i></a></div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="pts-abl">
-                                    <?php if ($row['trangthai'] == '0') { ?><a class="btn btn-outline-danger"
-                                        href="admin.php?act=xoa&id=<?= $row['id'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i></a><?php } ?>
-                                </div>
-                            </td>
-                            <div class="clear-both"></div>
-                        </tr><?php } ?>
-                    </tbody>
-                </table>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="pts-abl"><a class="btn btn-outline-success"
+                                                    href="admin.php?act=sua&id=<?= $row['id'] ?>"><i
+                                                    class=" update_product fa-solid fa-pen-to-square"></i></a></div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="pts-abl">
+                                            <?php if ($row['trangthai'] == '0') { ?><a class="btn btn-outline-danger"
+                                                    href="admin.php?act=xoa&id=<?= $row['id'] ?>"
+                                                    onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                                        class="fa fa-trash-o" aria-hidden="true"></i></a><?php } ?>
+                                        </div>
+                                    </td>
+                                    <div class="clear-both"></div>
+                                </tr><?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php
             include './pagination.php';
             ?>
-        <div class="clear-both"></div>
-    </div>
-    <?php
+            <div class="clear-both"></div>
+        </div>
+        <?php
     }
     ?>
 
@@ -183,12 +183,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-</script>
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script>
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
+    </script>
 
 </html>
