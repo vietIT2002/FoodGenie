@@ -24,13 +24,10 @@ if (!empty($_SESSION['nguoidung'])) {
 <div class="flex justify-between items-center">
     <div class="flex  pt-10 p pl-8">
         <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
-            Thêm quyền- danh mục
+            Thêm quyền - danh mục
         </p>
 
     </div>
-
-
-
 </div>
 
 <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
@@ -40,8 +37,11 @@ if (!empty($_SESSION['nguoidung'])) {
         <form action="./xulythem.php" method="POST">
             <input type="text" name="tendanhmuc" value="">
             <input type="submit" name="btndmadd" value="Lưu">
+            <div>
+
+            </div>
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
+                <table class=" min-w-full bg-white ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
                             <th class=" pl-8  font-normal ">Tên danh muc</th>
