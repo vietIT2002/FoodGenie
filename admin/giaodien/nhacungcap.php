@@ -52,7 +52,7 @@
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-        <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+        <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
                 <table class=" min-w-full bg-white   ">
@@ -94,11 +94,11 @@
                         <?php } ?>
                     </tbody>
                 </table>
-                <!-- </div> -->
-
-                <!-- Phân trang -->
-                <?php include './pagination.php'; ?>
             </div>
+
+            <!-- Phân trang -->
+            <?php include './pagination.php'; ?>
+            <!-- </div> -->
 
 
 

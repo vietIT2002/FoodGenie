@@ -22,8 +22,16 @@ if (!empty($_SESSION['nguoidung'])) {
 
 <div class="flex justify-between items-center">
     <div class="flex  pt-10 p pl-8">
-        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Chi tiết hóa đơn </p>
+        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Chi tiết hóa đơn : </p>
+        <p class="pb-4 pt-0 text-red-500 text-2xl font-bold dark:text-red text-5xl">
+            <?php
+                while ($row = mysqli_fetch_array($cthoadon)) {
+                    ?>
 
+        <p class="pb-4 pt-0 text-red-500 text-2xl font-bold dark:text-red text-5xl pl-5"> <?= $row['id_hoadon'] ?></p>
+
+
+        </p>
     </div>
 </div>
 <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
@@ -41,9 +49,7 @@ if (!empty($_SESSION['nguoidung'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        while ($row = mysqli_fetch_array($cthoadon)) {
-                            ?>
+
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>

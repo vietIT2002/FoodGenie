@@ -49,9 +49,7 @@ if (!empty($_SESSION['nguoidung'])) {
                     Thêm mới
                 </button>
             </div>
-            <div class="buttons">
-                <a href="admin.php?act=addtk"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm mới </a>
-            </div>
+
         </div>
     </div>
     <!-- <div class="buttons">
