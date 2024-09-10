@@ -1,3 +1,13 @@
+<?php
+$con = mysqli_connect($host, $user, $password, $database);
+if (mysqli_connect_errno()) {
+    echo "Connection Fail: " . mysqli_connect_errno();
+    exit;
+}
+$chucvu_query = "SELECT * FROM `loainhanvien`";
+$chucvu_result = mysqli_query($con, $chucvu_query);
+?>
+
 <div id="extralarge-modal" tabindex="-1"
     class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4  overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full">
     <div class="relative  h-full max-h-full ">
@@ -61,6 +71,19 @@
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 name="tendangnhap" value="">
                         </div>
+
+                        <!-- Dropdown Chức vụ -->
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ:</label>
+                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_loainv"
+                                required>
+                                <option value="">Chọn chức vụ</option>
+                                <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
+                                    <option value="<?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">

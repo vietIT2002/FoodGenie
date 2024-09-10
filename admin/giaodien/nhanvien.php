@@ -22,11 +22,19 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 5;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
-        $totalRecords = mysqli_query($con, "SELECT * FROM `nhanvien`");
+        $totalRecords = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `status` = 0");
         $totalRecords = $totalRecords->num_rows;
         $totalPages = ceil($totalRecords / $item_per_page);
-        $nhanvien = mysqli_query($con, "SELECT * FROM `nhanvien` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
-
+        // $nhanvien = mysqli_query($con, "SELECT * FROM `nhanvien` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+        $nhanvien = mysqli_query($con, "
+                                    SELECT nhanvien.*, loainhanvien.TenLoaiNV, quyen.ten_quyen
+        FROM `nhanvien`
+        LEFT JOIN `loainhanvien` ON nhanvien.id_loainv = loainhanvien.id
+        LEFT JOIN `quyen` ON nhanvien.id_quyen = quyen.id
+        WHERE nhanvien.status = 0
+        ORDER BY nhanvien.id ASC
+        LIMIT $item_per_page OFFSET $offset
+");
         mysqli_close($con);
         ?>
     <div class="flex justify-between items-center">
@@ -61,6 +69,8 @@
                             <th class="font-normal">Email</th>
                             <th class="font-normal">Password</th>
                             <th class="font-normal">SĐT</th>
+                            <th class="font-normal">Chức vụ</th>
+                            <th class="font-normal">quyền</th>
                             <th class="font-normal">Sửa</th>
                             <th class="font-normal">Xóa</th>
                         </tr>
@@ -77,6 +87,8 @@
                             <td><?= $row['email'] ?></td>
                             <td><?= str_repeat('*', strlen($row['mat_khau'])) ?></td>
                             <td><?= $row['phone'] ?></td>
+                            <td><?= $row['TenLoaiNV'] ?></td> <!-- Hiển thị chức vụ -->
+                            <td><?= $row['ten_quyen'] ?></td> <!-- Hiển thị chức vụ -->
                             <td>
                                 <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" type="button">
                                     <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"

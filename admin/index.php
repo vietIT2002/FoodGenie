@@ -1,15 +1,16 @@
-<?php 
-    session_start();
-    if(isset($_GET['logout']))
-    if($_GET['logout']=='yes'){
-        if(isset($_SESSION['nguoidung']))
-        unset($_SESSION['nguoidung']);
-        if(isset($_SESSION['cart']))
-    unset($_SESSION['cart']);
+<?php
+session_start();
+if (isset($_GET['logout']))
+    if ($_GET['logout'] == 'yes') {
+        if (isset($_SESSION['nguoidung']))
+            unset($_SESSION['nguoidung']);
+        if (isset($_SESSION['cart']))
+            unset($_SESSION['cart']);
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,33 +22,34 @@
     <link rel="stylesheet" href="./css/design.css">
     <style>
         body {
-            background-color: #e0e0e0; 
+            background-color: #e0e0e0;
         }
     </style>
 </head>
+
 <body>
-<?php
+    <?php
     if (isset($_GET['dn'])) {
-        if ($_GET['dn']=='true') {
+        if ($_GET['dn'] == 'true') {
             echo '<style type="text/css">
             #dntb {
                 display: none;
             }
             </style>';
-        } else if ($_GET['dn']=='false') {
+        } else if ($_GET['dn'] == 'false') {
             echo '<style type="text/css">
             #dntb {
                 display: inline;
             }
             </style>';
         }
-        if ($_GET['dn']=='true') {
+        if ($_GET['dn'] == 'true') {
             echo '<style type="text/css">
             #dnbk {
                 display: none;
             }
             </style>';
-        } else if ($_GET['dn']=='khoa') {
+        } else if ($_GET['dn'] == 'khoa') {
             echo '<style type="text/css">
             #dnbk {
                 display: inline;
@@ -70,11 +72,13 @@
                         <p class="text-content">Chào mừng bạn đến với hệ thống quản lý của FOODGENIE</p>
                         <form action="xulydangnhap.php" method="POST">
                             <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập" autocomplete="off">
+                                <input type="text" name="ten_dangnhap" class="form-control" placeholder="Tên đăng nhập"
+                                    autocomplete="off">
                                 <i class="fa-regular fa-user" id="icon-user"></i>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu" autocomplete="off">
+                                <input type="password" name="mat_khau" id="password" class="form-control"
+                                    placeholder="Mật khẩu" autocomplete="off">
                                 <i class="fa-solid fa-lock" id="icon-user"></i>
                             </div>
                             <button type="submit" class="btn btn-primary">Đăng nhập</button>
@@ -88,4 +92,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
