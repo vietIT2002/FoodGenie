@@ -412,7 +412,7 @@
     if (isset($_POST['btntkmk'])) {
         if (isset($_POST['matkhaumoi']))
             if ($_POST['matkhaumoi'] != '') {
-                $result1 = mysqli_query($con, "UPDATE `taikhoang` SET `pass` = '" . $_POST['matkhaumoi'] . "' WHERE `username` = '" . $_GET['user'] . "'");
+                $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `mat_khau` = '" . $_POST['matkhaumoi'] . "' WHERE `ten_dangnhap` = '" . $_GET['user'] . "'");
                 var_dump($result1);
                 if ($result1)
                     header("location:./admin.php?act=tkmktc&dk=yes");
