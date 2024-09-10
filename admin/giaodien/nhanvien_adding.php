@@ -6,6 +6,8 @@ if (mysqli_connect_errno()) {
 }
 $chucvu_query = "SELECT * FROM `loainhanvien`";
 $chucvu_result = mysqli_query($con, $chucvu_query);
+$quyen_query = "SELECT * FROM `quyen`";
+$quyen_result = mysqli_query($con, $quyen_query);
 ?>
 
 <div id="extralarge-modal" tabindex="-1"
@@ -83,6 +85,17 @@ $chucvu_result = mysqli_query($con, $chucvu_query);
                                 <?php } ?>
                             </select>
                         </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền:</label>
+                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_quyen"
+                                required>
+                                <option value="">Chọn quyền</option>
+                                <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
+                                    <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
 
                     </div>
                 </div>

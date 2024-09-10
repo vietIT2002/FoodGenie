@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
 
     // Lưu thông tin người dùng vào session
     $_SESSION['nguoidung'] = $row['ten_nv'];       // Lấy tên nhân viên
-    $_SESSION['quyen'] = $row['id_loainv'];        // Lấy quyền của nhân viên
+    $_SESSION['quyen'] = $row['id_quyen'];        // Lấy quyền của nhân viên
     $_SESSION['user'] = $row['ten_dangnhap'];      // Lấy tên đăng nhập
     $_SESSION['idnhanvien'] = $row['id'];          // Lấy id của nhân viên
 
