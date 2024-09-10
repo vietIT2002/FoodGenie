@@ -30,9 +30,9 @@
 <body>
     <?php
     $con = mysqli_connect("localhost", "root", "", "foodgennie");
-    $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `ten_dangnhap` = '" . $_SESSION['user']."'");
-    $taikhoang = $result->fetch_assoc();
-?>
+    $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `ten_dangnhap` = '" . $_SESSION['user'] . "'");
+ 
+    ?>
 
 
 
@@ -45,7 +45,7 @@
     </div>
     <div class="box-contentt">
 
-        <form name="doimk-formsua" method="POST" action="./xulythem.php?user=<?= $_SESSION['user']?>"
+        <form name="doimk-formsua" method="POST" action="./xulythem.php?user=<?= $_SESSION['user'] ?>"
             enctype="multipart/form-data">
 
             <div class="clear-both"> <br>
