@@ -13,17 +13,17 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <style>
-    .btnLuu {
-        margin-top: 20px;
-        width: 100%;
-        padding: 10px 20px;
-    }
+        .btnLuu {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px 20px;
+        }
 
-    .wrap-field {
-        margin-top: 10px;
-        width: 100%;
+        .wrap-field {
+            margin-top: 10px;
+            width: 100%;
 
-    }
+        }
     </style>
 </head>
 
@@ -31,7 +31,7 @@
     <?php
     $con = mysqli_connect("localhost", "root", "", "foodgennie");
     $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `ten_dangnhap` = '" . $_SESSION['user'] . "'");
- 
+
     ?>
 
 
