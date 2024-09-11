@@ -23,27 +23,27 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
-        $totalRecords = mysqli_query($con, "SELECT * FROM `sanpham`");
+        $totalRecords = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `trangthai` = 0 ");
         $totalRecords = $totalRecords->num_rows;
         $totalPages = ceil($totalRecords / $item_per_page);
-        $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+        $products = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `trangthai` = 0 ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
         if (isset($_GET['sapxep'])) {
             if ($_GET['sapxep'] == 'idgiam')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `id` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `id` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'idtang')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0  ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tengiam')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `ten_sp` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `ten_sp` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tentang')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `ten_sp` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `ten_sp` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tongiam')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `so_luong` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `so_luong` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tontang')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `so_luong` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `so_luong` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'bangiam')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `sl_da_ban` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `sl_da_ban` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'bantang')
-                $products = mysqli_query($con, "SELECT * FROM `sanpham` ORDER BY `sl_da_ban` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $products = mysqli_query($con, "SELECT * FROM `sanpham`WHERE `trangthai` = 0 ORDER BY `sl_da_ban` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
         }
         mysqli_close($con);
         ?>
