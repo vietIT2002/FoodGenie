@@ -4,10 +4,10 @@ if (!empty($_SESSION['nguoidung'])) {
     $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
     $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
     $offset = ($current_page - 1) * $item_per_page;
-    $totalRecords = mysqli_query($con, "SELECT * FROM `theloai`");
+    $totalRecords = mysqli_query($con, "SELECT * FROM `theloai` WHERE `status` = 0 ");
     $totalRecords = $totalRecords->num_rows;
     $totalPages = ceil($totalRecords / $item_per_page);
-    $theloai = mysqli_query($con, "SELECT * FROM `theloai` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+    $theloai = mysqli_query($con, "SELECT * FROM `theloai` WHERE `status` = 0  ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
 
     mysqli_close($con);
     ?>
