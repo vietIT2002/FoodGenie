@@ -1,3 +1,9 @@
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <?php
 if (!empty($_GET['id'])) {
     $result = mysqli_query($con, "SELECT * FROM `theloai` WHERE `id` = " . $_GET['id']);
@@ -6,58 +12,46 @@ if (!empty($_GET['id'])) {
 ?>
 
 
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+            Cập nhật nhân viên
+        </p>
+        <a href="./admin.php?tmuc=Thể loại">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
+    </div>
 
-<style>
- 
-     .btnLuu {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px 20px;
-        }
+    <form name="theloai-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>"
+        enctype="multipart/form-data">
+        <div class="flex gap-6 mx-20">
 
-        .wrap-field {
-            margin-top: 10px;
-            width: 100%;
 
-        }  
-    </style>
+            <div class="w-full flex-center ">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-2xl ">Tên thể loại:</label>
+                    <input
+                        class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        type="text" name="name" value="<?= (!empty($theloai) ? $theloai['ten_tl'] : "") ?>" disabled />
+                </div>
 
-<div>
-                    <center>
-                    <br> <br>
-                        <h2>Sửa thể loại</h2> <br>
-                    </center>
+                <div class="mb-4">
+                    <label class="block  text-2xl text-gray-700">Số lượng:</label>
+                    <input
+                        class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        type="text" name="tong_sp" value="<?= (!empty($theloai) ? $theloai['tong_sp'] : "") ?>" />
+                </div>
+
             </div>
-    <div class="box-contentt">
-   
-         
-        <form name="theloai-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>" enctype="multipart/form-data">
-        <div class="clear-both">  <br> 
-            </div>
-            
-                   
-            <div class="wrap-field form-group">
-                <label>Tên thể loại:</label><br>
-                <input class="form-control"  type="text" name="name" value="<?= (!empty($theloai) ? $theloai['ten_tl'] : "") ?>" />
-               
-                <div class="clear-both"></div>
-            </div>
-                    
-            <div class="wrap-field form-group">
-                <label>Số lượng: </label><br>
-                <input class="form-control"  type="text" name="tong_sp" value="<?= (!empty($theloai) ? $theloai['tong_sp'] : "") ?>" />
-               
-                <div class="clear-both"></div>
-            </div>
-           
-           
-            <center>
-            
-                        <button class="btn btn-danger btnLuu" name="btntlsua" type="submit" title="Lưu thể loại" value="Lưu"   >Lưu </button>
-                        <button class="btn btn-primary btnLuu" type="reset" value="Hủy">Hủy</button>
-                    </center>
-            </div>
-           
-            
-        </form>
-        <div class="clear-both"></div>
+        </div>
+
+        <div class="flex justify-center mt-8">
+            <button class="px-6 py-2 bg-red-600 text-3xl text-white rounded-lg hover:bg-red-700" name="btnnvsua"
+                type="submit">Cập nhật</button>
+            <button class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
+                type="reset">Hủy</button>
+        </div>
+    </form>
+</div>

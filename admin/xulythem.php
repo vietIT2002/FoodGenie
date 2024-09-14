@@ -138,6 +138,10 @@
                             if ($_POST['idtl'] != '') {
                                 if (isset($_POST['idncc']))
                                     if ($_POST['idncc'] != '') {
+                                         if (isset($_POST['khoi_luong']))
+                                                    if ($_POST['khoi_luong'] != '') {
+                                                        if (isset($_POST['xuat_xu']))
+                                                            if ($_POST['xuat_xu'] != '') {
                                         if (isset($_POST['content']))
                                             if ($_POST['content'] != '') {
                                                 if (isset($_POST['trangthai']) == "on")
@@ -174,7 +178,18 @@
                                                         // Insert ảnh vào cơ sở dữ liệu
                                                     }
                                                 }
-                                                $result1 = mysqli_query($con, "UPDATE `sanpham` SET `ten_sp` = '" . $_POST['name'] . "',`hinh_anh` =  '$image_url', `don_gia` = " . str_replace('.', '', $_POST['price']) . ", `noi_dung` = '" . $_POST['content'] . "', `ngay_sua` = " . time() . ",`id_the_loai` =" . $_POST['idtl'] . ",`id_nha_cc`=" . $_POST['idncc'] . ",`trangthai`=" . $trangthai . " WHERE `sanpham`.`id` = " . $_GET['id']);
+                                                $result1 = mysqli_query($con, "UPDATE `sanpham` 
+                                    SET `ten_sp` = '" . $_POST['name'] . "',
+                                    `hinh_anh` =  '$image_url',
+                                    `don_gia` = " . str_replace('.', '', $_POST['price']) . ",
+                                    `noi_dung` = '" . $_POST['content'] . "',
+                                    `ngay_sua` = " . time() . ",
+                                    `id_the_loai` =" . $_POST['idtl'] . ",
+                                    `id_nha_cc`=" . $_POST['idncc'] . ",
+                                    `xuat_xu`='" . $_POST['xuat_xu'] . "',
+                                    `khoi_luong`='" . $_POST['khoi_luong'] . "',
+                                    `trangthai`=" . $trangthai . "
+                                    WHERE `id` = " . $_GET['id']);
                                                 if (!empty($galleryImages)) {
                                                     $product_id = ($_GET['act'] == 'sua' && !empty($_GET['id'])) ? $_GET['id'] : $con->insert_id;
                                                     $insertValues = "";
@@ -204,7 +219,11 @@
                                                 header("location:./admin.php?act=suasptc&dk=no");
                                     } else
                                         header("location:./admin.php?act=suasptc&dk=no");
-                            } else
+                            }else
+                                header("location:./admin.php?act=suasptc&dk=no");
+                    } else
+                        header("location:./admin.php?act=suasptc&dk=no");
+            } else
                                 header("location:./admin.php?act=suasptc&dk=no");
                     } else
                         header("location:./admin.php?act=suasptc&dk=no");
