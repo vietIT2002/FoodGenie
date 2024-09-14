@@ -11,8 +11,8 @@ $quyen_result = mysqli_query($con, $quyen_query);
 ?>
 
 <div id="extralarge-modal" tabindex="-1"
-    class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4  overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full">
-    <div class="relative  h-full max-h-full ">
+    class="fixed top-0 right-0 z-50 hidden h-auto md:w-1/3  overflow-x-hidden overflow-y-auto justify-content: end h-[calc(100%-1rem)] max-h-full ">
+    <div class="relative  h-auto max-h-full ">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-full">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <div class="divider mt-1"></div>
@@ -40,7 +40,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         <input class="form-control file-input border-gray-300 rounded-md shadow-sm" type="file"
                             name="image" id="fileInput" accept="image/*">
                     </div>
-                    <div class="w-full md:w-1/2 ">
+                    <div class="w-full md:w-1/2 md:w-2/3 ">
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">ID Nhân viên:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
@@ -81,7 +81,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
                                 required>
                                 <option value="">Chọn chức vụ</option>
                                 <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
-                                    <option value="<?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
+                                <option value="<?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -91,7 +91,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
                                 required>
                                 <option value="">Chọn quyền</option>
                                 <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
-                                    <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
+                                <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -114,17 +114,17 @@ $quyen_result = mysqli_query($con, $quyen_query);
     </div>
 </div>
 <script>
-    const fileInput = document.getElementById('fileInput');
-    const imageDisplay = document.getElementById('imageDisplay');
+const fileInput = document.getElementById('fileInput');
+const imageDisplay = document.getElementById('imageDisplay');
 
-    fileInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-        reader.onload = function (e) {
-            imageDisplay.src = e.target.result;
-        }
+    reader.onload = function(e) {
+        imageDisplay.src = e.target.result;
+    }
 
-        reader.readAsDataURL(file);
-    });
+    reader.readAsDataURL(file);
+});
 </script>

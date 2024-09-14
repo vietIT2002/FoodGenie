@@ -363,8 +363,10 @@
             if ($_POST['id'] != '') {
                 if (isset($_POST['name']))
                     if ($_POST['name'] != '') {
-                        // if (isset($_POST['chuc_vu']))
-                        //     if ($_POST['chuc_vu'] != '') {
+                        if (isset($_POST['id_loainv']))
+                            if ($_POST['id_loainv'] != '') {
+                                 if (isset($_POST['id_quyen']))
+                            if ($_POST['id_quyen'] != '') {
                         if (isset($_POST['phone']))
                             if ($_POST['phone'] != '') {
                                 if (isset($_POST['mat_khau']))
@@ -374,7 +376,19 @@
                                                 if ($_POST['tendangnhap'] != '')
                                                     $tendangnhap = null;
                                                 $conn = mysqli_connect("localhost", "root", "", "foodgennie");
-
+ $result4 = mysqli_query($con, "SELECT `id_loainv` FROM `nhanvien` WHERE `id`=" . $_GET['id'] . "");
+                                                $r2 = mysqli_fetch_array($result4);
+                                                if (isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
+                                                    $uploadedFiles = $_FILES['gallery'];
+                                                    $result = uploadFiles($uploadedFiles);
+                                                    $galleryImages = $result['uploaded_files'];
+                                                }
+                                                if (!empty($_POST['gallery_image'])) {
+                                                    $galleryImages = array_merge($galleryImages, $_POST['gallery_image']);
+                                                }
+                                                if (!isset($image_url) && !empty($_POST['image'])) {
+                                                    $image_url = $_POST['image'];
+                                                }
                                                 if ($_FILES['image']['name'] != NULL) {
                                                     // Kiểm tra file up lên có phải là ảnh không
                                                     if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
@@ -391,7 +405,7 @@
                                                     }
                                                 }
                                                 $con = mysqli_connect("localhost", "root", "", "foodgennie");
-                                                $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `id` = '" . $_POST['id'] . "', `ten_nv` = '" . $_POST['name'] . "',`hinh_anh`='$image_url', `mat_khau` = '" . $_POST['mat_khau'] . "', `email` = '" . $_POST['email'] . "', `phone` = '" . $_POST['phone'] . "', `ten_dangnhap` = '" . $_POST['tendangnhap'] . "'  WHERE `nhanvien`.`id` = " . $_GET['id']);
+                                                $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `id` = '" . $_POST['id'] . "', `ten_nv` = '" . $_POST['name'] . "',`hinh_anh`='$image_url', `mat_khau` = '" . $_POST['mat_khau'] . "', `email` = '" . $_POST['email'] . "', `phone` = '" . $_POST['phone'] . "', `ten_dangnhap` = '" . $_POST['tendangnhap'] . "' , `id_loainv` = '" . $_POST['id_loainv'] . "' , `id_quyen` = '" . $_POST['id_quyen'] . "' WHERE `nhanvien`.`id` = " . $_GET['id']);
 
                                                 if ($result1)
                                                     header("location:./admin.php?act=suanvtc&dk=yes");
@@ -403,9 +417,11 @@
                                         header("location:./admin.php?act=suanvtc&dk=no");
                             } else
                                 header("location:./admin.php?act=suanvtc&dk=no");
+                    }else
+                                header("location:./admin.php?act=suanvtc&dk=no");
                     } else
                         header("location:./admin.php?act=suanvtc&dk=no");
-                // } else header("location:./admin.php?act=suanvtc&dk=no");
+                } else header("location:./admin.php?act=suanvtc&dk=no");
             } else
                 header("location:./admin.php?act=suanvtc&dk=no");
     }

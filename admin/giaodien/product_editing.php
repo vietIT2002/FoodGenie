@@ -25,15 +25,15 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .btnLuu {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px 20px;
-        }
+    .btnLuu {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px 20px;
+    }
 
-        .wrap-field {
-            margin-top: 10px;
-        }
+    .wrap-field {
+        margin-top: 10px;
+    }
     </style>
 </head>
 
@@ -41,27 +41,40 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
     <h1>Sửa sản phẩm</h1>
     <div class="box-contentt">
-        <form name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>" enctype="multipart/form-data">
+        <form name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
+            enctype="multipart/form-data">
 
             <div class="clear-both"></div>
             <div class="wrap-field">
                 <label>Tên sản phẩm: </label>
-                <input class="form-control" type="text" name="name" value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
+                <input class="form-control" type="text" name="name"
+                    value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
                 <div class="clear-both"></div>
             </div>
             <div class="wrap-field">
                 <label>Giá sản phẩm: </label>
-                <input class="form-control" type="number" name="price" value="<?= (!empty($product) ? number_format($product['don_gia'], 0, ",", ".") : "") ?>" />
+                <input class="form-control" type="number" name="price"
+                    value="<?= (!empty($product) ? number_format($product['don_gia'], 0, ",", ".") : "") ?>" />
                 <div class="clear-both"></div>
             </div>
             <div class="wrap-field">
                 <label>Ảnh đại diện: </label>
                 <div class="wrap-field">
-                    <?php if (!empty($product['hinh_anh'])) { ?>
-                        <img style="width: 250px;height: 200px;" src="../img/<?= $product['hinh_anh'] ?>" /><br />
-                        <input class="form-control" type="hidden" name="image" value="<?= $product['hinh_anh'] ?>" />
+                    <!-- <?php if (!empty($product['hinh_anh'])) { ?>
+                    <img style="width: 300px;height: 300px;" id="imageDisplay" src="../img/<?= $nhanvien['hinh_anh'] ?>"
+                        alt="Ảnh đại diện" /><br />
                     <?php } ?>
-                    <input class="form-control" type="file" name="image" />
+                    <input class="form-control" type="file" name="image" id="fileInput" accept="image/*"
+                        value="<?= $nhanvien['hinh_anh'] ?>" /> -->
+
+
+                    <?php if (!empty($product['hinh_anh'])) { ?>
+                    <img style="width: 250px;height: 200px;" id="imageDisplay"
+                        src="../img/<?= $product['hinh_anh'] ?>" /><br />
+                    <input class="form-control" type="hidden" id="imageDisplay" name="image"
+                        value="<?= $product['hinh_anh'] ?>" />
+                    <?php } ?>
+                    <input class="form-control" id="fileInput" type="file" name="image" />
                 </div>
                 <div class="clear-both"></div>
             </div>
@@ -69,21 +82,22 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 <label>Thư viện ảnh: </label>
                 <div class="wrap-field">
                     <?php if (!empty($product['gallery'])) { ?>
-                        <ul>
-                            <?php foreach ($product['gallery'] as $image) {
+                    <ul>
+                        <?php foreach ($product['gallery'] as $image) {
                                 if ($image['path'] != '') { ?>
-                                    <li>
-                                        <img style="width: 250px;height: 200px;" src="../img/<?= $image['path'] ?>" />
-                                        <a href="./admin.php?act=gallery_delete&id=<?= $image['id'] ?>">Xóa</a>
-                                    </li>
-                            <?php }
+                        <li>
+                            <img style="width: 250px;height: 200px;" id="imageDisplay"
+                                src="../img/<?= $image['path'] ?>" />
+                            <a href="./admin.php?act=gallery_delete&id=<?= $image['id'] ?>">Xóa</a>
+                        </li>
+                        <?php }
                             } ?>
-                        </ul>
+                    </ul>
                     <?php } ?>
                     <?php if (isset($_GET['task']) && !empty($product['gallery'])) { ?>
-                        <?php foreach ($product['gallery'] as $image) { ?>
-                            <input class="form-control" type="hidden" name="gallery_image[]" value="<?= $image['path'] ?>" />
-                        <?php } ?>
+                    <?php foreach ($product['gallery'] as $image) { ?>
+                    <input class="form-control" type="hidden" name="gallery_image[]" value="<?= $image['path'] ?>" />
+                    <?php } ?>
                     <?php } ?>
                     <input class="form-control" multiple="" type="file" name="gallery[]" />
                 </div>
@@ -92,31 +106,53 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             <div class="wrap-field">
                 <label>ID thể loại: </label>
                 <select class="form-control" name="idtl">
-                    <option value="<?= $product['id_the_loai'] ?>">ID hiện tại: <?= $product['id_the_loai'] ?> - <?= $product['ten_tl'] ?></option><?php while ($row = mysqli_fetch_array($theloai)) { ?><option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_tl'] ?></option><?php } ?>
+                    <option value="<?= $product['id_the_loai'] ?>">ID hiện tại: <?= $product['id_the_loai'] ?> -
+                        <?= $product['ten_tl'] ?></option><?php while ($row = mysqli_fetch_array($theloai)) { ?><option
+                        value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_tl'] ?></option><?php } ?>
                 </select>
                 <div class="clear-both"></div>
             </div>
             <div class="wrap-field">
                 <label>ID nhà cung cấp: </label>
                 <select class="form-control" name="idncc">
-                    <option value="<?= $product['id_nha_cc'] ?>">ID hiện tại: <?= $product['id_nha_cc'] ?> - <?= $product['ten_ncc'] ?></option><?php while ($row = mysqli_fetch_array($nhacungcap)) { ?><option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_ncc'] ?></option><?php } ?>
+                    <option value="<?= $product['id_nha_cc'] ?>">ID hiện tại: <?= $product['id_nha_cc'] ?> -
+                        <?= $product['ten_ncc'] ?></option><?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_ncc'] ?></option><?php } ?>
                 </select>
                 <div class="clear-both"></div>
             </div>
             <div class="wrap-field">
                 <label>Nội dung: </label>
-                <textarea class="form-control" name="content" id="product-content"> <?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
+                <textarea class="form-control" name="content"
+                    id="product-content"> <?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
                 <div class="clear-both"></div>
             </div>
             <div class="wrap-field">
                 <label>Trạng thái: </label>
-                <input type="checkbox" name="trangthai" value="<?= $product['trangthai'] ?>" <?php if ($product['trangthai'] == '0') echo "checked" ?> />
+                <input type="checkbox" name="trangthai" value="<?= $product['trangthai'] ?>"
+                    <?php if ($product['trangthai'] == '0') echo "checked" ?> />
                 <div class="clear-both"></div>
             </div>
             <div class="clear-both"></div>
             <input class="btnLuu btn btn-success" name="btnsua" type="submit" title="Lưu sản phẩm" value="Lưu" />
     </div>
     </form>
+
+    <script>
+    const fileInput = document.getElementById('fileInput');
+    const imageDisplay = document.getElementById('imageDisplay');
+
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            imageDisplay.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    });
+    </script>
 </body>
 
 </html>

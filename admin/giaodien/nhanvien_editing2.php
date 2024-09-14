@@ -32,9 +32,12 @@
     if (!empty($_GET['id'])) {
         $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `id` = " . $_GET['id']);
         $nhanvien = $result->fetch_assoc();
-        $tk = mysqli_query($con, "SELECT `username` FROM `taikhoang` WHERE `taikhoang`.`trang_thai`=0 AND NOT EXISTS (SELECT `ten_dangnhap`FROM `nhanvien` WHERE `taikhoang`.`username`= `nhanvien`.`ten_dangnhap`)");
-
+         $chucvu_query = "SELECT * FROM `loainhanvien`";
+$chucvu_result = mysqli_query($con, $chucvu_query);
+$quyen_query = "SELECT * FROM `quyen`";
+$quyen_result = mysqli_query($con, $quyen_query);
     }
+   
     ?>
 
 
@@ -117,7 +120,26 @@
                                     value="<?= (!empty($nhanvien) ? $nhanvien['ten_dangnhap'] : "") ?>" />
                             </div>
                         </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ:</label>
+                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_loainv"
+                                required>
 
+                                <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
+                                <option value=" <?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền:</label>
+                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_quyen"
+                                required>
+
+                                <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
+                                <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
 
 

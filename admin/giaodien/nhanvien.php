@@ -93,10 +93,10 @@
                                 <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" type="button">
                                     <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"
                                         class="text-red-600 hover:text-red-800">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>
 
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
                                 </button>
                             </td>
                             <td>
@@ -137,7 +137,7 @@
     <?php
 
     include 'nhanvien_adding.php';
-    include 'nhanvien_editing.php';
+    // include 'nhanvien_editing.php';
     ?>
 
 </body>
