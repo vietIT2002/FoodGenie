@@ -1,16 +1,4 @@
-<style>
-	#header {
-  	background-color: #F9D5CA;
-}
-
-#top-header {
-  background-color:#91C8EB;
-}
-
-.container{
-	font-size: 15px;
-}
-</style>
+<script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin "anonymous"></script>
 <!-- TOP HEADER -->
 <div id="top-header">
 		<header>	
@@ -29,8 +17,6 @@
 							}
 								else echo '<li><a href="index.php?act=register"><i class="fa fa-user-o"></i> Tạo tài khoản</a></li>';
 						?>
-
-						<li><a href="admin/index.php"><i class="fa fa-lock" aria-hidden="true"></i> Tai khoan Admin</a></li>
 					</ul>
 
 				</div>
@@ -47,7 +33,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="index.php" class="logo">
-									<img src="./img/LOGO.jpg" alt="" width=100px>
+									<img src="./img/banner/foodgenie.png" alt="" width= 170px height=100pxs>
 								</a>
 							</div>
 						</div>
@@ -57,18 +43,8 @@
 						<div class="col-md-6">
 							<div class="header-search">
 								<form method="get">
-									<select class="input-select" onchange="location = this.value;">
-										<option value="0">Danh Mục Sản Phẩm</option>
-										<?php
-										$sql='select id, ten_tl from theloai';
-										$list=executeResult($sql);
-										foreach($list as $item){
-											echo '<option value="?act=category&id='.$item['id'].'">'.$item['ten_tl'].'</option>';
-										}
-										?>
-									</select>
-									<input class="input" name="search" placeholder="Tên sản phẩm......" required>
-									<button class="search-btn">Tìm</button>
+									<input class="input" name="search" placeholder="Nhập tên sản phẩm cần tìm..." required>
+									<button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 								</form>
 							</div>
 						</div>
@@ -91,8 +67,8 @@
 								?>
 								<div class="">
 									<a href="?act=cart">
-										<i class="fa fa-shopping-cart" style="color: black;"></i>
-										<span style="color: black; font-size: 15px">Giỏ Hàng</span>
+										<i class="fa fa-shopping-cart" style="font-size: 18px"></i>
+										<span style="font-size: 16px">Giỏ Hàng</span>
 										<div class="qty" id="qtyPro"><?=$qty?></div>
 									</a>
 								</div>
@@ -102,8 +78,8 @@
 								<!-- Cài đặt -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-										<i><img src="img/users-cog-solid.svg" alt="XYZ" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%); width:30px;" /></i>
-										<span style="color: black; font-size: 15px">Tài Khoản</span>
+										<i class="fa-solid fa-user" style="font-size: 20px"></i>
+										<span style="font-size: 16px">Tài Khoản</span>
 										
 									</a>
 									<div class="cart-dropdown">
@@ -165,30 +141,47 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<?php
+
 							if($act=='' && !(isset($_GET['id']))) {
-								echo '<li class="active"><a href="index.php">Trang Chủ</a></li>';
-							}else echo '<li><a href="index.php">Trang Chủ</a></li>';
+								echo '<li class="active" style="font-size: 16px;"><a href="index.php">TRANG CHỦ</a></li>';
+							} else {
+								echo '<li style="font-size: 16px;"><a href="index.php">TRANG CHỦ</a></li>';
+							}
+	
 							if($act=='hot'){
-								echo '<li class="active"><a href="index.php?act=category">Tùy Chọn</a></li>';
-							}else echo '<li><a href="?act=category">Tùy Chọn</a></li>';
-						?>				
-						
-						
-						<?php
+								echo '<li class="active"><a href="index.php?act=category">SẢN PHẨM</a></li>';
+							} else {
+								echo '<li><a href="?act=category">SẢN PHẨM</a></li>';
+							}
+
+							echo '<li class="dropdown">';
+							echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC <span class="caret"></span></a>';
+							echo '<ul class="dropdown-menu">';
+
 							if(isset($_GET['id'])) $id=$_GET['id'];
 							if($act=='product'){
 								$sql='select id_the_loai from sanpham where id='.$id;
 								$id=executeSingleResult($sql)['id_the_loai'];
-								
 							}
 							$sql='select id, ten_tl from theloai';
 							$list=executeResult($sql);
-										foreach($list as $item){
-											if($item['id']==$id){
-												echo '<li class="active"><a href="?act=category&id='.$item['id'].'">'.$item['ten_tl'].'</a></li>';
-											}else echo '<li><a href="?act=category&id='.$item['id'].'">'.$item['ten_tl'].'</a></li>';
-											
-										}
+
+							foreach($list as $item){
+								if($item['id']==$id){
+									echo '<li class="active"><a href="?act=category&id='.$item['id'].'">'.$item['ten_tl'].'</a></li>';
+								} else {
+									echo '<li><a href="?act=category&id='.$item['id'].'">'.$item['ten_tl'].'</a></li>';
+								}
+							}
+
+							echo '</ul>';
+							echo '</li>';
+
+							echo '<li><a href="thuonghieu.php">THƯƠNG HIỆU</a></li>';
+
+							echo '<li><a href="baiblog.php">BÀI BLOG</a></li>';
+
+							echo '<li><a href="lienhe.php">LIÊN HỆ</a></li>';
 						?>
 					</ul>
 					<!-- /NAV -->

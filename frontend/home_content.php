@@ -3,24 +3,63 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
 	<title>Document</title>
 </head>
 <body>
+<div class="custom-wrapper">
+	<div class="row row2">
+			<div class="col-md-8 col-xs-6 column-spacing">
+				<div class="slideshow-container">
+					<div class="mySlides1">
+						<img src="./img/banner/banner1.png" class="img-fluid">
+					</div>
+
+					<div class="mySlides1">
+						<img src="./img/banner/banner2.png" class="img-fluid">
+					</div>
+
+					<div class="mySlides1">
+						<a href="./index.php?act=category&id=3"><img src="./img/banner/banner3.png" class="img-fluid"></a>
+					</div>
+
+					<div class="mySlides1">
+						<a href="./index.php?act=category&id=3"><img src="./img/banner/banner4.png" class="img-fluid"></a>
+					</div>
+
+					<a class="prev" onclick="plusSlides(-1)">❮</a>
+					<a class="next" onclick="plusSlides(1)">❯</a>
+
+					<div class="dot-title">
+						<span class="dot1"></span>
+						<span class="dot1"></span>
+						<span class="dot1"></span>
+						<span class="dot1"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xs-6 column-spacing-right">
+				<img src="./img/banner/bannerX.png" class="img-fluid" style="width:100%;">
+			</div>
+	</div>
+	<script src="./js/amination.js"></script>
+</div>
 
 <!-- SECTION -->
-<div class="section">
+<!-- <div class="section"> -->
 			<!-- container -->
-			<div class="container">
+			<div class="container" style="width: 85%">
 				<!-- row -->
 				<div class="row">
 					<!-- shop -->
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/banner1.jpg" alt="">
+								<img src="./img/banner/banner-right.png" alt="">
 							</div>
 							<div class="shop-body">
-								<a href="news.php"> <h3>Tin tức<br>Làm đẹp</h3> </a>
+								<a href="news.php"> <h3>Tin tức<br>Thực phẩm</h3> </a>
 							</div>
 						</div>
 					</div>
@@ -30,10 +69,10 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/banner2.jpg" alt="">
+								<img src="./img/banner/banner-between.png" alt="">
 							</div>
 						<div class="shop-body">
-							<a href="thuonghieu.php"> <h3>Thương Hiệu</h3> </a>
+							<a href="thuonghieu.php"> <h3>Trái cây<br>dinh dưỡng</h3> </a>
 						</div>
 					</div>
 				</div>
@@ -43,10 +82,10 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/banner3.jpg" alt="">
+								<img src="./img/banner/banner-left.png" alt="">
 							</div>
 							<div class="shop-body">
-								<a href="Lienhe.php"><h3>Liên Hệ</h3></a>
+								<a href="Lienhe.php"><h3>Mỗi ngày<br>một món ăn</h3></a>
 							</div>
 						</div>
 					</div>
@@ -69,9 +108,8 @@
 
 					<!-- section title -->
 					<div class="col-md-12">
-						<div class="section-title">
+						<div class="section-title text-md-left">
 							<h3 class="title">Sản Phẩm</h3>
-							
 						</div>
 					</div>
 					<!-- /section title -->
@@ -174,4 +212,5 @@
 		<!-- /SECTION -->
 </body>
 </html>
+
 

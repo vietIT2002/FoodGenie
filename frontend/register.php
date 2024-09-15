@@ -23,13 +23,22 @@
 
         <div class="form-group">
             <label for="user">Tên đăng nhập<span class="required1">*</span></label>
-            <input class="input1" type="text" name="ten_dangnhap" value="" required>
+            <input class="input1" type="text" name="ten_dangnhap" value="" placeholder="Ít nhất 4 ký tự" required>
         </div>
 
         <div class="form-group">
             <label for="password">Mật khẩu<span class="required1">*</span></label>
             <input class="input1" id="myInput1" type="password" name="mat_khau" value="" required/>
             <input type="checkbox" onclick="myFunction()"> <label for="pass">Hiển thị mật khẩu</label>
+            <div class="password_required">
+                <ul>
+                    <li class="lowercase"><span></span>&nbsp;Ít nhất 1 chữ cái thường</li>
+                    <li class="capital"><span></span>&nbsp;Ít nhất 1 chữ cái hoa</li>
+                    <li class="numberd"><span></span>&nbsp;Ít nhất 1 số</li>
+                    <li class="special"><span></span>&nbsp;Ít nhất 1 ký tự đặc biệt</li>
+                    <li class="eight_charater"><span></span>&nbsp;Ít nhất 8 ký tự</li>
+                </ul>
+            </div>
         </div>
 
         <div style=" justify-content: center;">
