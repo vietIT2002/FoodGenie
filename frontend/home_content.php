@@ -108,7 +108,7 @@
 
 					<!-- section title -->
 					<div class="col-md-12">
-						<div class="section-title text-md-left">
+						<div class="section-title text-md-left text-center">
 							<h3 class="title">Sản Phẩm</h3>
 						</div>
 					</div>
@@ -204,11 +204,27 @@
 						</div>
 					</div>
 					<!-- Products tab & slick -->
-				</div>
+				</div><br><br>
 				<!-- /row -->
+
+				<div class="row">
+
+				<!-- section title -->
+				<div class="col-md-12">
+					<div class="section-title text-md-left text-center">
+						<h3 class="title">Gợi ý hôm nay</h3>
+					</div>
+				</div>
+				<!-- /section title -->
+
+				<!-- Products tab & slick -->
+				<div class="col-md-12">
+				</div>
+				<!-- Products tab & slick -->
+				</div>
 			</div>
 			<!-- /container -->
-		</div>
+		</div><br><br>
 		<!-- /SECTION -->
 </body>
 </html>

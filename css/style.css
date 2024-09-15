@@ -1327,8 +1327,12 @@ textarea.input {
 
 .aside>.aside-title {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
   margin: 15px 0px 30px;
+}
+
+.aside>small {
+  font-size: 16px
 }
 
 /*-- checkbox Filter --*/
@@ -1343,6 +1347,17 @@ textarea.input {
 
 .checkbox-filter .input-radio label small, .checkbox-filter .input-checkbox label small {
   color: #8D99AE;
+}
+
+.checkbox-filter .input-checkbox label {
+  font-size: 14px; 
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-filter .input-checkbox label span {
+  width: 20px;
+  height: 20px;
 }
 
 /*-- Price Filter --*/
@@ -2222,6 +2237,14 @@ color: white;
 .newsletter .newsletter-follow li a:hover, .newsletter .newsletter-follow li a:focus {
   background-color: #E4E7ED;
   color: #D10024;
+}
+
+.title {
+  border-radius: 10px 0 10px 0; 
+  padding: 10px;
+  font-size: 24px;
+  background-color: #03346E;
+  color: #fff;
 }
 
 /*=========================================================

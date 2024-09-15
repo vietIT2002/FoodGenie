@@ -31,7 +31,7 @@
 							<div class="checkbox-filter" id="chkBrand">
 
                                     <?php
-										$list=['Loreal','Dior','La Roche-Posay','Hasaki','Gucci','Simple','Channel','YSL','Maybeline','Vichy'];
+										$list=['SIMPLY','PEPSI','COCA COLA','STING','OMACHI','YOMOST','C2'];
 										foreach($list as $key => $value){
 											echo '<div class="input-checkbox">
                                             <input class="checkBrand" type="checkbox" id="'.$key.'" value="'.$value.'">
@@ -41,7 +41,7 @@
                                             </label>
                                         </div>';
 										}
-										?>
+									?>
 							</div>
 						</div>
 						<!-- /aside Widget -->
@@ -86,19 +86,6 @@
                                         <option value="2">Giá thấp</option>
 									</select>
 								</label></div>
-                                        <!--
-								<label>
-									Show:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
-							</div>
-							<ul class="store-grid">
-								<li class="active"><i class="fa fa-th"></i></li>
-								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-							</ul>     -->
 						</div>
 						<!-- /store top filter -->
 
