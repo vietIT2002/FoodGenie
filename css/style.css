@@ -1185,6 +1185,45 @@ textarea.input {
   visibility: visible;
 }
 
+/* My_bill */
+.title-mybill>th{
+  text-align: center;
+}
+
+/*----------------------------*\
+	shopping cart
+\*----------------------------*/
+.title-shopping{
+  font-size: 18px;
+  font-family: inherit;
+}
+
+.content-shopping{
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+}
+.deleted {
+  border: none; 
+  background: none; 
+  padding: 0; 
+  cursor: pointer; 
+}
+
+.deleted i {
+  color: #D10024; 
+  font-size: 18px; 
+}
+
+.receive-cart{
+  color: #0eda22;
+  font-size: 20px;
+}
+
+.border-shopping{
+  border: 0.5px solid rgb(181, 181, 181);
+  padding: 8px;
+}
 /*----------------------------*\
 	Widget product
 \*----------------------------*/
