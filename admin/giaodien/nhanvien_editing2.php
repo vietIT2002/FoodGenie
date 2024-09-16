@@ -144,6 +144,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
 
 
 
+
                     <center>
                         <button class="btn btn-danger btnLuu" name="btnnvsua" type="submit" title="Lưu nhân viên"
                             value="Cập nhật">Cập nhật</button>
