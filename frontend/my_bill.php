@@ -29,25 +29,26 @@
             <div>
 
                 <ul class="footer-links">
-                    <li><a href="?act=my_account"><i class="fa fa-user-o" style="color:black;"></i>Tài Khoản Của Tôi</a>
+                    <li><a href="?act=my_account"><i class="fa fa-user-o" style="color:black;"></i>&nbsp;Tài Khoản Của Tôi</a>
                     </li>
-                    <li><a href="?act=my_bill" style="color:#D10024;"><i class="fa fa-bars" style="color:black;"></i>Đơn
+                    <li><a href="?act=my_bill" style="color:#D10024;"><i class="fa fa-bars" style="color:black;"></i>&nbsp;Đơn
                             Hàng Của Tôi</a></li>
 
                 </ul>
             </div>
         </div>
         <div class="col col-lg-9 col-sm-12">
-            <div class="section-title">
+            <div class="section-title text-center">
                 <h3 class="title">Đơn hàng của tôi</h3>
             </div>
-            <table width=100%>
-                <tr>
-                    <th style="text-align:center;">Mã đơn hàng</th>
+            <table width=100% class="table table-bordered">
+                <tr class="title-mybill info">
+                    <th>Mã đơn hàng</th>
                     <th>Ngày mua</th>
                     <th>Sản phẩm</th>
-                    <th>Tổng tiền</th>
-                    <th style="text-align:center">Trạng thái đơn hàng</th>
+                    <th>Tổng tiền(VNĐ)</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th></th>
                 </tr>
                 <?php
                 $sql = 'SELECT * from hoadon where id_khachhang=' . $info['id'] . ' ORDER BY hoadon.ngay_tao DESC';
@@ -61,16 +62,16 @@
                     $sl_sp = executeSingleResult('SELECT COUNT(id_sanpham) AS sl_sp FROM cthoadon WHERE id_hoadon=' . $value['id'])['sl_sp'];
                     if ($sl_sp > 1)
                         $ten_sp = $ten_sp . ', ... và ' . ($sl_sp - 1) . ' sản phẩm khác.';
-                    echo '<tr height=80px>
+                    echo '<tr height=85px class="content-shopping">
                                         <td align=center ><a href="index.php?act=bill_detail&id=' . $value['id'] . '"><strong style="color:deepskyblue;"><u>HĐ' . $value['id'] . '</u></strong></a></td>
-                                        <td>' . $value['ngay_tao'] . '</td>
+                                        <td>' . date('d-m-Y', strtotime($value['ngay_tao'])) . '</td>
                                         <td>' . $ten_sp . '</td>
                                         <td>' . currency_format($value['tong_tien']) . '</td>';
                     if ($value['trang_thai'] == 0) {
                         echo '<td align=center style="color:red">Đang xử lý</td>
-                                                    <td align:right; ><a onclick="huydonhang(' . $value['id'] . ')" style="color:#d10024"><u>Hủy</u></a></td>';
+                                                    <td align:right; ><a onclick="huydonhang(' . $value['id'] . ')" style="color:#d10024"><i class="fa-solid fa-trash"></i></a></td>';
                     } else {
-                        echo '<td align=center style="color:#07ea03">Thành công</td><td></td>';
+                        echo '<td align=center style="color:#07ea03">Xác nhận giao</td><td></td>';
                     }
 
                     echo '</tr>';

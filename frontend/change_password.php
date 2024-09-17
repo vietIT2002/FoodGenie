@@ -113,6 +113,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin "anonymous"></script>
     <link rel="stylesheet" href="./css/login.css">
+
     <title><?=$title?></title>
 </head>
 <body>
@@ -141,23 +142,25 @@
                         
             <div class="form-group">
                 <label for="old-ppass">Mật khẩu cũ<span class="required1">*</span></label>
-                <input class="input1" type='password' name='old_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
+                <input class="input1" id="oldPassword"" type='password' name='old_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
             </div>
             
             <div class="form-group">
                 <label for="new-pass">Mật khẩu mới<span class="required1">*</span></label>
-                <input class="input1" type='password' name='new_password'
+                <input class="input1" id="newPassword" type='password' name='new_password'
                 required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt." />
             </div>
             
             <div class="form-group">
             <label for="re-enter-pass">Nhập lại mật khẩu<span class="required1">*</span></label>
-                <input class="input1" type='password' name='confirm_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
+                <input class="input1" id="confirmPassword" type='password' name='confirm_password' required oninvalid="this.setCustomValidity('Vui lòng nhập thông tin')" oninput="setCustomValidity('')"/>
+                <input type="checkbox" onclick="myFunction1()"> <label for="pass">Hiển thị mật khẩu</label>
             </div>
             <div><br>
                 <input class="btn btn-danger btn-long" type='submit' name="doimatkhau" value='Xác nhận' />
             </div>
         </form>
+        <script src="./js/amination.js"></script>
 </div>
 
 

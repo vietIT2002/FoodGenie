@@ -135,7 +135,7 @@ foreach($list as $item){
         <div class="add-to-cart">
             <button class="add-to-cart-btn" onclick=" addCart('.$item['id'].',1); themThanhCong('.$item['id'].'); "><i class="fa fa-shopping-cart"></i> <span id="messAddCart'.$item['id'].'">thêm vào giỏ</span></button>
         </div>
-    </div>
+    </div><br><br>
 </div>';
 }
 

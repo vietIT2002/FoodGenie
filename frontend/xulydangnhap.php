@@ -21,7 +21,7 @@ if ($username == "" || $password =="") {
     $query = mysqli_query($conn,$sql);
     $num_rows = mysqli_num_rows($query);
     if ($num_rows==0) {
-        echo '<br><p style="color:red;">Tên đăng nhập hoặc mật khẩu không đúng !</p>';
+        echo '<br><p style="color:red;">Tên đăng nhập hoặc mật khẩu<br> không đúng !</p>';
     }else{
         $row =mysqli_fetch_array($query, 1);
         //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
