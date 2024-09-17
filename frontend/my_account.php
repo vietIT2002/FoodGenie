@@ -214,13 +214,13 @@
 			<div class="membership-details">
 				<h2 class="membership-title"><i class="fa fa-users"></i> Thông tin thành viên</h2>
 				<p class="membership-intro">
-					<i class="fa fa-gift"></i> Đăng ký để nhận ngay <strong class="highlight">ưu đãi đặc biệt</strong> tại <strong class="highlight store-name">FoodGennie</strong>!
+					<i class="fa fa-gift"></i> Đăng ký để nhận ngay <strong class="highlight">ưu đãi đặc biệt</strong> tại <strong class="highlight store-name">FoodGenie</strong>!
 				</p>
 
 				<!-- Các cấp bậc thành viên -->
 				<div class="membership-tier" onclick="toggleDetails('new-member')">
 					<h4><i class="fa fa-user-plus"></i> Thành viên Mới</h4>
-					<p id="new-member" class="details">Chỉ cần đăng ký tài khoản và hoàn thành bất kỳ đơn hàng nào, bạn sẽ ngay lập tức trở thành thành viên mới của FoodGennie.</p>
+					<p id="new-member" class="details">Chỉ cần đăng ký tài khoản và hoàn thành bất kỳ đơn hàng nào, bạn sẽ ngay lập tức trở thành thành viên mới của FoodGenie.</p>
 				</div>
 
 				<div class="membership-tier" onclick="toggleDetails('silver-member')">
