@@ -1,5 +1,69 @@
 <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin "anonymous"></script>
 <!-- TOP HEADER -->
+<?php
+	$servername = "localhost"; 
+	$username = "root"; 
+	$password = ""; 
+	$database = "foodgennie"; 
+	
+	
+	$conn = new mysqli($servername, $username, $password, $database);
+	
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	// Kiểm tra xem khóa 'tong_tien_muahang' có tồn tại trong mảng $info hay không
+	if (isset($info['tong_tien_muahang'])) {
+		$tongtien = $info['tong_tien_muahang']; 
+	} else {
+		$tongtien = 0; 
+	}
+
+	// Truy vấn tổng số đơn hàng
+	$sql = "SELECT COUNT(*) AS total_orders FROM hoadon WHERE id_khachhang = ?";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param("i", $id_khachhang);
+	$stmt->execute();
+	$stmt->bind_result($total_orders);
+	$stmt->fetch();
+	$stmt->close();
+
+	// Kiểm tra xem khóa 'tong_tien_muahang' có tồn tại trong mảng $info hay không
+	if (isset($info['tong_tien_muahang'])) {
+		$tongtien = $info['tong_tien_muahang']; 
+	} else {
+		$tongtien = 0; 
+	}
+
+	// Xác định cấp độ thành viên dựa trên tongtien
+	if ($tongtien >= 15000000) {
+		$thanhvien = "Kim cương";
+    	$badge = "diamond_member.png";
+		$so_tien_de_len_hang = 0;
+		$hang_tiep_theo ="";
+	} elseif ($tongtien >= 5000000) {
+		$thanhvien = "Thành viên bạch kim";
+    	$badge = "platinum_member.png";
+		$so_tien_de_len_hang = 15000000 - $tongtien;
+		$hang_tiep_theo ="Kim cương";
+	} elseif ($tongtien >= 3000000) {
+		$thanhvien = "Thành viên Vàng";
+   		$badge = "gold_member.png"; 
+		$so_tien_de_len_hang = 5000000 - $tongtien;
+		$hang_tiep_theo ="bạch kim";
+	} elseif ($tongtien >= 500000) {
+		$thanhvien = "Thành viên bạc";
+    	$badge = "silver_member.png";
+		$so_tien_de_len_hang = 3000000 - $tongtien; 
+		$hang_tiep_theo ="Vàng";
+	} else {
+		$thanhvien = "Thành viên mới";
+    	$badge = "new_member.png";
+		$so_tien_de_len_hang = 500000 - $tongtien;
+		$hang_tiep_theo ="Bạc";
+	}
+?>
 <div id="top-header">
 		<header>	
 				<div class="container">
@@ -8,7 +72,7 @@
 						<li><a href="#"><i class="fa fa-envelope-o"></i> vietqv2002@gmail.com</a></li>
 						<li><a href="#"><i class="fa fa-map-marker"></i> TP Hồ Chí Minh</a></li>
 					</ul>
-					<ul class="header-links pull-right">
+					<!-- <ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> VNĐ</a></li>
 						<?php 
 							if(isset($_SESSION['ten_dangnhap'])){
@@ -16,6 +80,27 @@
 								 echo '<li><a href="?act=my_account"><i class="fa fa-user-o"></i> Xin chào, '.$ten_dangnhap.'!</a></li>';
 							}
 								else echo '<li><a href="index.php?act=register"><i class="fa fa-user-o"></i> Tạo tài khoản</a></li>';
+						?>
+					</ul> -->
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-dollar"></i> VNĐ</a></li>
+						<?php 
+							if(isset($_SESSION['ten_dangnhap'])){
+								$ten_dangnhap = $_SESSION['ten_dangnhap'];
+
+								// Kiểm tra và lấy thông tin quy hiệu thành viên
+								if (isset($badge)) {
+									// Hiển thị quy hiệu thay thế icon tài khoản
+									echo '<li><a href="?act=my_account"><img src="./img/img_logo/'.$badge.'" alt="Thành viên '.$thanhvien.'" width="20" height="20"> Xin chào, '.$ten_dangnhap.'!</a></li>';
+								} else {
+									// Nếu không có quy hiệu, dùng icon tài khoản mặc định
+									echo '<li><a href="?act=my_account"><i class="fa fa-user-o"></i> Xin chào, '.$ten_dangnhap.'!</a></li>';
+								}
+							}
+							else {
+								// Hiển thị tùy chọn tạo tài khoản khi chưa đăng nhập
+								echo '<li><a href="index.php?act=register"><i class="fa fa-user-o"></i> Tạo tài khoản</a></li>';
+							}
 						?>
 					</ul>
 

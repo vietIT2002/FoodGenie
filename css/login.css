@@ -136,12 +136,180 @@ span {
 .password_required ul li.active span:before{
     content: "✓";
 }
+/* personal information*/
+.button-info{
+    background-color: #0a62cd;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+     font-size: 16px;
+    font-weight: 500;
+    width: 120px;
+}
+
+.input-custom {
+    border-radius: 8px;  
+    font-weight: 500;   
+    border: 1px solid #ccc;  
+    box-shadow: none;
+}
+
+.input-custom:hover {
+    border-color: #0a62cd; 
+}
+
+.title-info{
+    font-family: Arial;
+    font-weight: 500;
+    color: #212529;
+    font-size: 16px;
+}
+
+.billing-details{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.title-ttv, .title-ended{
+    font-family: "Muli", serif;
+    font-size: 18px;
+}
+
+.title-ended{
+    text-align: center;
+    font-style: italic;
+}
+
+.name-ttv{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color:#133292;
+}
+
+.ten-qh{
+    font-size: 12px;
+    font-weight: bold;
+    background-color: rgb(241, 138, 138);   
+    color: white;           
+    padding: 5px 10px;       
+    display: inline-block;    
+    border-radius: 10px;      
+}
+
+.billing-details > div > .ten-ttv{
+    text-align: center; 
+}
+
+.qh-qh{
+    font-size: 16px;
+}
+
+.chi-tieu,
+.don-hang{
+    color: rgb(231, 68, 68);
+    font-weight: 600;
+}
+
+.highlight {
+    color: #D10024;
+    font-weight: bold;
+}
+
+.highlight.price {
+    font-size: 18px;
+    color: #D35400;
+}
+
+.highlight.store-name {
+    font-size: 18px;
+    color: #295F98;
+}
+
+
+.membership-details {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 20px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.membership-title {
+    text-align: center;
+    color: #295F98;
+    font-size: 20px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.membership-title i {
+    color: #295F98;
+    margin-right: 10px;
+}
+
+.membership-intro, .membership-description {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+	text-align: center
+}
+
+.membership-intro i {
+    color: #D10024;
+    margin-right: 5px;
+}
+
+.membership-tier {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.membership-tier h4 {
+    font-size: 16px;
+    color: #295F98;
+    margin-bottom: 10px;
+}
+
+.membership-tier p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.membership-tier i {
+    color: #D10024;
+    margin-right: 8px;
+}
+
+.membership-tier:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.details{
+	font-size: 10px;
+}
 
 /* Responsive web desin Login, register, change password*/
 @media (max-width: 576px) {
     .row1 {
         max-width: 90%; 
         padding: 10px;  
+    }
+}
+@media (max-width: 767px) {
+    textarea {
+        width: 100%;
+        font-size: 14px; 
+        height: auto; 
     }
 }
 

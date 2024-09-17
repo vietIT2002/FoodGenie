@@ -47,11 +47,4 @@
             include('frontend/category.php');
         }
         else include('frontend/change_password.php');
-        
-
-        
-    
-
-
-
 ?>

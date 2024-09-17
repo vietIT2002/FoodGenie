@@ -11,8 +11,6 @@
 	$listcate_prot = executeSingleResult($sql);
 
 ?>
-<!-- /Lấy tên thể loại khi biết id nha cung cap -->
-
 
 <!-- Lấy thông tin chi tiết của sản phẩm -->
 <?php
@@ -81,7 +79,6 @@
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
-					
 					
 					<div class="col-md-5">
 						<div class="product-details">

@@ -51,7 +51,6 @@
 							<h3 class="aside-title">Giá</h3>
 							<small>Chọn khoảng giá</small><br><br>
 							<div class="price-filter">
-							
 								<div id="price-slider"></div>
 								<div class="input-number price-min">
 									<input id="price-min" type="number">
