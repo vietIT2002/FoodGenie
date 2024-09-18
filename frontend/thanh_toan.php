@@ -1,8 +1,8 @@
-
 <?php
-session_start();
+    session_start();
     include('../db/dbhelper.php');
-    if(isset($_SESSION['ten_dangnhap'])){
+    if(isset($_SESSION['ten_dangnhap']))
+    {
         $ten_dangnhap=$_SESSION['ten_dangnhap'];
         $sql='select * from khachhang where ten_dangnhap="'.$ten_dangnhap.'"';
         $infoCus=executeSingleResult($sql);

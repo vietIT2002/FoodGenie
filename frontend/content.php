@@ -47,9 +47,4 @@
             include('frontend/category.php');
         }
         else include('frontend/home_content.php');
-        
-    
-
-
-
 ?>

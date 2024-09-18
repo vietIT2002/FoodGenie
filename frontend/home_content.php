@@ -4,48 +4,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./css/style.css">
-	<title>Document</title>
+	<title>Trang Chủ</title>
 </head>
 <body>
 <div class="custom-wrapper">
 	<div class="row row2">
-			<div class="col-md-8 col-xs-6 column-spacing">
-				<div class="slideshow-container">
-					<div class="mySlides1">
-						<img src="./img/banner/banner1.png" class="img-fluid">
-					</div>
+		<div class="col-md-8 col-xs-6 column-spacing">
+			<div class="slideshow-container">
+				<div class="mySlides1">
+					<img src="./img/banner/banner1.png" class="img-fluid">
+				</div>
 
-					<div class="mySlides1">
-						<img src="./img/banner/banner2.png" class="img-fluid">
-					</div>
+				<div class="mySlides1">
+					<img src="./img/banner/banner2.png" class="img-fluid">
+				</div>
 
-					<div class="mySlides1">
-						<a href="./index.php?act=category&id=3"><img src="./img/banner/banner3.png" class="img-fluid"></a>
-					</div>
+				<div class="mySlides1">
+					<a href="./index.php?act=category&id=3"><img src="./img/banner/banner3.png" class="img-fluid"></a>
+				</div>
 
-					<div class="mySlides1">
-						<a href="./index.php?act=category&id=3"><img src="./img/banner/banner4.png" class="img-fluid"></a>
-					</div>
+				<div class="mySlides1">
+					<a href="./index.php?act=category&id=3"><img src="./img/banner/banner4.png" class="img-fluid"></a>
+				</div>
 
-					<a class="prev" onclick="plusSlides(-1)">❮</a>
-					<a class="next" onclick="plusSlides(1)">❯</a>
+				<a class="prev" onclick="plusSlides(-1)">❮</a>
+				<a class="next" onclick="plusSlides(1)">❯</a>
 
-					<div class="dot-title">
-						<span class="dot1"></span>
-						<span class="dot1"></span>
-						<span class="dot1"></span>
-						<span class="dot1"></span>
-					</div>
+				<div class="dot-title">
+					<span class="dot1"></span>
+					<span class="dot1"></span>
+					<span class="dot1"></span>
+					<span class="dot1"></span>
 				</div>
 			</div>
+		</div>
 
-			<div class="col-md-4 col-xs-6 column-spacing-right">
+		<div class="col-md-4 col-xs-6 column-spacing-right">
 				<img src="./img/banner/bannerX.png" class="img-fluid" style="width:100%;">
-			</div>
+		</div>
 	</div>
 	<script src="./js/amination.js"></script>
 </div>
-
 <!-- SECTION -->
 <!-- <div class="section"> -->
 			<!-- container -->

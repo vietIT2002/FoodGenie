@@ -100,3 +100,71 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active1";
 }
+
+//product arrangement
+$(document).ready(function(){
+    load_data();
+
+    function load_data(page){
+        var selected=$('#sap_xep').val();
+        var price_min=$('#price-min').val();
+        var price_max=$('#price-max').val();
+        var checkedBrand=[];
+        $('.checkBrand').each(function(){
+            if($(this).is(':checked')){
+                checkedBrand.push('or ten_sp like "%'+$(this).val()+'%"');
+            }
+        });
+        checkedBrand=checkedBrand.toString();
+        var checkedDv=[];
+        $('.checkDv').each(function(){
+            if($(this).is(':checked')){
+                checkedDv.push('or ten_sp like "%'+$(this).val()+'%"');
+            }
+        });
+        checkedDv=checkedDv.toString();
+        $.ajax({
+            url:"frontend/ajax.php",
+            method:"POST",
+
+            data:{
+                page:page,'act':'<?=$act?>',
+                'id':'<?=$id?>',
+                'search':'<?=$search?>',
+                'selected_sort':selected,
+                'price_min':price_min,
+                'price_max':price_max,
+                'checkedBrand':checkedBrand,
+                'checkedDv':checkedDv},
+            success:function(data){
+                 $('#phan_trang').html(data);
+            }
+        })
+    }
+    $(document).on('click', '.phan_trang_lk',function(){
+        var page=$(this).attr("id");
+        load_data(page);
+    });
+    $('#sap_xep').change(function(){
+        load_data(1);
+    });
+    $('#btn_gia').click(function(){
+        load_data(1);
+    });
+    $('#chkBrand').change(function(){
+        load_data(1);
+    });
+    $('#chkDv').change(function(){
+        load_data(1);
+    });
+});
+
+// member information village
+    function toggleDetails(id) {
+        const element = document.getElementById(id);
+        if (element.style.display === 'none') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }

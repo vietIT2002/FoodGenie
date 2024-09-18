@@ -21,11 +21,6 @@
     if(isset($_GET['search'])){
         $search=$_GET['search'];
     }
-    // if($act=='category' || $id>0){
-    //     $sql='select ten_tl from theloai where id='.$id;
-    //     $cate=executeSingleResult($sql);
-    //     $title=$cate['ten_tl'];
-    // }
     if ($act == 'category' || $id > 0) {
         $sql = 'SELECT ten_tl FROM theloai WHERE id=' . $id;
         $cate = executeSingleResult($sql);
