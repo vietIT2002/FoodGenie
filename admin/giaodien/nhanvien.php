@@ -62,16 +62,16 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class=" pl-8  font-normal ">ID</th>
+                            <th class=" pl-8  font-normal ">Mã nhân viên</th>
                             <th class="font-normal">Ảnh</th>
-                            <th class="font-normal">Tên nhân viên</th>
+                            <th class="font-normal">Họ và tên</th>
                             <th class="font-normal">Username</th>
                             <th class="font-normal">Email</th>
                             <th class="font-normal">Password</th>
                             <th class="font-normal">SĐT</th>
                             <th class="font-normal">Chức vụ</th>
-                            <th class="font-normal">quyền</th>
-                            <th class="font-normal">Sửa</th>
+                            <th class="font-normal">Quyền</th>
+                            <th class="font-normal">Chỉnh sửa</th>
                             <th class="font-normal">Xóa</th>
                         </tr>
                     </thead>
@@ -90,14 +90,14 @@
                             <td><?= $row['TenLoaiNV'] ?></td> <!-- Hiển thị chức vụ -->
                             <td><?= $row['ten_quyen'] ?></td> <!-- Hiển thị chức vụ -->
                             <td>
-                                <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" type="button">
-                                    <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"
-                                        class="text-red-600 hover:text-red-800">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </a>
+
+                                <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"
+                                    class="text-red-600 hover:text-red-800">
+                                    <i class="fa fa-pencil-square-o text-green-500" aria-hidden="true"></i>
+                                </a>
 
 
-                                </button>
+
                             </td>
                             <td>
                                 <a href="admin.php?act=xoanv&id=<?= $row['id'] ?>"
@@ -137,7 +137,7 @@
     <?php
 
     include 'nhanvien_adding.php';
-    // include 'nhanvien_editing.php';
+
     ?>
 
 </body>

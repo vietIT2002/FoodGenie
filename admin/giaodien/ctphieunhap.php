@@ -10,42 +10,57 @@
         $ctphieunhap = mysqli_query($con, "SELECT `id_phieunhap`, `id_sp`, `ctphieunhap`.`so_luong`,`sanpham`.`id`,`ten_sp`,`don_gia`  FROM `ctphieunhap`,`sanpham` WHERE `id_sp`=`sanpham`.`id` AND `id_phieunhap`=" .$_GET['id']. " ORDER BY `ctphieunhap`.`id_phieunhap` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
         mysqli_close($con);
     ?>
-<button ><a href="./admin.php?muc=6&tmuc=Phiếu%20nhập"><-- Lùi</a></button>
-<div class="clear-both"></div>
-<div class="main-content">
-            <h1>Chi tiết phiếu nhập</h1>
-            <div class="product-items">
-                <div class="table-responsive-sm ">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead >
-                            <tr>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá</th>
-                                <th>Thành tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             <?php
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+            Phiếu nhập sản phẩm
+        </p>
+        <a href="./admin.php?tmuc=Phiếu nhập">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
+    </div>
+
+
+    <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+            <table class=" min-w-full bg-white   ">
+                <thead class="h-20 bg-gray-300 ">
+                    <tr>
+                        <th class="font-normal px-6 py-3">Tên sản phẩm</th>
+                        <th class="font-normal px-6 py-3">Số lượng</th>
+                        <th class="font-normal px-6 py-3">Đơn giá</th>
+                        <th class="font-normal px-6 py-3">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                             while ($row = mysqli_fetch_array($ctphieunhap)) {
                             ?>
-                                <tr>                              
-                                    <td><?= $row['ten_sp'] ?></td>
-                                    <td><?= $row['so_luong'] ?></td>
-                                    <td><?= $row['don_gia'] ?></td>   
-                                    <td><?= $row['so_luong'] * $row['don_gia'] ?></td>                     
-                                    <div class="clear-both"></div>
-                                </tr>
-                                <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        <?php
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+                        <td class="pl-8 "><?= $row['ten_sp'] ?></td>
+                        <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
+                        <td class="px-6 py-4"><?= $row['don_gia'] ?></td>
+                        <td class="px-6 py-4"><?= $row['so_luong'] * $row['don_gia'] ?></td>
+                        <div class="clear-both"></div>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php
         include './pagination2.php';
         ?>
-        <div class="clear-both"></div>
-        </div>
-    <?php
+
+
+</div>
+
+
+<?php
     }
     ?>

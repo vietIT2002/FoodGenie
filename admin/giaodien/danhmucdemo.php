@@ -52,10 +52,10 @@ if (!empty($_SESSION['nguoidung'])) {
             <table class=" min-w-full bg-white   ">
                 <thead class="h-20 bg-gray-300 ">
                     <tr>
-                        <th class=" pl-8  font-normal ">Id</th>
-                        <th class=" pl-8  font-normal ">Tên quyền</th>
-                        <th class=" pl-8  font-normal ">Chỉnh sửa</th>
-                        <th class=" pl-8  font-normal ">Xóa</th>
+                        <th class=" px-6 py-4  font-normal ">Id</th>
+                        <th class=" px-6 py-4  font-normal ">Tên quyền</th>
+                        <th class=" px-6 py-4  font-normal ">Chỉnh sửa</th>
+                        <th class=" px-6 py-4  font-normal ">Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,10 +67,12 @@ if (!empty($_SESSION['nguoidung'])) {
                         <td class="px-6 py-4"><?= $row['id'] ?></td>
                         <td class="px-6 py-4"><?= $row['ten_quyen'] ?></td>
                         <td class="px-6 py-4"><a
-                                href="admin.php?act=suaquyen&id=<?= $row['id'] ?>&tquyen=<?= $row['ten_quyen'] ?>">Sửa</a>
+                                href="admin.php?act=suaquyen&id=<?= $row['id'] ?>&tquyen=<?= $row['ten_quyen'] ?>"> <i
+                                    class="fa fa-pencil-square-o text-green-500" aria-hidden="true"></i></a>
                         </td>
                         <td class="px-6 py-4"><a href="admin.php?act=xoaquyen&id=<?= $row['id'] ?>"
-                                onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a></td>
+                                onclick="return confirm('Are you sure you want to delete this item?');"> <i
+                                    class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
                         <div class="clear-both"></div>
                     </tr>
                     <?php } ?>

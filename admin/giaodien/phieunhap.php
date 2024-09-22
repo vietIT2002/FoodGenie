@@ -114,8 +114,10 @@
                             <td class="px-6 py-4"><?= $row['tong_tien'] ?></td>
                             <td class="px-6 py-4"><a href="./admin.php?act=ctphieunhap&id=<?= $row['idpn'] ?>">Xem chi
                                     tiết</a></td>
-                            <td class="px-6 py-4"><a href="./admin.php?act=xoapn&id=<?= $row['idpn'] ?>"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a></td>
+                            <td class="px-6 py-4"><a class="text-red-600 hover:text-red-800"
+                                    href="./admin.php?act=xoapn&id=<?= $row['idpn'] ?>"
+                                    onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                        class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             <div class="clear-both"></div>
                         </tr>
                         <?php } ?>
