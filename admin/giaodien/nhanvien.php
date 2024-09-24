@@ -92,7 +92,7 @@
                             <td>
 
                                 <a href="admin.php?act=suanv&id=<?= $row['id'] ?>"
-                                    class="text-red-600 hover:text-red-800">
+                                    class="text-green-500 hover:text-green-500">
                                     <i class="fa fa-pencil-square-o text-green-500" aria-hidden="true"></i>
                                 </a>
 
