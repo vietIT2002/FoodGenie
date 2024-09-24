@@ -8,10 +8,8 @@
 
     <!-- Thêm Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
@@ -22,74 +20,68 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
+
+        // Tính tổng số hóa đơn và tổng doanh thu
+        $totalRevenueQuery = "SELECT COUNT(id) AS total_orders, SUM(tong_tien) AS total_revenue FROM hoadon";
+        $totalRevenueResult = mysqli_query($con, $totalRevenueQuery);
+        $totalRevenueData = mysqli_fetch_assoc($totalRevenueResult);
+        $totalOrders = $totalRevenueData['total_orders'];
+        $totalRevenue = $totalRevenueData['total_revenue'];
+
+        // Tính tổng số trang
+        $totalPages = ceil($totalOrders / $item_per_page);
+
+        // Lọc theo ngày
         if (isset($_POST['timebd']) && isset($_POST['timekt'])) {
-            if (($_POST['timebd'] == '') && ($_POST['timekt'] == ''))
-                $totalRecords = mysqli_query($con, "SELECT * FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` )");
-            if (($_POST['timebd'] == '') && (!empty($_POST['timekt'])))
-                $totalRecords = mysqli_query($con, "SELECT * FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "',INTERVAL '1' DAY)");
-            if (($_POST['timekt'] == '') && (!empty($_POST['timebd'])))
-                $totalRecords = mysqli_query($con, "SELECT * FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` >= '" . $_POST['timebd'] . "'");
-            if (!empty($_POST['timebd']) && (!empty($_POST['timekt'])))
-                $totalRecords = mysqli_query($con, "SELECT * FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "',INTERVAL '1' DAY) AND `hoadon`.`ngay_tao` >= '" . $_POST['timebd'] . "'");
-        } else
-            $totalRecords = mysqli_query($con, "SELECT * FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` )");
-        $totalRecords = $totalRecords->num_rows;
-        $totalPages = ceil($totalRecords / $item_per_page);
-        if (isset($_POST['timebd']) && isset($_POST['timekt'])) {
-            if (($_POST['timebd'] == '') && ($_POST['timekt'] == ''))
-                $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, `id_nhanvien`,`trang_thai`,`ten_nv`,`nhanvien`.`id` FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
-            if (($_POST['timebd'] == '') && (!empty($_POST['timekt'])))
-                $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, `id_nhanvien`,`trang_thai`,`ten_nv`,`nhanvien`.`id` FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "',INTERVAL '1' DAY) ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
-            if (($_POST['timekt'] == '') && (!empty($_POST['timebd'])))
-                $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, `id_nhanvien`,`trang_thai`,`ten_nv`,`nhanvien`.`id` FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` >= '" . $_POST['timebd'] . "' ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
-            if (!empty($_POST['timebd']) && (!empty($_POST['timekt'])))
-                $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, `id_nhanvien`,`trang_thai`,`ten_nv`,`nhanvien`.`id` FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "',INTERVAL '1' DAY) AND `hoadon`.`ngay_tao` >= '" . $_POST['timebd'] . "' ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
-        } else
-            $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, `id_nhanvien`,`trang_thai`,`ten_nv`,`nhanvien`.`id` FROM (hoadon LEFT JOIN nhanvien ON`id_nhanvien`=`nhanvien`.`id` ) ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
-        mysqli_close($con);
-        ?>
+            $query = "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
+                      `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
+                      FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) ";
+            if ($_POST['timebd'] && $_POST['timekt']) {
+                $query .= "WHERE `hoadon`.`ngay_tao` BETWEEN '" . $_POST['timebd'] . "' AND DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
+            } elseif ($_POST['timebd']) {
+                $query .= "WHERE `hoadon`.`ngay_tao` >= '" . $_POST['timebd'] . "' ";
+            } elseif ($_POST['timekt']) {
+                $query .= "WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
+            }
+            $query .= "ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset;
+            $hoadon = mysqli_query($con, $query);
+        } else {
+            $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
+                                          `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
+                                          FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) 
+                                          ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+        }
+    ?>
+
     <div class="flex justify-between items-center">
-        <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
-                Quản lý Hóa đơn
-            </p>
-
+        <div class="flex pt-10 pl-8">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Quản lý Hóa đơn</p>
         </div>
-
-
-        <div class="flex py-8 pr-6">
-            <!-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
-                type="button">
-                Thêm mới
-            </button> -->
-
-        </div>
+        <div class="flex py-8 pr-6"></div>
     </div>
 
     <form action="./admin.php?muc=1&tmuc=Hóa%20đơn" method="POST">
-
-
-
-
-
         <input type="date" name="timebd">
         <input type="date" name="timekt">
         <input type="submit" value="Lọc">
-        <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
+
+        <div class="flex justify-between mt-4 bg-gray-100 p-4 rounded-lg shadow-lg">
+            <div class="font-bold text-3xl text-blue-700">Tổng hóa đơn: <?= $totalOrders ?></div> 
+            <div class="font-bold text-3xl text-green-700">Doanh thu: <?= number_format($totalRevenue, 0, '', '.') ?> VNĐ</div> 
+        </div>
 
 
+        <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
             <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
-
                 <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                    <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                    <table class="min-w-full bg-white">
+                        <thead class="h-20 bg-gray-300">
                             <tr>
-                                <th class="font-normal px-6 py-3">ID</th>
+                                <th class="font-normal px-6 py-3">Mã Hóa đơn</th>
                                 <th class="font-normal px-6 py-3">Mã khách hàng</th>
-                                <th class="font-normal px-6 py-3">Tổng tiền</th>
+                                <th class="font-normal px-6 py-3">Tổng tiền(VNĐ)</th>
                                 <th class="font-normal px-6 py-3">Ngày tạo</th>
-                                <th class="font-normal px-6 py-3">Tên nhân viên</th>
+                                <th class="font-normal px-6 py-3">Nhân viên xác nhận</th>
                                 <th class="font-normal px-6 py-3">Trạng thái</th>
                                 <th class="font-normal px-6 py-3">Xem chi tiết</th>
                                 <th class="font-normal px-6 py-3">Xác nhận</th>
@@ -97,43 +89,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                while ($row = mysqli_fetch_array($hoadon)) {
-                                    ?>
-                            <tr
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="px-6 py-4"><?= $row['idhoadon'] ?></td>
-                                <td class="px-6 py-4"><?= $row['id_khachhang'] ?></td>
-                                <td class="px-6 py-4"><?= $row['tong_tien'] ?></td>
-                                <td class="px-6 py-4"><?= $row['ngay_tao'] ?></td>
-                                <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
-                                <td class="px-6 py-4"><?php if ($row['trang_thai'] == "1")
-                                            echo "Đã xác nhận";
-                                        else
-                                            echo "Chưa xác nhận"; ?></td>
-                                <td class="px-6 py-4"><a href="./admin.php?act=cthoadon&id=<?= $row['idhoadon'] ?>">Xem
-                                        chi tiết</a></td>
-                                <td class="px-6 py-4"><a
-                                        href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
-                                        nhận</a></td>
-                                <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a
-                                        href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a><?php } ?>
-                                </td>
-                                <div class="clear-both"></div>
-                            </tr>
+                            <?php while ($row = mysqli_fetch_array($hoadon)) { ?>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="px-6 py-4"><?= $row['idhoadon'] ?></td>
+                                    <td class="px-6 py-4"><?= strtoupper(substr(md5($row["id_khachhang"]), 0, 3)) . $row["id_khachhang"] ?></td>
+                                    <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
+                                    <td class="px-6 py-4"><?= date('d/m/Y', strtotime($row['ngay_tao'])) ?></td>
+                                    <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
+                                    <td class="px-6 py-4"><?= $row['trang_thai'] == "1" ? "Đã xác nhận" : "Chưa xác nhận" ?></td>
+                                    <td class="px-6 py-4"><a href="./admin.php?act=cthoadon&id=<?= $row['idhoadon'] ?>">Xem chi tiết</a></td>
+                                    <td class="px-6 py-4"><a href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác nhận</a></td>
+                                    <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>" onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a><?php } ?></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
+                    <?php include './pagination.php'; ?>
                 </div>
             </div>
         </div>
     </form>
-    <?php
-        include './pagination.php';
-        ?>
-    <div class="clear-both"></div>
 
     <?php
     }
     ?>
+</body>
+</html>

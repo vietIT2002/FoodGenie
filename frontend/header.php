@@ -188,7 +188,7 @@
 											<a href="index.php?act=login">Đăng Nhập</a>
 											<?php
 												if(isset($_SESSION['ten_dangnhap'])){
-													echo '<a href="frontend/logout.php">Đăng Xuất <i class="fa fa-arrow-circle-right"></i></a>';
+													echo '<a href="frontend/logout.php">Đăng Xuất</a>';
 												}else echo '<a href="index.php?act=register">Đăng Ký</a>';
 											?>
 											
