@@ -54,7 +54,7 @@
 											$soLuongTonKho=executeSingleResult('SELECT so_luong FROM sanpham WHERE id='.$key)['so_luong'];
 											echo '
 												<tr class="content-shopping">
-													<td width=120px>
+													<td width=150px>
 														
 														<img src="./img/'.$value['img'].'" width="100%">
 														

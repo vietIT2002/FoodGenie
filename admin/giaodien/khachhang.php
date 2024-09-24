@@ -51,14 +51,12 @@
             <table class=" min-w-full bg-white   ">
                 <thead class="h-20 bg-gray-300 ">
                     <tr>
+                        <th class="font-normal px-6 py-3">Mã khách hàng</th>
                         <th class="font-normal px-6 py-3">Tên khách hàng</th>
                         <th class="font-normal px-6 py-3">Email</th>
-                        <th class="font-normal px-6 py-3">Địa chỉ</th>
-                        <th class="font-normal px-6 py-3">SĐT</th>
-                        <th class="font-normal px-6 py-3">Số tiền đã mua hàng</th>
+                        <th class="font-normal px-6 py-3">Số điện thoại</th>
+                        <th class="font-normal px-6 py-3">Tổng tiền mua hàng(VNĐ)</th>
                         <th class="font-normal px-6 py-3">Trạng thái</th>
-                        <th class="font-normal px-6 py-3">Password</th>
-                        <th class="font-normal px-6 py-3">Tên đăng nhập </th>
                         <th class="font-normal px-6 py-3">Thay đổi</th>
                     </tr>
                 </thead>
@@ -68,13 +66,25 @@
                             ?>
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4">
+                            <?php
+                                $id = $row["id"];
+                                $randomLetters = strtoupper(substr(md5($id), 0, 3));
+                                echo $randomLetters . $id;
+                            ?>
+                        </td>
                         <td class="px-6 py-4"><?= $row['ten_kh'] ?></td>
                         <td class="px-6 py-4"><?= $row['email'] ?></td>
-                        <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
-                        <td class="px-6 py-4"><?= $row['phone'] ?></td>
+                        <td class="px-6 py-4">
+                        <?php
+                            $phone = $row['phone'];
+                            $maskedPhone = substr_replace($phone, '***', -3);
+                            echo $maskedPhone;
+                            ?>
+                        </td>
                         <td class="px-6 py-4">
 
-                            <?= $row['tong_tien_muahang'] ?>
+                            <?= number_format($row['tong_tien_muahang'], 0, '', '.') ?>
 
                         </td>
                         <td class="px-6 py-4">
@@ -84,8 +94,6 @@
                                     <?php if($row['trangthai']==0) echo "checked";?>>
 
                         </td>
-                        <td class="px-6 py-4"><?= $row['mat_khau'] ?></td>
-                        <td class="px-6 py-4"><?= $row['ten_dangnhap'] ?></td>
                         <td class="px-6 py-4">
 
                             <button type="submit" name="btnkhtt">
