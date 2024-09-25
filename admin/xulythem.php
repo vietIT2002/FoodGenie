@@ -233,34 +233,34 @@
     if (isset($_POST['btntladd'])) {
         if (isset($_POST['name']))
             if ($_POST['name'] != '') {
-                if (isset($_POST['tong_sp']))
-                    if ($_POST['tong_sp'] != '') {
+                // if (isset($_POST['tong_sp']))
+                //     if ($_POST['tong_sp'] != '') {
                         $namei = $_POST['name'];
-                        $tong = $_POST['tong_sp'];
-                        $sql = "INSERT INTO `theloai`(`ten_tl`,`tong_sp`) VALUES ('$namei','$tong')";
+                        // $tong = $_POST['tong_sp'];
+                        $sql = "INSERT INTO `theloai`(`ten_tl`) VALUES ('$namei')";
                         $result = mysqli_query($con, $sql);
                         if ($result)
                             header("location:./admin.php?act=addtltc&dk=yes");
                         else
                             header("location:./admin.php?act=addtltc&dk=no");
-                    } else
-                        header("location:./admin.php?act=addtltc&dk=no");
+                    // } else
+                    //     header("location:./admin.php?act=addtltc&dk=no");
             } else
                 header("location:./admin.php?act=addtltc&dk=no");
     }
     if (isset($_POST['btntlsua'])) {
         if (isset($_POST['name']))
             if ($_POST['name'] != '') {
-                if (isset($_POST['tong_sp']))
-                    if ($_POST['tong_sp'] != '') {
+                // if (isset($_POST['tong_sp']))
+                //     if ($_POST['tong_sp'] != '') {
                         $con = mysqli_connect("localhost", "root", "", "foodgennie");
-                        $result1 = mysqli_query($con, "UPDATE `theloai` SET `ten_tl` = '" . $_POST['name'] . "',`tong_sp` = '" . $_POST['tong_sp'] . "'WHERE `theloai`.`id` = " . $_GET['id'] . " ");
+                        $result1 = mysqli_query($con, "UPDATE `theloai` SET `ten_tl` = '" . $_POST['name'] . "'WHERE `theloai`.`id` = " . $_GET['id'] . " ");
                         if ($result1)
                             header("location:./admin.php?act=suatltc&dk=yes");
                         else
                             header("location:./admin.php?act=suatltc&dk=no");
-                    } else
-                        header("location:./admin.php?act=suatltc&dk=no");
+                    // } else
+                    //     header("location:./admin.php?act=suatltc&dk=no");
             } else
                 header("location:./admin.php?act=suatltc&dk=no");
     }
