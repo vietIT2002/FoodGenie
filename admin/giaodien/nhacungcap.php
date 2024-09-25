@@ -59,49 +59,48 @@
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
                             <th class=" pl-8  font-normal ">ID</th>
+                                <th class="font-normal px-6 py-3">Tên nhà cung cấp</th>
+                                <th class="font-normal px-6 py-3">Email</th>
+                                <th class="font-normal px-6 py-3">Website</th>
+                                <th class="font-normal px-6 py-3">SĐT</th>
+                                <th class="font-normal px-6 py-3">Đặt hàng</th>
+                                <th class="font-normal px-6 py-3">Trả hàng</th>
+                                <th class="font-normal px-6 py-3">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tbody class="bg-white divide-y divide-gray-200"> -->
+                            <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                </tr>
+                                <td class="px-6 py-4"><?= $row['id'] ?></td>
 
-                            <th class="font-normal px-6 py-3">Tên nhà cung cấp</th>
-                            <th class="font-normal px-6 py-3">Email</th>
-                            <th class="font-normal px-6 py-3">Website</th>
-                            <th class="font-normal px-6 py-3">SĐT</th>
-                            <th class="font-normal px-6 py-3">Đặt hàng</th>
+                                <td class="px-6 py-4"><?= $row['ten_ncc'] ?></td>
 
-                            <th class="font-normal px-6 py-3">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- <tbody class="bg-white divide-y divide-gray-200"> -->
-                        <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        </tr>
-                        <td class="px-6 py-4"><?= $row['id'] ?></td>
+                                <td class="px-6 py-4"><?= $row['email'] ?></td>
+                                <td class="px-6 py-4"><?= $row['web_site'] ?></td>
+                                <td class="px-6 py-4"><?= $row['phone'] ?></td>
+                                <td class="px-6 py-4">
+                                    <a href="admin.php?act=datncc&id=<?= $row['id'] ?>"></a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="admin.php?act=trancc&id=<?= $row['id'] ?>">Trả Hàng</a>
+                                </td>
+                                <td>
+                                    <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>"
+                                        onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                            class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
 
-                        <td class="px-6 py-4"><?= $row['ten_ncc'] ?></td>
-
-                        <td class="px-6 py-4"><?= $row['email'] ?></td>
-                        <td class="px-6 py-4"><?= $row['web_site'] ?></td>
-                        <td class="px-6 py-4"><?= $row['phone'] ?></td>
-                        <td class="px-6 py-4">
-                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>"></a>
-                        </td>
-                        <td>
-                            <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>" class="text-red-600 hover:text-red-800"
-                                onclick="return confirm('Are you sure you want to delete this item?' );"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Phân trang -->
-            <?php include './pagination.php'; ?>
-            <!-- </div> -->
-
-
-
+                <!-- Phân trang -->
+                <?php include './pagination.php'; ?>
+                <!-- </div> -->
         </div>
     </div>
 
