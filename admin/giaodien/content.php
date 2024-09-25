@@ -27,6 +27,27 @@
             include('nhacungcap.php');
     }
     if (isset($_GET['tmuc'])) {
+        if ($_GET['tmuc'] == 'Phiếu trả')
+            include('phieutra.php');
+    }
+    if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'ctphieutra')
+            include('ctphieutra.php');
+    }
+    if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'trancc')
+            include('nhacungcap_tra.php');
+    }
+    if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'ncccarttra')
+            include('nhacungcap_tra_addcart.php');
+    }
+    if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'ncccarttralist')
+            include('nhacungcap_tra_cart.php');
+    }
+
+    if (isset($_GET['tmuc'])) {
         if ($_GET['tmuc'] == 'Khách hàng')
             include('khachhang.php');
     }
