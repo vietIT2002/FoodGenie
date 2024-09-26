@@ -119,10 +119,10 @@ if (isset($_SESSION['cart'])) {
 					$insertOrder = mysqli_query($con, "INSERT INTO `ctphieutra` (`id_phieutra`, `id_sp`, `so_luong`) VALUES " . $insertString);
 					if ($insertOrder) {
 						$listcate = executeResult('SELECT * FROM `theloai` WHERE 1');
-						foreach ($listcate as $item) {
-							$tongsanphamtheoloai = executeSingleResult('SELECT SUM(so_luong) AS sl FROM sanpham WHERE id_the_loai=' . $item['id'])['sl'];
-							execute('UPDATE theloai SET tong_sp="' . $tongsanphamtheoloai . '" WHERE id=' . $item['id']);
-						}
+						// foreach ($listcate as $item) {
+						// 	$tongsanphamtheoloai = executeSingleResult('SELECT SUM(so_luong) AS sl FROM sanpham WHERE id_the_loai=' . $item['id'])['sl'];
+						// 	execute('UPDATE theloai SET tong_sp="' . $tongsanphamtheoloai . '" WHERE id=' . $item['id']);
+						// }
 						unset($_SESSION['cart']);
 						echo ('<a href="./admin.php?muc=6&tmuc=Phiếu%20trả">Nhấp vào đây để xem phiếu trả thành công</a>');
 					}
