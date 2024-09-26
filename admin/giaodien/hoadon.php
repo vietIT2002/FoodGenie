@@ -8,8 +8,10 @@
 
     <!-- Thêm Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
@@ -65,15 +67,19 @@
         <input type="date" name="timekt">
         <input type="submit" value="Lọc">
 
-        <div class="flex justify-between mt-4 bg-gray-100 p-4 rounded-lg shadow-lg">
-            <div class="font-bold text-3xl text-blue-700">Tổng hóa đơn: <?= $totalOrders ?></div> 
-            <div class="font-bold text-3xl text-green-700">Doanh thu: <?= number_format($totalRevenue, 0, '', '.') ?> VNĐ</div> 
-        </div>
+
 
 
         <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
-            <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+            <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
+                <div class="flex justify-between mt-4 bg-gray-100 p-4 rounded-lg shadow-lg">
+                    <div class="font-bold text-3xl text-blue-700">Tổng hóa đơn: <?= $totalOrders ?></div>
+                    <div class="font-bold text-3xl text-red-700">Doanh thu:
+                        <?= number_format($totalRevenue, 0, '', '.') ?> VNĐ
+                    </div>
+                </div>
                 <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+
                     <table class="min-w-full bg-white">
                         <thead class="h-20 bg-gray-300">
                             <tr>
@@ -90,17 +96,28 @@
                         </thead>
                         <tbody>
                             <?php while ($row = mysqli_fetch_array($hoadon)) { ?>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="px-6 py-4"><?= $row['idhoadon'] ?></td>
-                                    <td class="px-6 py-4"><?= strtoupper(substr(md5($row["id_khachhang"]), 0, 3)) . $row["id_khachhang"] ?></td>
-                                    <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
-                                    <td class="px-6 py-4"><?= date('d/m/Y', strtotime($row['ngay_tao'])) ?></td>
-                                    <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
-                                    <td class="px-6 py-4"><?= $row['trang_thai'] == "1" ? "Đã xác nhận" : "Chưa xác nhận" ?></td>
-                                    <td class="px-6 py-4"><a href="./admin.php?act=cthoadon&id=<?= $row['idhoadon'] ?>">Xem chi tiết</a></td>
-                                    <td class="px-6 py-4"><a href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác nhận</a></td>
-                                    <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>" onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a><?php } ?></td>
-                                </tr>
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="px-6 py-4"><?= $row['idhoadon'] ?></td>
+                                <td class="px-6 py-4">
+                                    <?= strtoupper(substr(md5($row["id_khachhang"]), 0, 3)) . $row["id_khachhang"] ?>
+                                </td>
+                                <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
+                                <td class="px-6 py-4"><?= date('d/m/Y', strtotime($row['ngay_tao'])) ?></td>
+                                <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
+                                <td class="px-6 py-4"><?= $row['trang_thai'] == "1" ? "Đã xác nhận" : "Chưa xác nhận" ?>
+                                </td>
+                                <td class="px-6 py-4"><a href="./admin.php?act=cthoadon&id=<?= $row['idhoadon'] ?>"><i
+                                            class="
+                                        fa-regular fa-file-lines fa-lg text-green-500"></a></td>
+                                <td class="px-6 py-4"><a
+                                        href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
+                                        nhận</a></td>
+                                <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a
+                                        href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
+                                        onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a><?php } ?>
+                                </td>
+                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -114,4 +131,5 @@
     }
     ?>
 </body>
+
 </html>

@@ -16,59 +16,78 @@ if (!empty($_SESSION['nguoidung'])) {
     $total_tien = 0;
     ?>
 
-    <div class="flex justify-between items-center">
-        <div class="flex pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Chi tiết hóa đơn: </p>
-            <?php if ($row = mysqli_fetch_assoc($cthoadon)) { ?>
-                <p class="pb-4 pt-0 text-red-500 text-2xl font-bold dark:text-red text-5xl pl-5"><?= $row['id_hoadon'] ?></p>
-            <?php } ?>
-        </div>
+
+
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+            Chi tiết hóa đơn
+        </p>
+        <a href="./admin.php?tmuc=Hóa%20đơn">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
     </div>
 
-    <button><a href="./admin.php?muc=1&tmuc=Hóa%20đơn">Quay lại</a></button>
 
-    <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
-        <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
-            <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                <table class="min-w-full bg-white">
-                    <thead class="h-20 bg-gray-300">
-                        <tr class="font-normal px-6 py-3">
-                            <th class="font-normal px-6 py-3">Tên sản phẩm</th>
-                            <th class="font-normal px-6 py-3">Số lượng</th>
-                            <th class="font-normal px-6 py-3">Đơn giá</th>
-                            <th class="font-normal px-6 py-3">Tổng tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
+
+
+    <div class="card w-full m-10px  overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
+
+        <div class="flex pt-10 p pl-8">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"> Hóa đơn: </p>
+            <?php if ($row = mysqli_fetch_assoc($cthoadon)) { ?>
+            <p class="pb-4 pt-0 text-red-500 text-2xl font-bold dark:text-red text-5xl pl-5">
+                <?= $row['id_hoadon'] ?>
+            </p>
+            <?php } ?>
+        </div>
+
+
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <table class="min-w-full bg-white">
+                <thead class="h-20 bg-gray-300">
+                    <tr class="font-normal px-6 py-3">
+                        <th class="font-normal px-6 py-3">Tên sản phẩm</th>
+                        <th class="font-normal px-6 py-3">Số lượng</th>
+                        <th class="font-normal px-6 py-3">Đơn giá</th>
+                        <th class="font-normal px-6 py-3 ">Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                         mysqli_data_seek($cthoadon, 0); 
                         while ($row = mysqli_fetch_assoc($cthoadon)) {
                             $total_so_luong += $row['so_luong'];
                             $total_don_gia += $row['don_gia'];
                             $total_tien += $row['don_gia'] * $row['so_luong'];
                         ?>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
-                            <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
-                            <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, ',', '.') ?></td>
-                            <td class="px-6 py-4"><?= number_format($row['don_gia'] * $row['so_luong'], 0, ',', '.') ?></td>
-                        </tr>
-                        <?php } ?>
-                        <tr class="font-bold bg-gray-200">
-                            <td class="px-6 py-4">Tổng cộng</td>
-                            <td class="px-6 py-4"><?= $total_so_luong ?></td>
-                            <td class="px-6 py-4"><?= number_format($total_don_gia, 0, ',', '.') ?></td>
-                            <td class="px-6 py-4"><?= number_format($total_tien, 0, ',', '.') ?></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
+                        <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
+                        <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, ',', '.') ?></td>
+                        <td class="px-6 py-4"><?= number_format($row['don_gia'] * $row['so_luong'], 0, ',', '.') ?>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    <tr class="font-bold bg-gray-200">
+                        <td class="px-6 py-4 text-red-600">Tổng cộng</td>
+                        <td class="px-6 py-4 text-red-600"><?= $total_so_luong ?></td>
+                        <td class="px-6 py-4 text-red-600"><?= number_format($total_don_gia, 0, ',', '.') ?></td>
+                        <td class="px-6 py-4 text-red-600"><?= number_format($total_tien, 0, ',', '.') ?></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <?php include './pagination2.php'; ?>
-        <div class="clear-both"></div>
-    </div>
 
-    <?php
+
+
+    </div>
+</div>
+<?php
     mysqli_close($con); 
 }
 ?>

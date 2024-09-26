@@ -129,9 +129,10 @@ if (isset($_SESSION['cart'])) {
                 </label>
                 <button
                     class="absolute bottom-0 top-16 right-0 w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
-                    type="button" name="order_click">
+                    type="submit" name="order_click">
                     Đặt hàng
                 </button>
+
             </div>
 
             <!-- <button type="button" name="order_click" value="Đặt hàng">Đặt hàng</button> -->
