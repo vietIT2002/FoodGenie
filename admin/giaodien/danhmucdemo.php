@@ -15,7 +15,7 @@ if (!empty($_SESSION['nguoidung'])) {
     $totalRecords = mysqli_query($con, "SELECT * FROM `quyen`");
     $totalRecords = $totalRecords->num_rows;
     $totalPages = ceil($totalRecords / $item_per_page);
-    $quyen = mysqli_query($con, "SELECT * FROM `quyen` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset . "");
+    $quyen = mysqli_query($con, "SELECT * FROM `quyen` WHERE `id` != 1 ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset . "");
     // $quyen1=mysqli_query($con,"SELECT `id`, `ten_quyen` FROM `quyen`"); 
     // $data=$quyen1->fetch_all(MYSQLI_ASSOC);
 
@@ -53,8 +53,8 @@ if (!empty($_SESSION['nguoidung'])) {
                 <thead class="h-20 bg-gray-300 ">
                     <tr>
                         <!-- <th class=" px-6 py-4  font-normal ">Mã quyê</th> -->
-                        <th class=" px-6 py-4  font-normal ">Quyền</th>
-                        <th class=" px-6 py-4  font-normal ">Chỉnh sửa</th>
+                        <th class=" px-6 py-4  font-normal ">Tên quyền</th>
+                        <th class=" px-6 py-4  font-normal ">Chỉnh sửa quyền</th>
                         <th class=" px-6 py-4  font-normal ">Xóa</th>
                     </tr>
                 </thead>

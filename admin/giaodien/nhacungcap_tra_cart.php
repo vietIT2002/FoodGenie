@@ -63,10 +63,10 @@ if (isset($_SESSION['cart'])) {
 
                     </div>
                     <div class="mb-4">
-                        <label class="block  text-2xl text-gray-700">SĐT: </label>
+                        <label class="block  text-2xl text-gray-700">Số điện thoại: </label>
                         <input
                             class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" value="" placeholder="VD: 0123456789" />
+                            type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" value="" placeholder="" />
                         <div class="clear-both"></div>
                     </div>
                     <div class="mb-4">
@@ -88,7 +88,7 @@ if (isset($_SESSION['cart'])) {
                         <th class="font-normal px-6 py-3">Đơn giá</th>
                         <th class="font-normal px-6 py-3">Số lượng</th>
                         <th class="font-normal px-6 py-3">Thành tiền </th>
-                        <th class="font-normal px-6 py-3">Xóa</th>
+                        <th class="font-normal px-6 py-3"></th>
                     </tr>
                 </thead>
                 <tbody>

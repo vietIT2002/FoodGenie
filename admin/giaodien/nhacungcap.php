@@ -58,14 +58,14 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class=" pl-8  font-normal ">Mã NCC</th>
-                            <th class="font-normal px-6 py-3">Tên nhà cung cấp</th>
+                            <th class=" pl-8  font-normal ">Mã</th>
+                            <th class="font-normal px-6 py-3">Nhà cung cấp</th>
                             <th class="font-normal px-6 py-3">Email</th>
                             <th class="font-normal px-6 py-3">Website</th>
                             <th class="font-normal px-6 py-3">SĐT</th>
                             <th class="font-normal px-6 py-3">Đặt hàng</th>
                             <th class="font-normal px-6 py-3">Trả hàng</th>
-                            <th class="font-normal px-6 py-3">Xóa</th>
+                            <th class="font-normal px-6 py-3"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +74,7 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         </tr>
-                        <td class="px-6 py-4"><?= $row['id'] ?></td>
+                        <td class="px-6 py-4">NCC<?= $row['id'] ?></td>
 
                         <td class="px-6 py-4"><?= $row['ten_ncc'] ?></td>
 
@@ -82,10 +82,10 @@
                         <td class="px-6 py-4"><?= $row['web_site'] ?></td>
                         <td class="px-6 py-4"><?= $row['phone'] ?></td>
                         <td class="px-6 py-4">
-                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>">Đặt hàng</a>
+                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>" class="font-bold">Đặt</a>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="admin.php?act=trancc&id=<?= $row['id'] ?>">Trả hàng</a>
+                            <a href="admin.php?act=trancc&id=<?= $row['id'] ?>" class="font-bold">Trả</a>
                         </td>
                         <td>
                             <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>" class="text-red-600 hover:text-red-800"

@@ -32,7 +32,7 @@ if (!empty($_SESSION['nguoidung'])) {
         <div class="buttons">
             <form name="nhacungcap-formdat" method="POST" action="./admin.php?act=ncccartlist&idncc=<?= $_GET['id'] ?>"
                 enctype="multipart/form-data">
-                <input name="btnnccdat" type="submit" title="Lưu nhà cung cấp" value="Phiếu Nhập" /></a>
+                <input name="btnnccdat" type="submit" title="Lưu nhà cung cấp" value="Giỏ hàng" /></a>
         </div>
     </div>
 </div>

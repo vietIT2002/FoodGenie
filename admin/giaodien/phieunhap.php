@@ -74,14 +74,14 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class="font-normal px-6 py-3">Mã Phiếu nhập <a
+                            <th class="font-normal px-6 py-3">Mã Phiếu nhập<br> <a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=idgiam"><i
                                         class="fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=idtang"><i
                                         class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Tên công ty</th>
+                            <th class="font-normal px-6 py-3">Chi nhánh</th>
                             <th class="font-normal px-6 py-3">Nhân viên đảm nhiệm</th>
-                            <th class="font-normal px-6 py-3">Thời gian<a
+                            <th class="font-normal px-6 py-3">Thời gian<br><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=tggiam"><i
                                         class="fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=tgtang"><i
@@ -95,7 +95,7 @@
                                     href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=tientang"><i
                                         class="fa fa-arrow-up"></i></a></th>
                             <th class="font-normal px-6 py-3">Xem chi tiết</th>
-                            <th class="font-normal px-6 py-3">Xóa</th>
+                            <th class="font-normal px-6 py-3"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,14 +104,14 @@
                                 ?>
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['idpn'] ?></td>
+                            <td class="px-6 py-4">PN<?= $row['idpn'] ?></td>
                             <td class="px-6 py-4"><?= $row['nguoi_nhan'] ?></td>
                             <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ntpn'] ?></td>
+                            <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ntpn'] ))?></td>
                             <td class="px-6 py-4"><?= $row['sdt'] ?></td>
                             <td class="px-6 py-4"><?= $row['diachi'] ?></td>
                             <td class="px-6 py-4"><?= $row['ghichu'] ?></td>
-                            <td class="px-6 py-4"><?= $row['tong_tien'] ?></td>
+                            <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
                             <td class="px-6 py-4"><a class="text-green-500"
                                     href="./admin.php?act=ctphieunhap&id=<?= $row['idpn'] ?>"><i class="
                                         fa-regular fa-file-lines fa-lg text-green-500"> </a></td>

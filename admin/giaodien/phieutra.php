@@ -80,14 +80,14 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class="font-normal px-6 py-3">Mã phiếu trả<a
+                            <th class="font-normal px-6 py-3">Mã phiếu trả<br><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idgiam"><i
                                         class="fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idtang"><i
                                         class="fa fa-arrow-up"></i></a></th>
                             <th class="font-normal px-6 py-3">Tên công ty</th>
                             <th class="font-normal px-6 py-3">Nhân viên đảm nhiệm</th>
-                            <th class="font-normal px-6 py-3">Thời gian<a
+                            <th class="font-normal px-6 py-3">Thời gian<br><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tggiam"><i
                                         class="fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tgtang"><i
@@ -109,14 +109,14 @@
                                 ?>
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['idpt'] ?></td>
+                            <td class="px-6 py-4">PT<?= $row['idpt'] ?></td>
                             <td class="px-6 py-4"><?= $row['nguoi_nhan'] ?></td>
                             <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ntpt'] ?></td>
+                            <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ntpt'] ))?></td>
                             <td class="px-6 py-4"><?= $row['sdt'] ?></td>
                             <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
                             <td class="px-6 py-4"><?= $row['ghi_chu'] ?></td>
-                            <td class="px-6 py-4"><?= $row['tong_tien'] ?></td>
+                            <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
                             <td class="px-6 py-4"><a href="./admin.php?act=ctphieutra&id=<?= $row['idpt'] ?>"><i class="
                                         fa-regular fa-file-lines fa-lg text-green-500"> </a></td>
                             <div class="clear-both"></div>

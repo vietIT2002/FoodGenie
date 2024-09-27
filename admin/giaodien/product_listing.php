@@ -20,7 +20,7 @@
     <?php
     include_once("./connect_db.php");
     if (!empty($_SESSION['nguoidung'])) {
-        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 5;
+        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
         $totalRecords = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `trangthai` = 0 ");
@@ -85,18 +85,18 @@
                                         href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idtang"><i
                                             class="fa fa-arrow-up"></i></a></div>
                             </th>
-                            <th class="font-normal px-6 py-3">Ảnh </th>
+                            <th class="font-normal px-6 py-3">Hình ảnh </th>
                             <th class="font-normal px-6 py-3">Tên sản phẩm <a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tengiam"><i
                                         class="pdl-5px fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tentang"><i
                                         class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Số lượng tồn <a
+                            <th class="font-normal px-6 py-3">Số lượng tồn<br> <a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tongiam"><i
                                         class="pdl-5px fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tontang"><i
                                         class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Số lượng bán <a
+                            <th class="font-normal px-6 py-3">Đã bán <br> <a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bangiam"><i
                                         class="pdl-5px fa fa-arrow-down"></i></a><a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=bantang"><i
@@ -117,7 +117,7 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
-                                <div class="pts-abl"><?= $row['id'] ?></div>
+                                <div class="pts-abl">SP<?= $row['id'] ?></div>
                             </td>
                             <td class="pst-rela d-flex">
 

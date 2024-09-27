@@ -27,14 +27,15 @@
         $totalPages = ceil($totalRecords / $item_per_page);
         // $nhanvien = mysqli_query($con, "SELECT * FROM `nhanvien` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
         $nhanvien = mysqli_query($con, "
-                                    SELECT nhanvien.*, loainhanvien.TenLoaiNV, quyen.ten_quyen
+        SELECT nhanvien.*, loainhanvien.TenLoaiNV, quyen.ten_quyen
         FROM `nhanvien`
         LEFT JOIN `loainhanvien` ON nhanvien.id_loainv = loainhanvien.id
         LEFT JOIN `quyen` ON nhanvien.id_quyen = quyen.id
-        WHERE nhanvien.status = 0
+        WHERE nhanvien.status = 0 AND nhanvien.id != 1
         ORDER BY nhanvien.id ASC
         LIMIT $item_per_page OFFSET $offset
-");
+    ");
+    
         mysqli_close($con);
         ?>
     <div class="flex justify-between items-center">
@@ -79,8 +80,8 @@
                         <!-- <tbody class="bg-white divide-y divide-gray-200"> -->
                         <?php while ($row = mysqli_fetch_array($nhanvien)) { ?>
                         <tr class="  bg-white  dark:bg-gray-800 dark:border-gray-700">
-                            <td class="pl-8 "><?= $row['id'] ?></td>
-                            <td><img class="h-36 w-36 rounded-full" src="../img/<?= $row['hinh_anh'] ?>" alt="Ảnh" />
+                            <td class="pl-8 ">NV<?= $row['id'] ?></td>
+                            <td><img class="h-40 w-40 rounded-full object-cover" src="../img/<?= $row['hinh_anh'] ?>" alt="Ảnh" /></td>
                             </td>
                             <td><?= $row['ten_nv'] ?></td>
                             <td><?= $row['ten_dangnhap'] ?></td>

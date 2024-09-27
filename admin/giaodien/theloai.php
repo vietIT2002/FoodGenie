@@ -90,7 +90,7 @@ if (!empty($_SESSION['nguoidung'])) {
                                 ?>
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['id'] ?></td>
+                            <td class="px-6 py-4">TL<?= $row['id'] ?></td>
                             <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
                             <td class="px-6 py-4"><?= $row['total_products'] ?></td>
                             <td class="px-6 py-4">

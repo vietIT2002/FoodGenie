@@ -91,19 +91,19 @@
                                 <th class="font-normal px-6 py-3">Trạng thái</th>
                                 <th class="font-normal px-6 py-3">Xem chi tiết</th>
                                 <th class="font-normal px-6 py-3">Xác nhận</th>
-                                <th class="font-normal px-6 py-3">Xóa</th>
+                                <th class="font-normal px-6 py-3"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while ($row = mysqli_fetch_array($hoadon)) { ?>
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="px-6 py-4"><?= $row['idhoadon'] ?></td>
+                                <td class="px-6 py-4">HĐ<?= $row['idhoadon'] ?></td>
                                 <td class="px-6 py-4">
                                     <?= strtoupper(substr(md5($row["id_khachhang"]), 0, 3)) . $row["id_khachhang"] ?>
                                 </td>
                                 <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
-                                <td class="px-6 py-4"><?= date('d/m/Y', strtotime($row['ngay_tao'])) ?></td>
+                                <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ngay_tao'])) ?></td>
                                 <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
                                 <td class="px-6 py-4"><?= $row['trang_thai'] == "1" ? "Đã xác nhận" : "Chưa xác nhận" ?>
                                 </td>
