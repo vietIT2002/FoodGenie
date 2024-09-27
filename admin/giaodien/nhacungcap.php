@@ -82,7 +82,10 @@
                         <td class="px-6 py-4"><?= $row['web_site'] ?></td>
                         <td class="px-6 py-4"><?= $row['phone'] ?></td>
                         <td class="px-6 py-4">
-                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>"></a>
+                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>">Đặt hàng</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="admin.php?act=trancc&id=<?= $row['id'] ?>">Trả hàng</a>
                         </td>
                         <td>
                             <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>" class="text-red-600 hover:text-red-800"

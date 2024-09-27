@@ -24,8 +24,6 @@ if (isset($_SESSION['cart'])) {
 		
 	}
 
-	//echo '<pre>';
-	//var_dump($_SESSION['cart']);
 ?>
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
@@ -167,11 +165,11 @@ if (isset($_SESSION['cart'])) {
 
             // Update theloai table
             if ($insertOrder) {
-                $listcate = executeResult('SELECT * FROM `theloai` WHERE 1');
-                foreach ($listcate as $item) {
-                    $tongsanphamtheoloai = executeSingleResult('SELECT SUM(so_luong) AS sl FROM sanpham WHERE id_the_loai=' . $item['id'])['sl'];
-                    execute('UPDATE theloai SET tong_sp="' . $tongsanphamtheoloai . '" WHERE id=' . $item['id']);
-                }
+                // $listcate = executeResult('SELECT * FROM `theloai` WHERE 1');
+                // foreach ($listcate as $item) {
+                //     $tongsanphamtheoloai = executeSingleResult('SELECT SUM(so_luong) AS sl FROM sanpham WHERE id_the_loai=' . $item['id'])['sl'];
+                //     execute('UPDATE theloai SET tong_sp="' . $tongsanphamtheoloai . '" WHERE id=' . $item['id']);
+                // }
                 // Unset the cart after placing the order
                 unset($_SESSION['cart']);
 
