@@ -115,7 +115,9 @@
                                         nhận</a></td>
                                 <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a
                                         href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');">Xóa</a><?php } ?>
+                                        onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                            class="fa fa-trash-o text-red-600 hover:text-red-800"
+                                            aria-hidden="true"></i></a><?php } ?>
                                 </td>
                             </tr>
                             <?php } ?>

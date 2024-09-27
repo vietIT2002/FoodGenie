@@ -17,63 +17,83 @@ if (!empty($_SESSION['nguoidung'])) {
     $sanpham = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `id_nha_cc` = " . $_GET['id'] . " ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset . "");
     mysqli_close($con);
     ?>
-    <div class="flex justify-between items-center">
-        <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Nhà cung cấp</p>
-        </div>
-        <div class="flex py-8 pr-6">
-            <div class="buttons">
-                <form name="nhacungcap-formdat" method="POST" action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>"
-                    enctype="multipart/form-data">
-                    <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
-            </div>
+<!-- <div class="flex justify-between items-center">
+    <div class="flex  pt-10 p pl-8">
+        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Nhà cung cấp</p>
+    </div>
+    <div class="flex py-8 pr-6">
+        <div class="buttons">
+            <form name="nhacungcap-formdat" method="POST"
+                action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>" enctype="multipart/form-data">
+                <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
         </div>
     </div>
-    <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
+</div> -->
+
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+            Sản phẩm nhà cung cấp
+        </p>
+        <a href="./admin.php?tmuc=Nhà cung cấp">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
+    </div>
+    <div class="flex py-8 pr-6">
+        <div class="buttons">
+            <form name="nhacungcap-formdat" method="POST"
+                action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>" enctype="multipart/form-data">
+                <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
+        </div>
+    </div>
+</div>
+<div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-        <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+    <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
-            <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr class="font-normal px-6 py-3">
-                        <tr class="font-normal px-6 py-3">
-                            <th class="font-normal px-6 py-3">Hình ảnh</th>
-                            <th class="font-normal px-6 py-3">Tên sản phẩm</th>
-                            <th class="font-normal px-6 py-3">Giá (VĐ)</th>
-                            <th class="font-normal px-6 py-3">Số lượng tồn</th>
-                            <th class="font-normal px-6 py-3">Trả hàng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+        <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+            <table class=" min-w-full bg-white   ">
+                <thead class="h-20 bg-gray-300 ">
+                    <tr class="font-normal px-6 py-3">
+                    <tr class="font-normal px-6 py-3">
+                        <th class="font-normal px-6 py-3">Hình ảnh</th>
+                        <th class="font-normal px-6 py-3">Tên sản phẩm</th>
+                        <th class="font-normal px-6 py-3">Giá (VĐ)</th>
+                        <th class="font-normal px-6 py-3">Số lượng tồn</th>
+                        <th class="font-normal px-6 py-3">Trả hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                         while ($row = mysqli_fetch_array($sanpham)) {
                             ?>
-                            <tr class="  bg-white  dark:bg-gray-800 dark:border-gray-700">
-                                <td><img class="h-36 w-36 rounded-full" src=".././img/<?= $row['hinh_anh'] ?>">
-                                </td>
-                                <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
-                                <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, '', '.') ?></td>
-                                <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
-                                <td class="px-6 py-4">
-                                    <a href="./admin.php?act=ncccarttra&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>">Thêm
-                                        vào
-                                        giỏ</a>
-                                    <div class="clear-both"></div>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
+                    <tr class="  bg-white  dark:bg-gray-800 dark:border-gray-700">
+                        <td><img class="h-36 w-36 rounded-full" src=".././img/<?= $row['hinh_anh'] ?>">
+                        </td>
+                        <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
+                        <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, '', '.') ?></td>
+                        <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
+                        <td class="px-6 py-4">
+                            <a href="./admin.php?act=ncccarttra&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>">Thêm
+                                vào
+                                giỏ</a>
+                            <div class="clear-both"></div>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <?php
+<?php
     include './pagination2.php';
     ?>
-    <div class="clear-both"></div>
-    </div>
-    <?php
+<div class="clear-both"></div>
+</div>
+<?php
 }
 ?>

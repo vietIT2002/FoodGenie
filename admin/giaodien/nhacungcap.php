@@ -58,7 +58,7 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class=" pl-8  font-normal ">ID</th>
+                            <th class=" pl-8  font-normal ">Mã NCC</th>
                             <th class="font-normal px-6 py-3">Tên nhà cung cấp</th>
                             <th class="font-normal px-6 py-3">Email</th>
                             <th class="font-normal px-6 py-3">Website</th>

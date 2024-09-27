@@ -79,11 +79,12 @@
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
-                            <th class="font-normal px-6 py-3">Id <a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idgiam"><i
-                                        class="pdl-5px fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idtang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
+                            <th class="font-normal px-6 py-3">Mã sản phẩm <div><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idgiam"><i
+                                            class="pdl-5px fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idtang"><i
+                                            class="fa fa-arrow-up"></i></a></div>
+                            </th>
                             <th class="font-normal px-6 py-3">Ảnh </th>
                             <th class="font-normal px-6 py-3">Tên sản phẩm <a
                                     href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=tengiam"><i

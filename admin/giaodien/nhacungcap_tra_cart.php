@@ -27,23 +27,72 @@ if (isset($_SESSION['cart'])) {
 	//echo '<pre>';
 	//var_dump($_SESSION['cart']);
 ?>
-	<form action="./admin.php?act=ncccarttralist" method="POST">
-		<div class="table-responsive-sm ">
-			<div class="buttons" style="float: left;"><a href="./admin.php?muc=9&tmuc=Nhà%20cung%20cấp">Thoát</a></div>
-			<div class="buttons">
-				<input type="submit" name="update_click" value="Cập nhật">
-			</div>
-			<table class="table table-bordered table-striped table-hover">
-				<tr>
-					<th>STT</th>
-					<th>Mã sản phẩm</th>
-					<th>Hình ảnh</th>
-					<th>Giá(VNĐ)</th>
-					<th>Số lượng</th>
-					<th>Thành tiền </th>
-					<th>Xóa</th>
-				</tr>
-				<?php
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+            Phiếu trả sản phẩm
+        </p>
+        <a href="./admin.php?tmuc=Nhà cung cấp">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
+    </div>
+    <form action="./admin.php?act=ncccarttralist" method="POST">
+        <div class="table-responsive-sm ">
+
+            <div class="buttons">
+                <input type="submit" name="update_click" value="Cập nhật">
+            </div>
+
+
+            <div class="">
+                <div class=" w-full  grid grid-cols-2 gap-6 ">
+                    <div class="mb-4">
+                        <label class="block  text-2xl text-gray-700">Tên cơ sở: </label>
+                        <input
+                            class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            type="text" name="namenv" value="" />
+
+                    </div>
+                    <div class="mb-4">
+                        <label class="block  text-2xl text-gray-700">Địa chỉ: </label>
+                        <input
+                            class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            type="text" name="diachi" value="" />
+
+                    </div>
+                    <div class="mb-4">
+                        <label class="block  text-2xl text-gray-700">SĐT: </label>
+                        <input
+                            class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" value="" placeholder="VD: 0123456789" />
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block  text-2xl text-gray-700">Ghi chú: </label>
+                        <input
+                            class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            type="text" name="ghichu" value="" />
+
+                    </div>
+
+                </div>
+            </div>
+            <table class=" min-w-full bg-white ">
+                <thead class="h-20 bg-gray-300 ">
+                    <tr class="font-normal px-6 py-3">
+                        <th class="font-normal px-6 py-3">STT</th>
+                        <th class="font-normal px-6 py-3">Mã sản phẩm</th>
+                        <th class="font-normal px-6 py-3">Hình ảnh</th>
+                        <th class="font-normal px-6 py-3">Đơn giá</th>
+                        <th class="font-normal px-6 py-3">Số lượng</th>
+                        <th class="font-normal px-6 py-3">Thành tiền </th>
+                        <th class="font-normal px-6 py-3">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 				$stt = 0;
 				$total = 0;
 				$orderProducts = array();
@@ -54,45 +103,34 @@ if (isset($_SESSION['cart'])) {
 					echo "<td>$stt</td>";
 				?>
 
-					<td><?php echo $key ?></td>
-					<td><img style="width: 100px;height: 100px " src="../img/<?= $val['Pic'] ?>"></td>
-					<td><?php echo number_format($val['price'], 0, '', '.') ?></td>
-					<td><input type="number" name="qty[<?= $key ?>]" value="<?php echo $val['qty'] ?>"></td>
-					<td><?= number_format($val['qty'] * $val['price'], 0, '', '.') ?></td>
-					<td><a href="./admin.php?act=ncccarttralist&xoa=y&id=<?= $key ?>">Xóa</a></td>
-					</tr>
-				<?php
+                    <td><?php echo $key ?></td>
+                    <td><img style="width: 100px;height: 100px " src="../img/<?= $val['Pic'] ?>"></td>
+                    <td><?php echo number_format($val['price'], 0, '', '.') ?></td>
+                    <td><input type="number" name="qty[<?= $key ?>]" value="<?php echo $val['qty'] ?>"></td>
+                    <td><?= number_format($val['qty'] * $val['price'], 0, '', '.') ?></td>
+                    <td><a href="./admin.php?act=ncccarttralist&xoa=y&id=<?= $key ?>">Xóa</a></td>
+                    </tr>
+                    <?php
 					$total += $val['qty'] * $val['price'];
 				}
 				?>
-				<label>Tổng tiền là:<?= $total ?></label>
-			</table>
-			<div style="border: 1px solid #ccc; padding: 10px;">
-				<div class="wrap-field">
-					<label>Tên cơ sở: </label>
-					<input type="text" name="namenv" value="" />
-					<div class="clear-both"></div>
-				</div>
-				<div class="wrap-field">
-					<label>Địa chỉ: </label>
-					<input type="text" name="diachi" value="" />
-					<div class="clear-both"></div>
-				</div>
-				<div class="wrap-field">
-					<label>SĐT: </label>
-					<input type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" value=""  placeholder="VD: 0123456789" />
-					<div class="clear-both"></div>
-				</div>
-				<div class="wrap-field">
-					<label>Ghi chú: </label>
-					<input type="text" name="ghichu" value="" />
-					<div class="clear-both"></div>
-				</div>
 
-				<input type="submit" name="order_click" value="Hoàn Trả">
-			</div>
-		</div>
-	</form>
+            </table>
+            <div class="relative flex flex-col">
+                <label class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+                    Tổng tiền là: <?= $total ?>
+                </label>
+                <button
+                    class="absolute bottom-0 top-16 right-0 w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
+                    type="submit" name="order_click">
+                    Hoàn trả
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
 <?php
 	if (isset($_POST['order_click'])) {
 		if (isset($_POST['namenv']) && $_POST['namenv'] != '') {
@@ -131,10 +169,45 @@ if (isset($_SESSION['cart'])) {
 		} else echo "Vui lòng nhập tên cơ sở!";
 	}
 } else { ?>
-	<div id="error-notify" class="box-content">
-		<h2>Không có sản phẩm nào trong giỏ hàng để trả</h2>
-		<a href="./admin.php?muc=9&tmuc=Nhà%20cung%20cấp">Danh sách nhà cung cấp</a>
-	</div>
+<div id="toast-error"
+    class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+    role="alert" style="display: none; margin-top: 20px; margin-right: 20px;">
+    <div
+        class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+        <svg class="w-8 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+        </svg>
+        <span class="sr-only">Error icon</span>
+    </div>
+    <div class="ms-3 text-3xl font-normal">Chưa có sản phẩm trong giỏ hàng</div>
+    <!-- <a href="./admin.php?tmuc=Nhà cung cấp" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Quay lại
+        danh sách thể loại</a> -->
+    <button type="button"
+        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        data-dismiss-target="#toast-error" aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+    </button>
+</div>
+<script>
+// Hiển thị thông báo thất bại
+function showErrorToast() {
+    const toast = document.getElementById("toast-error");
+    toast.style.display = "flex"; // Hiển thị thông báo
+
+    // Tự động chuyển hướng sau 1 giây
+    setTimeout(function() {
+        window.location.href = "admin.php?tmuc=Nhà cung cấp";
+    }, 1000);
+}
+
+// Gọi hàm để hiển thị toast khi thất bại
+showErrorToast();
+</script>
 <?php }
 ?>
-

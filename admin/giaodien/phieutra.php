@@ -74,7 +74,7 @@
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-        <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+        <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
                 <table class=" min-w-full bg-white   ">
@@ -117,8 +117,8 @@
                             <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
                             <td class="px-6 py-4"><?= $row['ghi_chu'] ?></td>
                             <td class="px-6 py-4"><?= $row['tong_tien'] ?></td>
-                            <td class="px-6 py-4"><a href="./admin.php?act=ctphieutra&id=<?= $row['idpt'] ?>">Xem chi
-                                    tiết</a></td>
+                            <td class="px-6 py-4"><a href="./admin.php?act=ctphieutra&id=<?= $row['idpt'] ?>"><i class="
+                                        fa-regular fa-file-lines fa-lg text-green-500"> </a></td>
                             <div class="clear-both"></div>
                         </tr>
                         <?php } ?>

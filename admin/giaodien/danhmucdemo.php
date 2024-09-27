@@ -52,8 +52,8 @@ if (!empty($_SESSION['nguoidung'])) {
             <table class=" min-w-full bg-white   ">
                 <thead class="h-20 bg-gray-300 ">
                     <tr>
-                        <th class=" px-6 py-4  font-normal ">Id</th>
-                        <th class=" px-6 py-4  font-normal ">Tên quyền</th>
+                        <!-- <th class=" px-6 py-4  font-normal ">Mã quyê</th> -->
+                        <th class=" px-6 py-4  font-normal ">Quyền</th>
                         <th class=" px-6 py-4  font-normal ">Chỉnh sửa</th>
                         <th class=" px-6 py-4  font-normal ">Xóa</th>
                     </tr>
@@ -64,7 +64,7 @@ if (!empty($_SESSION['nguoidung'])) {
                             ?>
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4"><?= $row['id'] ?></td>
+                        <!-- <td class="px-6 py-4"><?= $row['id'] ?></td> -->
                         <td class="px-6 py-4"><?= $row['ten_quyen'] ?></td>
                         <td class="px-6 py-4"><a
                                 href="admin.php?act=suaquyen&id=<?= $row['id'] ?>&tquyen=<?= $row['ten_quyen'] ?>"> <i

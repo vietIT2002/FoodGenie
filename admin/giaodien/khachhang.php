@@ -76,7 +76,7 @@
                         <td class="px-6 py-4"><?= $row['ten_kh'] ?></td>
                         <td class="px-6 py-4"><?= $row['email'] ?></td>
                         <td class="px-6 py-4">
-                        <?php
+                            <?php
                             $phone = $row['phone'];
                             $maskedPhone = substr_replace($phone, '***', -3);
                             echo $maskedPhone;
@@ -97,7 +97,8 @@
                         <td class="px-6 py-4">
 
                             <button type="submit" name="btnkhtt">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800"
+                                    aria-hidden="true"></i>
                             </button>
 
                         </td>
@@ -110,7 +111,7 @@
             <?php
     include './pagination.php';
     ?>
-<div class="clear-both"></div>
+            <div class="clear-both"></div>
         </div>
     </div>
 </div>

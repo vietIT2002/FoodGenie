@@ -77,7 +77,7 @@ if (!empty($_SESSION['nguoidung'])) {
                 <table class=" min-w-full bg-white   ">
                     <thead class="h-20 bg-gray-300 ">
                         <tr class="font-normal px-6 py-3">
-                            <th class="font-normal px-6 py-3">ID</th>
+                            <th class="font-normal px-6 py-3">Mã thể loại</th>
                             <th class="font-normal px-6 py-3">Tên thể loại</th>
                             <th class="font-normal px-6 py-3">Tổng sản phẩm</th>
                             <th class="font-normal px-6 py-3">Chỉnh sửa</th>
@@ -88,17 +88,18 @@ if (!empty($_SESSION['nguoidung'])) {
                         <?php
                             while ($row = mysqli_fetch_array($theloai)) {
                                 ?>
-                                <tr
-                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="px-6 py-4"><?= $row['id'] ?></td>
-                                    <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
-                                    <td class="px-6 py-4"><?= $row['total_products'] ?></td>
-                                    <td class="px-6 py-4">
-                                        <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4">
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4"><?= $row['id'] ?></td>
+                            <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
+                            <td class="px-6 py-4"><?= $row['total_products'] ?></td>
+                            <td class="px-6 py-4">
+                                <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
+                                    <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800"
+                                        aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4">
                                 <a class="btn btn-outline-danger" href="admin.php?act=xoatl&id=<?= $row['id'] ?>"
                                     onclick="return confirm('Are you sure you want to delete this item?');">
                                     <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>
