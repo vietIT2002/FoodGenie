@@ -36,12 +36,12 @@ if (!empty($_GET['id'])) {
                         type="text" name="name" value="<?= (!empty($theloai) ? $theloai['ten_tl'] : "") ?>" />
                 </div>
 
-                <div class="mb-4">
+                <!-- <div class="mb-4">
                     <label class="block  text-2xl text-gray-700">Số lượng:</label>
                     <input
                         class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         type="text" name="tong_sp" value="<?= (!empty($theloai) ? $theloai['tong_sp'] : "") ?>" />
-                </div>
+                </div> -->
 
             </div>
         </div>

@@ -1,16 +1,31 @@
 <?php
 include_once("./connect_db.php");
+
 if (!empty($_SESSION['nguoidung'])) {
     $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
     $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
     $offset = ($current_page - 1) * $item_per_page;
-    $totalRecords = mysqli_query($con, "SELECT * FROM `theloai` WHERE `status` = 0 ");
-    $totalRecords = $totalRecords->num_rows;
+
+    // Lấy tổng số thể loại
+    $totalRecords = mysqli_query($con, "SELECT COUNT(*) as count FROM `theloai` WHERE `status` = 0");
+    $totalRecords = mysqli_fetch_assoc($totalRecords)['count'];
+    
     $totalPages = ceil($totalRecords / $item_per_page);
-    $theloai = mysqli_query($con, "SELECT * FROM `theloai` WHERE `status` = 0  ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+    
+    // Lấy danh sách thể loại và tổng sản phẩm cho từng thể loại
+    $theloai = mysqli_query($con, "
+        SELECT t.*, 
+               IFNULL(SUM(s.so_luong), 0) as total_products 
+        FROM `theloai` t 
+        LEFT JOIN `sanpham` s ON t.id = s.id_the_loai 
+        WHERE t.`status` = 0 
+        GROUP BY t.id 
+        ORDER BY t.id ASC 
+        LIMIT " . $item_per_page . " OFFSET " . $offset
+    );
 
     mysqli_close($con);
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,18 +88,17 @@ if (!empty($_SESSION['nguoidung'])) {
                         <?php
                             while ($row = mysqli_fetch_array($theloai)) {
                                 ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['id'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
-                            <td class="px-6 py-4"><?= $row['tong_sp'] ?></td>
-                            <td class="px-6 py-4">
-                                <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
-                                    <i class="fa fa-pencil-square-o text-green-500" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                            <td class="px-6 py-4">
-
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="px-6 py-4"><?= $row['id'] ?></td>
+                                    <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
+                                    <td class="px-6 py-4"><?= $row['total_products'] ?></td>
+                                    <td class="px-6 py-4">
+                                        <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td class="px-6 py-4">
                                 <a class="btn btn-outline-danger" href="admin.php?act=xoatl&id=<?= $row['id'] ?>"
                                     onclick="return confirm('Are you sure you want to delete this item?');">
                                     <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>

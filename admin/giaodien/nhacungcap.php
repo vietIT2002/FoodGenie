@@ -59,13 +59,12 @@
                     <thead class="h-20 bg-gray-300 ">
                         <tr>
                             <th class=" pl-8  font-normal ">ID</th>
-
                             <th class="font-normal px-6 py-3">Tên nhà cung cấp</th>
                             <th class="font-normal px-6 py-3">Email</th>
                             <th class="font-normal px-6 py-3">Website</th>
                             <th class="font-normal px-6 py-3">SĐT</th>
                             <th class="font-normal px-6 py-3">Đặt hàng</th>
-
+                            <th class="font-normal px-6 py-3">Trả hàng</th>
                             <th class="font-normal px-6 py-3">Xóa</th>
                         </tr>
                     </thead>
@@ -83,8 +82,7 @@
                         <td class="px-6 py-4"><?= $row['web_site'] ?></td>
                         <td class="px-6 py-4"><?= $row['phone'] ?></td>
                         <td class="px-6 py-4">
-                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>"><i class="
-                                        fa-regular fa-file-lines fa-lg text-green-500"></i></a>
+                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>"></a>
                         </td>
                         <td>
                             <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>" class="text-red-600 hover:text-red-800"
@@ -100,9 +98,6 @@
             <!-- Phân trang -->
             <?php include './pagination.php'; ?>
             <!-- </div> -->
-
-
-
         </div>
     </div>
 

@@ -107,13 +107,12 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php
+    include './pagination.php';
+    ?>
+<div class="clear-both"></div>
         </div>
     </div>
-    <?php
-        include './pagination.php';
-        ?>
-    <div class="clear-both"></div>
-    </center>
 </div>
 <?php
     }
