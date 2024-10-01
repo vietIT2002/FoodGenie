@@ -216,6 +216,14 @@
 						$sql='select * from sanpham where id_the_loai='.$listcate_pro['id_tl'].' limit 2, 4';
 						$list=executeResult($sql);
 						foreach($list as $item){
+							$gia_goc = $item['gia_goc'];
+							$don_gia = $item['don_gia'];
+
+							if($gia_goc > $don_gia) {
+								$phan_tram_giam = round((($gia_goc - $don_gia) / $gia_goc) * 100);
+							} else { 
+								$phan_tram_giam = 0;
+							}			
 							if($item['so_luong']==0 && $item['trangthai']==0){
 								echo '<div class="col-md-4 col-xs-6">
 								<div class="product">
@@ -249,9 +257,10 @@
 							<div class="product" >
 								<div class="product-img">
 									<img src="./img/'.$item['hinh_anh'].'" alt="" style="height:250px" onclick="location=\'index.php?act=product&id='.$item['id'].'\'">
+									
 									<div class="product-label">
-										
-										<span class="new">NEW</span>
+										'.($phan_tram_giam > 0 ? '<span class="new">-'.$phan_tram_giam.'%</span>' : '').'
+									
 									</div>
 								</div>
 								<div class="product-body">

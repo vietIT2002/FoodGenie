@@ -16,11 +16,11 @@
 				</div>
 
 				<div class="mySlides1">
-					<img src="./img/banner/banner2.png" class="img-fluid">
+					<a href="./index.php?act=product&id=1028"><img src="./img/banner/banner2.png" class="img-fluid"></a>
 				</div>
 
 				<div class="mySlides1">
-					<a href="./index.php?act=category&id=3"><img src="./img/banner/banner3.png" class="img-fluid"></a>
+					<a><img src="./img/banner/banner3.png" class="img-fluid"></a>
 				</div>
 
 				<div class="mySlides1">
