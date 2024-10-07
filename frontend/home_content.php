@@ -157,7 +157,7 @@ if ($customer_id) {
                                 <div class="products-slick" data-nav="#slick-nav-1">
                                     <!-- product -->
                                     <?php
-                                        $sql='select * from sanpham where 1 limit 4, 5';
+                                        $sql='select * from sanpham where 1 limit 4, 10';
                                         $list=executeResult($sql);
                                         foreach($list as $item){	
 											$gia_goc = $item['gia_goc'];
@@ -287,55 +287,58 @@ if (isset($_SESSION['id'])) {
         // Kiểm tra xem API trả về dữ liệu hợp lệ hay không
         if (isset($recommendations['recommendations']) && count($recommendations['recommendations']) > 0) {
             // Hiển thị danh sách sản phẩm gợi ý
-            echo '<div class="row">';
-            echo '  <div class="col-md-12">';
-            echo '      <div class="section-title text-md-left text-center">';
-            echo '          <h3 class="title">Sản phẩm gợi ý</h3>';
-            echo '      </div>';
-            echo '  </div>';
-            echo '  <div class="col-md-12">';
-            echo '      <div class="row">';
-            echo '          <div class="products-tabs">';
-            echo '              <div id="tab1" class="tab-pane active">';
-            echo '                  <div class="products-slick" data-nav="#slick-nav-1">';
+            echo '<div class="row">
+             <div class="col-md-12">
+			  <div class="section-title text-md-left text-center">
+			    <h3 class="title">Sản phẩm gợi ý</h3>
+				    </div>
+					 </div>
+					  <div class="col-md-12">
+					   <div class="row">
+					      <div class="products-tabs">
+						     <div id="tab1" class="tab-pane active">
+							     <div class="products-slick" data-nav="#slick-nav-1">';
 
             // Duyệt qua các sản phẩm được gợi ý từ API
             foreach ($recommendations['recommendations'] as $item) {
-                $gia_goc = $item['original_price'];
-                $don_gia = $item['price'];
+               $image = $item['image'];
+                        $original_price = $item['original_price'];
+                        $price = $item['price'];
+                        $product_id = $item['product_id'];
+                        $product_name = $item['product_name'];
+                        $sold_quantity = $item['sold_quantity'];
 
-                // Tính phần trăm giảm giá nếu có
-                if ($gia_goc > $don_gia) {
-                    $phan_tram_giam = round((($gia_goc - $don_gia) / $gia_goc) * 100);
-                } else {
-                    $phan_tram_giam = 0;
-                }
+                        // Calculate discount percentage
+                        $discount_percentage = $original_price > $price ? round((($original_price - $price) / $original_price) * 100) : 0;
 
-                // Hiển thị sản phẩm (tùy chỉnh theo thiết kế của bạn)
-                echo '<div class="product">';
-                echo '  <div class="product-img" style="height:250px">';
-                echo '      <img src="./img/' . htmlspecialchars($item['image']) . '" alt="" style="height:100%">';
-                echo '      <div class="product-label">';
-                if ($phan_tram_giam > 0) {
-                    echo '          <span class="new">-' . $phan_tram_giam . '%</span>';
-                }
-                echo '      </div>';
-                echo '  </div>';
-                echo '  <div class="product-body">';
-                echo '     <p class="product-category"><small>'.$item['sold_quantity'].' đã bán</small></p>';
-                echo '      <h3 class="product-name"><a href="?act=product&id=' . htmlspecialchars($item['product_id']) . '">' . htmlspecialchars($item['product_name']) . '</a></h3>';
-                echo '      <h4 class="product-price">' . currency_format($item['price']) . '</h4>';
-                echo '												<h4 class="product-pricece" id="price-sold">'.currency_format($item['original_price']).' </h4>  <div class="product-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</div></div>';
-                echo '  <div class="add-to-cart">';
-                echo '      <button class="add-to-cart-btn" onclick="addCart(' . htmlspecialchars($item['product_id']) . ', 1); themThanhCong(' . htmlspecialchars($item['product_id']) . ');"><i class="fa fa-shopping-cart"></i> <span>Thêm vào giỏ</span></button>';
-                echo '  </div>';
-                echo '</div>';
+                        // Display each recommended product
+                        echo '
+                        <div class="product">
+                            <div class="product-img" style="height:250px">
+                                <img src="./img/' . $image . '" alt="" style="height:100%">
+                                <div class="product-label">
+                                    ' . ($discount_percentage > 0 ? '<span class="new">-' . $discount_percentage . '%</span>' : '') . '
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category"><small>' . $sold_quantity . ' đã bán</small></p>
+                                <h3 class="product-name"><a href="?act=product&id=' . $product_id . '">' . $product_name . '</a></h3>
+                                <div class="price-two">
+                                    <h4 class="product-price">' . currency_format($price) . '</h4>
+                                    <h4 class="product-pricece" id="price-sold">' . currency_format($original_price) . ' </h4>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn" onclick="addCart(' . $product_id . ', 1);"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
+                            </div>
+                        </div>';
             }
 
             echo '                  </div>';
