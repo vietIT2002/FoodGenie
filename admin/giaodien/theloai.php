@@ -57,9 +57,9 @@ if (!empty($_SESSION['nguoidung'])) {
 
         <div class="flex py-8 pr-6">
             <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+                class="w-40 h-16 p-2 rounded-[15px] bg-blue-500 hover:bg-blue-500 text-white text-3xl rounded-full "
                 type="button">
-                Thêm thể loại
+                Thêm
             </button>
             <!-- <div class="buttons">
                 <a href="admin.php?act=addtl">Thêm thể loại</a>

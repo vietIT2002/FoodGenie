@@ -48,9 +48,9 @@
 
         <div class="flex py-8 pr-6">
             <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+                class="w-40 h-16 p-2 rounded-[15px] bg-blue-500 hover:bg-blue-500 text-white text-3xl rounded-full "
                 type="button">
-                Thêm mới
+                Thêm
             </button>
         </div>
     </div>
@@ -81,7 +81,8 @@
                         <?php while ($row = mysqli_fetch_array($nhanvien)) { ?>
                         <tr class="  bg-white  dark:bg-gray-800 dark:border-gray-700">
                             <td class="pl-8 ">NV<?= $row['id'] ?></td>
-                            <td><img class="h-40 w-40 rounded-full object-cover" src="../img/<?= $row['hinh_anh'] ?>" alt="Ảnh" /></td>
+                            <td><img class="h-40 w-40 rounded-full object-cover" src="../img/<?= $row['hinh_anh'] ?>"
+                                    alt="Ảnh" /></td>
                             </td>
                             <td><?= $row['ten_nv'] ?></td>
                             <td><?= $row['ten_dangnhap'] ?></td>

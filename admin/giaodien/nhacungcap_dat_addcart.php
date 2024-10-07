@@ -26,12 +26,12 @@ if ($product > 0) {
 		}
 		$_SESSION['success'] = 'Ton tai gio hang! cap nhat thanh cong:';
 		?>
-		<div id="error-notify" class="box-content">
-			<h2>Đã thêm vào giỏ hàng</h2>
+<div id="error-notify" class="box-content">
+    <h2>Đã thêm vào giỏ hàng</h2>
 
-			<a href="javascript:window.history.go(-1)">Danh sách sản phẩm</a>
-		</div>
-		<?php
+    <a href="javascript:window.history.go(-1)">Danh sách sản phẩm</a>
+</div>
+<?php
 	}
 	// không tồn tại($_SESSION['cart'])
 	else {	//var_dump("chua ton tai");
@@ -41,12 +41,12 @@ if ($product > 0) {
 		$_SESSION['cart'][$id]['price'] = $obj->don_gia;
 		$_SESSION['cart'][$id]['Pic'] = $obj->hinh_anh;
 		?>
-		<div id="error-notify" class="box-content">
-			<h2>Đã thêm vào giỏ hàng</h2>
+<div id="error-notify" class="box-content">
+    <h2>Đã thêm vào giỏ hàng</h2>
 
-			<a href="javascript:window.history.go(-1)">Danh sách sản phẩm</a>
-		</div>
-		<?php
+    <a href="javascript:window.history.go(-1)">Danh sách sản phẩm</a>
+</div>
+<?php
 	}
 }
 // kiểm tra sản phẩm có trong csdl hay không. Nếu có

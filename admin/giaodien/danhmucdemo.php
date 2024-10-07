@@ -30,9 +30,9 @@ if (!empty($_SESSION['nguoidung'])) {
 
 
     <div class="flex py-8 pr-6">
-        <button class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+        <button class="w-40 h-16 p-2 rounded-[15px] bg-blue-500 hover:bg-blue-500 text-white text-3xl rounded-full "
             type="button">
-            <a href="admin.php?act=addquyen">Thêm Quyền</a>
+            <a href="admin.php?act=addquyen">Thêm</a>
         </button>
         <!-- <div class="buttons">
             <a href="admin.php?act=addquyen">Thêm Quyền</a>

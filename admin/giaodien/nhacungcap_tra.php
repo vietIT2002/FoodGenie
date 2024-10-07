@@ -41,11 +41,20 @@ if (!empty($_SESSION['nguoidung'])) {
             </button>
         </a>
     </div>
-    <div class="flex py-8 pr-6">
+    <!-- <div class="flex py-8 pr-6">
         <div class="buttons">
             <form name="nhacungcap-formdat" method="POST"
                 action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>" enctype="multipart/form-data">
                 <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
+        </div>
+    </div> -->
+    <div class="flex justify-end py-8 pr-6">
+        <div>
+            <a href="./admin.php?act=ncccarttralist&idncc">
+                <i class="fa fa-shopping-cart" style="font-size: 36px"></i>
+
+            </a>
+
         </div>
     </div>
 </div>
@@ -78,8 +87,7 @@ if (!empty($_SESSION['nguoidung'])) {
                         <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
                         <td class="px-6 py-4">
                             <a href="./admin.php?act=ncccarttra&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>">Thêm
-                                vào
-                                giỏ</a>
+                            </a>
                             <div class="clear-both"></div>
                     </tr>
                     <?php } ?>

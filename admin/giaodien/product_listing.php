@@ -61,9 +61,9 @@
 
         <div class="flex py-8 pr-6">
             <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
+                class="w-40 h-16 p-2 rounded-[15px] bg-blue-500 hover:bg-blue-500 text-white text-3xl rounded-full "
                 type="button">
-                Thêm mới
+                Thêm
             </button>
             <!-- <div class="buttons">
                 <a href="admin.php?act=add"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm </a>
@@ -105,7 +105,7 @@
 
                             <th class="font-normal px-6 py-3">Khối lượng </th>
                             <th class="font-normal px-6 py-3">Xuất xứ</th>
-                            <th class="font-normal px-6 py-3">Trạng thái </th>
+                            <!-- <th class="font-normal px-6 py-3">Trạng thái </th> -->
                             <th class="font-normal px-6 py-3">Chỉnh sửa</th>
                             <th class="font-normal px-6 py-3">Xóa</th>
                         </tr>
@@ -142,12 +142,13 @@
                             <td class="px-6 py-4">
                                 <div class="pts-abl"><?= $row['xuat_xu'] ?></div>
                             </td>
-                            <td class="px-6 py-4">
+                            <!-- <td class="px-6 py-4">
                                 <div class="pts-abl"><?php if ($row['trangthai'] == '0')
                                             echo "Hiển thị";
                                         else
                                             echo "Bị ẩn" ?></div>
-                            </td>
+                               
+                            </td> -->
                             <td class="px-6 py-4">
                                 <div class="pts-abl"><a class="btn btn-outline-success"
                                         href="admin.php?act=sua&id=<?= $row['id'] ?>"><i
