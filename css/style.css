@@ -941,6 +941,7 @@ textarea.input {
 \*----------------------------*/
 
 .product {
+  flex: 0 0 calc(25% - 15px);
   position: relative;
   margin: 15px 0px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
@@ -1184,7 +1185,30 @@ textarea.input {
   opacity: 1;
   visibility: visible;
 }
+.load-more-container {
+  text-align: center;
+  margin-top: 20px; 
+}
 
+.btn-load-more {
+  background-color: #295F98; 
+  color: white; 
+  border: none; 
+  border-radius: 25px; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+.btn-load-more:hover {
+  background-color: #E89F71; 
+  transform: translateY(-2px); 
+}
+
+.btn-load-more:focus {
+  outline: none; 
+}
 /* My_bill */
 .title-mybill>th{
   text-align: center;
@@ -2504,4 +2528,5 @@ text-align: left;
     margin-top: 10px;
   }
 }
+
 

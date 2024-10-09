@@ -14,10 +14,10 @@ $recommended_products = [];
 
 // Fetch the recommended products from the API
 if ($customer_id) {
-    $response = @file_get_contents($api_url); // Suppress warnings for failed requests
+    $response = @file_get_contents($api_url); 
 
     if ($response !== false) {
-        $recommended_products = json_decode($response, true); // Decode JSON response
+        $recommended_products = json_decode($response, true);
     } else {
         echo "Error fetching recommendations.";
     }
@@ -241,135 +241,106 @@ if ($customer_id) {
             </div><br><br>
             <!-- /row -->
 
-            <div class="row">
-
-                <!-- section title -->
-                <!-- <div class="col-md-12">
-					<div class="section-title text-md-left text-center">
-						<h3 class="title">Gợi ý hôm nay</h3>
-					</div>
-				</div> -->
-                <?php
-// Bắt đầu session
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// In ra nội dung của session để kiểm tra
-// print_r($_SESSION);
-
+<!-- Recomment system -->
+<?php
 // Kiểm tra nếu khách hàng đã đăng nhập
 if (isset($_SESSION['id'])) {
-    // Lấy ID khách hàng từ session
     $customer_id = $_SESSION['id'];
+    $recommendations = getProductRecommendations($customer_id);
 
-    echo 'Customer ID: ' . $customer_id;
-
-    // Số lượng sản phẩm muốn hiển thị (10 sản phẩm)
-    $n_recommendations = 10;
-
-    // Tạo URL để gọi API gợi ý sản phẩm
-    $api_url = "http://127.0.0.1:5000/recommend/{$customer_id}"; // Thay $id bằng $customer_id
-
-    // Gọi API gợi ý sản phẩm bằng file_get_contents
-    $response = file_get_contents($api_url);
-
-    // Kiểm tra xem gọi API có thành công hay không
-    if ($response === FALSE) {
-        echo 'Gọi API thất bại!';
+    if ($recommendations) {
+        displayRecommendedProducts($recommendations);
     } else {
-        // Chuyển đổi dữ liệu JSON từ API thành mảng PHP
-        $recommendations = json_decode($response, true);
-
-        // In ra phản hồi từ API để kiểm tra
-        // print_r($recommendations);
-
-        // Kiểm tra xem API trả về dữ liệu hợp lệ hay không
-        if (isset($recommendations['recommendations']) && count($recommendations['recommendations']) > 0) {
-            // Hiển thị danh sách sản phẩm gợi ý
-            echo '<div class="row">
-             <div class="col-md-12">
-			  <div class="section-title text-md-left text-center">
-			    <h3 class="title">Sản phẩm gợi ý</h3>
-				    </div>
-					 </div>
-					  <div class="col-md-12">
-					   <div class="row">
-					      <div class="products-tabs">
-						     <div id="tab1" class="tab-pane active">
-							     <div class="products-slick" data-nav="#slick-nav-1">';
-
-            // Duyệt qua các sản phẩm được gợi ý từ API
-            foreach ($recommendations['recommendations'] as $item) {
-               $image = $item['image'];
-                        $original_price = $item['original_price'];
-                        $price = $item['price'];
-                        $product_id = $item['product_id'];
-                        $product_name = $item['product_name'];
-                        $sold_quantity = $item['sold_quantity'];
-
-                        // Calculate discount percentage
-                        $discount_percentage = $original_price > $price ? round((($original_price - $price) / $original_price) * 100) : 0;
-
-                        // Display each recommended product
-                        echo '
-                        <div class="product">
-                            <div class="product-img" style="height:250px">
-                                <img src="./img/' . $image . '" alt="" style="height:100%">
-                                <div class="product-label">
-                                    ' . ($discount_percentage > 0 ? '<span class="new">-' . $discount_percentage . '%</span>' : '') . '
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category"><small>' . $sold_quantity . ' đã bán</small></p>
-                                <h3 class="product-name"><a href="?act=product&id=' . $product_id . '">' . $product_name . '</a></h3>
-                                <div class="price-two">
-                                    <h4 class="product-price">' . currency_format($price) . '</h4>
-                                    <h4 class="product-pricece" id="price-sold">' . currency_format($original_price) . ' </h4>
-                                </div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn" onclick="addCart(' . $product_id . ', 1);"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
-                            </div>
-                        </div>';
-            }
-
-            echo '                  </div>';
-            echo '                  <div id="slick-nav-1" class="products-slick-nav"></div>';
-            echo '              </div>';
-            echo '          </div>';
-            echo '      </div>';
-            echo '  </div>';
-            echo '</div>';
-        } else {
-            echo '<p>Không có sản phẩm gợi ý cho bạn vào lúc này.</p>';
-        }
+        echo '<p>Không có sản phẩm gợi ý cho bạn vào lúc này.</p>';
     }
 } else {
-    // Nếu khách hàng chưa đăng nhập
-    echo '<p>Vui lòng đăng nhập để xem sản phẩm gợi ý.</p>';
+}
+
+// Hàm gọi API để gợi ý sản phẩm
+function getProductRecommendations($customer_id) {
+    $api_url = "http://127.0.0.1:5000/recommend/{$customer_id}";
+    $response = file_get_contents($api_url);
+
+    if ($response === FALSE) {
+        echo 'Gọi API thất bại!';
+        return null;
+    }
+
+    $data = json_decode($response, true);
+    return isset($data['recommendations']) ? $data['recommendations'] : null;
+}
+
+// Hàm hiển thị sản phẩm gợi ý
+function displayRecommendedProducts($recommendations) {
+    echo '<div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-md-left text-center">
+                    <h3 class="title">Gợi ý hôm nay</h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="product-row row" style="display: flex; flex-wrap: wrap;">';
+
+    foreach ($recommendations as $index => $item) {
+        echo displayProductItem($item, $index);
+    }
+
+    echo '      </div>'; // End .product-row
+    echo '  </div>'; // End .col-md-12
+
+    // Nút xem thêm
+    echo '<div class="col-md-12 text-center load-more-container ">
+            <button id="load-more" class="btn-load-more" onclick="loadMore()">Xem thêm</button>
+          </div>';
+
+    echo '</div>'; // End .row
+}
+
+// Hàm hiển thị từng sản phẩm
+function displayProductItem($item, $index) {
+    $image = $item['image'];
+    $original_price = $item['original_price'];
+    $price = $item['price'];
+    $product_id = $item['product_id'];
+    $product_name = $item['product_name'];
+    $sold_quantity = $item['sold_quantity'];
+
+    // Tính phần trăm giảm giá
+    $discount_percentage = $original_price > $price ? round((($original_price - $price) / $original_price) * 100) : 0;
+
+    $style_display = ($index >= 8) ? 'display: none;' : '';
+
+    return '
+        <div class="col-md-3 col-sm-6 col-xs-12 product-item" style="' . $style_display . '"> <!-- 4 sản phẩm trên mỗi hàng -->
+            <div class="product">
+                <div class="product-img" style="height:250px">
+                    <img src="./img/' . $image . '" alt="" style="height:100%">
+                    <div class="product-label">
+                        ' . ($discount_percentage > 0 ? '<span class="new">-' . $discount_percentage . '%</span>' : '') . '
+                    </div>
+                </div>
+                <div class="product-body">
+                    <p class="product-category"><small>' . $sold_quantity . ' đã bán</small></p>
+                    <h3 class="product-name"><a href="?act=product&id=' . $product_id . '">' . $product_name . '</a></h3>
+                    <div class="price-two">
+                        <h4 class="product-price">' . currency_format($price) . '</h4>
+                        <h4 class="product-pricece" id="price-sold">' . currency_format($original_price) . '</h4>
+                    </div>
+                    <div class="product-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="add-to-cart">
+                    <button class="add-to-cart-btn" onclick="addCart(' . $product_id . ', 1);"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
+                </div>
+            </div>
+        </div>'; // End .col-md-3
 }
 ?>
-
-                <!-- /section title -->
-
-                <!-- Products tab & slick -->
-                <div class="col-md-12">
-                </div>
-                <!-- Products tab & slick -->
-            </div>
-        </div>
-        <!-- /container -->
-    </div><br><br>
-    <!-- /SECTION -->
-
+</div><br><br>
 </body>
-
 </html>

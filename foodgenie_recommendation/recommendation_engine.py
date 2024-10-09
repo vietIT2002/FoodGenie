@@ -3,7 +3,7 @@ from collections import defaultdict
 import random
 
 # Function to recommend products based on customer ID
-def recommend_products(customer_id, hoadon_df, cthoadon_df, sanpham_df, n_recommendations=11):
+def recommend_products(customer_id, hoadon_df, cthoadon_df, sanpham_df, n_recommendations=18):
     # Filter orders for the customer
     customer_orders = hoadon_df[hoadon_df['id_khachhang'] == customer_id]
     
