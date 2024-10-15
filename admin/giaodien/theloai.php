@@ -7,7 +7,7 @@ if (!empty($_SESSION['nguoidung'])) {
     $offset = ($current_page - 1) * $item_per_page;
 
     // Lấy tổng số thể loại
-    $totalRecords = mysqli_query($con, "SELECT COUNT(*) as count FROM `theloai` WHERE `status` = 0");
+    $totalRecords = mysqli_query($con, "SELECT COUNT(*) as count FROM `theloai`");
     $totalRecords = mysqli_fetch_assoc($totalRecords)['count'];
     
     $totalPages = ceil($totalRecords / $item_per_page);
@@ -18,11 +18,15 @@ if (!empty($_SESSION['nguoidung'])) {
                IFNULL(SUM(s.so_luong), 0) as total_products 
         FROM `theloai` t 
         LEFT JOIN `sanpham` s ON t.id = s.id_the_loai 
-        WHERE t.`status` = 0 
         GROUP BY t.id 
         ORDER BY t.id ASC 
         LIMIT " . $item_per_page . " OFFSET " . $offset
     );
+
+    // Tính tổng số sản phẩm
+    $totalProductsQuery = mysqli_query($con, "SELECT SUM(IFNULL(s.so_luong, 0)) as total_products FROM sanpham s");
+    $totalProductsRow = mysqli_fetch_assoc($totalProductsQuery);
+    $total_products_sum = $totalProductsRow['total_products'];
 
     mysqli_close($con);
 ?>
@@ -33,27 +37,22 @@ if (!empty($_SESSION['nguoidung'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quản lý Thể loại</title>
 
     <!-- Thêm Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-
     <div class="flex justify-between items-center">
-        <div class="flex  pt-10 p pl-8">
+        <div class="flex pt-10 pl-8">
             <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
                 Quản lý Thể loại
             </p>
-
         </div>
-
 
         <div class="flex py-8 pr-6">
             <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
@@ -61,20 +60,13 @@ if (!empty($_SESSION['nguoidung'])) {
                 type="button">
                 Thêm
             </button>
-            <!-- <div class="buttons">
-                <a href="admin.php?act=addtl">Thêm thể loại</a>
-            </div> -->
         </div>
     </div>
 
-
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
-
-
         <div class='h-11/12 w-full px-4 bg-base-100 divide-y divide-slate-200'>
-
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
+                <table class="min-w-full bg-white">
                     <thead class="h-20 bg-gray-300 ">
                         <tr class="font-normal px-6 py-3">
                             <th class="font-normal px-6 py-3">Mã thể loại</th>
@@ -88,15 +80,13 @@ if (!empty($_SESSION['nguoidung'])) {
                         <?php
                             while ($row = mysqli_fetch_array($theloai)) {
                                 ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">TL<?= $row['id'] ?></td>
                             <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
                             <td class="px-6 py-4"><?= $row['total_products'] ?></td>
                             <td class="px-6 py-4">
                                 <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
-                                    <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800"
-                                        aria-hidden="true"></i>
+                                    <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800" aria-hidden="true"></i>
                                 </a>
                             </td>
                             <td class="px-6 py-4">
@@ -104,13 +94,15 @@ if (!empty($_SESSION['nguoidung'])) {
                                     onclick="return confirm('Are you sure you want to delete this item?');">
                                     <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>
                                 </a>
-
-
-
                             </td>
-                            <div class="clear-both"></div>
                         </tr>
                         <?php } ?>
+                        <tr>
+                            <td colspan="2" class="px-6 py-4 font-bold text-red-600">Tổng sản phẩm:</td>
+                            <td class="px-6 py-4 font-bold text-blue-600"><?= $total_products_sum ?></td>
+                            <td colspan="2" class="px-6 py-4"></td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -124,11 +116,8 @@ if (!empty($_SESSION['nguoidung'])) {
     <?php
 }
 ?>
-    <?php
 
-    include 'theloai_adding.php';
-
-    ?>
+<?php include 'theloai_adding.php'; ?>
 </body>
 
 </html>

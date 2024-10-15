@@ -22,13 +22,29 @@
 
 <div id="nd" class="cursor-pointer">
     <?php
-    include('./connect_db.php');
+    include('./connect_db.php'); // Kết nối với cơ sở dữ liệu
     include('./function.php');
 
-    $text = "<i class='fa fa-user fa-fw'> </i>" . $_SESSION['nguoidung'];
-    echo '<div style="text-transform:uppercase;margin-right:5px">' . $text . "</div>";
+    // Lấy tên người dùng từ session
+    $tenNguoiDung = $_SESSION['nguoidung'];
+
+    // Truy vấn cơ sở dữ liệu để lấy đường dẫn hình ảnh của nhân viên
+    $sql = "SELECT hinh_anh FROM nhanvien WHERE ten_nv = '$tenNguoiDung'";
+    $result = mysqli_query($con, $sql); // Sử dụng biến $con ở đây
+    if ($row = mysqli_fetch_assoc($result)) {
+        $hinhAnh = $row['hinh_anh']; // Đường dẫn hình ảnh từ cơ sở dữ liệu
+        // Hiển thị hình ảnh thay cho icon
+        echo '<div style="display: flex; align-items: center; text-transform:uppercase; margin-right:5px;">'; // Sử dụng Flexbox
+        echo "<img src='../img/$hinhAnh' alt='Hình ảnh nhân viên' style='width:35px; height:35px; border-radius:50%; margin-right:5px;'>";
+        echo $tenNguoiDung;
+        echo "</div>";
+    } else {
+        echo "Không tìm thấy thông tin người dùng.";
+    }
     ?>
 </div>
+
+
 
 <!-- Dropdown menu button (ẩn ban đầu) -->
 <!-- <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"

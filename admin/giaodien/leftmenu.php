@@ -11,13 +11,18 @@
     <a href="admin.php?vitri=left&giatri=5"><div>Nhân viên</div></a>
     <a href="admin.php?vitri=left&giatri=5"><div>Tài khoản</div></a> -->
 
-    <ul class="input-select2">
-        <?php
-        $sql = "select id,ten_danhmuc from danhmuc,quyendahmuc where `id_danhmuc`=`id` AND `id_quyen`=" . $_SESSION['quyen'] . "";
-        $list = executeResult($sql);
-        foreach ($list as $item) {
-            echo '<li class="item"><a href="admin.php?muc=' . $item['id'] . '&tmuc=' . $item['ten_danhmuc'] . '">' . $item['ten_danhmuc'] . '</a></li>';
-        }
+    <ul class="input-select2" >    
+    <?php
+            $sql = "select id, ten_danhmuc, icon from danhmuc,quyendahmuc where `id_danhmuc`=`id` AND `id_quyen`=" . $_SESSION['quyen'] . "";
+            $list = executeResult($sql);
+            
+            foreach ($list as $item) {
+                echo '<li class="item"><a href="admin.php?muc=' . $item['id'] . '&tmuc=' . urlencode($item['ten_danhmuc']) . '" class="d-flex align-items-center">';
+                echo $item['icon']; // Đảm bảo rằng $item['icon_dm'] chứa mã HTML của icon
+                echo '<span class="ml-2">' . $item['ten_danhmuc'] . '</span>'; // Thêm khoảng cách bằng cách sử dụng class ml-2
+                echo '</a></li>';
+            }
         ?>
     </ul>
+</ul>
 </div>

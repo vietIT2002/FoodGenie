@@ -445,8 +445,8 @@ textarea.input {
 \*----------------------------*/
 
 #header {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #15161D;
 }
 
@@ -2195,10 +2195,7 @@ textarea.input {
 /* Phuc css --------------------------------------------------------------------------*/
 /* Phuc css --------------------------------------------------------------------------*/
 #leftmenu{
-
-
-
-  background-color: #15161D;
+  background-color: #6EACDA;
   float: left;
   border:solid 2px  rgb(27, 2, 36);
 }
@@ -2229,8 +2226,7 @@ textarea.input {
 #header2 {
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #19191a;
-  /* background-color: rgb(84, 61, 177); */
+  background-color: #03346E;
   height: 50px;
   position: relative;
   

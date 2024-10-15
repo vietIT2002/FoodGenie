@@ -1,0 +1,512 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+ERROR:root:Không th\u1ec3 l\u1ea5y d\u1eef li\u1ec7u t\u1eeb c\u01a1 s\u1edf d\u1eef li\u1ec7u.
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 19:59:54] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 19:59:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:root:Không th\u1ec3 l\u1ea5y d\u1eef li\u1ec7u t\u1eeb c\u01a1 s\u1edf d\u1eef li\u1ec7u.
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 19:59:58] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+ERROR:root:Không th\u1ec3 l\u1ea5y d\u1eef li\u1ec7u t\u1eeb c\u01a1 s\u1edf d\u1eef li\u1ec7u.
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:02:34] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+ERROR:root:Không th\u1ec3 l\u1ea5y d\u1eef li\u1ec7u t\u1eeb c\u01a1 s\u1edf d\u1eef li\u1ec7u.
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:02:35] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+ERROR:root:Không th\u1ec3 l\u1ea5y d\u1eef li\u1ec7u t\u1eeb c\u01a1 s\u1edf d\u1eef li\u1ec7u.
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:02:37] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:02:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:46] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:46] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:46] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:46] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=ATJ9DXWq5VhXW9Quunf0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:46] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:47] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:47] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:47] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:48] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=ATJ9DXWq5VhXW9Quunf0 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:05:48] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:05] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:05] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:05] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:05] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:05] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:06] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:06] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:06] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:06] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:06] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:15] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:15] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:15] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:15] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:11:15] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:19] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:19] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:19] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:19] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:20] "[36mGET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:22] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:22] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:22] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:22] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:22] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:23] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:23] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:23] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:23] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:23] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:25] "[35m[1mGET /recommend/1012 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:25] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:25] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:25] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:13:25] "GET /recommend/1012?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:15:00] "[35m[1mGET /recommend/1019 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:15:00] "GET /recommend/1019?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:15:00] "GET /recommend/1019?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:15:00] "GET /recommend/1019?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:15:00] "GET /recommend/1019?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:18:25] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:18:25] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:18:25] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:18:25] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=5pmRO6BKJ0UR1PWqdgJk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:18:25] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:31:04] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:31:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:04] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:05] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:06] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:07] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:32:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:34:33] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:34:36] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:34:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:34:37] "[33mGET /recommend/1021 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:34:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:43:16] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:43:16] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:43:16] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:43:16] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=p9bZoEUId73kMbN0jPv9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:43:16] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:45:38] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:45:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:45:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:45:38] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=STNcOVlNhYfXnhPXmx3X HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:45:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:28] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=EnDu9Vfh8KPfvWWUbe1j HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=EnDu9Vfh8KPfvWWUbe1j HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:47:29] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:27] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:27] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=WcswajXaW2YDNMz7JtvJ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=WcswajXaW2YDNMz7JtvJ HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:48:28] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:37] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:37] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:37] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:37] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=vRfNQy0XxgWlfABXv8iz HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=vRfNQy0XxgWlfABXv8iz HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:38] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=vRfNQy0XxgWlfABXv8iz HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:49:39] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:24] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:24] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:24] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:24] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:24] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:25] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:25] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:25] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:25] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 20:57:25] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:02:09] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:02:09] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:02:09] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:02:09] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:02:10] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:57] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:57] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:57] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:57] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:57] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:58] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:58] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:58] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:58] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:58] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:59] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:59] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:59] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:59] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=JPpPTw5IDos1nKUiQsU6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:03:59] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:51] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:51] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:51] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:51] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=AIpOshwFlh5VUbWUG9kX HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:51] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:52] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:52] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:52] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:52] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=AIpOshwFlh5VUbWUG9kX HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:52] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:57] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:57] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:57] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:57] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=AIpOshwFlh5VUbWUG9kX HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:11:57] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:20:18] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:20:19] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:20:19] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:20:19] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=r0kKr5xz0O8HATEaEiHX HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:20:19] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:11] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:11] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:12] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:12] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:12] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:12] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:12] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:17] "[35m[1mGET /recommend/1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:17] "GET /recommend/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:17] "GET /recommend/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:17] "GET /recommend/1?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:17] "GET /recommend/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:22] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:22] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:22] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:29:22] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:11] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:11] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:15] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:15] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:15] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:15] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=tWr4w6BNL2dJaOEgHy1L HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:34:15] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:02] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:02] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:02] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:02] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=pnt4FcA8HfN0VUcWp3fN HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:03] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:12] "[35m[1mGET /recommend/1001 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /recommend/1001?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /recommend/1001?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /recommend/1001?__debugger__=yes&cmd=resource&f=console.png&s=pnt4FcA8HfN0VUcWp3fN HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:48:13] "GET /recommend/1001?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:37] "[35m[1mGET /recommend/1001 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:37] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:37] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:37] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=console.png&s=pnt4FcA8HfN0VUcWp3fN HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:37] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:53] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:53] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:53] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 21:50:54] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=pnt4FcA8HfN0VUcWp3fN HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:40] "[35m[1mGET /recommend/1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:40] "GET /recommend/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:40] "GET /recommend/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:40] "GET /recommend/1?__debugger__=yes&cmd=resource&f=console.png&s=ARPrXUynKLH07rBVqcs3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:41] "GET /recommend/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:46] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:46] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:46] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:46] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=ARPrXUynKLH07rBVqcs3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:11:47] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:12:30] "[35m[1mPOST /recommend HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:12:52] "[35m[1mPOST /recommend HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:13:15] "[31m[1mPOST /recommend/1021 HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:13:31] "[31m[1mPOST /recommend/1021 HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:14:40] "[31m[1mPOST /recommend/1001 HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:14:41] "[31m[1mPOST /recommend/1001 HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:18:02] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:18:02] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:18:02] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=pnt4FcA8HfN0VUcWp3fN HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:23] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:23] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:23] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:23] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=2ttPFSMn8SDx9MQhh7iW HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:23] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:27] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=2ttPFSMn8SDx9MQhh7iW HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:26:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:29:26] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:29:26] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:29:26] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:29:27] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=HOYSwcoYxDZDxZUPqhzp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:29:27] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\models\\recommender.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:07] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:07] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:07] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:07] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=6Yclj7wnsxil1hyLEkQP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:07] "[36mGET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:08] "[35m[1mGET /recommend/1021 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:09] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:09] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:09] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png&s=6Yclj7wnsxil1hyLEkQP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:34:09] "GET /recommend/1021?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:35:38] "[35m[1mGET /recommend/1001 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:35:39] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:35:39] "[36mGET /recommend/1001?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Oct/2024 22:35:39] "GET /recommend/1001?__debugger__=yes&cmd=resource&f=console.png&s=6Yclj7wnsxil1hyLEkQP HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\product-recommendation-system\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 370-451-709

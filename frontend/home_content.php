@@ -340,7 +340,28 @@ function displayProductItem($item, $index) {
             </div>
         </div>'; // End .col-md-3
 }
+
 ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let visibleItems = 8; 
+        const allItems = document.querySelectorAll('.product-item'); 
+
+        function loadMore() {
+            for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) { 
+                allItems[i].style.display = 'block'; 
+            }
+            visibleItems += 4; 
+
+            if (visibleItems >= allItems.length) {
+                document.getElementById('load-more').style.display = 'none';
+            }
+        }
+
+        // Đảm bảo nút bấm 'Xem thêm' hoạt động
+        document.getElementById('load-more').addEventListener('click', loadMore);
+    });
+</script>
 </div><br><br>
 </body>
 </html>

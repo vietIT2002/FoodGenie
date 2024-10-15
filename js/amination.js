@@ -168,18 +168,3 @@ $(document).ready(function(){
             element.style.display = 'none';
         }
     }
-
-// Hide and show products
-    let visibleItems = 8; 
-    const allItems = document.querySelectorAll('.product-item'); 
-
-    function loadMore() {
-        for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) { 
-            allItems[i].style.display = 'block'; 
-        }
-        visibleItems += 4; 
-
-        if (visibleItems >= allItems.length) {
-            document.getElementById('load-more').style.display = 'none';
-        }
-    }

@@ -1,0 +1,5 @@
+pandas
+scikit-learn
+mysql-connector-python  # hoặc pymysql
+numpy
+SQLAlchemy  # Tuỳ chọn, nếu bạn muốn dùng ORM
