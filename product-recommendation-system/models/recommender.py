@@ -81,6 +81,7 @@ def get_hybrid_recommendations(user_id):
             # Lấy các thông tin cần thiết và chuyển đổi sang kiểu int
             product_details = product_info.iloc[0]
             detailed_recommendations.append({
+                'id': int(product_details['id']),
                 'ten_sp': product_details['ten_sp'],
                 'don_gia': float(product_details['don_gia']),  # Chuyển đổi sang float
                 'gia_goc': float(product_details['gia_goc']),  # Chuyển đổi sang float
