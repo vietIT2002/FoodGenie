@@ -57,7 +57,7 @@
 
     <div class="flex justify-between items-center">
         <div class="flex pt-10 pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Quản lý Hóa đơn</p>
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"  style="color: #0099cc !important;">Quản lý Hóa đơn</p>
         </div>
         <div class="flex py-8 pr-6"></div>
     </div>

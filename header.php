@@ -1,3 +1,4 @@
+<link rel="shortcut" type="image/img" href="./img/banner/foodgenie.png">
 <style>
 	#header {
   	background-color: #F9D5CA;

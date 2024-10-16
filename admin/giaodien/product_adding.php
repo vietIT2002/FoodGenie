@@ -7,6 +7,7 @@ if (mysqli_connect_errno()) {
 $theloai = mysqli_query($con, "SELECT * FROM `theloai`");
 $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 ?>
+</style>
 
 <body>
 
@@ -75,9 +76,10 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                             </div>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nội dung:</label>
-                                <textarea class="w-2/3 text-2xl pl-4 h-32 p-[9px 13px] focus:outline-none"
-                                    name="content" id="product-content"></textarea>
+                                <textarea class="w-2/3 text-2xl pl-4 focus:outline-none"
+                                        name="content" id="product-content"></textarea>
                             </div>
+
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số lượng:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"

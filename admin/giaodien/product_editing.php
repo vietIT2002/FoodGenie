@@ -1,5 +1,4 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
@@ -35,7 +34,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
         </a>
     </div>
 
-    <form name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
+    <form id="productForm" name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
         enctype="multipart/form-data">
         <div class="mx-10">
 
@@ -147,10 +146,11 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 <div class=" mb-4 w-11/12 h-80 ">
                     <label>Nội dung: </label>
                     <textarea
-                        class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        name="content"
-                        id="product-content"> <?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
-                    <div class="clear-both"></div>
+                    class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
+                    name="content"
+                    id="product-content"><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
+
+                    <!-- <div class="clear-both"></div> -->
                 </div>
 
                 <div class="mb-4">
@@ -163,9 +163,40 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             <div class="flex justify-center mt-8">
                 <button class="px-6 py-2 bg-red-600 h-24 text-3xl text-white rounded-lg hover:bg-red-700" name="btnsua"
                     type="submit">Cập nhật</button>
-                <button class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
+                <button id="cancelButton" class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
                     type="reset">Hủy</button>
             </div>
         </div>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+    <script>
+        let initialEditorContent = "";  
+
+        document.addEventListener("DOMContentLoaded", function() {
+            ClassicEditor
+                .create(document.querySelector('#product-content'))
+                .then(editor => {
+                    initialEditorContent = editor.getData();
+
+                    
+                    const cancelButton = document.getElementById('cancelButton');
+                    cancelButton.addEventListener('click', function() {
+                        editor.setData(initialEditorContent);
+
+                        const form = document.getElementById('productForm');
+                        const initialData = new FormData(form);
+                        for (const [key, value] of initialData.entries()) {
+                            const input = form.elements.namedItem(key);
+                            if (input && input.type !== 'textarea') {
+                                input.value = value;
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
 </div>

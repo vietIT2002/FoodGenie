@@ -49,7 +49,7 @@ if (!empty($_SESSION['nguoidung'])) {
 <body>
     <div class="flex justify-between items-center">
         <div class="flex pt-10 pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
                 Quản lý Thể loại
             </p>
         </div>

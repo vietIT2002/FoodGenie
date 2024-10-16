@@ -33,7 +33,7 @@ if (!empty($_SESSION['nguoidung'])) {
 <body>
     <div class="flex justify-between items-center">
         <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Tài khoản</p>
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" >Tài khoản</p>
         </div>
 
         <div class="flex py-8 pr-6">

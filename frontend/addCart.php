@@ -50,6 +50,8 @@
          foreach($cart as $value){
              $qty += (int)$value['qty'];
          }
+         //echo '<prE>';
+         //print_r($_SESSION['cart']);
          echo $qty;
      }
 ?>

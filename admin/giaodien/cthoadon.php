@@ -36,9 +36,9 @@ if (!empty($_SESSION['nguoidung'])) {
     <div class="card w-full m-10px  overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
 
         <div class="flex pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"> Hóa đơn: </p>
+            <p class="pb-4 pt-0 text-gray-900 font-bold dark:text-white text-4xl"> Hóa đơn: </p>
             <?php if ($row = mysqli_fetch_assoc($cthoadon)) { ?>
-            <p class="pb-4 pt-0 text-red-500 text-2xl font-bold dark:text-red text-5xl pl-5">
+            <p class="pb-4 pt-0 text-red-500  font-bold dark:text-red text-4xl pl-5">
                 <?= $row['id_hoadon'] ?>
             </p>
             <?php } ?>
