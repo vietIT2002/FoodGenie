@@ -241,8 +241,8 @@ if ($customer_id) {
             </div><br><br>
             <!-- /row -->
 
-<!-- Recomment system -->
-<?php
+            <!-- Recomment system -->
+            <?php
 // Kiểm tra nếu khách hàng đã đăng nhập
 if (isset($_SESSION['id'])) {
     $customer_id = $_SESSION['id'];
@@ -258,7 +258,7 @@ if (isset($_SESSION['id'])) {
 
 // Hàm gọi API để gợi ý sản phẩm
 function getProductRecommendations($customer_id) {
-    $api_url = "http://127.0.0.1:5000/recommend/{$customer_id}";
+    $api_url = "http://127.0.0.1:5000/recommendations/{$customer_id}";
     $response = file_get_contents($api_url);
 
     if ($response === FALSE) {
@@ -298,12 +298,12 @@ function displayRecommendedProducts($recommendations) {
 
 // Hàm hiển thị từng sản phẩm
 function displayProductItem($item, $index) {
-    $image = $item['image'];
-    $original_price = $item['original_price'];
-    $price = $item['price'];
-    $product_id = $item['product_id'];
-    $product_name = $item['product_name'];
-    $sold_quantity = $item['sold_quantity'];
+    $image = $item['hinh_anh'];
+    $original_price = $item['gia_goc'];
+    $price = $item['don_gia'];
+    $product_id = $item['id'];
+    $product_name = $item['ten_sp'];
+    $sold_quantity = $item['sl_da_ban'];
 
     // Tính phần trăm giảm giá
     $discount_percentage = $original_price > $price ? round((($original_price - $price) / $original_price) * 100) : 0;
@@ -342,26 +342,27 @@ function displayProductItem($item, $index) {
 }
 
 ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let visibleItems = 8; 
-        const allItems = document.querySelectorAll('.product-item'); 
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let visibleItems = 8;
+                const allItems = document.querySelectorAll('.product-item');
 
-        function loadMore() {
-            for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) { 
-                allItems[i].style.display = 'block'; 
-            }
-            visibleItems += 4; 
+                function loadMore() {
+                    for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) {
+                        allItems[i].style.display = 'block';
+                    }
+                    visibleItems += 4;
 
-            if (visibleItems >= allItems.length) {
-                document.getElementById('load-more').style.display = 'none';
-            }
-        }
+                    if (visibleItems >= allItems.length) {
+                        document.getElementById('load-more').style.display = 'none';
+                    }
+                }
 
-        // Đảm bảo nút bấm 'Xem thêm' hoạt động
-        document.getElementById('load-more').addEventListener('click', loadMore);
-    });
-</script>
-</div><br><br>
+                // Đảm bảo nút bấm 'Xem thêm' hoạt động
+                document.getElementById('load-more').addEventListener('click', loadMore);
+            });
+            </script>
+        </div><br><br>
 </body>
+
 </html>
