@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <!-- Logo -->
+    <link rel="shortcut icon" type="image/png" href="./img/GENIE.png" sizes="40x40"> <link rel="shortcut icon" type="image/png" href="./img/GENIE.png" sizes="40x40">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 

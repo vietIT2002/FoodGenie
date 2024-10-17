@@ -342,26 +342,33 @@ function displayProductItem($item, $index) {
 }
 
 ?>
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                let visibleItems = 8;
-                const allItems = document.querySelectorAll('.product-item');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let visibleItems = 8;
+        const allItems = document.querySelectorAll('.product-item');
+        const loadMoreButton = document.getElementById('load-more');
 
-                function loadMore() {
-                    for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) {
-                        allItems[i].style.display = 'block';
-                    }
-                    visibleItems += 4;
+        // Kiểm tra số lượng sản phẩm và ẩn nút nếu không cần thiết
+        if (allItems.length <= visibleItems) {
+            loadMoreButton.style.display = 'none';
+        }
 
-                    if (visibleItems >= allItems.length) {
-                        document.getElementById('load-more').style.display = 'none';
-                    }
-                }
+        function loadMore() {
+            for (let i = visibleItems; i < visibleItems + 4 && i < allItems.length; i++) {
+                allItems[i].style.display = 'block';
+            }
+            visibleItems += 4;
 
-                // Đảm bảo nút bấm 'Xem thêm' hoạt động
-                document.getElementById('load-more').addEventListener('click', loadMore);
-            });
-            </script>
+            if (visibleItems >= allItems.length) {
+                loadMoreButton.style.display = 'none';
+            }
+        }
+
+        // Đảm bảo nút bấm 'Xem thêm' hoạt động
+        loadMoreButton.addEventListener('click', loadMore);
+    });
+</script>
+
         </div><br><br>
 </body>
 

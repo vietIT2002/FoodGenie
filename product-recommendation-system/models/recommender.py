@@ -83,9 +83,9 @@ def get_hybrid_recommendations(user_id):
             detailed_recommendations.append({
                 'id': int(product_details['id']),
                 'ten_sp': product_details['ten_sp'],
-                'don_gia': float(product_details['don_gia']),  # Chuyển đổi sang float
-                'gia_goc': float(product_details['gia_goc']),  # Chuyển đổi sang float
-                'sl_da_ban': int(product_details['sl_da_ban']),  # Chuyển đổi sang int
+                'don_gia': float(product_details['don_gia']),  
+                'gia_goc': float(product_details['gia_goc']),  
+                'sl_da_ban': int(product_details['sl_da_ban']),  
                 'hinh_anh': product_details['hinh_anh']
             })
 
