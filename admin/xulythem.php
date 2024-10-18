@@ -405,7 +405,7 @@
                                                 if ($_POST['tendangnhap'] != '')
                                                     $tendangnhap = null;
                                                 $conn = mysqli_connect("localhost", "root", "", "foodgennie");
- $result4 = mysqli_query($con, "SELECT `id_loainv` FROM `nhanvien` WHERE `id`=" . $_GET['id'] . "");
+                                                $result4 = mysqli_query($con, "SELECT `id_loainv` FROM `nhanvien` WHERE `id`=" . $_GET['id'] . "");
                                                 $r2 = mysqli_fetch_array($result4);
                                                 if (isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
                                                     $uploadedFiles = $_FILES['gallery'];
@@ -454,6 +454,7 @@
             } else
                 header("location:./admin.php?act=suanvtc&dk=no");
     }
+    
     if (isset($_POST['btntkmk'])) {
         if (isset($_POST['matkhaumoi']))
             if ($_POST['matkhaumoi'] != '') {
