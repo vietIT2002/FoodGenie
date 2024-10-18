@@ -8,16 +8,26 @@
 
 
 <?php
-    if (!empty($_GET['id'])) {
-        $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `id` = " . $_GET['id']);
-        $nhanvien = $result->fetch_assoc();
-         $chucvu_query = "SELECT * FROM `loainhanvien`";
-$chucvu_result = mysqli_query($con, $chucvu_query);
-$quyen_query = "SELECT * FROM `quyen`";
-$quyen_result = mysqli_query($con, $quyen_query);
-    }
-   
-    ?>
+if (!empty($_GET['id'])) {
+    $result = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `id` = " . $_GET['id']);
+    $nhanvien = $result->fetch_assoc();
+
+    $ngay_tao = new DateTime($nhanvien['ngay_tao']);
+    $today = new DateTime();
+    $interval = $ngay_tao->diff($today);
+    $days_worked = $interval->days; 
+
+    $chucvu_query = "SELECT * FROM `loainhanvien`";
+    $chucvu_result = mysqli_query($con, $chucvu_query);
+    $quyen_query = "SELECT * FROM `quyen`";
+    $quyen_result = mysqli_query($con, $quyen_query);
+    
+    $quyen_id = $nhanvien['id_quyen'];
+    $ten_quyen_query = "SELECT `ten_quyen` FROM `quyen` WHERE `id` = $quyen_id";
+    $ten_quyen_result = mysqli_query($con, $ten_quyen_query);
+    $ten_quyen = mysqli_fetch_assoc($ten_quyen_result)['ten_quyen'];
+}
+?>
 
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
@@ -49,9 +59,9 @@ $quyen_result = mysqli_query($con, $quyen_query);
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">ID Nhân viên: </label>
                     <div class="col-sm-8">
-                        <input
-                            class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            type="text" name="id" value="<?= $_GET['id'] ?>" />
+                    <input
+                        class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300"
+                        type="text" name="id" value="<?= $_GET['id'] ?>" readonly />
                     </div>
                 </div>
                 <div class="wrap-field form-group row">
@@ -121,20 +131,32 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         </select>
                     </div>
                 </div>
-                <div class="wrap-field form-group row">
+
+                <div class="wrap-field form-group row"> 
                     <label class="col-sm-4 col-form-label col-form-label-sm">Quyền: </label>
                     <div class="col-sm-8">
-                        <select
-                            class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            name="id_quyen">
-
-                            <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
-                            <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
-                            <?php } ?>
-                        </select>
+                        <?php if ($days_worked < 60): ?>
+                            <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                                value="<?= $ten_quyen ?>" readonly />
+                            <small class="text-red-500">Phải làm việc ít nhất 60 ngày để thay đổi quyền.</small>
+                        <?php else: ?>
+                            <select class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" name="id_quyen">
+                                <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
+                                    <option value="<?= $row['id'] ?>" <?= ($row['id'] == $nhanvien['id_quyen']) ? 'selected' : '' ?>>
+                                        <?= $row['ten_quyen'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        <?php endif; ?>
                     </div>
                 </div>
-
+                <div class="wrap-field form-group row"> 
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Thời gian làm việc: </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" 
+                            value="<?= $days_worked ?> ngày" readonly />
+                    </div>
+                </div>
             </div>
         </div>
 
