@@ -41,10 +41,16 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                     name="name" value="">
                             </div>
+                            
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá sản phẩm:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                     name="price" value="">
+                            </div>
+                            <div class="mb-4 flex items-center">
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá gốc:</label>
+                                <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
+                                    name="gia_goc" value="">
                             </div>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Ảnh đại diện:</label>

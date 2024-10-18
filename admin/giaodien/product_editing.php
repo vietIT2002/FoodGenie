@@ -6,7 +6,7 @@
 <?php
 if (!empty($_GET['id'])) {
     // $result = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `sanpham`.`id`=".$_GET['id']."");
-    $result = mysqli_query($con, "SELECT `sanpham`.`id`, `ten_sp`, `don_gia`, `hinh_anh`, `noi_dung`, `id_the_loai`, `id_nha_cc`, `so_luong`,`xuat_xu`,`khoi_luong`, `sl_da_ban`, `sanpham`.`ngay_tao`, `sanpham`.`ngay_sua`, `trangthai`,`theloai`.`id`,`theloai`.`ten_tl`,`nhacungcap`.`id`,`nhacungcap`.`ten_ncc` FROM `sanpham`,`theloai`,`nhacungcap` WHERE `sanpham`.`id`=" . $_GET['id'] . " AND `sanpham`.`id_the_loai`=`theloai`.`id` AND `sanpham`.`id_nha_cc`=`nhacungcap`.`id`");
+    $result = mysqli_query($con, "SELECT `sanpham`.`id`, `ten_sp`, `don_gia`, `gia_goc`, `hinh_anh`, `noi_dung`, `id_the_loai`, `id_nha_cc`, `so_luong`,`xuat_xu`,`khoi_luong`, `sl_da_ban`, `sanpham`.`ngay_tao`, `sanpham`.`ngay_sua`, `trangthai`,`theloai`.`id`,`theloai`.`ten_tl`,`nhacungcap`.`id`,`nhacungcap`.`ten_ncc` FROM `sanpham`,`theloai`,`nhacungcap` WHERE `sanpham`.`id`=" . $_GET['id'] . " AND `sanpham`.`id_the_loai`=`theloai`.`id` AND `sanpham`.`id_nha_cc`=`nhacungcap`.`id`");
     $product = $result->fetch_assoc();
     $gallery = mysqli_query($con, "SELECT * FROM `hinhanhsp` WHERE `id_sp` = " . $_GET['id']);
     if (!empty($gallery) && !empty($gallery->num_rows)) {
@@ -81,6 +81,13 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         type="text" name="price"
                         value="<?= (!empty($product) ? number_format($product['don_gia'], 0, ",", ".") : "") ?>" />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Giá gốc:</label>
+                    <input
+                        class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        type="text" name="gia_goc"
+                        value="<?= (!empty($product) ? number_format($product['gia_goc'], 0, ",", ".") : "") ?>" />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Xuất xứ:</label>

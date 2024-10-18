@@ -84,7 +84,7 @@ if ($customer_id) {
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="./img/banner/banner-right.png" alt="">
+                        <img src="./img/banner/right-logo.png" alt="">
                     </div>
                     <div class="shop-body">
                         <a href="news.php">
@@ -180,7 +180,7 @@ if ($customer_id) {
 												</div>
 												<div class="product-body">
 													<p class="product-category">SẢN PHẨM</p>
-													<h3 class="product-name"><a href="?act=product&id='.$item['id'].'">'.$item['ten_sp'].'</a></h3>
+													<h3 class="product-name"><a href="?act=product&id=' . $product_id . '">' . $product_name . '</a></h3>
 													<h4 class="product-price" id="price-sold">'.currency_format($item['don_gia']).' </h4>
 													
 													<div class="product-rating">

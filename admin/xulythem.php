@@ -38,80 +38,85 @@
             if ($_POST['name'] != '') {
                 if (isset($_POST['price']))
                     if ($_POST['price'] != '') {
-                        if (isset($_POST['idtl']))
-                            if ($_POST['idtl'] != '') {
-                                if (isset($_POST['idncc']))
-                                    if ($_POST['idncc'] != '') {
-                                        //kk
-                                        if (isset($_POST['so_luong']))
-                                            if ($_POST['so_luong'] != '') {
-                                                if (isset($_POST['khoi_luong']))
-                                                    if ($_POST['khoi_luong'] != '') {
-                                                        if (isset($_POST['xuat_xu']))
-                                                            if ($_POST['xuat_xu'] != '') {
+                        if (isset($_POST['gia_goc']))
+                            if ($_POST['gia_goc'] != '') {
+                                if (isset($_POST['idtl']))
+                                    if ($_POST['idtl'] != '') {
+                                        if (isset($_POST['idncc']))
+                                            if ($_POST['idncc'] != '') {
+                                                //kk
+                                                if (isset($_POST['so_luong']))
+                                                    if ($_POST['so_luong'] != '') {
+                                                        if (isset($_POST['khoi_luong']))
+                                                            if ($_POST['khoi_luong'] != '') {
+                                                                if (isset($_POST['xuat_xu']))
+                                                                    if ($_POST['xuat_xu'] != '') {
 
-                                                                //lll
-                                                                if (isset($_POST['content']))
-                                                                    if ($_POST['content'] != '') {
-                                                                        $conn = mysqli_connect("localhost", "root", "", "foodgennie");
-                                                                        $namei = $_POST['name'];
-                                                                        $price = $_POST['price'];
-                                                                        // $image=$_FILES['image'];
-                                                                        $idtl = $_POST['idtl'];
-                                                                        $idncc = $_POST['idncc'];
-                                                                        //
-                                                                        $so_luong = $_POST['so_luong'];
-                                                                        $khoi_luong = $_POST['khoi_luong'];
-                                                                        $xuat_xu = $_POST['xuat_xu'];
-                                                                        //
-                                                                        $content = $_POST['content'];
-                                                                        if ($_FILES['image']['name'] != NULL) {
-                                                                            // Kiểm tra file up lên có phải là ảnh không
-                                                                            if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
+                                                                        //lll
+                                                                        if (isset($_POST['content']))
+                                                                            if ($_POST['content'] != '') {
+                                                                                $conn = mysqli_connect("localhost", "root", "", "foodgennie");
+                                                                                $namei = $_POST['name'];
+                                                                                $price = $_POST['price'];
+                                                                                $gia_goc = $_POST['gia_goc'];
+                                                                                // $image=$_FILES['image'];
+                                                                                $idtl = $_POST['idtl'];
+                                                                                $idncc = $_POST['idncc'];
+                                                                                //
+                                                                                $so_luong = $_POST['so_luong'];
+                                                                                $khoi_luong = $_POST['khoi_luong'];
+                                                                                $xuat_xu = $_POST['xuat_xu'];
+                                                                                //
+                                                                                $content = $_POST['content'];
+                                                                                if ($_FILES['image']['name'] != NULL) {
+                                                                                    // Kiểm tra file up lên có phải là ảnh không
+                                                                                    if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
 
-                                                                                // Nếu là ảnh tiến hành code upload
-                                                                                $path1 = ""; // Ảnh sẽ lưu vào thư mục images
-                                                                                $path2 = "../img/";
-                                                                                $tmp_name = $_FILES['image']['tmp_name'];
-                                                                                $name = $_FILES['image']['name'];
-                                                                                // Upload ảnh vào thư mục images
-                                                                                move_uploaded_file($tmp_name, $path2 . $name);
-                                                                                $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-                                                                                // Insert ảnh vào cơ sở dữ liệu
-                                                                                $sql1 = "INSERT INTO `sanpham` (`ten_sp`, `hinh_anh`, `don_gia`, `noi_dung`,`so_luong`,`id_the_loai`,`id_nha_cc`,`trangthai`, `khoi_luong`, `xuat_xu`) VALUES ('$namei','$image_url', " . str_replace('.', '', $price) . ", '$content','$so_luong','$idtl','$idncc',0, '$khoi_luong', '$xuat_xu');";
-                                                                                $result1 = mysqli_query($conn, $sql1);
-                                                                                if (isset($_FILES['gallery']))
-                                                                                    if ($_FILES['gallery'] != '') {
-                                                                                        $uploadedFiles = $_FILES['gallery'];
-                                                                                        @$result = uploadFiles($uploadedFiles);
-                                                                                        if ($result) {
-                                                                                            $galleryImages = $result['uploaded_files'];
-                                                                                            if (!empty($galleryImages)) {
-                                                                                                $product_id = $conn->insert_id;
-                                                                                                $insertValues = "";
-                                                                                                foreach ($galleryImages as $path) {
-                                                                                                    if (empty($insertValues)) {
-                                                                                                        $insertValues = "( " . $product_id . ", '" . $path . "')";
-                                                                                                    } else {
-                                                                                                        $insertValues .= ",( " . $product_id . ", '" . $path . "')";
+                                                                                        // Nếu là ảnh tiến hành code upload
+                                                                                        $path1 = ""; // Ảnh sẽ lưu vào thư mục images
+                                                                                        $path2 = "../img/";
+                                                                                        $tmp_name = $_FILES['image']['tmp_name'];
+                                                                                        $name = $_FILES['image']['name'];
+                                                                                        // Upload ảnh vào thư mục images
+                                                                                        move_uploaded_file($tmp_name, $path2 . $name);
+                                                                                        $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+                                                                                        // Insert ảnh vào cơ sở dữ liệu
+                                                                                        $sql1 = "INSERT INTO `sanpham` (`ten_sp`, `hinh_anh`, `don_gia`,`gia_goc`, `noi_dung`,`so_luong`,`id_the_loai`,`id_nha_cc`,`trangthai`, `khoi_luong`, `xuat_xu`) VALUES ('$namei','$image_url', " . str_replace('.', '', $price) . ", " . str_replace('.', '', $gia_goc) . ", '$content','$so_luong','$idtl','$idncc',0, '$khoi_luong', '$xuat_xu');";
+                                                                                        $result1 = mysqli_query($conn, $sql1);
+                                                                                        if (isset($_FILES['gallery']))
+                                                                                            if ($_FILES['gallery'] != '') {
+                                                                                                $uploadedFiles = $_FILES['gallery'];
+                                                                                                @$result = uploadFiles($uploadedFiles);
+                                                                                                if ($result) {
+                                                                                                    $galleryImages = $result['uploaded_files'];
+                                                                                                    if (!empty($galleryImages)) {
+                                                                                                        $product_id = $conn->insert_id;
+                                                                                                        $insertValues = "";
+                                                                                                        foreach ($galleryImages as $path) {
+                                                                                                            if (empty($insertValues)) {
+                                                                                                                $insertValues = "( " . $product_id . ", '" . $path . "')";
+                                                                                                            } else {
+                                                                                                                $insertValues .= ",( " . $product_id . ", '" . $path . "')";
+                                                                                                            }
+                                                                                                        }
+                                                                                                        $result = mysqli_query($conn, "INSERT INTO `hinhanhsp` ( `id_sp`, `hinh_anh`) VALUES " . $insertValues . ";");
                                                                                                     }
-                                                                                                }
-                                                                                                $result = mysqli_query($conn, "INSERT INTO `hinhanhsp` ( `id_sp`, `hinh_anh`) VALUES " . $insertValues . ";");
+                                                                                                } else
+                                                                                                    "ko them duoc";
                                                                                             }
+                                                                                        if ($result1) {
+                                                                                            // $result2 = mysqli_query($conn,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`='$idtl'");
+                                                                                            // $r=mysqli_fetch_array($result2);
+                                                                                            // $result3 = mysqli_query($conn,"UPDATE `theloai` SET `tong_sp`=".$r['cid_the_loai']." WHERE `id`=$idtl");
+                                                                                            // if ($result3) { 
+                                                                                            header('location:admin.php?act=addsptc&dk=yes');
+                                                                                            // }else header("location:./admin.php?act=addsptc&dk=no");
                                                                                         } else
-                                                                                            "ko them duoc";
+                                                                                            header("location:./admin.php?act=addsptc&dk=no");
                                                                                     }
-                                                                                if ($result1) {
-                                                                                    // $result2 = mysqli_query($conn,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`='$idtl'");
-                                                                                    // $r=mysqli_fetch_array($result2);
-                                                                                    // $result3 = mysqli_query($conn,"UPDATE `theloai` SET `tong_sp`=".$r['cid_the_loai']." WHERE `id`=$idtl");
-                                                                                    // if ($result3) { 
-                                                                                    header('location:admin.php?act=addsptc&dk=yes');
-                                                                                    // }else header("location:./admin.php?act=addsptc&dk=no");
-                                                                                } else
-                                                                                    header("location:./admin.php?act=addsptc&dk=no");
-                                                                            }
-                                                                        }
+                                                                                }
+                                                                            } else
+                                                                                header("location:./admin.php?act=addsptc&dk=no");
                                                                     } else
                                                                         header("location:./admin.php?act=addsptc&dk=no");
                                                             } else
@@ -123,7 +128,7 @@
                                     } else
                                         header("location:./admin.php?act=addsptc&dk=no");
                             } else
-                                header("location:./admin.php?act=addsptc&dk=no");
+                                header("location:./admin.php?act=addsptc&dk=no");            
                     } else
                         header("location:./admin.php?act=addsptc&dk=no");
             } else
@@ -134,90 +139,95 @@
             if ($_POST['name'] != '') {
                 if (isset($_POST['price']))
                     if ($_POST['price'] != '') {
-                        if (isset($_POST['idtl']))
-                            if ($_POST['idtl'] != '') {
-                                if (isset($_POST['idncc']))
-                                    if ($_POST['idncc'] != '') {
-                                         if (isset($_POST['khoi_luong']))
-                                                    if ($_POST['khoi_luong'] != '') {
-                                                        if (isset($_POST['xuat_xu']))
-                                                            if ($_POST['xuat_xu'] != '') {
-                                        if (isset($_POST['content']))
-                                            if ($_POST['content'] != '') {
-                                                if (isset($_POST['trangthai']) == "on")
-                                                    $trangthai = 0;
-                                                if (isset($_POST['trangthai']) == NULL)
-                                                    $trangthai = 1;
-                                                include_once('function.php');
-                                                $con = mysqli_connect("localhost", "root", "", "foodgennie");
-                                                $result4 = mysqli_query($con, "SELECT `id_the_loai` FROM `sanpham` WHERE `id`=" . $_GET['id'] . "");
-                                                $r2 = mysqli_fetch_array($result4);
-                                                if (isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
-                                                    $uploadedFiles = $_FILES['gallery'];
-                                                    $result = uploadFiles($uploadedFiles);
-                                                    $galleryImages = $result['uploaded_files'];
-                                                }
-                                                if (!empty($_POST['gallery_image'])) {
-                                                    $galleryImages = array_merge($galleryImages, $_POST['gallery_image']);
-                                                }
-                                                if (!isset($image_url) && !empty($_POST['image'])) {
-                                                    $image_url = $_POST['image'];
-                                                }
-                                                if ($_FILES['image']['name'] != NULL) {
-                                                    // Kiểm tra file up lên có phải là ảnh không
-                                                    if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
-
-                                                        // Nếu là ảnh tiến hành code upload
-                                                        $path1 = "";
-                                                        $path = "../img/"; // Ảnh sẽ lưu vào thư mục images
-                                                        $tmp_name = $_FILES['image']['tmp_name'];
-                                                        $name = $_FILES['image']['name'];
-                                                        // Upload ảnh vào thư mục images
-                                                        move_uploaded_file($tmp_name, $path . $name);
-                                                        $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-                                                        // Insert ảnh vào cơ sở dữ liệu
-                                                    }
-                                                }
-                                                $result1 = mysqli_query($con, "UPDATE `sanpham` 
-                                    SET `ten_sp` = '" . $_POST['name'] . "',
-                                    `hinh_anh` =  '$image_url',
-                                    `don_gia` = " . str_replace('.', '', $_POST['price']) . ",
-                                    `noi_dung` = '" . $_POST['content'] . "',
-                                    `ngay_sua` = " . time() . ",
-                                    `id_the_loai` =" . $_POST['idtl'] . ",
-                                    `id_nha_cc`=" . $_POST['idncc'] . ",
-                                    `xuat_xu`='" . $_POST['xuat_xu'] . "',
-                                    `khoi_luong`='" . $_POST['khoi_luong'] . "',
-                                    `trangthai`=" . $trangthai . "
-                                    WHERE `id` = " . $_GET['id']);
-                                                if (!empty($galleryImages)) {
-                                                    $product_id = ($_GET['act'] == 'sua' && !empty($_GET['id'])) ? $_GET['id'] : $con->insert_id;
-                                                    $insertValues = "";
-                                                    foreach ($galleryImages as $path) {
-                                                        if (empty($insertValues)) {
-                                                            $insertValues = "( " . $product_id . ", '" . $path . "')";
-                                                        } else {
-                                                            $insertValues .= ",( " . $product_id . ", '" . $path . "')";
+                        if (isset($_POST['gia_goc']))
+                            if ($_POST['gia_goc'] != '') {
+                                if (isset($_POST['idtl']))
+                                    if ($_POST['idtl'] != '') {
+                                        if (isset($_POST['idncc']))
+                                            if ($_POST['idncc'] != '') {
+                                                if (isset($_POST['khoi_luong']))
+                                                            if ($_POST['khoi_luong'] != '') {
+                                                                if (isset($_POST['xuat_xu']))
+                                                                    if ($_POST['xuat_xu'] != '') {
+                                                if (isset($_POST['content']))
+                                                    if ($_POST['content'] != '') {
+                                                        if (isset($_POST['trangthai']) == "on")
+                                                            $trangthai = 0;
+                                                        if (isset($_POST['trangthai']) == NULL)
+                                                            $trangthai = 1;
+                                                        include_once('function.php');
+                                                        $con = mysqli_connect("localhost", "root", "", "foodgennie");
+                                                        $result4 = mysqli_query($con, "SELECT `id_the_loai` FROM `sanpham` WHERE `id`=" . $_GET['id'] . "");
+                                                        $r2 = mysqli_fetch_array($result4);
+                                                        if (isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
+                                                            $uploadedFiles = $_FILES['gallery'];
+                                                            $result = uploadFiles($uploadedFiles);
+                                                            $galleryImages = $result['uploaded_files'];
                                                         }
-                                                    }
-                                                    $result = mysqli_query($con, "INSERT INTO `hinhanhsp` ( `id_sp`, `hinh_anh`) VALUES " . $insertValues . ";");
-                                                    echo "cap nhat thanh cong";
-                                                }
-                                                if ($result1) {
-                                                    // $result5 = mysqli_query($con,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`=".$r2['id_the_loai']."");
-                                                    // $r5=mysqli_fetch_array($result5);
-                                                    // $result6 = mysqli_query($con,"UPDATE `theloai` SET `tong_sp`=".$r5['cid_the_loai']." WHERE `id`=".$r2['id_the_loai']."");
-                                                    // $result2 = mysqli_query($con,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`=".$_POST['idtl']."");
-                                                    // $r=mysqli_fetch_array($result2);
-                                                    // $result3 = mysqli_query($con,"UPDATE `theloai` SET `tong_sp`=".$r['cid_the_loai']." WHERE `id`=".$_POST['idtl']."");
-                                                    // if ($result6&&$result3) { 
-                                                    header("location:./admin.php?act=suasptc&dk=yes");
-                                                    // else header("location:./admin.php?act=suasptc&dk=no"); 
-                                                } else
-                                                    header("location:./admin.php?act=suasptc&dk=no");
+                                                        if (!empty($_POST['gallery_image'])) {
+                                                            $galleryImages = array_merge($galleryImages, $_POST['gallery_image']);
+                                                        }
+                                                        if (!isset($image_url) && !empty($_POST['image'])) {
+                                                            $image_url = $_POST['image'];
+                                                        }
+                                                        if ($_FILES['image']['name'] != NULL) {
+                                                            // Kiểm tra file up lên có phải là ảnh không
+                                                            if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
+
+                                                                // Nếu là ảnh tiến hành code upload
+                                                                $path1 = "";
+                                                                $path = "../img/"; // Ảnh sẽ lưu vào thư mục images
+                                                                $tmp_name = $_FILES['image']['tmp_name'];
+                                                                $name = $_FILES['image']['name'];
+                                                                // Upload ảnh vào thư mục images
+                                                                move_uploaded_file($tmp_name, $path . $name);
+                                                                $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+                                                                // Insert ảnh vào cơ sở dữ liệu
+                                                            }
+                                                        }
+                                                        $result1 = mysqli_query($con, "UPDATE `sanpham` 
+                                            SET `ten_sp` = '" . $_POST['name'] . "',
+                                            `hinh_anh` =  '$image_url',
+                                            `don_gia` = " . str_replace('.', '', $_POST['price']) . ",
+                                            `gia_goc` = " . str_replace('.', '', $_POST['gia_goc']) . ",
+                                            `noi_dung` = '" . $_POST['content'] . "',
+                                            `ngay_sua` = " . time() . ",
+                                            `id_the_loai` =" . $_POST['idtl'] . ",
+                                            `id_nha_cc`=" . $_POST['idncc'] . ",
+                                            `xuat_xu`='" . $_POST['xuat_xu'] . "',
+                                            `khoi_luong`='" . $_POST['khoi_luong'] . "',
+                                            `trangthai`=" . $trangthai . "
+                                            WHERE `id` = " . $_GET['id']);
+                                                        if (!empty($galleryImages)) {
+                                                            $product_id = ($_GET['act'] == 'sua' && !empty($_GET['id'])) ? $_GET['id'] : $con->insert_id;
+                                                            $insertValues = "";
+                                                            foreach ($galleryImages as $path) {
+                                                                if (empty($insertValues)) {
+                                                                    $insertValues = "( " . $product_id . ", '" . $path . "')";
+                                                                } else {
+                                                                    $insertValues .= ",( " . $product_id . ", '" . $path . "')";
+                                                                }
+                                                            }
+                                                            $result = mysqli_query($con, "INSERT INTO `hinhanhsp` ( `id_sp`, `hinh_anh`) VALUES " . $insertValues . ";");
+                                                            echo "cap nhat thanh cong";
+                                                        }
+                                                        if ($result1) {
+                                                            // $result5 = mysqli_query($con,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`=".$r2['id_the_loai']."");
+                                                            // $r5=mysqli_fetch_array($result5);
+                                                            // $result6 = mysqli_query($con,"UPDATE `theloai` SET `tong_sp`=".$r5['cid_the_loai']." WHERE `id`=".$r2['id_the_loai']."");
+                                                            // $result2 = mysqli_query($con,"SELECT COUNT(`id_the_loai`) AS cid_the_loai FROM `sanpham` WHERE `id_the_loai`=".$_POST['idtl']."");
+                                                            // $r=mysqli_fetch_array($result2);
+                                                            // $result3 = mysqli_query($con,"UPDATE `theloai` SET `tong_sp`=".$r['cid_the_loai']." WHERE `id`=".$_POST['idtl']."");
+                                                            // if ($result6&&$result3) { 
+                                                            header("location:./admin.php?act=suasptc&dk=yes");
+                                                            // else header("location:./admin.php?act=suasptc&dk=no"); 
+                                                        } else
+                                                            header("location:./admin.php?act=suasptc&dk=no");
+                                                    } else
+                                                        header("location:./admin.php?act=suasptc&dk=no");
                                             } else
                                                 header("location:./admin.php?act=suasptc&dk=no");
-                                    } else
+                                    }else
                                         header("location:./admin.php?act=suasptc&dk=no");
                             }else
                                 header("location:./admin.php?act=suasptc&dk=no");
