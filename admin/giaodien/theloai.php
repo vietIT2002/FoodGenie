@@ -49,7 +49,8 @@ if (!empty($_SESSION['nguoidung'])) {
 <body>
     <div class="flex justify-between items-center">
         <div class="flex pt-10 pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"
+                style="color: #0099cc !important;">
                 Quản lý Thể loại
             </p>
         </div>
@@ -66,45 +67,49 @@ if (!empty($_SESSION['nguoidung'])) {
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
         <div class='h-11/12 w-full px-4 bg-base-100 divide-y divide-slate-200'>
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class="min-w-full bg-white">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr class="font-normal px-6 py-3">
-                            <th class="font-normal px-6 py-3">Mã thể loại</th>
-                            <th class="font-normal px-6 py-3">Tên thể loại</th>
-                            <th class="font-normal px-6 py-3">Tổng sản phẩm</th>
-                            <th class="font-normal px-6 py-3">Chỉnh sửa</th>
-                            <th class="font-normal px-6 py-3">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                <div class="overflow-x-auto overflow-y-auto h-5/6">
+                    <table class="min-w-full bg-white">
+                        <thead class="h-20 bg-gray-300 ">
+                            <tr class="font-normal px-6 py-3">
+                                <th class="font-normal px-6 py-3">Mã thể loại</th>
+                                <th class="font-normal px-6 py-3">Tên thể loại</th>
+                                <th class="font-normal px-6 py-3">Tổng sản phẩm</th>
+                                <th class="font-normal px-6 py-3">Chỉnh sửa</th>
+                                <th class="font-normal px-6 py-3">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             while ($row = mysqli_fetch_array($theloai)) {
                                 ?>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">TL<?= $row['id'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
-                            <td class="px-6 py-4"><?= $row['total_products'] ?></td>
-                            <td class="px-6 py-4">
-                                <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
-                                    <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a class="btn btn-outline-danger" href="admin.php?act=xoatl&id=<?= $row['id'] ?>"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                        <tr>
-                            <td colspan="2" class="px-6 py-4 font-bold text-red-600">Tổng sản phẩm:</td>
-                            <td class="px-6 py-4 font-bold text-blue-600"><?= $total_products_sum ?></td>
-                            <td colspan="2" class="px-6 py-4"></td>
-                        </tr>
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="px-6 py-4">TL<?= $row['id'] ?></td>
+                                <td class="px-6 py-4"><?= $row['ten_tl'] ?></td>
+                                <td class="px-6 py-4"><?= $row['total_products'] ?></td>
+                                <td class="px-6 py-4">
+                                    <a class="btn btn-outline-success" href="admin.php?act=suatl&id=<?= $row['id'] ?>">
+                                        <i class="fa fa-pencil-square-o text-green-600 hover:text-green-800"
+                                            aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a class="btn btn-outline-danger" href="admin.php?act=xoatl&id=<?= $row['id'] ?>"
+                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                        <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan="2" class="px-6 py-4 font-bold text-red-600">Tổng sản phẩm:</td>
+                                <td class="px-6 py-4 font-bold text-blue-600"><?= $total_products_sum ?></td>
+                                <td colspan="2" class="px-6 py-4"></td>
+                            </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <?php
             include './pagination.php';
@@ -117,7 +122,7 @@ if (!empty($_SESSION['nguoidung'])) {
 }
 ?>
 
-<?php include 'theloai_adding.php'; ?>
+    <?php include 'theloai_adding.php'; ?>
 </body>
 
 </html>

@@ -31,7 +31,8 @@
         ?>
     <div class="flex justify-between items-center">
         <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"
+                style="color: #0099cc !important;">
                 Quản lý nhà cung cấp
             </p>
 
@@ -55,49 +56,51 @@
         <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr>
-                            <th class=" pl-8  font-normal ">Mã</th>
-                            <th class="font-normal px-6 py-3">Nhà cung cấp</th>
-                            <th class="font-normal px-6 py-3">Email</th>
-                            <th class="font-normal px-6 py-3">Website</th>
-                            <th class="font-normal px-6 py-3">SĐT</th>
-                            <th class="font-normal px-6 py-3">Đặt hàng</th>
-                            <th class="font-normal px-6 py-3">Trả hàng</th>
-                            <th class="font-normal px-6 py-3"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- <tbody class="bg-white divide-y divide-gray-200"> -->
-                        <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        </tr>
-                        <td class="px-6 py-4">NCC<?= $row['id'] ?></td>
+                <div class="overflow-x-auto overflow-y-auto h-5/6">
+                    <table class=" min-w-full bg-white   ">
+                        <thead class="h-20 bg-gray-300 ">
+                            <tr>
+                                <th class=" pl-8  font-normal ">Mã</th>
+                                <th class="font-normal px-6 py-3">Nhà cung cấp</th>
+                                <th class="font-normal px-6 py-3">Email</th>
+                                <th class="font-normal px-6 py-3">Website</th>
+                                <th class="font-normal px-6 py-3">SĐT</th>
+                                <th class="font-normal px-6 py-3">Đặt hàng</th>
+                                <th class="font-normal px-6 py-3">Trả hàng</th>
+                                <th class="font-normal px-6 py-3"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tbody class="bg-white divide-y divide-gray-200"> -->
+                            <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            </tr>
+                            <td class="px-6 py-4">NCC<?= $row['id'] ?></td>
 
-                        <td class="px-6 py-4"><?= $row['ten_ncc'] ?></td>
+                            <td class="px-6 py-4"><?= $row['ten_ncc'] ?></td>
 
-                        <td class="px-6 py-4"><?= $row['email'] ?></td>
-                        <td class="px-6 py-4"><?= $row['web_site'] ?></td>
-                        <td class="px-6 py-4"><?= $row['phone'] ?></td>
-                        <td class="px-6 py-4">
-                            <a href="admin.php?act=datncc&id=<?= $row['id'] ?>" class="font-bold">Đặt</a>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="admin.php?act=trancc&id=<?= $row['id'] ?>" class="font-bold">Trả</a>
-                        </td>
-                        <td>
-                            <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>" class="text-red-600 hover:text-red-800"
-                                onclick="return confirm('Are you sure you want to delete this item?' );"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                            <td class="px-6 py-4"><?= $row['email'] ?></td>
+                            <td class="px-6 py-4"><?= $row['web_site'] ?></td>
+                            <td class="px-6 py-4"><?= $row['phone'] ?></td>
+                            <td class="px-6 py-4">
+                                <a href="admin.php?act=datncc&id=<?= $row['id'] ?>" class="font-bold">Đặt</a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="admin.php?act=trancc&id=<?= $row['id'] ?>" class="font-bold">Trả</a>
+                            </td>
+                            <td>
+                                <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>"
+                                    class="text-red-600 hover:text-red-800"
+                                    onclick="return confirm('Are you sure you want to delete this item?' );"><i
+                                        class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
             <!-- Phân trang -->
             <?php include './pagination.php'; ?>
             <!-- </div> -->

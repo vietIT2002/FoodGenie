@@ -26,31 +26,34 @@
     <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
         <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-            <table class=" min-w-full bg-white   ">
-                <thead class="h-20 bg-gray-300 ">
-                    <tr>
-                        <th class="font-normal px-6 py-3">Tên sản phẩm</th>
-                        <th class="font-normal px-6 py-3">Số lượng</th>
-                        <th class="font-normal px-6 py-3">Đơn giá(VNĐ)</th>
-                        <th class="font-normal px-6 py-3">Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+            <div class="overflow-x-auto">
+                <table class=" min-w-full bg-white   ">
+                    <thead class="h-20 bg-gray-300 ">
+                        <tr>
+                            <th class="font-normal px-6 py-3">Tên sản phẩm</th>
+                            <th class="font-normal px-6 py-3">Số lượng</th>
+                            <th class="font-normal px-6 py-3">Đơn giá(VNĐ)</th>
+                            <th class="font-normal px-6 py-3">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                             while ($row = mysqli_fetch_array($ctphieunhap)) {
                             ?>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
-                        <td class="pl-8 "><?= $row['ten_sp'] ?></td>
-                        <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
-                        <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, '', '.') ?></td>
-                        <td class="px-6 py-4"><?= number_format($row['so_luong'] * $row['don_gia'], 0, '', '.') ?></td>
-                        <div class="clear-both"></div>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                            <td class="pl-8 "><?= $row['ten_sp'] ?></td>
+                            <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
+                            <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, '', '.') ?></td>
+                            <td class="px-6 py-4"><?= number_format($row['so_luong'] * $row['don_gia'], 0, '', '.') ?>
+                            </td>
+                            <div class="clear-both"></div>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <?php
