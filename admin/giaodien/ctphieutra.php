@@ -12,8 +12,8 @@ if (!empty($_SESSION['nguoidung'])) {
 ?>
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
-        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
-            Phiếu nhập sản phẩm
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white" style="color: #0099cc">
+            Phiếu trả sản phẩm
         </p>
         <a href="./admin.php?muc=6&tmuc=Phiếu%20trả">
             <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">

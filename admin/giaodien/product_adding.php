@@ -41,7 +41,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                     name="name" value="">
                             </div>
-                            
+
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá sản phẩm:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
@@ -82,8 +82,8 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                             </div>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nội dung:</label>
-                                <textarea class="w-2/3 text-2xl pl-4 focus:outline-none"
-                                        name="content" id="product-content"></textarea>
+                                <textarea class="w-2/3 text-2xl pl-4 focus:outline-none" name="content"
+                                    id="product-content"></textarea>
                             </div>
 
                             <div class="mb-4 flex items-center">
@@ -108,7 +108,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <div class="flex justify-end mt-4">
                         <button
                             class="btn btn-danger w-44 pl-2 h-16 text-2xl bg-red-500 text-white px-4 py-2 rounded-md shadow-sm mr-2"
-                            name="btnadd" type="submit" title="Lưu sản phẩm" value="Lưu">Lưu</button>
+                            name="btnadd" type="submit" title="Lưu sản phẩm" value="Lưu">Thêm</button>
                         <button
                             class="btn btn-primary w-44 pl-2 h-16 text-2xl bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm"
                             type="reset" value="Hủy">Hủy</button>

@@ -999,7 +999,6 @@
                     <span class="sr-only">Error icon</span>
                 </div>
                 <div class="ms-3 text-3xl font-normal">Thất bại</div>
-                <a href="./admin.php?tmuc=Thể loại" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Quay lại danh sách thể loại</a>
                
                     <span class="sr-only">Close</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

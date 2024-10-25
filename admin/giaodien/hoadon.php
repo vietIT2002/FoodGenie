@@ -112,9 +112,16 @@
                                     <td class="px-6 py-4"><a
                                             href="./admin.php?act=cthoadon&id=<?= $row['idhoadon'] ?>"><i class="
                                         fa-regular fa-file-lines fa-lg text-green-500"></a></td>
-                                    <td class="px-6 py-4"><a
+                                    <!-- <td class="px-6 py-4"><a
                                             href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
-                                            nhận</a></td>
+                                            nhận</a></td> -->
+                                    <td class="px-6 py-4">
+                                        <?php if ($row['trang_thai'] != "1"): ?>
+                                        <a
+                                            href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
+                                            nhận</a>
+                                        <?php endif; ?>
+                                    </td>
                                     <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a
                                             href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
                                             onclick="return confirm('Are you sure you want to delete this item?');"><i
