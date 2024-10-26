@@ -77,6 +77,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Giá sản phẩm:</label>
+
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         type="number" name="price"
@@ -153,9 +154,9 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 <div class=" mb-4 w-11/12 h-80 ">
                     <label>Nội dung: </label>
                     <textarea
-                    class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
-                    name="content"
-                    id="product-content"><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
+                        class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
+                        name="content"
+                        id="product-content"><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
 
                     <!-- <div class="clear-both"></div> -->
                 </div>
@@ -170,7 +171,8 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             <div class="flex justify-center mt-8">
                 <button class="px-6 py-2 bg-red-600 h-24 text-3xl text-white rounded-lg hover:bg-red-700" name="btnsua"
                     type="submit">Cập nhật</button>
-                <button id="cancelButton" class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
+                <button id="cancelButton"
+                    class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
                     type="reset">Hủy</button>
             </div>
         </div>
@@ -178,32 +180,32 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
     <script>
-        let initialEditorContent = "";  
+    let initialEditorContent = "";
 
-        document.addEventListener("DOMContentLoaded", function() {
-            ClassicEditor
-                .create(document.querySelector('#product-content'))
-                .then(editor => {
-                    initialEditorContent = editor.getData();
+    document.addEventListener("DOMContentLoaded", function() {
+        ClassicEditor
+            .create(document.querySelector('#product-content'))
+            .then(editor => {
+                initialEditorContent = editor.getData();
 
-                    
-                    const cancelButton = document.getElementById('cancelButton');
-                    cancelButton.addEventListener('click', function() {
-                        editor.setData(initialEditorContent);
 
-                        const form = document.getElementById('productForm');
-                        const initialData = new FormData(form);
-                        for (const [key, value] of initialData.entries()) {
-                            const input = form.elements.namedItem(key);
-                            if (input && input.type !== 'textarea') {
-                                input.value = value;
-                            }
+                const cancelButton = document.getElementById('cancelButton');
+                cancelButton.addEventListener('click', function() {
+                    editor.setData(initialEditorContent);
+
+                    const form = document.getElementById('productForm');
+                    const initialData = new FormData(form);
+                    for (const [key, value] of initialData.entries()) {
+                        const input = form.elements.namedItem(key);
+                        if (input && input.type !== 'textarea') {
+                            input.value = value;
                         }
-                    });
-                })
-                .catch(error => {
-                    console.error(error);
+                    }
                 });
-        });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
     </script>
 </div>

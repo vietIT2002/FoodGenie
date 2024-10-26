@@ -21,49 +21,54 @@ if (!empty($_SESSION['nguoidung'])) {
     }
     mysqli_close($con);
     ?>
-<div class="flex justify-between items-center">
-    <div class="flex  pt-10 p pl-8">
-        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">
+
+
+<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center justify-between border-b pb-4 mb-6">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
             Thêm quyền - danh mục
         </p>
-
+        <a href="./admin.php?tmuc=Danh mục">
+            <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
+                <i class="fas fa-times"></i>
+            </button>
+        </a>
     </div>
-</div>
-
-<div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
-
-
-    <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
-        <form action="./xulythem.php" method="POST">
-            <input type="text" name="tendanhmuc" value="">
-            <input type="submit" name="btndmadd" value="Lưu">
-            <div>
-
-            </div>
-            <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white ">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr>
-                            <th class=" pl-8  font-normal ">Tên danh muc</th>
-                            <th class=" pl-8  font-normal ">Chọn</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+    <form action="./xulythem.php" method="POST">
+        <!-- <input type="text" name="tendanhmuc" value="">
+        <input type="submit" name="btndmadd" value="Thêm "> -->
+        <div class="relative">
+            <label>Tên quyền: </label>
+            <input type="search" name="tendanhmuc" value=""
+                class="text-4xl py-5 font-medium text-red-800 dark:text-white rounded-lg mb-8" />
+            <button type="submit"
+                class="text-white text-3xl w-44 h-16 absolute end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  px-4 py-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                name="btndmadd">Cập nhật</button>
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden ">
+            <table class=" min-w-full bg-white ">
+                <thead class="h-20 bg-gray-300 ">
+                    <tr>
+                        <th class=" pl-8  font-normal ">Tên danh muc</th>
+                        <th class=" pl-8  font-normal ">Chọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
                             while ($row = mysqli_fetch_array($danhmuc1)) {
                                 ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4"><?= $row['ten_danhmuc'] ?></td>
-                            <td class="px-6 py-4"><input type="checkbox" value="<?= $row['id'] ?>" name="row[]"> </td>
-                            <div class="clear-both"></div>
-        </form>
-        </tr>
-        <?php } ?>
-        </tbody>
-        </table>
-    </div>
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4"><?= $row['ten_danhmuc'] ?></td>
+                        <td class="px-6 py-4"><input type="checkbox" value="<?= $row['id'] ?>" name="row[]"> </td>
+                        <div class="clear-both"></div>
+    </form>
+    </tr>
+    <?php } ?>
+    </tbody>
+    </table>
+</div>
 </div>
 <div class="clear-both"></div>
 <?php

@@ -53,7 +53,8 @@
 
     <div class="flex justify-between items-center">
         <div class="flex  pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
+            <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"
+                style="color: #0099cc !important;">
                 Quản lý Phiếu trả
             </p>
 
@@ -77,53 +78,57 @@
         <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
-                <table class=" min-w-full bg-white   ">
-                    <thead class="h-20 bg-gray-300 ">
-                        <tr>
-                            <th class="font-normal px-6 py-3">Mã phiếu trả<br><a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idgiam"><i
-                                        class="fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idtang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Tên công ty</th>
-                            <th class="font-normal px-6 py-3">Nhân viên đảm nhiệm</th>
-                            <th class="font-normal px-6 py-3">Thời gian<br><a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tggiam"><i
-                                        class="fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tgtang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">SĐT</th>
-                            <th class="font-normal px-6 py-3">Địa chỉ</th>
-                            <th class="font-normal px-6 py-3">Ghi chú</th>
-                            <th class="font-normal px-6 py-3">Tổng tiền<a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tiengiam"><i
-                                        class="fa fa-arrow-down"></i></a><a
-                                    href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tientang"><i
-                                        class="fa fa-arrow-up"></i></a></th>
-                            <th class="font-normal px-6 py-3">Xem chi tiết</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                <div class="overflow-x-auto overflow-y-auto h-5/6">
+
+                    <table class=" min-w-full bg-white   ">
+                        <thead class="h-20 bg-gray-300 ">
+                            <tr>
+                                <th class="font-normal px-6 py-3">Mã phiếu trả<br><a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idgiam"><i
+                                            class="fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idtang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">Tên công ty</th>
+                                <th class="font-normal px-6 py-3">Nhân viên đảm nhiệm</th>
+                                <th class="font-normal px-6 py-3">Thời gian<br><a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tggiam"><i
+                                            class="fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tgtang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">SĐT</th>
+                                <th class="font-normal px-6 py-3">Địa chỉ</th>
+                                <th class="font-normal px-6 py-3">Ghi chú</th>
+                                <th class="font-normal px-6 py-3">Tổng tiền<a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tiengiam"><i
+                                            class="fa fa-arrow-down"></i></a><a
+                                        href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=tientang"><i
+                                            class="fa fa-arrow-up"></i></a></th>
+                                <th class="font-normal px-6 py-3">Xem chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             while ($row = mysqli_fetch_array($phieutra)) {
                                 ?>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">PT<?= $row['idpt'] ?></td>
-                            <td class="px-6 py-4"><?= $row['nguoi_nhan'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
-                            <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ntpt'] ))?></td>
-                            <td class="px-6 py-4"><?= $row['sdt'] ?></td>
-                            <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
-                            <td class="px-6 py-4"><?= $row['ghi_chu'] ?></td>
-                            <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
-                            <td class="px-6 py-4"><a href="./admin.php?act=ctphieutra&id=<?= $row['idpt'] ?>"><i class="
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="px-6 py-4">PT<?= $row['idpt'] ?></td>
+                                <td class="px-6 py-4"><?= $row['nguoi_nhan'] ?></td>
+                                <td class="px-6 py-4"><?= $row['ten_nv'] ?></td>
+                                <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ntpt'] ))?></td>
+                                <td class="px-6 py-4"><?= $row['sdt'] ?></td>
+                                <td class="px-6 py-4"><?= $row['dia_chi'] ?></td>
+                                <td class="px-6 py-4"><?= $row['ghi_chu'] ?></td>
+                                <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
+                                <td class="px-6 py-4"><a href="./admin.php?act=ctphieutra&id=<?= $row['idpt'] ?>"><i
+                                            class="
                                         fa-regular fa-file-lines fa-lg text-green-500"> </a></td>
-                            <div class="clear-both"></div>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                                <div class="clear-both"></div>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <?php

@@ -20,7 +20,7 @@ if (!empty($_SESSION['nguoidung'])) {
 
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
-        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+        <p class="text-4xl py-5 font-medium text-red-800 dark:text-white" style="color: #0099cc">
             Chi tiết hóa đơn
         </p>
         <a href="./admin.php?tmuc=Hóa%20đơn">

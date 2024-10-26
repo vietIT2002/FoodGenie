@@ -15,7 +15,7 @@ if (!empty($_GET['id'])) {
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
         <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
-            Cập nhật nhân viên
+            Cập nhật thể loại
         </p>
         <a href="./admin.php?tmuc=Thể loại">
             <button type="button" class="text-gray-500 hover:bg-gray-200 p-2 rounded-full">
@@ -23,7 +23,7 @@ if (!empty($_GET['id'])) {
             </button>
         </a>
     </div>
-    <form id="form" name="theloai-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>"
+    <form name="theloai-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>"
         enctype="multipart/form-data">
         <div class="flex gap-6 mx-20">
 
@@ -33,9 +33,8 @@ if (!empty($_GET['id'])) {
                     <label class="block text-gray-700 text-2xl ">Tên thể loại:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        id="category_product" type="text" name="name" value="<?= (!empty($theloai) ? $theloai['ten_tl'] : "") ?>" />
+                        type="text" name="name" value="<?= (!empty($theloai) ? $theloai['ten_tl'] : "") ?>" />
                 </div>
-                <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="category_error"></span>
 
                 <!-- <div class="mb-4">
                     <label class="block  text-2xl text-gray-700">Số lượng:</label>
@@ -53,9 +52,11 @@ if (!empty($_GET['id'])) {
             <button class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
                 type="reset">Hủy</button>
         </div>
-        <script src="./js/theloai_pro.js"></script>
+
+
+
 </div>
+
+
 </form>
-
-
 </div>

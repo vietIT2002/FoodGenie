@@ -41,7 +41,7 @@
                 class="text-4xl py-5 font-medium text-red-800 dark:text-white border-none" required />
             <button type="submit"
                 class="text-white text-3xl w-44 h-16 absolute end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  px-4 py-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                name="btndmsua">Lưu</button>
+                name="btndmsua">Cập nhật</button>
         </div>
         <!-- <input type="text" name="tendanhmuc" value="<?= $_GET['tquyen'] ?>">
             <input type="submit" name="btndmsua" value="Lưu"> -->
