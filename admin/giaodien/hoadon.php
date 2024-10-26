@@ -24,11 +24,20 @@
         $offset = ($current_page - 1) * $item_per_page;
 
         // Tính tổng số hóa đơn và tổng doanh thu
-        $totalRevenueQuery = "SELECT COUNT(id) AS total_orders, SUM(tong_tien) AS total_revenue FROM hoadon";
+        $totalRevenueQuery = "SELECT COUNT(id) AS total_orders, SUM(tong_tien) AS total_revenue FROM hoadon WHERE trang_thai = 1";
         $totalRevenueResult = mysqli_query($con, $totalRevenueQuery);
-        $totalRevenueData = mysqli_fetch_assoc($totalRevenueResult);
-        $totalOrders = $totalRevenueData['total_orders'];
-        $totalRevenue = $totalRevenueData['total_revenue'];
+        // Kiểm tra kết quả truy vấn
+        if ($totalRevenueResult) {
+            $totalRevenueData = mysqli_fetch_assoc($totalRevenueResult);
+            $totalOrders = $totalRevenueData['total_orders'];
+            $totalRevenue = $totalRevenueData['total_revenue'];
+        } else {
+            // Xử lý lỗi truy vấn
+            echo "Lỗi truy vấn: " . mysqli_error($con);
+        }
+
+        // Đảm bảo rằng tổng doanh thu không phải là NULL
+        $totalRevenue = $totalRevenue !== NULL ? $totalRevenue : 0;
 
         // Tính tổng số trang
         $totalPages = ceil($totalOrders / $item_per_page);
