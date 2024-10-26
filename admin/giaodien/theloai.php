@@ -7,7 +7,7 @@ if (!empty($_SESSION['nguoidung'])) {
     $offset = ($current_page - 1) * $item_per_page;
 
     // Lấy tổng số thể loại
-    $totalRecords = mysqli_query($con, "SELECT COUNT(*) as count FROM `theloai`");
+    $totalRecords = mysqli_query($con, "SELECT COUNT(*) as count FROM `theloai` WHERE `status` = 0");
     $totalRecords = mysqli_fetch_assoc($totalRecords)['count'];
     
     $totalPages = ceil($totalRecords / $item_per_page);
@@ -17,7 +17,8 @@ if (!empty($_SESSION['nguoidung'])) {
         SELECT t.*, 
                IFNULL(SUM(s.so_luong), 0) as total_products 
         FROM `theloai` t 
-        LEFT JOIN `sanpham` s ON t.id = s.id_the_loai 
+        LEFT JOIN `sanpham` s ON t.id = s.id_the_loai  
+        WHERE t.status = 0 AND t.id != 1
         GROUP BY t.id 
         ORDER BY t.id ASC 
         LIMIT " . $item_per_page . " OFFSET " . $offset
