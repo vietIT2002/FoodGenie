@@ -50,7 +50,7 @@ form.addEventListener('submit', (e) => {
         e.preventDefault();
         original_price_error.innerHTML = "Giá gốc phải lớn hơn 0";
         valid = false;
-    } else if (parseFloat(price.value) >= parseFloat(originalPrice.value)) {
+    } else if (parseFloat(price.value) > parseFloat(originalPrice.value)) {
         e.preventDefault();
         original_price_error.innerHTML = "Giá gốc phải lớn hơn đơn giá";
         valid = false;
