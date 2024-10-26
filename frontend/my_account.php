@@ -147,36 +147,97 @@
 								<h3 class="title">Thông tin cá nhân</h3>
 							</div>
 
-							<form method="post">
-								<div class="form-group">
-									<label class="title-info" for="ten">Họ và Tên<span class="required1">*</span></label>
-									<input class="input input-custom" type="text" name="name" placeholder="Nhập họ tên" value="<?=$info['ten_kh']?>">
-								</div><br>
+							<form id="update-form" method="post">
+							<div class="form-group">
+								<label class="title-info" for="name">Họ và Tên<span class="required1">*</span></label>
+								<input class="input input-custom" type="text" id="name" name="name" placeholder="Nhập họ tên" value="<?=$info['ten_kh']?>">
+								<div style="color:red;" id="name-error"></div> <!-- Thông báo lỗi cho Họ và Tên -->
+							</div><br>
 
-                                <div class="form-group">
-									<label class="title-info" for="sdt">Số điện thoại<span class="required1">*</span></label>
-                                    <input class="input input-custom" type="tel" id="sdt" name="tel" placeholder="Nhập số điện thoại" value="<?=$info['phone']?>" onchange="checkPhone();">
-									<div style="color:red;" id="thongbaoloisdt"></div>
-								</div><br>
-                                
-                                <div class="form-group">
-									<label class="title-info" for="email">Email</label>
-									<input class="input input-custom" type="email" name="email" placeholder="Nhập Email" value="<?=$info['email']?>" readonly style="background-color: #f0eded">
-								</div><br>
+							<div class="form-group">
+								<label class="title-info" for="sdt">Số điện thoại<span class="required1">*</span></label>
+								<input class="input input-custom" type="tel" id="phone" name="tel" placeholder="Nhập số điện thoại" value="<?=$info['phone']?>">
+								<div style="color:red;" id="phone-error"></div> <!-- Thông báo lỗi cho Số điện thoại -->
+							</div><br>
 
-                                <div class="form-group">
-									<label class="title-info" for="diachi">Địa chỉ<span class="required1">*</span></label><br>
-									<textarea name="address" placeholder="Nhập địa chỉ" rows="4" cols="52"><?=$info['dia_chi']?></textarea>
-								</div><br>
+							<div class="form-group">
+								<label class="title-info" for="email">Email</label>
+								<input class="input input-custom" type="email" name="email" placeholder="Nhập Email" value="<?=$info['email']?>" readonly style="background-color: #f0eded">
+							</div><br>
 
-                                <div class="form-group">
-                                    <button class="button-info" >Cập nhật</button>
-								</div>
-                            </form>
-							
+							<div class="form-group">
+								<label class="title-info" for="diachi">Địa chỉ<span class="required1">*</span></label><br>
+								<textarea id="address" name="address" placeholder="Nhập địa chỉ" rows="4" cols="52"><?=$info['dia_chi']?></textarea>
+								<div style="color:red;" id="address-error"></div> <!-- Thông báo lỗi cho Địa chỉ -->
+							</div><br>
+
+							<div class="form-group">
+								<button type="submit" class="button-info">Cập nhật</button>
+							</div>
+						</form>
+						<script>
+							const form = document.getElementById('update-form');
+							const nameInput = document.getElementById('name');
+							const phoneInput = document.getElementById('phone');
+							const addressInput = document.getElementById('address');
+
+							const nameError = document.getElementById('name-error');
+							const phoneError = document.getElementById('phone-error');
+							const addressError = document.getElementById('address-error');
+
+							// Kiểm tra khi người dùng nhấn submit
+							form.addEventListener('submit', (e) => {
+								let valid = true; // Biến để theo dõi trạng thái hợp lệ
+
+								// Xóa thông báo lỗi trước khi kiểm tra
+								nameError.innerHTML = '';
+								phoneError.innerHTML = '';
+								addressError.innerHTML = '';
+
+								// Kiểm tra Họ và Tên
+								if (!nameInput.value.trim()) {
+									valid = false;
+									nameError.innerHTML = "Vui lòng nhập Họ và Tên.";
+								}
+
+								// Kiểm tra Số điện thoại
+								const phoneValue = phoneInput.value.trim();
+								if (!phoneValue) {
+									valid = false;
+									phoneError.innerHTML = "Vui lòng nhập Số điện thoại.";
+								} else if (!/^0\d{9}$/.test(phoneValue)) {
+									valid = false;
+									phoneError.innerHTML = "Số điện thoại phải bắt đầu bằng 0 và gồm 10 chữ số.";
+								}
+
+								// Kiểm tra Địa chỉ
+								if (!addressInput.value.trim()) {
+									valid = false;
+									addressError.innerHTML = "Vui lòng nhập Địa chỉ.";
+								}
+
+								// Ngăn không cho gửi biểu mẫu nếu không hợp lệ
+								if (!valid) {
+									e.preventDefault(); // Ngăn gửi form nếu có lỗi
+								}
+							});
+
+							// Xóa thông báo lỗi khi người dùng bắt đầu nhập
+							nameInput.addEventListener('input', () => {
+								nameError.innerHTML = '';
+							});
+
+							phoneInput.addEventListener('input', () => {
+								phoneError.innerHTML = '';
+							});
+
+							addressInput.addEventListener('input', () => {
+								addressError.innerHTML = '';
+							});
+						</script>	
 						</div>
 						<!-- /Billing Details -->
-        </div>
+			</div>
 
 		<div class="col col-lg-4 col-sm-12">
 			<div class="billing-details" style="background-color: #eff0f6">

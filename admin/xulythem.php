@@ -434,7 +434,12 @@
                                                     }
                                                 }
                                                 $con = mysqli_connect("localhost", "root", "", "foodgennie");
-                                                $result1 = mysqli_query($con, "UPDATE `nhanvien` SET `id` = '" . $_POST['id'] . "', `ten_nv` = '" . $_POST['name'] . "',`hinh_anh`='$image_url', `mat_khau` = '" . $_POST['mat_khau'] . "', `email` = '" . $_POST['email'] . "', `phone` = '" . $_POST['phone'] . "', `ten_dangnhap` = '" . $_POST['tendangnhap'] . "' , `id_loainv` = '" . $_POST['id_loainv'] . "' , `id_quyen` = '" . $_POST['id_quyen'] . "' WHERE `nhanvien`.`id` = " . $_GET['id']);
+                                                $result1 = mysqli_query($con, "UPDATE `nhanvien` 
+                                                SET `ten_nv` = '" . $_POST['name'] . "', `hinh_anh`='$image_url', `mat_khau` = '" . $_POST['mat_khau'] . "', 
+                                                `email` = '" . $_POST['email'] . "', `phone` = '" . $_POST['phone'] . "', `ten_dangnhap` = '" . $_POST['tendangnhap'] . "', 
+                                                `id_loainv` = '" . $_POST['id_loainv'] . "', `id_quyen` = '" . $_POST['id_quyen'] . "' 
+                                                WHERE `nhanvien`.`id` = " . $_GET['id']);
+                                                
 
                                                 if ($result1)
                                                     header("location:./admin.php?act=suanvtc&dk=yes");

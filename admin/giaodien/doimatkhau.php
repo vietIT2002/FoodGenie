@@ -45,7 +45,7 @@
     </div>
     <div class="box-contentt">
 
-        <form name="doimk-formsua" method="POST" action="./xulythem.php?user=<?= $_SESSION['user'] ?>"
+        <form id="form" name="doimk-formsua" method="POST" action="./xulythem.php?user=<?= $_SESSION['user'] ?>"
             enctype="multipart/form-data">
 
             <div class="clear-both"> <br>
@@ -54,9 +54,9 @@
 
             <div class="wrap-field form-group">
                 <label>Mật khẩu mới:</label><br>
-                <input class="form-control" type="text" name="matkhaumoi" value="" />
+                <input id="new-password-Admin" class="form-control" type="text" name="matkhaumoi" value="" />
+                <div class="error-message" id="password-error" style="color: red; font-size: 0.80em; margin-left: 4px;"></div>
                 <!-- <input type="text" name="matkhaumoi" value=""/> -->
-                <div class="clear-both"></div>
             </div>
             <!-- <div class="wrap-field form-group">
                 <label>mk cu</label>
@@ -66,15 +66,63 @@
 
             <center>
 
-                <button class="btn btn-danger btnLuu" name="btntkmk" type="submit" title="Lưu mật khẩu" value="Lưu">Luu
+                <button class="btn btn-danger btnLuu" name="btntkmk" type="submit" title="Lưu mật khẩu" value="Lưu">LƯU
                 </button>
-                <button class="btn btn-primary btnLuu" type="reset" value="Hủy">Hủy</button>
+                <button class="btn btn-primary btnLuu" type="reset" value="Hủy">HỦY</button>
             </center>
     </div>
 
 
     </form>
     <div class="clear-both"></div>
+    <script>
+    const passwordInput = document.getElementById('new-password-Admin');
+    const passwordError = document.getElementById('password-error');
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', (e) => {
+        let valid = true; 
+        passwordError.innerHTML = ''; 
+
+        const passwordValue = passwordInput.value.trim();
+        if (passwordValue === '') {
+            valid = false; 
+            passwordError.innerHTML = "Vui lòng nhập mật khẩu"; 
+        } else {
+            if (passwordValue.length < 8) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu ít nhất 8 ký tự. ";
+            }
+            if (/\s/.test(passwordValue)) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu không chứa khoảng trắng. ";
+            }
+            if (!/[a-z]/.test(passwordValue)) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu ít nhất một chữ cái viết thường. ";
+            }
+            if (!/[A-Z]/.test(passwordValue)) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu ít nhất một chữ cái viết hoa. ";
+            }
+            if (!/\d/.test(passwordValue)) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu nhất một chữ số. ";
+            }
+            if (!/[!@#$%^&+=]/.test(passwordValue)) {
+                valid = false;
+                passwordError.innerHTML += "Mật khẩu ít nhất một ký tự đặc biệt. ";
+            }
+        }
+        if (!valid) {
+            e.preventDefault(); 
+        }
+    });
+
+    passwordInput.addEventListener('input', () => {
+        passwordError.innerHTML = ''; 
+    });
+</script>
 
 </body>
 

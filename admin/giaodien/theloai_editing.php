@@ -59,6 +59,4 @@ if (!empty($_GET['id'])) {
 
 
 </form>
-
-
 </div>
