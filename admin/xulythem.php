@@ -387,6 +387,7 @@
                 header("location:./admin.php?act=addnvtc&dk=no");
     }
 
+    
     if (isset($_POST['btnnvsua'])) {
         if (isset($_POST['id']))
             if ($_POST['id'] != '') {
