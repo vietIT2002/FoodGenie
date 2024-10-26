@@ -1,4 +1,5 @@
 const formnv = document.getElementById('form-nhanvien');
+const EditNV = document.getElementById('edit_nhanvien');
 const nvinmage = document.getElementById('nhanvien_images');
 const manv = document.getElementById('nhanvien-manv');
 const phoneInput = document.getElementById('phone');
