@@ -32,46 +32,56 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     </button>
                 </div>
 
-                <form name="product-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+                <form name="product-formadd" id="form" method="POST" action="./xulythem.php" enctype="multipart/form-data"
                     class="p-4 md:p-5">
                     <div class="flex flex-wrap gap-4">
                         <div class="w-full md:w-1/2">
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="name_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên sản phẩm:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                    name="name" value="">
+                                    id="product-name" name="name" value="">
                             </div>
                             
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="price_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá sản phẩm:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
-                                    name="price" value="">
+                                    id="product-price" name="price" value="">
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="original_price_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá gốc:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
-                                    name="gia_goc" value="">
+                                    id="product-original-price" name="gia_goc" value="">
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="image_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Ảnh đại diện:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="file"
-                                    name="image">
+                                    id="product-image" name="image">
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="photo_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thư viện ảnh:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="file"
-                                    name="gallery[]" multiple>
+                                    id="photo_library" name="gallery[]" multiple>
                             </div>
+
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">ID thể loại:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thể loại:</label>
                                 <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="idtl">
                                     <?php while ($row = mysqli_fetch_array($theloai)) { ?>
                                     <option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_tl'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
+
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">ID nhà cung
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nhà cung
                                     cấp:</label>
                                 <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="idncc">
                                     <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
@@ -80,28 +90,33 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                                     <?php } ?>
                                 </select>
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="content_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nội dung:</label>
                                 <textarea class="w-2/3 text-2xl pl-4 focus:outline-none"
-                                        name="content" id="product-content"></textarea>
+                                    id="product-content" name="content" id="product-content"></textarea>
                             </div>
-
+                            
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="quantity_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số lượng:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
-                                    name="so_luong">
+                                    id="product-quantity" name="so_luong">
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="weight_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Khối lượng:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                    name="khoi_luong" value="">
-
+                                    id ="product-weight" name="khoi_luong" value="">
                             </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="origin_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Xuất xứ:</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                    name="xuat_xu" value="">
-
+                                    id="product-origin" name="xuat_xu"  value="">
                             </div>
                         </div>
                     </div>
@@ -116,6 +131,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </form>
             </div>
         </div>
+        <script src="./js/binding_product.js"></script>
     </div>
 </body>
 

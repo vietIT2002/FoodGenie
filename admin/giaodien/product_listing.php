@@ -20,7 +20,7 @@
     <?php
     include_once("./connect_db.php");
     if (!empty($_SESSION['nguoidung'])) {
-        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
+        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 9;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
         $totalRecords = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `trangthai` = 0 ");
@@ -47,9 +47,6 @@
         }
         mysqli_close($con);
         ?>
-
-
-
     <div class="flex justify-between items-center">
         <div class="flex  pt-10 p pl-8">
             <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
@@ -70,6 +67,7 @@
             </div> -->
         </div>
     </div>
+
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 

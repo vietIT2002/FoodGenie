@@ -11,7 +11,18 @@ if (!empty($_GET['id'])) {
     $ngay_tao = new DateTime($nhanvien['ngay_tao']);
     $today = new DateTime();
     $interval = $ngay_tao->diff($today);
-    $days_worked = $interval->days; 
+
+    $years = $interval->y;
+    $months = $interval->m;
+    $days = $interval->d;
+
+    if ($years > 0) {
+        $days_worked = "$years năm, $months tháng, $days ngày";
+    } elseif ($months > 0) {
+        $days_worked = "$months tháng, $days ngày";
+    } else {
+        $days_worked = "$days ngày";
+    }
 
     $chucvu_query = "SELECT * FROM loainhanvien";
     $chucvu_result = mysqli_query($con, $chucvu_query);
@@ -23,6 +34,9 @@ if (!empty($_GET['id'])) {
     $ten_quyen_query = "SELECT ten_quyen FROM quyen WHERE id = $quyen_id";
     $ten_quyen_result = mysqli_query($con, $ten_quyen_query);
     $ten_quyen = mysqli_fetch_assoc($ten_quyen_result)['ten_quyen'];
+
+    $result = executeSingleResult("SELECT DATE_FORMAT(ngay_tao, '%d-%m-%Y') AS formatted_date FROM nhanvien WHERE id = " . $_GET['id']);
+    $ngay_tao = (!empty($result['formatted_date'])) ? $result['formatted_date'] : "";
 }
 ?>
 
@@ -53,7 +67,7 @@ if (!empty($_GET['id'])) {
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">ID Nhân viên: </label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" type="text" name="id" value="<?= $_GET['id'] ?>" readonly />
+                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" type="text" name="id" value="NV<?= $_GET['id'] ?>" readonly />
                     </div>
                 </div>
                 <div class="wrap-field form-group row">
@@ -65,7 +79,14 @@ if (!empty($_GET['id'])) {
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Email: </label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" name="email" value="<?= (!empty($nhanvien) ? $nhanvien['email'] : "") ?>" placeholder="VD: abc@gmail.com" />
+                    <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                        type="email" 
+                        name="email" 
+                        value="<?= (!empty($nhanvien) ? $nhanvien['email'] : "") ?>" 
+                        placeholder="VD: abc@gmail.com" 
+                        required 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                        title="Vui lòng nhập email hợp lệ, ví dụ: abc@gmail.com" />
                     </div>
                 </div>
                 <div class="wrap-field form-group row">
@@ -110,10 +131,18 @@ if (!empty($_GET['id'])) {
                 </div>
 
                 <div class="wrap-field form-group row"> 
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Ngày nhận việc: </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" 
+                            value="<?= $ngay_tao ?>" readonly />
+                    </div>
+                </div>
+
+                <div class="wrap-field form-group row"> 
                     <label class="col-sm-4 col-form-label col-form-label-sm">Thời gian làm việc: </label>
                     <div class="col-sm-8">
                         <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" 
-                            value="<?= $days_worked ?> ngày" readonly />
+                            value="<?= $days_worked ?>" readonly />
                     </div>
                 </div>
             </div>

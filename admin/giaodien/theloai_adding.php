@@ -19,15 +19,16 @@
                 </button>
             </div>
 
-            <form name="theloai-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+            <form id="form" name="theloai-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
                 class="p-4 md:p-5 ">
                 <div class="flex flex-wrap gap-4">
 
                     <div class="w-full md:w-1/2 ">
+                    <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="category_error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên thể loại:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="name" value="">
+                                id="category_product" name="name" value="">
                         </div>
                         <!-- <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tổng sản phẩm:</label>
@@ -47,8 +48,7 @@
                         type="reset" value="Hủy">Hủy</button>
                 </div>
             </form>
-
-
         </div>
     </div>
+    <script src="./js/theloai_pro.js"></script>
 </div>

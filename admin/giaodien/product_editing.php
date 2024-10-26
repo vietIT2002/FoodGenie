@@ -79,14 +79,14 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <label class="block text-gray-700">Giá sản phẩm:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="text" name="price"
+                        type="number" name="price"
                         value="<?= (!empty($product) ? number_format($product['don_gia'], 0, ",", ".") : "") ?>" />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Giá gốc:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="text" name="gia_goc"
+                        type="number" name="gia_goc"
                         value="<?= (!empty($product) ? number_format($product['gia_goc'], 0, ",", ".") : "") ?>" />
                 </div>
                 <div class="mb-4">
