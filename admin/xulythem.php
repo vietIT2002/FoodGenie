@@ -275,25 +275,19 @@
                 header("location:./admin.php?act=suatltc&dk=no");
     }
     if (isset($_POST['btnnccadd'])) {
-        if (isset($_POST['name']))
-            if ($_POST['name'] != '') {
-                if (isset($_POST['email']))
-                    if ($_POST['email'] != '') {
-                        if (isset($_POST['website']))
-                            if ($_POST['website'] != '') {
-                                if (isset($_POST['sdt']))
-                                    if ($_POST['sdt'] != '') {
-                                        $sql = "INSERT INTO `nhacungcap`(`ten_ncc`, `email`, `web_site`,`phone`) VALUES ('" . $_POST['name'] . "','" . $_POST['email'] . "','" . $_POST['website'] . "','" . $_POST['sdt'] . "')";
-                                        $result = execute($sql);
-                                        header("location:./admin.php?act=nccaddtc&dk=yes");
-                                    } else
-                                        header("location:./admin.php?act=nccaddtc&dk=no");
-                            } else
-                                header("location:./admin.php?act=nccaddtc&dk=no");
-                    } else
-                        header("location:./admin.php?act=nccaddtc&dk=no");
-            } else
-                header("location:./admin.php?act=nccaddtc&dk=no");
+        $name = $_POST['name'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $website = $_POST['website'] ?? '';
+        $phone = $_POST['sdt'] ?? '';
+    
+        if ($name && $email && $website && $phone) {
+            $sql = "INSERT INTO `nhacungcap`(`ten_ncc`, `email`, `web_site`, `phone`) 
+                    VALUES ('$name', '$email', '$website', '$phone')";
+            $result = execute($sql);
+            header("location:./admin.php?act=nccaddtc&dk=yes");
+        } else {
+            header("location:./admin.php?act=nccaddtc&dk=no");
+        }
     }
     // if (isset($_POST['btnnccdat'])) {
     //     if ($_POST['sldat'] != "") {
