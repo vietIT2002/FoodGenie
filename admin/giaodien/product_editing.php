@@ -34,18 +34,18 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
         </a>
     </div>
 
-    <form id="productForm" name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
+    <form id="form" name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
         enctype="multipart/form-data">
         <div class="mx-10">
-
-
+            
             <div class=" w-full grid grid-cols-3 gap-6  ">
 
                 <div class="mb-4">
                     <label class="block  text-2xl text-gray-700">Tên sản phẩm:</label>
                     <input
                         class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="text" name="name" value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
+                        id="product-name" type="text" name="name" value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
+                        <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="name_error"></span>
                 </div>
 
 
@@ -75,36 +75,41 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         <option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_ncc'] ?></option><?php } ?>
                     </select>
                 </div>
+
                 <div class="mb-4">
                     <label class="block text-gray-700">Giá sản phẩm:</label>
 
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="number" name="price"
-                        value="<?= (!empty($product) ? number_format($product['don_gia'], 0, ",", ".") : "") ?>" />
+                        id="product-price" type="number" name="price"
+                        value="<?= !empty($product) ? $product['don_gia'] : '' ?>" />
+                    <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="price_error"></span>
                 </div>
+
                 <div class="mb-4">
                     <label class="block text-gray-700">Giá gốc:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="number" name="gia_goc"
-                        value="<?= (!empty($product) ? number_format($product['gia_goc'], 0, ",", ".") : "") ?>" />
+                        id="product-original-price" type="number" name="gia_goc"
+                        value="<?= !empty($product) ? $product['gia_goc'] : '' ?>" />
+                        <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="original_price_error"></span>
                 </div>
+                
                 <div class="mb-4">
                     <label class="block text-gray-700">Xuất xứ:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         type="text" name="xuat_xu" value="<?= (!empty($product) ? $product['xuat_xu'] : "") ?>">
-
                 </div>
+
                 <div class="mb-4">
                     <label class="block text-gray-700">Khối lượng:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        type="text" name="khoi_luong" value="<?= (!empty($product) ? $product['khoi_luong'] : "") ?>" />
+                        type="text" name="khoi_luong" value="<?= (!empty($product) ? $product['khoi_luong'] : "") ?>" />            
                 </div>
             </div>
-
+            
             <div class="flex gap-6 mt-6">
                 <!-- Avatar Section -->
                 <div class="w-1/3">
@@ -113,7 +118,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         <?php if (!empty($product['hinh_anh'])) { ?>
                         <img class="w-96 h-96 object-cover rounded" id="imageDisplay"
                             src="../img/<?= $product['hinh_anh'] ?>" alt="Ảnh đại diện" />
-                        <input type="hidden" id="imageDisplay" name="image" value="<?= $product['hinh_anh'] ?>" />
+                        <input type="hidden"  id="imageDisplay" name="image" value="<?= $product['hinh_anh'] ?>" />
                         <?php } ?>
                         <input class="mt-4 file:border file:border-gray-300 file:rounded file:px-3 file:py-2"
                             id="fileInput" type="file" name="image" />
@@ -150,13 +155,14 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         type="file" name="gallery[]" />
                 </div>
             </div>
+
             <div class=" flex gap-6 mt-6  ">
                 <div class=" mb-4 w-11/12 h-80 ">
                     <label>Nội dung: </label>
                     <textarea
                         class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
                         name="content"
-                        id="product-content"><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
+                        ><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
 
                     <!-- <div class="clear-both"></div> -->
                 </div>
@@ -177,6 +183,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             </div>
         </div>
     </form>
+    <script src="./js/binding_product.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
     <script>
@@ -193,7 +200,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 cancelButton.addEventListener('click', function() {
                     editor.setData(initialEditorContent);
 
-                    const form = document.getElementById('productForm');
+                    const form = document.getElementById('form');
                     const initialData = new FormData(form);
                     for (const [key, value] of initialData.entries()) {
                         const input = form.elements.namedItem(key);
