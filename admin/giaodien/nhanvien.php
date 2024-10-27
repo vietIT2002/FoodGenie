@@ -70,10 +70,10 @@
                                 <th class=" pl-8  font-normal ">Mã nhân viên</th>
                                 <th class="font-normal">Ảnh</th>
                                 <th class="font-normal">Họ và tên</th>
-                                <th class="font-normal">Username</th>
+                                <th class="font-normal">Tên đăng nhập</th>
                                 <th class="font-normal">Email</th>
-                                <th class="font-normal">Password</th>
-                                <th class="font-normal">SĐT</th>
+                                <th class="font-normal">Mật Khẩu</th>
+                                <th class="font-normal">Số điện thoại</th>
                                 <th class="font-normal">Chức vụ</th>
                                 <th class="font-normal">Quyền</th>
                                 <th class="font-normal">Chỉnh sửa</th>

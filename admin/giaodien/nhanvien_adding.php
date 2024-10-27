@@ -31,64 +31,76 @@ $quyen_result = mysqli_query($con, $quyen_query);
                 </button>
             </div>
 
-            <form name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+            <form id="form-nhanvien" name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
                 class="p-4 md:p-5 ">
                 <div class="flex flex-wrap gap-4">
+                    <span style="color: red; font-size: 0.75em; margin-left: 160px;" id="imagenv_error"></span>
                     <div class="w-full md:w-1/4 flex flex-col items-center">
                         <img style="width: 200px; height: 200px;" id="imageDisplay" src="#" alt="Ảnh đại diện"
                             class="mb-4">
                         <input class="form-control file-input border-gray-300 rounded-md shadow-sm" type="file"
-                            name="image" id="fileInput" accept="image/*">
+                            id="nhanvien_images"  name="image" id="fileInput" accept="image/*">
                     </div>
                     <div class="w-full md:w-1/2 md:w-2/3 ">
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="manv_error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">ID Nhân viên:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="id" value="">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mã Nhân viên:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
+                                id="nhanvien-manv" name="id" value="">
                         </div>
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="tennv-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên Nhân viên:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="name" value="">
+                                id="nhanvien-tennv" name="name" value="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="email-error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="email"
-                                name="email" value="" placeholder="VD: abc@gmail.com">
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                                id="nhanvien-email"    name="email" value="" placeholder="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="phone-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="tel"
-                                name="phone" value="" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789">
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
+                                id="phone" name="phone" value=""  placeholder="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="password-error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mật khẩu:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="mat_khau" required
-                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$"
-                                title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt.">
+                            id="new-password-Admin" name="mat_khau">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="tendn-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên đăng nhập:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="tendangnhap" value="">
+                                id="tendn-nhanvien"    name="tendangnhap" value="">
                         </div>
 
                         <!-- Dropdown Chức vụ -->
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="chucvu-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ:</label>
-                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_loainv"
-                                required>
+                            <select id="chucvu-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_loainv"
+                                >
                                 <option value="">Chọn chức vụ</option>
                                 <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
                                 <option value="<?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="quyen-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền:</label>
-                            <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_quyen"
-                                required>
+                            <select id="quyen-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_quyen"
+                               >
                                 <option value="">Chọn quyền</option>
                                 <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
                                 <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
@@ -108,8 +120,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         type="reset" value="Hủy">Hủy</button>
                 </div>
             </form>
-
-
+            <script src="./js/binding_nhanvien.js"></script>
         </div>
     </div>
 </div>

@@ -66,18 +66,71 @@
         </div>
     </div>
 </div>
-<!-- <script>
-    const fileInput = document.getElementById('fileInput');
-    const imageDisplay = document.getElementById('imageDisplay');
 
-    fileInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+<script>
+    const formncc = document.getElementById('form-ncc');
+    const namencc = document.getElementById('name-ncc');
+    const phoneInput = document.getElementById('phone-ncc');
+    const emailncc = document.getElementById('email-ncc');
+    const websitencc = document.getElementById('website-ncc');
 
-        reader.onload = function (e) {
-            imageDisplay.src = e.target.result;
+    const phoneError = document.getElementById('phone-error');
+    const emailError = document.getElementById('email-error');
+    const websiteError = document.getElementById('website-error');
+    const nameError = document.getElementById('name-error');
+
+    formncc.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+
+        if (!namencc.value.trim()) { 
+            nameError.innerHTML = "Vui lòng nhập tên nhà cung cấp"; 
+            valid = false;
+        } else {
+            nameError.innerHTML = "";
         }
 
-        reader.readAsDataURL(file);
+        const phoneValue = phoneInput.value.trim();
+        if (!phoneValue) {
+            valid = false;
+            phoneError.innerHTML = "Vui lòng nhập số điện thoại.";
+        } else if (!/^0\d{9}$/.test(phoneValue)) {
+            valid = false;
+            phoneError.innerHTML = "Số điện thoại phải bắt đầu bằng 0 và gồm 10 số.";
+        } else {
+            phoneError.innerHTML = "";
+        }
+
+        const emailValue = emailncc.value.trim();
+        if (!emailValue) { 
+            emailError.innerHTML = "Vui lòng nhập email"; 
+            valid = false;
+        } else if (!/^.+@gmail\.com$/.test(emailValue)) {
+            emailError.innerHTML = "Email phải có định dạng xxxx@gmail.com";
+            valid = false;
+        } else {
+            emailError.innerHTML = ""; 
+        }
+
+        const websiteValue = websitencc.value.trim();
+        if (!websiteValue) {
+            websiteError.innerHTML = "Vui lòng nhập URL website";
+            valid = false;
+        } else if (!/^https:\/\/.+\..+$/i.test(websiteValue)) {
+            websiteError.innerHTML = "URL phải hợp lệ và bắt đầu bằng https://";
+            valid = false;
+        } else {
+            websiteError.innerHTML = ""; 
+        }
+
+        if (valid) {
+            formncc.submit(); 
+        }
     });
-</script> -->
+
+    [namencc, phoneInput, emailncc, websitencc].forEach((field, index) => {
+        field.addEventListener('input', () => {
+            [nameError, phoneError, emailError, websiteError][index].innerHTML = ''; 
+        });
+    });
+</script>

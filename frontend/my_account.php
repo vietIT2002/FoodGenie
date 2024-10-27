@@ -151,13 +151,13 @@
 							<div class="form-group">
 								<label class="title-info" for="name">Họ và Tên<span class="required1">*</span></label>
 								<input class="input input-custom" type="text" id="name" name="name" placeholder="Nhập họ tên" value="<?=$info['ten_kh']?>">
-								<div style="color:red;" id="name-error"></div> <!-- Thông báo lỗi cho Họ và Tên -->
+								<div style="color:red;" id="name-error"></div> 
 							</div><br>
 
 							<div class="form-group">
 								<label class="title-info" for="sdt">Số điện thoại<span class="required1">*</span></label>
 								<input class="input input-custom" type="tel" id="phone" name="tel" placeholder="Nhập số điện thoại" value="<?=$info['phone']?>">
-								<div style="color:red;" id="phone-error"></div> <!-- Thông báo lỗi cho Số điện thoại -->
+								<div style="color:red;" id="phone-error"></div> 
 							</div><br>
 
 							<div class="form-group">
@@ -168,7 +168,7 @@
 							<div class="form-group">
 								<label class="title-info" for="diachi">Địa chỉ<span class="required1">*</span></label><br>
 								<textarea id="address" name="address" placeholder="Nhập địa chỉ" rows="4" cols="52"><?=$info['dia_chi']?></textarea>
-								<div style="color:red;" id="address-error"></div> <!-- Thông báo lỗi cho Địa chỉ -->
+								<div style="color:red;" id="address-error"></div> 
 							</div><br>
 
 							<div class="form-group">
@@ -207,7 +207,7 @@
 									phoneError.innerHTML = "Vui lòng nhập Số điện thoại.";
 								} else if (!/^0\d{9}$/.test(phoneValue)) {
 									valid = false;
-									phoneError.innerHTML = "Số điện thoại phải bắt đầu bằng 0 và gồm 10 chữ số.";
+									phoneError.innerHTML = "Số điện thoại bắt đầu bằng 0 và gồm 10 số.";
 								}
 
 								// Kiểm tra Địa chỉ
@@ -216,9 +216,8 @@
 									addressError.innerHTML = "Vui lòng nhập Địa chỉ.";
 								}
 
-								// Ngăn không cho gửi biểu mẫu nếu không hợp lệ
 								if (!valid) {
-									e.preventDefault(); // Ngăn gửi form nếu có lỗi
+									e.preventDefault(); 
 								}
 							});
 

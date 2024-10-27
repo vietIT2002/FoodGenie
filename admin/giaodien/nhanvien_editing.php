@@ -52,7 +52,7 @@ if (!empty($_GET['id'])) {
         </a>
     </div>
 
-    <form name="nhanvien-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>" enctype="multipart/form-data">
+    <form id="edit_nhanvien" name="nhanvien-formsua" method="POST" action="./xulythem.php?id=<?= $_GET['id'] ?>" enctype="multipart/form-data">
         <div class="flex gap-6">
             <div class="w-1/3 flex flex-col items-center">
                 <?php if (!empty($nhanvien['hinh_anh'])) { ?>
@@ -65,46 +65,54 @@ if (!empty($_GET['id'])) {
             <div class="col-sm-7">
                 <!-- Thông tin khác cho phép sửa đổi -->
                 <div class="wrap-field form-group row">
-                    <label class="col-sm-4 col-form-label col-form-label-sm">ID Nhân viên: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Mã Nhân viên: </label>
                     <div class="col-sm-8">
                         <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" type="text" name="id" value="NV<?= $_GET['id'] ?>" readonly />
                     </div>
                 </div>
+
+                <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="tennv-error"></span>
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Tên Nhân viên: </label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="name" value="<?= (!empty($nhanvien) ? $nhanvien['ten_nv'] : "") ?>" />
+                    <input id="nhanvien-tennv" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="name" value="<?= (!empty($nhanvien) ? $nhanvien['ten_nv'] : "") ?>" />
                     </div>
                 </div>
+
+                <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="email-error"></span>
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Email: </label>
                     <div class="col-sm-8">
                     <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                        type="email" 
+                        id="nhanvien-email"
+                        type="text" 
                         name="email" 
                         value="<?= (!empty($nhanvien) ? $nhanvien['email'] : "") ?>" 
-                        placeholder="VD: abc@gmail.com" 
-                        required 
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-                        title="Vui lòng nhập email hợp lệ, ví dụ: abc@gmail.com" />
+                        placeholder=""/>
                     </div>
                 </div>
+
+                <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="phone-error"></span>
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Số điện thoại </label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="tel" name="phone" value="<?= (!empty($nhanvien) ? $nhanvien['phone'] : "") ?>" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789" />
+                        <input id="phone" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="phone" value="<?= (!empty($nhanvien) ? $nhanvien['phone'] : "") ?>" placeholder="" />
                     </div>
                 </div>
+
+                <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="password-error"></span>
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Mật khẩu</label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="mat_khau" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt." value="<?= (!empty($nhanvien) ? $nhanvien['mat_khau'] : "") ?>">
+                        <input id="new-password-Admin" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="mat_khau" value="<?= (!empty($nhanvien) ? $nhanvien['mat_khau'] : "") ?>">
                     </div>
                 </div>
+                
+                <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="tendn-error"></span>
                 <div class="wrap-field form-group row">
                     <label class="col-sm-4 col-form-label col-form-label-sm">Tên đăng nhập </label>
                     <div class="col-sm-8">
-                        <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="tendangnhap" value="<?= (!empty($nhanvien) ? $nhanvien['ten_dangnhap'] : "") ?>" />
+                        <input id="tendn-nhanvien" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="tendangnhap" value="<?= (!empty($nhanvien) ? $nhanvien['ten_dangnhap'] : "") ?>" />
                     </div>
                 </div>
 
@@ -154,7 +162,7 @@ if (!empty($_GET['id'])) {
             <button class="ml-4 px-6 py-2 bg-gray-400  text-3xl text-white rounded-lg hover:bg-gray-500"
                 type="reset">Hủy</button>
         </div>
-
+        <script src="./js/edit_nhanvien.js"></script>
 
     </form>
 </div>

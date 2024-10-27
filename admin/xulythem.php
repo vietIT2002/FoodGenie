@@ -294,7 +294,7 @@
                         header("location:./admin.php?act=nccaddtc&dk=no");
             } else
                 header("location:./admin.php?act=nccaddtc&dk=no");
-    }
+}
     // if (isset($_POST['btnnccdat'])) {
     //     if ($_POST['sldat'] != "") {
     //         if (is_int(intval($_POST['sldat']))) {
@@ -318,7 +318,6 @@
         $result = execute($sql);
         header("location:./admin.php?act=khtttc&dk=yes");
     }
-
 
     if (isset($_POST['btnnvadd'])) {
         if (isset($_POST['id']))
@@ -386,7 +385,7 @@
             } else
                 header("location:./admin.php?act=addnvtc&dk=no");
     }
-
+    
     if (isset($_POST['btnnvsua'])) {
         if (isset($_POST['id']))
             if ($_POST['id'] != '') {
