@@ -19,44 +19,54 @@
                 </button>
             </div>
 
-            <form id="form-ncc" name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
-                class="p-4 md:p-5">
+            <form name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+                class="p-4 md:p-5 ">
                 <div class="flex flex-wrap gap-4">
-                    <div class="w-full md:w-1/2">
-                        <span id="name-error" style="color: red; font-size: 0.75em; margin-left: 140px;"></span>
+
+                    <div class="w-full md:w-1/2 ">
+                        <!-- <div class="mb-4 flex items-center">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">ID Nhân viên:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                                name="id" value="">
+                        </div> -->
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên nhà cung cấp</label>
-                            <input id="name-ncc" class="w-2/3 text-2xl pl-4 h-16 focus:outline-none" type="text" name="name" value="">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên nhà cung cấp:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                                name="name" value="">
+                        </div>
+                        <div class="mb-4 flex items-center ">
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="email"
+                                name="email" value="" placeholder="VD: abc@gmail.com">
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Website:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="url"
+                                name="website" value="" placeholder="VD: https://www.google.com" value="">
+                        </div>
+                        <div class="mb-4 flex items-center ">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">SĐT:</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="tel"
+                                name="sdt" value="" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789">
                         </div>
 
-                        <span id="email-error" style="color: red; font-size: 0.75em; margin-left: 140px;"></span>
-                        <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Email</label>
-                            <input id="email-ncc" class="w-2/3 text-2xl pl-4 h-16 focus:outline-none" type="text" name="email" value="">
-                        </div>
-
-                        <span id="website-error" style="color: red; font-size: 0.75em; margin-left: 140px;"></span>
-                        <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Website</label>
-                            <input id="website-ncc" class="w-2/3 text-2xl pl-4 h-16 focus:outline-none" type="text" name="website" value="">
-                        </div>
-
-                        <span id="phone-error" style="color: red; font-size: 0.75em; margin-left: 140px;"></span>
-                        <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại</label>
-                            <input id="phone-ncc" class="w-2/3 text-2xl pl-4 h-16 focus:outline-none" type="number" name="sdt" value="">
-                        </div>
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">
-                    <button class="w-44 h-16 text-2xl bg-red-500 text-white px-4 py-2 rounded-md shadow-sm mr-2" 
-                            name="btnnccadd" type="submit" title="Lưu nhà cung cấp" value="Lưu">Thêm</button>
-                    <button class="w-44 h-16 text-2xl bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm" 
-                            type="reset" value="Hủy">Hủy</button>
+                    <button
+                        class="btn btn-danger w-44 pl-2 h-16 text-2xl bg-red-500 text-white px-4 py-2 rounded-md shadow-sm mr-2"
+                        name="btnnccadd" type="submit" title="Lưu nhà cung cấp" value="Lưu">Thêm</button>
+                    <button
+                        class="btn btn-primary w-44 pl-2 h-16 text-2xl bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm"
+                        type="reset" value="Hủy">Hủy</button>
                 </div>
             </form>
+
+
         </div>
     </div>
+</div>
+
 <script>
     const formncc = document.getElementById('form-ncc');
     const namencc = document.getElementById('name-ncc');
@@ -73,7 +83,6 @@
         e.preventDefault();
         let valid = true;
 
-        // Kiểm tra Tên nhà cung cấp
         if (!namencc.value.trim()) { 
             nameError.innerHTML = "Vui lòng nhập tên nhà cung cấp"; 
             valid = false;
@@ -81,7 +90,6 @@
             nameError.innerHTML = "";
         }
 
-        // Kiểm tra Số điện thoại
         const phoneValue = phoneInput.value.trim();
         if (!phoneValue) {
             valid = false;
@@ -93,7 +101,6 @@
             phoneError.innerHTML = "";
         }
 
-        // Kiểm tra Email
         const emailValue = emailncc.value.trim();
         if (!emailValue) { 
             emailError.innerHTML = "Vui lòng nhập email"; 
@@ -121,12 +128,9 @@
         }
     });
 
-    // Xóa thông báo lỗi khi người dùng nhập lại thông tin
     [namencc, phoneInput, emailncc, websitencc].forEach((field, index) => {
         field.addEventListener('input', () => {
             [nameError, phoneError, emailError, websiteError][index].innerHTML = ''; 
         });
     });
 </script>
-
-</div>
