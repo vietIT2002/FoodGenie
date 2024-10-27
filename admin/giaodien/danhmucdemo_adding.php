@@ -71,38 +71,8 @@ if (!empty($_SESSION['nguoidung'])) {
     </table>
     <span style="color: red; font-size: 0.80em;" id="checkbox_error"></span>
 </div>
+<script src="./js/binding_dmdemo.js"></script>
 </div>
-<script>
-const form = document.getElementById("danhmuc_add");
-const categoryError = document.getElementById('danhmuc_error');
-const checkboxError = document.getElementById('checkbox_error');
-const quyent = document.getElementById("tendanhmuc");
-const checkboxes = document.querySelectorAll('.category-checkbox');
-
-form.addEventListener('submit', (e) => {
-    let valid = true;
-
-    if (!quyent.value.trim()) {
-        categoryError.textContent = "Vui lòng nhập tên thể loại";
-        valid = false;
-    } else {
-        categoryError.textContent = '';
-    }
-
-    if (![...checkboxes].some(checkbox => checkbox.checked)) {
-        checkboxError.textContent = "Vui lòng tích chọn danh mục";
-        valid = false;
-    } else {
-        checkboxError.textContent = '';
-    }
-
-    if (!valid) e.preventDefault();
-});
-
-quyent.addEventListener('input', () => {
-    if (quyent.value.trim()) categoryError.textContent = '';
-});
-</script>
 <div class="clear-both"></div>
 <?php
 }
