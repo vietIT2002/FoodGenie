@@ -44,7 +44,7 @@ if (!empty($_SESSION['nguoidung'])) {
                 <span style="color: red; font-size: 0.75em; margin-left: 10px;" id="danhmuc_error"></span>
                 <button type="submit"
                 class="text-white text-3xl w-44 h-16 absolute end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  px-4 py-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                name="btndmadd">Cập nhật</button>
+                name="btndmadd">Thêm</button>
         </div>
         <div class="bg-white shadow-md rounded-lg overflow-hidden ">
             <table class=" min-w-full bg-white ">
