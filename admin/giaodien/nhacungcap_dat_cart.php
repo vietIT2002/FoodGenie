@@ -39,10 +39,6 @@ if (isset($_SESSION['cart'])) {
 
     <form action="./admin.php?act=ncccartlist" method="POST">
         <div class="table-responsive-sm ">
-            <div class="buttons">
-                <input type="submit" name="update_click" value="Cập nhật">
-            </div>
-
             <div class="">
                 <div class=" w-full  grid grid-cols-2 gap-6 ">
                     <div class="mb-4">
@@ -121,16 +117,25 @@ if (isset($_SESSION['cart'])) {
 				?>
                 </tbody>
             </table>
-            <div class="relative flex flex-col">
+            <div class="flex justify-between items-center space-x-4">
+                <!-- Label bên trái -->
                 <label class="text-4xl py-5 font-medium text-red-800 dark:text-white">
                     Tổng tiền là: <?= $total ?>
                 </label>
-                <button
-                    class="absolute bottom-0 top-16 right-0 w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
-                    type="submit" name="order_click">
-                    Đặt hàng
-                </button>
-
+                
+                <!-- Nhóm các nút bên phải -->
+                <div class="flex space-x-4">
+                    <button
+                        class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
+                        type="submit" name="order_click">
+                        Đặt hàng
+                    </button>
+                    <button
+                        class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
+                        type="submit" name="update_click">
+                        Hủy
+                    </button>
+                </div>
             </div>
 
             <!-- <button type="button" name="order_click" value="Đặt hàng">Đặt hàng</button> -->

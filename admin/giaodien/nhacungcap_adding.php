@@ -19,7 +19,7 @@
                 </button>
             </div>
 
-            <form name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
+            <form id= "form"  name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
                 class="p-4 md:p-5 ">
                 <div class="flex flex-wrap gap-4">
 
@@ -29,25 +29,33 @@
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 name="id" value="">
                         </div> -->
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="name_error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên nhà cung cấp:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên nhà cung cấp</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                name="name" value="">
+                                id="name_ncc" name="name" value="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="email_error"></span>
                         <div class="mb-4 flex items-center ">
-                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="email"
-                                name="email" value="" placeholder="VD: abc@gmail.com">
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                                id="email_ncc" name="email" value="" placeholder="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="website_error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Website:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="url"
-                                name="website" value="" placeholder="VD: https://www.google.com" value="">
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Website</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                               id="website_ncc" name="website" value="" placeholder="" value="">
                         </div>
+
+                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="phone_error"></span>
                         <div class="mb-4 flex items-center ">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">SĐT:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="tel"
-                                name="sdt" value="" pattern="[0]{1}[0-9]{9}" placeholder="VD: 0123456789">
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại</label>
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
+                                id="phone_ncc" name="sdt" value=""  placeholder=" ">
                         </div>
 
                     </div>
@@ -61,76 +69,9 @@
                         type="reset" value="Hủy">Hủy</button>
                 </div>
             </form>
-
-
         </div>
+        <script src="./js/binding_ncc.js"></script>
+
     </div>
+        
 </div>
-
-<script>
-    const formncc = document.getElementById('form-ncc');
-    const namencc = document.getElementById('name-ncc');
-    const phoneInput = document.getElementById('phone-ncc');
-    const emailncc = document.getElementById('email-ncc');
-    const websitencc = document.getElementById('website-ncc');
-
-    const phoneError = document.getElementById('phone-error');
-    const emailError = document.getElementById('email-error');
-    const websiteError = document.getElementById('website-error');
-    const nameError = document.getElementById('name-error');
-
-    formncc.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let valid = true;
-
-        if (!namencc.value.trim()) { 
-            nameError.innerHTML = "Vui lòng nhập tên nhà cung cấp"; 
-            valid = false;
-        } else {
-            nameError.innerHTML = "";
-        }
-
-        const phoneValue = phoneInput.value.trim();
-        if (!phoneValue) {
-            valid = false;
-            phoneError.innerHTML = "Vui lòng nhập số điện thoại.";
-        } else if (!/^0\d{9}$/.test(phoneValue)) {
-            valid = false;
-            phoneError.innerHTML = "Số điện thoại phải bắt đầu bằng 0 và gồm 10 số.";
-        } else {
-            phoneError.innerHTML = "";
-        }
-
-        const emailValue = emailncc.value.trim();
-        if (!emailValue) { 
-            emailError.innerHTML = "Vui lòng nhập email"; 
-            valid = false;
-        } else if (!/^.+@gmail\.com$/.test(emailValue)) {
-            emailError.innerHTML = "Email phải có định dạng xxxx@gmail.com";
-            valid = false;
-        } else {
-            emailError.innerHTML = ""; 
-        }
-
-        const websiteValue = websitencc.value.trim();
-        if (!websiteValue) {
-            websiteError.innerHTML = "Vui lòng nhập URL website";
-            valid = false;
-        } else if (!/^https:\/\/.+\..+$/i.test(websiteValue)) {
-            websiteError.innerHTML = "URL phải hợp lệ và bắt đầu bằng https://";
-            valid = false;
-        } else {
-            websiteError.innerHTML = ""; 
-        }
-
-        if (valid) {
-            formncc.submit(); 
-        }
-    });
-
-    [namencc, phoneInput, emailncc, websitencc].forEach((field, index) => {
-        field.addEventListener('input', () => {
-            [nameError, phoneError, emailError, websiteError][index].innerHTML = ''; 
-        });
-    });
-</script>

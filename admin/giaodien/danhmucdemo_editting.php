@@ -33,12 +33,13 @@
             </button>
         </a>
     </div>
-    <form action="./xulythem.php?idq=<?= $_GET['id']?>" method="POST">
+    <form id="danhmuc_add" action="./xulythem.php?idq=<?= $_GET['id']?>" method="POST">
 
         <div class="relative">
 
             <input type="search" name="tendanhmuc" value="<?= $_GET['tquyen'] ?>"
-                class="text-4xl py-5 font-medium text-red-800 dark:text-white border-none" required />
+                id = "tendanhmuc" class="text-4xl py-5 font-medium text-red-800 dark:text-white border-none"/>
+                <span style="color: red; font-size: 0.75em; margin-left: 10px;" id="danhmuc_error"></span>
             <button type="submit"
                 class="text-white text-3xl w-44 h-16 absolute end-2.5 bottom-2.5 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg  px-4 py-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                 name="btndmsua">Cập nhật</button>
@@ -61,7 +62,7 @@
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4"><?= $row['ten_danhmuc'] ?></td>
-                        <td class="px-6 py-4"><input type="checkbox" value="<?= $row['id']?>" name="row[]"
+                        <td class="px-6 py-4"><input type="checkbox" class="category-checkbox" value="<?= $row['id']?>" name="row[]"
                                 <?php if(in_array($row['id'], $quyendanhmuc1List))echo "checked"?>> </td>
                         <div class="clear-both"></div>
     </form>
@@ -69,8 +70,9 @@
     <?php } ?>
     </tbody>
     </table>
+    <span style="color: red; font-size: 0.80em;" id="checkbox_error"></span>
 
-
+    <script src="./js/binding_dmdemo.js"></script>
 </div>
 <?php
     }
