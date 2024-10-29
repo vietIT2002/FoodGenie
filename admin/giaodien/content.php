@@ -456,6 +456,10 @@
             include('ctphieunhap.php');
     }
     if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'xoahdcxn')
+            include('hoadon_deleting_cxn.php');
+    }
+    if (isset($_GET['act'])) {
         if ($_GET['act'] == 'xoahd')
             include('hoadon_deleting.php');
     }

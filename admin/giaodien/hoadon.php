@@ -60,6 +60,7 @@
             $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
                                           `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
                                           FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) 
+                                             WHERE hoadon.trang_thai IN (0, 1) AND hoadon.trang_thai !=2 AND hoadon.id != 1
                                           ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
         }
     ?>
@@ -131,12 +132,22 @@
                                             nhận</a>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="px-6 py-4"><?php if ($row['trang_thai'] == "0") { ?><a
-                                            href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');"><i
-                                                class="fa fa-trash-o text-red-600 hover:text-red-800"
-                                                aria-hidden="true"></i></a><?php } ?>
+                                    <td class="px-6 py-4">
+                                        <?php if ($row['trang_thai'] == "0") { ?>
+                                        <a href="./admin.php?act=xoahdcxn&id=<?= $row['idhoadon'] ?>"
+                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            <i class="fa fa-trash-o text-red-600 hover:text-red-800"
+                                                aria-hidden="true"></i>
+                                        </a>
+                                        <?php } else if ($row['trang_thai'] == "1") { ?>
+                                        <a href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
+                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            <i class="fa fa-trash-o text-red-600 hover:text-red-800"
+                                                aria-hidden="true"></i>
+                                        </a>
+                                        <?php } ?>
                                     </td>
+
                                 </tr>
                                 <?php } ?>
                             </tbody>
