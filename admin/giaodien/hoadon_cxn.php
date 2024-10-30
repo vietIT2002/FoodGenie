@@ -60,7 +60,7 @@
             $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
                                           `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
                                           FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) 
-                                             WHERE  hoadon.trang_thai = 1 AND hoadon.id != 1
+                                            where hoadon.trang_thai =0 AND hoadon.id != 1
                                           ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
         }
     ?>
@@ -77,23 +77,25 @@
     <div
         class="text-3xl font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
         <ul class="flex flex-wrap justify-center w-full -mb-px">
+
             <li class="me-2">
                 <a href="./admin.php?act=hdcxn"
-                    class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                    aria-current="page">
-                    Hóa đơn chưa xác nhận</a>
+                    class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">
+                    Hóa đơn chưa xác nhận </a>
             </li>
             <li class="me-2">
                 <a href="./admin.php?act=hd"
-                    class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">
+                    class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    aria-current="page">
                     Hóa đơn đã xác nhận</a>
             </li>
+
         </ul>
     </div>
 
     <div class="flex justify-between items-center">
         <div class="flex  pl-8">
-            <p class=" pt-0 text-gray-900 text-3xl font-bold dark:text-white text-5xl"> Hóa đơn đã xác nhận</p>
+            <p class=" pt-0 text-gray-900 text-3xl font-bold dark:text-white text-5xl">Hóa đơn chưa xác nhận</p>
         </div>
 
     </div>
@@ -102,12 +104,12 @@
         <input type="date" name="timekt">
         <input type="submit" value="Lọc"> -->
 
-
         <div class="flex justify-end space-x-4 pb-2 pr-4">
             <input type="date" name="timebd" class="border p-2 rounded">
             <input type="date" name="timekt" class="border p-2 rounded">
             <input type="submit" value="Lọc" class="bg-blue-500 text-white p-2 rounded cursor-pointer">
         </div>
+
 
         <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
             <div class=' w-full px-4 bg-base-100 divide-y divide-slate-200'>
@@ -129,7 +131,7 @@
                                     <th class="font-normal px-6 py-3">Nhân viên xác nhận</th>
                                     <th class="font-normal px-6 py-3">Trạng thái</th>
                                     <th class="font-normal px-6 py-3">Xem chi tiết</th>
-                                    <!-- <th class="font-normal px-6 py-3">Xác nhận</th> -->
+                                    <th class="font-normal px-6 py-3">Xác nhận</th>
                                     <th class="font-normal px-6 py-3"></th>
                                 </tr>
                             </thead>
@@ -153,13 +155,13 @@
                                     <!-- <td class="px-6 py-4"><a
                                             href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
                                             nhận</a></td> -->
-                                    <!-- <td class="px-6 py-4">
+                                    <td class="px-6 py-4">
                                         <?php if ($row['trang_thai'] != "1"): ?>
                                         <a
                                             href="./xulythem.php?act=xnhd&id=<?= $row['idhoadon'] ?>&cuser=<?= $row['ten_nv'] ?>&iduser=<?= $_SESSION['idnhanvien'] ?>">Xác
                                             nhận</a>
                                         <?php endif; ?>
-                                    </td> -->
+                                    </td>
                                     <td class="px-6 py-4">
                                         <?php if ($row['trang_thai'] == "0") { ?>
                                         <a href="./admin.php?act=xoahdcxn&id=<?= $row['idhoadon'] ?>"

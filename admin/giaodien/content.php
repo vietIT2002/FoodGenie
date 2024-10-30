@@ -67,6 +67,7 @@
         if ($_GET['tmuc'] == 'Hóa đơn')
             include('hoadon.php');
     }
+    
     if (isset($_GET['tmuc'])) {
         if ($_GET['tmuc'] == 'Danh mục')
             include('danhmucdemo.php');
@@ -458,6 +459,14 @@
     if (isset($_GET['act'])) {
         if ($_GET['act'] == 'xoahdcxn')
             include('hoadon_deleting_cxn.php');
+    }
+     if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'hdcxn')
+            include('hoadon_cxn.php');
+    }
+     if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'hd')
+            include('hoadon.php');
     }
     if (isset($_GET['act'])) {
         if ($_GET['act'] == 'xoahd')
