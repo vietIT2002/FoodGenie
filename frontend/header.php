@@ -265,11 +265,11 @@
 
 							echo '</li>';
 
-							echo '<li><a href="thuonghieu.php">THƯƠNG HIỆU</a></li>';
+							echo '<li><a href="#">THƯƠNG HIỆU</a></li>';
 
-							echo '<li><a href="baiblog.php">BÀI BLOG</a></li>';
+							echo '<li><a href="#">BÀI BLOG</a></li>';
 
-							echo '<li><a href="lienhe.php">LIÊN HỆ</a></li>';
+							echo '<li><a href="#">LIÊN HỆ</a></li>';
 						?>
             </ul>
             <!-- /NAV -->
