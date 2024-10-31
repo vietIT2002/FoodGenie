@@ -41,8 +41,9 @@ EditNV.addEventListener('submit', (e) => {
         passwordError.innerHTML = "Vui lòng nhập mật khẩu";
         valid = false;
     } else {
-        passwordError.innerHTML = "";
-        
+        passwordError.innerHTML = ""; // Clear previous error message
+        valid = true; // Assume valid until proven otherwise
+
         const passwordConditions = [
             { test: /.{8,}/, message: "Ít nhất 8 ký tự." },
             { test: /^[^\s]+$/, message: "Không chứa khoảng trắng." },
@@ -52,12 +53,14 @@ EditNV.addEventListener('submit', (e) => {
             { test: /[!@#$%^&+=]/, message: "Ít nhất một ký tự đặc biệt." },
         ];
 
-        passwordConditions.forEach(({ test, message }) => {
-            if (!test.test(passwordValue)) {
-                passwordError.innerHTML += `${message} <br>`;
-                valid = false;
-            }
-        });
+        // Check all conditions
+        const unmetConditions = passwordConditions.filter(({ test }) => !test.test(passwordValue));
+
+        // If there are any unmet conditions, show a concise error message
+        if (unmetConditions.length > 0) {
+            valid = false;
+            passwordError.innerHTML = "Mật khẩu phải có ít nhất 8 ký tự, một chữ cái viết hoa và một ký tự đặc biệt.";
+        }
     }
 
     // Kiểm tra Tên đăng nhập

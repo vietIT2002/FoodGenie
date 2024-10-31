@@ -13,17 +13,17 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <style>
-        .btnLuu {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px 20px;
-        }
+    .btnLuu {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px 20px;
+    }
 
-        .wrap-field {
-            margin-top: 10px;
-            width: 100%;
+    .wrap-field {
+        margin-top: 10px;
+        width: 100%;
 
-        }
+    }
     </style>
 </head>
 
@@ -55,7 +55,8 @@
             <div class="wrap-field form-group">
                 <label>Mật khẩu mới:</label><br>
                 <input id="new-password-Admin" class="form-control" type="text" name="matkhaumoi" value="" />
-                <div class="error-message" id="password-error" style="color: red; font-size: 0.80em; margin-left: 4px;"></div>
+                <div class="error-message" id="password-error" style="color: red; font-size: 0.80em; margin-left: 4px;">
+                </div>
                 <!-- <input type="text" name="matkhaumoi" value=""/> -->
             </div>
             <!-- <div class="wrap-field form-group">
@@ -81,48 +82,36 @@
     const form = document.getElementById('form');
 
     form.addEventListener('submit', (e) => {
-        let valid = true; 
-        passwordError.innerHTML = ''; 
+        let valid = true;
+        passwordError.innerHTML = '';
 
         const passwordValue = passwordInput.value.trim();
         if (passwordValue === '') {
-            valid = false; 
-            passwordError.innerHTML = "Vui lòng nhập mật khẩu"; 
+            valid = false;
+            passwordError.innerHTML = "Vui lòng nhập mật khẩu";
         } else {
-            if (passwordValue.length < 8) {
+            passwordError.innerHTML = ''; // Clear any previous error message
+
+            // Define error flags
+            let hasMinLength = passwordValue.length >= 8;
+            let hasUpperCase = /[A-Z]/.test(passwordValue);
+            let hasSpecialChar = /[!@#$%^&+=]/.test(passwordValue);
+
+            if (!hasMinLength || !hasUpperCase || !hasSpecialChar) {
                 valid = false;
-                passwordError.innerHTML += "Mật khẩu ít nhất 8 ký tự. ";
-            }
-            if (/\s/.test(passwordValue)) {
-                valid = false;
-                passwordError.innerHTML += "Mật khẩu không chứa khoảng trắng. ";
-            }
-            if (!/[a-z]/.test(passwordValue)) {
-                valid = false;
-                passwordError.innerHTML += "Mật khẩu ít nhất một chữ cái viết thường. ";
-            }
-            if (!/[A-Z]/.test(passwordValue)) {
-                valid = false;
-                passwordError.innerHTML += "Mật khẩu ít nhất một chữ cái viết hoa. ";
-            }
-            if (!/\d/.test(passwordValue)) {
-                valid = false;
-                passwordError.innerHTML += "Mật khẩu nhất một chữ số. ";
-            }
-            if (!/[!@#$%^&+=]/.test(passwordValue)) {
-                valid = false;
-                passwordError.innerHTML += "Mật khẩu ít nhất một ký tự đặc biệt. ";
+                passwordError.innerHTML =
+                    "Mật khẩu phải có ít nhất 8 ký tự, một chữ cái viết hoa và một ký tự đặc biệt.";
             }
         }
         if (!valid) {
-            e.preventDefault(); 
+            e.preventDefault();
         }
     });
 
     passwordInput.addEventListener('input', () => {
-        passwordError.innerHTML = ''; 
+        passwordError.innerHTML = '';
     });
-</script>
+    </script>
 
 </body>
 

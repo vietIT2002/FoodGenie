@@ -31,15 +31,15 @@ $quyen_result = mysqli_query($con, $quyen_query);
                 </button>
             </div>
 
-            <form id="form-nhanvien" name="nhanvien-formadd" method="POST" action="./xulythem.php" enctype="multipart/form-data"
-                class="p-4 md:p-5 ">
+            <form id="form-nhanvien" name="nhanvien-formadd" method="POST" action="./xulythem.php"
+                enctype="multipart/form-data" class="p-4 md:p-5 ">
                 <div class="flex flex-wrap gap-4">
                     <span style="color: red; font-size: 0.75em; margin-left: 160px;" id="imagenv_error"></span>
                     <div class="w-full md:w-1/4 flex flex-col items-center">
                         <img style="width: 200px; height: 200px;" id="imageDisplay" src="#" alt="Ảnh đại diện"
                             class="mb-4">
                         <input class="form-control file-input border-gray-300 rounded-md shadow-sm" type="file"
-                            id="nhanvien_images"  name="image" id="fileInput" accept="image/*">
+                            id="nhanvien_images" name="image" id="fileInput" accept="image/*">
                     </div>
                     <div class="w-full md:w-1/2 md:w-2/3 ">
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="manv_error"></span>
@@ -58,37 +58,37 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="email-error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email:</label>
-                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                id="nhanvien-email"    name="email" value="" placeholder="">
+                            <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="email"
+                                id="nhanvien-email" name="email" value="" placeholder="">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="phone-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
-                                id="phone" name="phone" value=""  placeholder="">
+                                id="phone" name="phone" value="" placeholder="">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="password-error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mật khẩu:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                            id="new-password-Admin" name="mat_khau">
+                                id="new-password-Admin" name="mat_khau">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="tendn-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên đăng nhập:</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                id="tendn-nhanvien"    name="tendangnhap" value="">
+                                id="tendn-nhanvien" name="tendangnhap" value="">
                         </div>
 
                         <!-- Dropdown Chức vụ -->
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="chucvu-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ:</label>
-                            <select id="chucvu-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_loainv"
-                                >
+                            <select id="chucvu-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none"
+                                name="id_loainv">
                                 <option value="">Chọn chức vụ</option>
                                 <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
                                 <option value="<?= $row['id'] ?>"><?= $row['TenLoaiNV'] ?></option>
@@ -99,8 +99,8 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="quyen-error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền:</label>
-                            <select id="quyen-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="id_quyen"
-                               >
+                            <select id="quyen-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none"
+                                name="id_quyen">
                                 <option value="">Chọn quyền</option>
                                 <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
                                 <option value="<?= $row['id'] ?>"><?= $row['ten_quyen'] ?></option>
