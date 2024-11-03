@@ -25,6 +25,7 @@
                 <input class="login-button btn btn-long" type='submit' name="dangnhap" value='Đăng nhập' />
             </div><br>
             <div class="login-text">
+                <span style="font-size: 14px; font-style: italic;">Sai mật khẩu 5 lần tài khoản bị khóa!</span><br>
                 <span>Bạn chưa có tài khoản?</span> <a href='index.php?act=register' class="register1" value='Đăng nhập'>Đăng ký</a>
             </div>
             <?php require 'xulydangnhap.php';?>
