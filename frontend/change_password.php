@@ -147,8 +147,9 @@
             
             <div class="form-group">
                 <label for="new-pass">Mật khẩu mới<span class="required1">*</span></label>
-                <input class="input1" id="newPassword" type='password' name='new_password'
-                required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt." />
+                <input class="input1" id="newPassword" type="password" name="new_password" required
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])\S{8,}$" 
+                    title="Mật khẩu phải có ít nhất 8 ký tự, không chứa khoảng trắng, ít nhất một chữ số, một chữ cái viết thường, một chữ cái viết hoa và ít nhất một ký tự đặc biệt."/>
             </div>
             
             <div class="form-group">

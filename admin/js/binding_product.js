@@ -35,7 +35,7 @@ form.addEventListener('submit', (e) => {
         e.preventDefault();
         price_error.innerHTML = "Vui lòng nhập đơn giá";
         valid = false;
-    } else if (price.value <= 0) { 
+    } else if (parseFloat(price.value) <= 0) { 
         e.preventDefault();
         price_error.innerHTML = "Đơn giá phải lớn hơn 0";
         valid = false;
@@ -46,15 +46,16 @@ form.addEventListener('submit', (e) => {
         e.preventDefault();
         original_price_error.innerHTML = "Vui lòng nhập giá gốc"; 
         valid = false;
-    } else if (originalPrice.value <= 0) { 
+    } else if (parseFloat(originalPrice.value) <= 0) { 
         e.preventDefault();
         original_price_error.innerHTML = "Giá gốc phải lớn hơn 0";
         valid = false;
-    } else if (parseFloat(price.value) > parseFloat(originalPrice.value)) {
+    } else if (parseFloat(price.value) > 0 && parseFloat(originalPrice.value) > 0 && parseFloat(price.value) > parseFloat(originalPrice.value)) {
         e.preventDefault();
         original_price_error.innerHTML = "Giá gốc phải lớn hơn đơn giá";
         valid = false;
     }
+
 
     // Ảnh đại diện
     if (!image.value) {

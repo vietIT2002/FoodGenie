@@ -168,3 +168,4 @@ $(document).ready(function(){
             element.style.display = 'none';
         }
     }
+

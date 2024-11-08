@@ -99,13 +99,18 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <label class="block text-gray-700">Xuất xứ:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        required oninvalid="this.setCustomValidity('Vui lòng nhập xuất xứ')" 
+                        oninput="this.setCustomValidity('')" 
                         type="text" name="xuat_xu" value="<?= (!empty($product) ? $product['xuat_xu'] : "") ?>">
                 </div>
+
 
                 <div class="mb-4">
                     <label class="block text-gray-700">Khối lượng:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        required oninvalid="this.setCustomValidity('Vui lòng nhập khối lượng')" 
+                        oninput="this.setCustomValidity('')" 
                         type="text" name="khoi_luong" value="<?= (!empty($product) ? $product['khoi_luong'] : "") ?>" />            
                 </div>
             </div>
@@ -157,14 +162,14 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             </div>
 
             <div class=" flex gap-6 mt-6  ">
-                <div class=" mb-4 w-11/12 h-80 ">
+                <div class="mb-4 w-11/12 h-80">
                     <label>Nội dung: </label>
                     <textarea
                         class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
                         name="content"
-                        ><?= (!empty($product) ? $product['noi_dung'] : "") ?></textarea>
-
-                    <!-- <div class="clear-both"></div> -->
+                        required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')" 
+                        oninput="this.setCustomValidity('')"
+                    ><?php if (!empty($product)) { echo htmlspecialchars($product['noi_dung']); } ?></textarea>
                 </div>
 
                 <div class="mb-4">

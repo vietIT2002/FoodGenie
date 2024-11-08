@@ -126,13 +126,34 @@
 
             <!-- SEARCH BAR -->
             <div class="col-md-6">
-                <div class="header-search">
-                    <form method="get">
-                        <input class="input" name="search" placeholder="Nhập tên sản phẩm cần tìm..." required>
-                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </div>
-            </div>
+				<div class="header-search">
+					<form method="get" id="search-form">
+						<input class="input" name="search" id="search-input" placeholder="Nhập tên sản phẩm cần tìm...">
+						<button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+					</form>
+					<span id="search-error" style="color: red; display: none;">Vui lòng nhập từ khóa cần tìm</span>
+				</div>
+			</div>
+
+			<script>
+				const searchForm = document.getElementById('search-form');
+				const searchInput = document.getElementById('search-input');
+				const searchError = document.getElementById('search-error');
+
+				searchForm.addEventListener('submit', function (e) {
+					if (!searchInput.value.trim()) {
+						e.preventDefault(); // Ngừng gửi form
+						searchError.style.display = 'inline'; // Hiển thị thông báo lỗi
+					} else {
+						searchError.style.display = 'none'; // Ẩn thông báo lỗi nếu có nhập từ khóa
+					}
+				});
+
+				// Ẩn thông báo lỗi khi người dùng bắt đầu nhập
+				searchInput.addEventListener('input', () => {
+					searchError.style.display = 'none';
+				});
+			</script>
             <!-- /SEARCH BAR -->
 
             <!-- ACCOUNT -->
