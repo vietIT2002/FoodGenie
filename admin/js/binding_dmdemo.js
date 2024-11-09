@@ -9,7 +9,7 @@ form.addEventListener('submit', (e) => {
 
     // Kiểm tra tên thể loại
     if (!quyent.value.trim()) {
-        categoryError.textContent = "Vui lòng nhập tên thể loại";
+        categoryError.textContent = "Vui lòng nhập tên quyền";
         valid = false;
     } else {
         categoryError.textContent = '';
