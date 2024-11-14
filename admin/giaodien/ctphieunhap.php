@@ -70,7 +70,7 @@ if (!empty($_SESSION['nguoidung'])) {
                 $messages[] = "Số lượng trả không hợp lệ cho sản phẩm ID $product_id.";
             }
         }
-
+        // NT
         // Cập nhật lại tổng tiền trong bảng phiếu nhập
         $update_total_query = "UPDATE phieunhap SET tong_tien = $total_amount WHERE id = " . $_GET['id'];
         if (mysqli_query($con, $update_total_query)) {
