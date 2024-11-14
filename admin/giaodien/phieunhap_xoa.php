@@ -8,7 +8,14 @@ if (!empty($_SESSION['nguoidung'])) {
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 include_once './connect_db.php';
                 include_once './function.php';
-                $result = execute("DELETE FROM `phieunhap` WHERE `id` = " . $_GET['id']."");
+                // Xóa các bản ghi trong bảng lichsutrahang trước khi xóa bản ghi trong bảng phieunhap
+                $id_phieunhap = $_GET['id'];
+
+                // Xóa các bản ghi liên quan trong bảng lichsutrahang
+                mysqli_query($con, "DELETE FROM `lichsutrahang` WHERE `id_phieunhap` = $id_phieunhap");
+
+                // Sau đó xóa bản ghi trong bảng phieunhap
+                $result = execute("DELETE FROM `phieunhap` WHERE `id` = $id_phieunhap");
                 if (!$result) {
                     $error = "Không thể xóa phiếu nhập.";
                 }
