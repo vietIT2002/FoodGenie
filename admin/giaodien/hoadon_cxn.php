@@ -74,23 +74,16 @@
     </div>
 
 
-    <div
-        class="text-3xl font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-        <ul class="flex flex-wrap justify-center w-full -mb-px">
+    <div class="flex flex-wrap justify-center w-full -mb-px  h-24">
+        <a href="./admin.php?act=hdcxn" aria-current="page"
+            class="p-6 text-3xl font-medium text-blue-700 border-b-2 border-blue-600 rounded-s-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            Hóa đơn chưa xác nhận
+        </a>
 
-            <li class="me-2">
-                <a href="./admin.php?act=hdcxn"
-                    class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">
-                    Hóa đơn chưa xác nhận </a>
-            </li>
-            <li class="me-2">
-                <a href="./admin.php?act=hd"
-                    class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                    aria-current="page">
-                    Hóa đơn đã xác nhận</a>
-            </li>
-
-        </ul>
+        <a href="./admin.php?act=hd"
+            class="p-6 text-3xl font-medium text-gray-900 border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            Hóa đơn đã xác nhận
+        </a>
     </div>
 
     <div class="flex justify-between items-center">
