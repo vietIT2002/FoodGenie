@@ -123,7 +123,7 @@
                 <div class="bg-white shadow-md rounded-lg overflow-hidden ">
                     <div class="overflow-x-auto overflow-y-auto h-4/6">
                         <table class="min-w-full bg-white">
-                            <thead class="h-20 bg-gray-300">
+                            <thead class="h-20 bg-gray-300 sticky top-0 z-10">
                                 <tr>
                                     <th class="font-normal px-6 py-3">Mã Hóa đơn</th>
                                     <th class="font-normal px-6 py-3">Mã khách hàng</th>

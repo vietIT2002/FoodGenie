@@ -79,7 +79,7 @@
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
                 <div class="overflow-x-auto overflow-y-auto h-5/6">
                     <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                        <thead class="h-20 bg-gray-300 sticky top-0 z-10">
                             <tr>
                                 <th class="font-normal px-6 py-3">Mã sản phẩm <div><a
                                             href="./admin.php?muc=4&tmuc=Sản%20phẩm&sapxep=idgiam"><i
@@ -196,4 +196,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
+
 </html>

@@ -74,7 +74,7 @@ if (isset($_SESSION['cart'])) {
             </div>
             <div class="bg-white shadow-md rounded-lg overflow-hidden overflow-x-auto overflow-y-auto h-2/4">
                 <table class=" min-w-full bg-white ">
-                    <thead class="h-20 bg-gray-300 ">
+                    <thead class="h-20 bg-gray-300  sticky top-0 z-10 ">
                         <tr class="font-normal px-6 py-3">
                             <th class="font-normal px-6 py-3">STT</th>
                             <th class="font-normal px-6 py-3">Mã sản phẩm</th>

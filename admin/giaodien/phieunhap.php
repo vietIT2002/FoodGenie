@@ -67,7 +67,7 @@
                 <div class="overflow-x-auto overflow-y-auto h-5/6">
 
                     <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                        <thead class="h-20 bg-gray-300 sticky top-0 z-10 ">
                             <tr>
                                 <th class="font-normal px-6 py-3">Mã Phiếu nhập<br> <a
                                         href="./admin.php?muc=6&tmuc=Phiếu%20nhập&sapxep=idgiam"><i

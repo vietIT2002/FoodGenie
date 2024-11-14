@@ -61,16 +61,7 @@
         </div>
 
 
-        <div class="flex py-8 pr-6">
-            <!-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
-                type="button">
-                Thêm mới
-            </button> -->
-            <!-- <div class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full ">
-                    <a href="admin.php?act=addncc"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm nhà cung cấp </a>
-                </div> -->
-        </div>
+
     </div>
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
@@ -81,7 +72,7 @@
                 <div class="overflow-x-auto overflow-y-auto h-5/6">
 
                     <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                        <thead class="h-20 bg-gray-300 sticky top-0 z-10">
                             <tr>
                                 <th class="font-normal px-6 py-3">Mã phiếu trả<br><a
                                         href="./admin.php?muc=6&tmuc=Phiếu%20trả&sapxep=idgiam"><i

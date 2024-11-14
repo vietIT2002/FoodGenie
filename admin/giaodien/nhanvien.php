@@ -65,7 +65,7 @@
 
 
                     <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                        <thead class="h-20 bg-gray-300 sticky top-0 z-10 ">
                             <tr>
                                 <th class=" pl-8  font-normal ">Mã nhân viên</th>
                                 <th class="font-normal">Ảnh</th>

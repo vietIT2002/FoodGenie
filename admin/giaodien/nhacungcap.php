@@ -45,9 +45,7 @@
                 type="button">
                 Thêm
             </button>
-            <!-- <div class="buttons">
-                <a href="admin.php?act=addncc"> <i class="fa fa-plus" aria-hidden="true"> </i>Thêm nhà cung cấp </a>
-            </div> -->
+
         </div>
     </div>
     <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
@@ -58,7 +56,7 @@
             <div class="bg-white shadow-md rounded-lg overflow-hidden ">
                 <div class="overflow-x-auto overflow-y-auto h-5/6">
                     <table class=" min-w-full bg-white   ">
-                        <thead class="h-20 bg-gray-300 ">
+                        <thead class="h-20 bg-gray-300 sticky top-0 z-10">
                             <tr>
                                 <th class=" pl-8  font-normal ">Mã</th>
                                 <th class="font-normal px-6 py-3">Nhà cung cấp</th>

@@ -51,7 +51,7 @@ if (!empty($_SESSION['nguoidung'])) {
             <div class="overflow-x-auto overflow-y-auto h-3/4">
 
                 <table class=" min-w-full bg-white   ">
-                    <thead class="h-20 bg-gray-300 ">
+                    <thead class="h-20 bg-gray-300 bg-gray-300 sticky top-0 z-10 ">
                         <tr class="font-normal px-6 py-3">
                         <tr class="font-normal px-6 py-3">
                             <th class="font-normal px-6 py-3">Hình ảnh</th>
@@ -62,6 +62,7 @@ if (!empty($_SESSION['nguoidung'])) {
                         </tr>
                     </thead>
                     <tbody>
+
                         <?php
                         while ($row = mysqli_fetch_array($sanpham)) {
                             ?>
@@ -76,11 +77,13 @@ if (!empty($_SESSION['nguoidung'])) {
                                 <div class="clear-both"></div>
                         </tr>
                         <?php } ?>
-                    </tbody>
-                </table>
             </div>
+            </tbody>
+
+            </table>
         </div>
     </div>
+</div>
 </div>
 
 <?php
@@ -88,6 +91,7 @@ if (!empty($_SESSION['nguoidung'])) {
     ?>
 <div class="clear-both"></div>
 </div>
+
 </div>
 <?php
 }
