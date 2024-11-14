@@ -22,7 +22,8 @@ if (!empty($_SESSION['nguoidung'])) {
     ?>
 <div class="flex justify-between items-center">
     <div class="flex  pt-10 p pl-8">
-        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl" style="color: #0099cc !important;">
+        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl"
+            style="color: #0099cc !important;">
             Quản lý quyền- danh mục
         </p>
 
@@ -46,7 +47,7 @@ if (!empty($_SESSION['nguoidung'])) {
 <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-    <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+    <div class='h-11/12 w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
         <div class="bg-white shadow-md rounded-lg overflow-hidden ">
             <table class=" min-w-full bg-white   ">

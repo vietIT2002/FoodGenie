@@ -45,7 +45,7 @@
         // Lọc theo ngày
         if (isset($_POST['timebd']) && isset($_POST['timekt'])) {
             $query = "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
-                      `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
+                      `id_nhanvien`, `trang_thai`, `ten_nv`, `trang_thai_hien_thi`,`nhanvien`.`id` 
                       FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) ";
             if ($_POST['timebd'] && $_POST['timekt']) {
                 $query .= "WHERE `hoadon`.`ngay_tao` BETWEEN '" . $_POST['timebd'] . "' AND DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
@@ -57,15 +57,22 @@
             $query .= "ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset;
             $hoadon = mysqli_query($con, $query);
         } else {
-            $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
-       `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
-FROM `hoadon`
-LEFT JOIN `nhanvien` ON `hoadon`.`id_nhanvien` = `nhanvien`.`id` 
-WHERE `hoadon`.`trang_thai` = 0 
-  AND `hoadon`.`trang_thai_hien_thi` = 0
-  AND `hoadon`.`id` != 1
-ORDER BY `hoadon`.`ngay_tao` DESC 
-LIMIT " . $item_per_page . " OFFSET " . $offset
+            $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, 
+                                                            `id_khachhang`, 
+                                                            `tong_tien`, 
+                                                            `hoadon`.`ngay_tao`, 
+                                                            `id_nhanvien`, 
+                                                            `hoadon`.`trang_thai`, 
+                                                            `ten_nv`,  
+                                                            `hoadon`.`trang_thai_hien_thi`,
+                                                            `nhanvien`.`id`
+                                                        FROM `hoadon`
+                                                        LEFT JOIN `nhanvien` ON `id_nhanvien` = `nhanvien`.`id`
+                                                        WHERE `hoadon`.`trang_thai` = 0 
+                                                        AND `hoadon`.`trang_thai_hien_thi` = 0
+                                                        AND `hoadon`.`id` != 1
+                                                        ORDER BY `hoadon`.`ngay_tao` DESC 
+                                                        LIMIT " . $item_per_page . " OFFSET " . $offset
 );
         }
     ?>

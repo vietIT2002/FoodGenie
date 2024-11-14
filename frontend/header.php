@@ -126,34 +126,34 @@
 
             <!-- SEARCH BAR -->
             <div class="col-md-6">
-				<div class="header-search">
-					<form method="get" id="search-form">
-						<input class="input" name="search" id="search-input" placeholder="Nhập tên sản phẩm cần tìm...">
-						<button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-					</form>
-					<span id="search-error" style="color: red; display: none;">Vui lòng nhập từ khóa cần tìm</span>
-				</div>
-			</div>
+                <div class="header-search">
+                    <form method="get" id="search-form">
+                        <input class="input" name="search" id="search-input" placeholder="Nhập tên sản phẩm cần tìm...">
+                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <span id="search-error" style="color: red; display: none;">Vui lòng nhập từ khóa cần tìm</span>
+                </div>
+            </div>
 
-			<script>
-				const searchForm = document.getElementById('search-form');
-				const searchInput = document.getElementById('search-input');
-				const searchError = document.getElementById('search-error');
+            <script>
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchError = document.getElementById('search-error');
 
-				searchForm.addEventListener('submit', function (e) {
-					if (!searchInput.value.trim()) {
-						e.preventDefault(); // Ngừng gửi form
-						searchError.style.display = 'inline'; // Hiển thị thông báo lỗi
-					} else {
-						searchError.style.display = 'none'; // Ẩn thông báo lỗi nếu có nhập từ khóa
-					}
-				});
+            searchForm.addEventListener('submit', function(e) {
+                if (!searchInput.value.trim()) {
+                    e.preventDefault(); // Ngừng gửi form
+                    searchError.style.display = 'inline'; // Hiển thị thông báo lỗi
+                } else {
+                    searchError.style.display = 'none'; // Ẩn thông báo lỗi nếu có nhập từ khóa
+                }
+            });
 
-				// Ẩn thông báo lỗi khi người dùng bắt đầu nhập
-				searchInput.addEventListener('input', () => {
-					searchError.style.display = 'none';
-				});
-			</script>
+            // Ẩn thông báo lỗi khi người dùng bắt đầu nhập
+            searchInput.addEventListener('input', () => {
+                searchError.style.display = 'none';
+            });
+            </script>
             <!-- /SEARCH BAR -->
 
             <!-- ACCOUNT -->
@@ -270,8 +270,8 @@
 											$id = executeSingleResult($sql)['id_the_loai'];
 										}
 
-										// Modify the query to only fetch categories with status = 0
-										$sql = 'SELECT id, ten_tl FROM theloai WHERE status = 0';
+										// Modify the query to only fetch categories with trang_thai = 0
+										$sql = 'SELECT id, ten_tl FROM theloai WHERE trang_thai = 0';
 										$list = executeResult($sql);
 
 										foreach ($list as $item) {

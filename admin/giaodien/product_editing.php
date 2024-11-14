@@ -22,7 +22,7 @@ if (!empty($_GET['id'])) {
 $theloai = mysqli_query($con, "SELECT * FROM `theloai`");
 $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 ?>
-<div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
+<div class="max-w-full  mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
         <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
             Cập nhật sản phẩm
@@ -36,16 +36,17 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
     <form id="form" name="product-formsua" method="POST" action="./xulythem.php?act=sua&id=<?= $_GET['id'] ?>"
         enctype="multipart/form-data">
-        <div class="mx-10">
-            
-            <div class=" w-full grid grid-cols-3 gap-6  ">
+        <div class="mx-10 overflow-y-auto h-5/6 ">
+
+            <div class=" w-full  grid grid-cols-3 gap-6  ">
 
                 <div class="mb-4">
                     <label class="block  text-2xl text-gray-700">Tên sản phẩm:</label>
                     <input
                         class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        id="product-name" type="text" name="name" value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
-                        <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="name_error"></span>
+                        id="product-name" type="text" name="name"
+                        value="<?= (!empty($product) ? $product['ten_sp'] : "") ?>" />
+                    <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="name_error"></span>
                 </div>
 
 
@@ -92,16 +93,16 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         id="product-original-price" type="number" name="gia_goc"
                         value="<?= !empty($product) ? $product['gia_goc'] : '' ?>" />
-                        <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="original_price_error"></span>
+                    <span style="color: red; font-size: 0.75em; margin-left: 5px;" id="original_price_error"></span>
                 </div>
-                
+
                 <div class="mb-4">
                     <label class="block text-gray-700">Xuất xứ:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        required oninvalid="this.setCustomValidity('Vui lòng nhập xuất xứ')" 
-                        oninput="this.setCustomValidity('')" 
-                        type="text" name="xuat_xu" value="<?= (!empty($product) ? $product['xuat_xu'] : "") ?>">
+                        required oninvalid="this.setCustomValidity('Vui lòng nhập xuất xứ')"
+                        oninput="this.setCustomValidity('')" type="text" name="xuat_xu"
+                        value="<?= (!empty($product) ? $product['xuat_xu'] : "") ?>">
                 </div>
 
 
@@ -109,12 +110,12 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <label class="block text-gray-700">Khối lượng:</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        required oninvalid="this.setCustomValidity('Vui lòng nhập khối lượng')" 
-                        oninput="this.setCustomValidity('')" 
-                        type="text" name="khoi_luong" value="<?= (!empty($product) ? $product['khoi_luong'] : "") ?>" />            
+                        required oninvalid="this.setCustomValidity('Vui lòng nhập khối lượng')"
+                        oninput="this.setCustomValidity('')" type="text" name="khoi_luong"
+                        value="<?= (!empty($product) ? $product['khoi_luong'] : "") ?>" />
                 </div>
             </div>
-            
+
             <div class="flex gap-6 mt-6">
                 <!-- Avatar Section -->
                 <div class="w-1/3">
@@ -123,7 +124,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                         <?php if (!empty($product['hinh_anh'])) { ?>
                         <img class="w-96 h-96 object-cover rounded" id="imageDisplay"
                             src="../img/<?= $product['hinh_anh'] ?>" alt="Ảnh đại diện" />
-                        <input type="hidden"  id="imageDisplay" name="image" value="<?= $product['hinh_anh'] ?>" />
+                        <input type="hidden" id="imageDisplay" name="image" value="<?= $product['hinh_anh'] ?>" />
                         <?php } ?>
                         <input class="mt-4 file:border file:border-gray-300 file:rounded file:px-3 file:py-2"
                             id="fileInput" type="file" name="image" />
@@ -166,10 +167,8 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <label>Nội dung: </label>
                     <textarea
                         class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
-                        name="content"
-                        required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')" 
-                        oninput="this.setCustomValidity('')"
-                    ><?php if (!empty($product)) { echo htmlspecialchars($product['noi_dung']); } ?></textarea>
+                        name="content" required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')"
+                        oninput="this.setCustomValidity('')"><?php if (!empty($product)) { echo htmlspecialchars($product['noi_dung']); } ?></textarea>
                 </div>
 
                 <div class="mb-4">

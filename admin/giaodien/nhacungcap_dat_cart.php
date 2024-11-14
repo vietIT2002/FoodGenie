@@ -72,22 +72,23 @@ if (isset($_SESSION['cart'])) {
 
                 </div>
             </div>
-            <table class=" min-w-full bg-white ">
-                <thead class="h-20 bg-gray-300 ">
-                    <tr class="font-normal px-6 py-3">
-                        <th class="font-normal px-6 py-3">STT</th>
-                        <th class="font-normal px-6 py-3">Mã sản phẩm</th>
-                        <th class="font-normal px-6 py-3">Hình ảnh</th>
-                        <th class="font-normal px-6 py-3">Đơn giá</th>
-                        <th class="font-normal px-6 py-3">Số lượng</th>
-                        <th class="font-normal px-6 py-3">Thành tiền </th>
-                        <th class="font-normal px-6 py-3">Xóa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <?php
+            <div class="bg-white shadow-md rounded-lg overflow-hidden overflow-x-auto overflow-y-auto h-2/4">
+                <table class=" min-w-full bg-white ">
+                    <thead class="h-20 bg-gray-300 ">
+                        <tr class="font-normal px-6 py-3">
+                            <th class="font-normal px-6 py-3">STT</th>
+                            <th class="font-normal px-6 py-3">Mã sản phẩm</th>
+                            <th class="font-normal px-6 py-3">Hình ảnh</th>
+                            <th class="font-normal px-6 py-3">Đơn giá</th>
+                            <th class="font-normal px-6 py-3">Số lượng</th>
+                            <th class="font-normal px-6 py-3">Thành tiền </th>
+                            <th class="font-normal px-6 py-3">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <?php
 				$stt = 0;
 				$total = 0;
 				$orderProducts = array();
@@ -98,40 +99,39 @@ if (isset($_SESSION['cart'])) {
 					echo "<td class='px-6 py-4'>$stt</td>";
 				?>
 
-                        <td class="px-6 py-4"><?php echo $key ?></td>
-                        <td class="px-6 py-4"><img style=" width: 100px;height: 100px "
-                                src=" ../img/<?= $val['Pic'] ?>">
-                        </td>
-                        <td class="px-6 py-4"><?php echo $val['price'] ?></td>
-                        <td class="px-6 py-4"><input type="number" name="qty[<?= $key ?>]"
-                                value="<?php echo $val['qty'] ?>"></td>
-                        <td class="px-6 py-4"><?= $val['qty'] * $val['price'] ?></td>
-                        <td class="px-6 py-4"><a href="./admin.php?act=ncccartlist&xoa=y&id=<?= $key ?>"><i
-                                    class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
-                    </tr>
+                            <td class="px-6 py-4"><?php echo $key ?></td>
+                            <td class="px-6 py-4"><img style=" width: 100px;height: 100px "
+                                    src=" ../img/<?= $val['Pic'] ?>">
+                            </td>
+                            <td class="px-6 py-4"><?php echo $val['price'] ?></td>
+                            <td class="px-6 py-4"><input type="number" name="qty[<?= $key ?>]"
+                                    value="<?php echo $val['qty'] ?>"></td>
+                            <td class="px-6 py-4"><?= $val['qty'] * $val['price'] ?></td>
+                            <td class="px-6 py-4"><a href="./admin.php?act=ncccartlist&xoa=y&id=<?= $key ?>"><i
+                                        class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
+                        </tr>
 
-                    <?php
+                        <?php
 					$total += $val['qty'] * $val['price'];
 					
 				}
 				?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             <div class="flex justify-between items-center space-x-4">
                 <!-- Label bên trái -->
                 <label class="text-4xl py-5 font-medium text-red-800 dark:text-white">
                     Tổng tiền là: <?= $total ?>
                 </label>
-                
+
                 <!-- Nhóm các nút bên phải -->
                 <div class="flex space-x-4">
-                    <button
-                        class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
+                    <button class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
                         type="submit" name="order_click">
                         Đặt hàng
                     </button>
-                    <button
-                        class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
+                    <button class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
                         type="submit" name="update_click">
                         Hủy
                     </button>
@@ -189,10 +189,7 @@ if (isset($_SESSION['cart'])) {
         }
     }
 } else { ?>
-<!-- <div id="error-notify" class="box-content">
-    <h2>Không có sản phẩm nào trong giỏ hàng</h2>
-    <a href="./admin.php?muc=9&tmuc=Nhà%20cung%20cấp">Danh sách nhà cung cấp</a>
-</div> -->
+
 
 <div id="toast-error"
     class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"

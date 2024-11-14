@@ -46,7 +46,7 @@
 <div class="card w-full m-10px border overflow-hidden divide-slate-200 bg-base-100 shadow-xl ">
 
 
-    <div class='h-full w-full px-4 bg-base-100 divide-y divide-slate-200'>
+    <div class='h-11/12 w-full px-4 bg-base-100 divide-y divide-slate-200'>
 
         <div class="bg-white shadow-md rounded-lg overflow-hidden ">
             <div class="overflow-x-auto overflow-y-auto h-5/6">
