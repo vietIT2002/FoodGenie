@@ -29,9 +29,11 @@
             <div>
 
                 <ul class="footer-links">
-                    <li><a href="?act=my_account"><i class="fa fa-user-o" style="color:black;"></i>&nbsp;Tài Khoản Của Tôi</a>
+                    <li><a href="?act=my_account"><i class="fa fa-user-o" style="color:black;"></i>&nbsp;Tài Khoản Của
+                            Tôi</a>
                     </li>
-                    <li><a href="?act=my_bill" style="color:#D10024;"><i class="fa fa-bars" style="color:black;"></i>&nbsp;Đơn
+                    <li><a href="?act=my_bill" style="color:#D10024;"><i class="fa fa-bars"
+                                style="color:black;"></i>&nbsp;Đơn
                             Hàng Của Tôi</a></li>
 
                 </ul>
@@ -67,13 +69,22 @@
                                         <td>' . date('d-m-Y', strtotime($value['ngay_tao'])) . '</td>
                                         <td>' . $ten_sp . '</td>
                                         <td>' . currency_format($value['tong_tien']) . '</td>';
-                    if ($value['trang_thai'] == 0) {
-                        echo '<td align=center style="color:red">Đang xử lý</td>
-                                                    <td align:right; ><a onclick="huydonhang(' . $value['id'] . ')" style="color:#d10024"><i class="fa-solid fa-trash"></i></a></td>';
-                    } else {
-                        echo '<td align=center style="color:#07ea03">Xác nhận giao</td><td></td>';
-                    }
-
+                    // if ($value['trang_thai'] == 0) {
+                    //     echo '<td align=center style="color:red">Đang xử lý</td>
+                    //                                 <td align:right; ><a onclick="huydonhang(' . $value['id'] . ')" style="color:#d10024"><i class="fa-solid fa-trash"></i></a></td>';
+                    // } else {
+                    //     echo '<td align=center style="color:#07ea03">Xác nhận giao</td><td></td>';
+                    // }
+  if ($value['trang_thai'] == 0 && $value['trang_thai_hien_thi'] == 0) {
+    echo '<td align="center" style="color:red">Đang xử lý</td>
+          <td align="right"><a onclick="huydonhang(' . $value['id'] . ')" style="color:#d10024"><i class="fa-solid fa-trash"></i></a></td>';
+} elseif ($value['trang_thai'] == 1 && $value['trang_thai_hien_thi'] == 0) {
+    echo '<td align="center" style="color:#07ea03">Xác nhận giao</td><td></td>';
+} elseif ($value['trang_thai'] == 0 && $value['trang_thai_hien_thi'] == 1) {
+    echo '<td align="center" style="color:grey">Bị hủy</td><td></td>';
+}elseif ($value['trang_thai'] == 1 && $value['trang_thai_hien_thi'] == 1) {
+    echo '<td align="center" style="color:grey">Đã giao</td><td></td>';
+}
                     echo '</tr>';
                 }
                 ?>

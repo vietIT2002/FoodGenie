@@ -58,10 +58,14 @@
             $hoadon = mysqli_query($con, $query);
         } else {
             $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
-                                          `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id` 
-                                          FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) 
-                                             WHERE  hoadon.trang_thai = 1 AND hoadon.id != 1
-                                          ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+       `id_nhanvien`, `trang_thai`, `ten_nv`, `nhanvien`.`id`
+FROM hoadon 
+LEFT JOIN nhanvien ON `id_nhanvien` = `nhanvien`.`id`
+WHERE hoadon.trang_thai = 1 
+  AND hoadon.trang_thai_hien_thi = 0 
+  AND hoadon.id != 1
+ORDER BY `hoadon`.`ngay_tao` DESC 
+LIMIT " . $item_per_page . " OFFSET " . $offset);
         }
     ?>
 
