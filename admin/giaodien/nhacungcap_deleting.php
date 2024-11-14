@@ -8,7 +8,7 @@ if (!empty($_SESSION['nguoidung'])) {
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 include_once './connect_db.php';
                 include_once './function.php';
-                $result = execute("UPDATE `nhacungcap` SET `status` = 1 WHERE `id` = " . $_GET['id'] . "");
+                $result = execute("UPDATE `nhacungcap` SET `trang_thai` = 1 WHERE `id` = " . $_GET['id'] . "");
                
                 if (!$result) {
                     $error = "Không thể xóa nhà cung cấp.";

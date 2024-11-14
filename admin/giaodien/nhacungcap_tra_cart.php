@@ -1,9 +1,7 @@
 <?php
 
 require_once("./connect_db.php");
-// $sanpham = mysqli_query($con, "SELECT * FROM `sanpham`");
-// $row = mysqli_fetch_array($sanpham);
-//$cart=[];
+
 if (isset($_SESSION['cart'])) {
 	if (isset($_GET['xoa'])) {
 		if (isset($_GET['id'])) {
@@ -24,8 +22,7 @@ if (isset($_SESSION['cart'])) {
 		
 	}
 
-	//echo '<pre>';
-	//var_dump($_SESSION['cart']);
+	
 ?>
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
@@ -116,16 +113,14 @@ if (isset($_SESSION['cart'])) {
                 <label class="text-4xl py-5 font-medium text-red-800 dark:text-white">
                     Tổng tiền là: <?= $total ?>
                 </label>
-                
+
                 <!-- Nhóm các nút bên phải -->
                 <div class="flex items-center space-x-4">
-                    <button
-                        class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
+                    <button class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
                         type="submit" name="order_click">
                         Hoàn trả
                     </button>
-                    <input
-                        class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
+                    <input class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
                         type="submit" name="update_click" value="Hủy">
                 </div>
             </div>
@@ -159,10 +154,7 @@ if (isset($_SESSION['cart'])) {
 					$insertOrder = mysqli_query($con, "INSERT INTO `ctphieutra` (`id_phieutra`, `id_sp`, `so_luong`) VALUES " . $insertString);
 					if ($insertOrder) {
 						$listcate = executeResult('SELECT * FROM `theloai` WHERE 1');
-						// foreach ($listcate as $item) {
-						// 	$tongsanphamtheoloai = executeSingleResult('SELECT SUM(so_luong) AS sl FROM sanpham WHERE id_the_loai=' . $item['id'])['sl'];
-						// 	execute('UPDATE theloai SET tong_sp="' . $tongsanphamtheoloai . '" WHERE id=' . $item['id']);
-						// }
+						
 						unset($_SESSION['cart']);
 						echo ('<a href="./admin.php?muc=6&tmuc=Phiếu%20trả">Nhấp vào đây để xem phiếu trả thành công</a>');
 					}
@@ -184,8 +176,7 @@ if (isset($_SESSION['cart'])) {
         <span class="sr-only">Error icon</span>
     </div>
     <div class="ms-3 text-3xl font-normal">Chưa có sản phẩm trong giỏ hàng</div>
-    <!-- <a href="./admin.php?tmuc=Nhà cung cấp" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Quay lại
-        danh sách thể loại</a> -->
+
     <button type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
         data-dismiss-target="#toast-error" aria-label="Close">

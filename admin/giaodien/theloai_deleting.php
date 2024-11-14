@@ -8,7 +8,7 @@ if (!empty($_SESSION['nguoidung'])) {
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 include_once './connect_db.php';
                 include_once './function.php';
-                $result = execute("UPDATE  `theloai` SET `status` = 1 WHERE `id` = " . $_GET['id']."");
+                $result = execute("UPDATE  `theloai` SET `trang_thai` = 1 WHERE `id` = " . $_GET['id']."");
                 if (!$result) {
                     $error = "Không thể xóa thể loại.";
                 }
@@ -27,8 +27,7 @@ if (!empty($_SESSION['nguoidung'])) {
         <span class="sr-only">Check icon</span>
     </div>
     <div class="ms-3 text-3xl font-normal">Thành công</div>
-    <a href="./admin.php?tmuc=Thể loại" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Danh
-        sách thể loại</a>
+
     <button type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
         data-dismiss-target="#toast-success" aria-label="Close">

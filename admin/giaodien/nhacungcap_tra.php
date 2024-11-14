@@ -17,18 +17,7 @@ if (!empty($_SESSION['nguoidung'])) {
     $sanpham = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `id_nha_cc` = " . $_GET['id'] . " ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset . "");
     mysqli_close($con);
     ?>
-<!-- <div class="flex justify-between items-center">
-    <div class="flex  pt-10 p pl-8">
-        <p class="pb-4 pt-0 text-gray-900 text-2xl font-bold dark:text-white text-5xl">Nhà cung cấp</p>
-    </div>
-    <div class="flex py-8 pr-6">
-        <div class="buttons">
-            <form name="nhacungcap-formdat" method="POST"
-                action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>" enctype="multipart/form-data">
-                <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
-        </div>
-    </div>
-</div> -->
+
 
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
     <div class="flex items-center justify-between border-b pb-4 mb-6">
@@ -41,13 +30,7 @@ if (!empty($_SESSION['nguoidung'])) {
             </button>
         </a>
     </div>
-    <!-- <div class="flex py-8 pr-6">
-        <div class="buttons">
-            <form name="nhacungcap-formdat" method="POST"
-                action="./admin.php?act=ncccarttralist&idncc=<?= $_GET['id'] ?>" enctype="multipart/form-data">
-                <input name="btnncctra" type="submit" title="Lưu nhà cung cấp" value="Giỏ hoàn trả" /></a>
-        </div>
-    </div> -->
+
     <div class="flex justify-end py-8 pr-6">
         <div>
             <a href="./admin.php?act=ncccarttralist&idncc">

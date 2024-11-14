@@ -22,7 +22,7 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 5;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
-        $totalRecords = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `status` = 0");
+        $totalRecords = mysqli_query($con, "SELECT * FROM `nhanvien` WHERE `trang_thai` = 0");
         $totalRecords = $totalRecords->num_rows;
         $totalPages = ceil($totalRecords / $item_per_page);
         // $nhanvien = mysqli_query($con, "SELECT * FROM `nhanvien` ORDER BY `id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
@@ -31,7 +31,7 @@
         FROM `nhanvien`
         LEFT JOIN `loainhanvien` ON nhanvien.id_loainv = loainhanvien.id
         LEFT JOIN `quyen` ON nhanvien.id_quyen = quyen.id
-        WHERE nhanvien.status = 0 AND nhanvien.id != 1
+        WHERE nhanvien.trang_thai = 0 AND nhanvien.id != 1
         ORDER BY nhanvien.id ASC
         LIMIT $item_per_page OFFSET $offset
     ");

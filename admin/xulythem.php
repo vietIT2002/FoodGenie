@@ -186,18 +186,18 @@
                                                             }
                                                         }
                                                         $result1 = mysqli_query($con, "UPDATE `sanpham` 
-                                            SET `ten_sp` = '" . $_POST['name'] . "',
-                                            `hinh_anh` =  '$image_url',
-                                            `don_gia` = " . str_replace('.', '', $_POST['price']) . ",
-                                            `gia_goc` = " . str_replace('.', '', $_POST['gia_goc']) . ",
-                                            `noi_dung` = '" . $_POST['content'] . "',
-                                            `ngay_sua` = " . time() . ",
-                                            `id_the_loai` =" . $_POST['idtl'] . ",
-                                            `id_nha_cc`=" . $_POST['idncc'] . ",
-                                            `xuat_xu`='" . $_POST['xuat_xu'] . "',
-                                            `khoi_luong`='" . $_POST['khoi_luong'] . "',
-                                            `trangthai`=" . $trangthai . "
-                                            WHERE `id` = " . $_GET['id']);
+                                                                                SET `ten_sp` = '" . $_POST['name'] . "',
+                                                                                `hinh_anh` =  '$image_url',
+                                                                                `don_gia` = " . str_replace('.', '', $_POST['price']) . ",
+                                                                                `gia_goc` = " . str_replace('.', '', $_POST['gia_goc']) . ",
+                                                                                `noi_dung` = '" . $_POST['content'] . "',
+                                                                                `ngay_sua` = " . time() . ",
+                                                                                `id_the_loai` =" . $_POST['idtl'] . ",
+                                                                                `id_nha_cc`=" . $_POST['idncc'] . ",
+                                                                                `xuat_xu`='" . $_POST['xuat_xu'] . "',
+                                                                                `khoi_luong`='" . $_POST['khoi_luong'] . "',
+                                                                                `trangthai`=" . $trangthai . "
+                                                                                WHERE `id` = " . $_GET['id']);
                                                         if (!empty($galleryImages)) {
                                                             $product_id = ($_GET['act'] == 'sua' && !empty($_GET['id'])) ? $_GET['id'] : $con->insert_id;
                                                             $insertValues = "";
@@ -295,20 +295,7 @@
             } else
                 header("location:./admin.php?act=nccaddtc&dk=no");
 }
-    // if (isset($_POST['btnnccdat'])) {
-    //     if ($_POST['sldat'] != "") {
-    //         if (is_int(intval($_POST['sldat']))) {
-    //             $con = mysqli_connect("localhost", "root", "", "foodgennie");
-    //             $sanpham = mysqli_query($con, "SELECT `so_luong` FROM `sanpham` WHERE `id` = " . $_GET['id'] . "");
-    //             $b = mysqli_fetch_array($sanpham);
-    //             $a = $_POST['sldat'] + $b['so_luong'];
-    //             $result1 = execute("UPDATE `sanpham` SET `so_luong` = '$a' WHERE `sanpham`.`id` = " . $_GET['id'] . " ");
-    //         }
     
-    //     }
-    
-    //     echo "xin chao";
-    // }
     if (isset($_POST['btnkhtt'])) {
         if (isset($_POST['trangthai']) == "on")
             $trangthai = 0;
@@ -527,51 +514,7 @@
                     header("location:./admin.php?act=xnhdtc&dk=no");
         }
     }
-    // if (isset($_POST['btndm1'])) {
-    //     $data=$_POST;
-    //     $inserts="";
-    //     $deleted=mysqli_query($con,"DELETE FROM `quyendahmuc` WHERE `id_quyen`=1");
-    //     foreach($data['row1'] as $insertid){
-    //         $inserts .= !empty($inserts) ? "," : "";
-    //         $inserts .= "(1,".$insertid.")";
-    //     }
-    //     $inserted=mysqli_query($con,"INSERT INTO `quyendahmuc`(`id_quyen`, `id_danhmuc`) VALUES ".$inserts."");
-    //     header("location:./admin.php?act=btndmtc&dk=yes");
-    // }
-    // if (isset($_POST['btndm2'])) {
-    //     $data=$_POST;
-    //     $inserts="";
-    //     $deleted=mysqli_query($con,"DELETE FROM `quyendahmuc` WHERE `id_quyen`=2");
-    //     foreach($data['row2'] as $insertid){
-    //         $inserts .= !empty($inserts) ? "," : "";
-    //         $inserts .= "(2,".$insertid.")";
-    //     }
-    //     $inserted=mysqli_query($con,"INSERT INTO `quyendahmuc`(`id_quyen`, `id_danhmuc`) VALUES ".$inserts."");
-    //     header("location:./admin.php?act=btndmtc&dk=yes");
-    // }
-    // if (isset($_POST['btndm3'])) {
-    //     $data=$_POST;
-    //     $inserts="";
-    //     $deleted=mysqli_query($con,"DELETE FROM `quyendahmuc` WHERE `id_quyen`=3");
-    //     foreach($data['row3'] as $insertid){
-    //         $inserts .= !empty($inserts) ? "," : "";
-    //         $inserts .= "(3,".$insertid.")";
-    //     }
-    //     $inserted=mysqli_query($con,"INSERT INTO `quyendahmuc`(`id_quyen`, `id_danhmuc`) VALUES ".$inserts."");
-    //     header("location:./admin.php?act=btndmtc&dk=yes");
-    // }
-    // if (isset($_POST['btndm4'])) {
-    //     $data=$_POST;
-    //     var_dump($data);
-    //     $inserts="";
-    //     $deleted=mysqli_query($con,"DELETE FROM `quyendahmuc` WHERE `id_quyen`=4");
-    //     foreach($data['row4'] as $insertid){
-    //         $inserts .= !empty($inserts) ? "," : "";
-    //         $inserts .= "(4,".$insertid.")";
-    //     }
-    //     $inserted=mysqli_query($con,"INSERT INTO `quyendahmuc`(`id_quyen`, `id_danhmuc`) VALUES ".$inserts."");
-    
-    // }
+   
     if (isset($_POST['btndmadd'])) {
         $data = $_POST;
         $inserts = "";
@@ -592,13 +535,6 @@
         } else
             header("location:./admin.php?act=btndmaddtc&dk=no");
 
-        // $deleted=mysqli_query($con,"DELETE FROM `quyendahmuc` WHERE `id_quyen`=1");
-        // foreach($data['row1'] as $insertid){
-        //     $inserts .= !empty($inserts) ? "," : "";
-        //     $inserts .= "(1,".$insertid.")";
-        // }
-        // $inserted=mysqli_query($con,"INSERT INTO `quyendahmuc`(`id_quyen`, `id_danhmuc`) VALUES ".$inserts."");
-        // header("location:./admin.php?act=btndmtc&dk=yes");
     }
     if (isset($_POST['btndmsua'])) {
         $data = $_POST;

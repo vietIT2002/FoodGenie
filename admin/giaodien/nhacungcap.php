@@ -22,10 +22,10 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
-        $totalRecords = mysqli_query($con, "SELECT * FROM `nhacungcap` WHERE `status` = 0");
+        $totalRecords = mysqli_query($con, "SELECT * FROM `nhacungcap` WHERE `trang_thai` = 0");
         $totalRecords = $totalRecords->num_rows;
         $totalPages = ceil($totalRecords / $item_per_page);
-        $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`  WHERE `status` = 0 ORDER BY `id`  ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+        $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`  WHERE `trang_thai` = 0 ORDER BY `id`  ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
 
         mysqli_close($con);
         ?>
