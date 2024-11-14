@@ -887,23 +887,8 @@ INSERT INTO `quyendahmuc` (`id_quyen`, `id_danhmuc`) VALUES
 -- Table structure for table `sanpham`
 --
 
-CREATE TABLE `sanpham` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `ten_sp` varchar(191) NOT NULL,
-  `don_gia` int(11) NOT NULL,
-  `gia_goc` int(11) NOT NULL,
-  `hinh_anh` varchar(255) NOT NULL,
-  `noi_dung` varchar(500) NOT NULL,
-  `id_the_loai` int(10) UNSIGNED NOT NULL,
-  `id_nha_cc` int(10) UNSIGNED NOT NULL,
-  `so_luong` tinyint(4) NOT NULL,
-  `sl_da_ban` tinyint(4) NOT NULL,
-  `khoi_luong` varchar(50) NOT NULL,
-  `xuat_xu` varchar(50) NOT NULL,
-  `ngay_tao` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ngay_sua` timestamp NOT NULL DEFAULT current_timestamp(),
-  `trangthai` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 
 --
 -- Dumping data for table `sanpham`
