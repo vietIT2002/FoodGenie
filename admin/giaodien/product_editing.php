@@ -6,7 +6,7 @@
 <?php
 if (!empty($_GET['id'])) {
     // $result = mysqli_query($con, "SELECT * FROM `sanpham` WHERE `sanpham`.`id`=".$_GET['id']."");
-    $result = mysqli_query($con, "SELECT `sanpham`.`id`, `ten_sp`, `don_gia`, `gia_goc`, `hinh_anh`, `noi_dung`, `id_the_loai`, `id_nha_cc`, `so_luong`,`xuat_xu`,`khoi_luong`, `sl_da_ban`, `sanpham`.`ngay_tao`, `sanpham`.`ngay_sua`, `trangthai`,`theloai`.`id`,`theloai`.`ten_tl`,`nhacungcap`.`id`,`nhacungcap`.`ten_ncc` FROM `sanpham`,`theloai`,`nhacungcap` WHERE `sanpham`.`id`=" . $_GET['id'] . " AND `sanpham`.`id_the_loai`=`theloai`.`id` AND `sanpham`.`id_nha_cc`=`nhacungcap`.`id`");
+    $result = mysqli_query($con, "SELECT `sanpham`.`id`, `ten_sp`, `don_gia`, `gia_goc`, `gia_nhap`, `hinh_anh`, `noi_dung`, `id_the_loai`, `id_nha_cc`, `so_luong`,`xuat_xu`,`khoi_luong`, `sl_da_ban`, `sanpham`.`ngay_tao`, `sanpham`.`ngay_sua`, `trangthai`,`theloai`.`id`,`theloai`.`ten_tl`,`nhacungcap`.`id`,`nhacungcap`.`ten_ncc` FROM `sanpham`,`theloai`,`nhacungcap` WHERE `sanpham`.`id`=" . $_GET['id'] . " AND `sanpham`.`id_the_loai`=`theloai`.`id` AND `sanpham`.`id_nha_cc`=`nhacungcap`.`id`");
     $product = $result->fetch_assoc();
     $gallery = mysqli_query($con, "SELECT * FROM `hinhanhsp` WHERE `id_sp` = " . $_GET['id']);
     if (!empty($gallery) && !empty($gallery->num_rows)) {
@@ -39,7 +39,6 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
         <div class="mx-10 overflow-y-auto h-5/6 ">
 
             <div class=" w-full  grid grid-cols-3 gap-6  ">
-
                 <div class="mb-4">
                     <label class="block  text-2xl text-gray-700">Tên sản phẩm:</label>
                     <input
@@ -53,7 +52,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                 <div class="mb-4">
 
-                    <label class="block text-2xl text-gray-700">Thể loại:</label>
+                    <label class="block text-2xl text-gray-700">Thể loại</label>
                     <select
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         name="idtl">
@@ -67,7 +66,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                 <div class="mb-4">
 
-                    <label class="block text-2xl text-gray-700">Nhà cung cấp: </label>
+                    <label class="block text-2xl text-gray-700">Nhà cung cấp</label>
                     <select class="form-control" name="idncc">
                         <option
                             class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -78,7 +77,17 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700">Giá sản phẩm:</label>
+                    <label class="block text-gray-700">Giá nhập</label>
+
+                    <input
+                        style="background-color: #f5f5f5; cursor: not-allowed;"
+                        class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        id="gia_nhap" type="number" name="gia_nhap"
+                        value="<?= !empty($product) ? $product['gia_nhap'] : '' ?>" readonly />
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Giá bán</label>
 
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -88,7 +97,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700">Giá gốc:</label>
+                    <label class="block text-gray-700">Giá gốc</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         id="product-original-price" type="number" name="gia_goc"
@@ -97,7 +106,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700">Xuất xứ:</label>
+                    <label class="block text-gray-700">Xuất xứ</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         required oninvalid="this.setCustomValidity('Vui lòng nhập xuất xứ')"
@@ -107,7 +116,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
 
                 <div class="mb-4">
-                    <label class="block text-gray-700">Khối lượng:</label>
+                    <label class="block text-gray-700">Khối lượng</label>
                     <input
                         class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         required oninvalid="this.setCustomValidity('Vui lòng nhập khối lượng')"
@@ -119,7 +128,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
             <div class="flex gap-6 mt-6">
                 <!-- Avatar Section -->
                 <div class="w-1/3">
-                    <label class="block text-gray-700">Ảnh đại diện: </label>
+                    <label class="block text-gray-700">Ảnh đại diện </label>
                     <div class="wrap-field">
                         <?php if (!empty($product['hinh_anh'])) { ?>
                         <img class="w-96 h-96 object-cover rounded" id="imageDisplay"
@@ -133,7 +142,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                 <!-- Image Gallery Section -->
                 <div class="w-2/3">
-                    <label class="block text-gray-700">Thư viện ảnh: </label>
+                    <label class="block text-gray-700">Thư viện ảnh </label>
                     <div class="flex flex-wrap space-x-4 ">
                         <?php if (!empty($product['gallery'])) { ?>
                         <ul class="flex space-x-4">
@@ -164,7 +173,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
             <div class=" flex gap-6 mt-6  ">
                 <div class="mb-4 w-11/12 h-80">
-                    <label>Nội dung: </label>
+                    <label>Nội dung </label>
                     <textarea
                         class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
                         name="content" required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')"
@@ -172,7 +181,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-2xl text-gray-700">Trạng thái: </label>
+                    <label class="block text-2xl text-gray-700">Trạng thái </label>
                     <input type="checkbox" name="trangthai" value="<?= $product['trangthai'] ?>"
                         <?php if ($product['trangthai'] == '0') echo "checked" ?> />
                 </div>

@@ -36,43 +36,57 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     class="p-4 md:p-5">
                     <div class="flex flex-wrap gap-4">
                         <div class="w-full md:w-1/2">
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="id_error"></span>
+                            <div class="mb-4 flex items-center">
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mã sản phẩm</label>
+                                <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
+                                    id="product-id" name="id" value="">
+                            </div>
+
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="name_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên sản phẩm:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên sản phẩm</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                     id="product-name" name="name" value="">
+                            </div>
+
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="gianhap_error"></span>
+                            <div class="mb-4 flex items-center">
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá nhâp</label>
+                                <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
+                                    id="gia_nhap" name="gia_nhap" value="">
                             </div>
                                      
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="price_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá sản phẩm:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá bán</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                     id="product-price" name="price" value="">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="original_price_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá gốc:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá gốc</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                     id="product-original-price" name="gia_goc" value="">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="image_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Ảnh đại diện:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Ảnh đại diện</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="file"
                                     id="product-image" name="image">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="photo_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thư viện ảnh:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thư viện ảnh</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="file"
                                     id="photo_library" name="gallery[]" multiple>
                             </div>
 
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thể loại:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Thể loại</label>
                                 <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="idtl">
                                     <?php while ($row = mysqli_fetch_array($theloai)) { ?>
                                     <option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_tl'] ?></option>
@@ -82,7 +96,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nhà cung
-                                    cấp:</label>
+                                    cấp</label>
                                 <select class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" name="idncc">
                                     <?php while ($row = mysqli_fetch_array($nhacungcap)) { ?>
                                     <option value="<?= $row['id'] ?>"><?= $row['id'] ?> - <?= $row['ten_ncc'] ?>
@@ -93,28 +107,21 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="content_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nội dung:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Nội dung</label>
                                 <textarea class="w-2/3 text-2xl pl-4 focus:outline-none" name="content"
                                     id="product-content"></textarea>
-                            </div>
-                            
-                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="quantity_error"></span>
-                            <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số lượng:</label>
-                                <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
-                                    id="product-quantity" name="so_luong">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="weight_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Khối lượng:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Khối lượng</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                     id ="product-weight" name="khoi_luong" value="">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="origin_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Xuất xứ:</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Xuất xứ</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                     id="product-origin" name="xuat_xu"  value="">
                             </div>
@@ -134,5 +141,4 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
         <script src="./js/binding_product.js"></script>
     </div>
 </body>
-
 </html>

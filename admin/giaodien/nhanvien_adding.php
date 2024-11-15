@@ -44,41 +44,41 @@ $quyen_result = mysqli_query($con, $quyen_query);
                     <div class="w-full md:w-1/2 md:w-2/3 ">
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="manv_error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mã Nhân viên:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mã Nhân viên</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                 id="nhanvien-manv" name="id" value="">
                         </div>
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="tennv-error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên Nhân viên:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên Nhân viên</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 id="nhanvien-tennv" name="name" value="">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="email-error"></span>
                         <div class="mb-4 flex items-center ">
-                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email:</label>
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="email"
                                 id="nhanvien-email" name="email" value="" placeholder="">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="phone-error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại:</label>
+                            <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                 id="phone" name="phone" value="" placeholder="">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="password-error"></span>
                         <div class="mb-4 flex items-center ">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mật khẩu:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Mật khẩu</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 id="new-password-Admin" name="mat_khau">
                         </div>
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="tendn-error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên đăng nhập:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên đăng nhập</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 id="tendn-nhanvien" name="tendangnhap" value="">
                         </div>
@@ -86,7 +86,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
                         <!-- Dropdown Chức vụ -->
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="chucvu-error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Chức vụ</label>
                             <select id="chucvu-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none"
                                 name="id_loainv">
                                 <option value="">Chọn chức vụ</option>
@@ -98,7 +98,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
 
                         <span style="color: red; font-size: 0.75em; margin-left: 170px;" id="quyen-error"></span>
                         <div class="mb-4 flex items-center">
-                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền:</label>
+                            <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Quyền</label>
                             <select id="quyen-select" class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none"
                                 name="id_quyen">
                                 <option value="">Chọn quyền</option>

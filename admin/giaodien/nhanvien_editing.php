@@ -65,7 +65,7 @@ if (!empty($_GET['id'])) {
             <div class="col-sm-7">
                 <!-- Thông tin khác cho phép sửa đổi -->
                 <div class="wrap-field form-group row">
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Mã Nhân viên: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Mã Nhân viên </label>
                     <div class="col-sm-8">
                         <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" type="text" name="id" value="NV<?= $_GET['id'] ?>" readonly />
                     </div>
@@ -73,7 +73,7 @@ if (!empty($_GET['id'])) {
 
                 <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="tennv-error"></span>
                 <div class="wrap-field form-group row">
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Tên Nhân viên: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Tên Nhân viên </label>
                     <div class="col-sm-8">
                     <input id="nhanvien-tennv" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" name="name" value="<?= (!empty($nhanvien) ? $nhanvien['ten_nv'] : "") ?>" />
                     </div>
@@ -81,7 +81,7 @@ if (!empty($_GET['id'])) {
 
                 <span style="color: red; font-size: 0.75em; margin-left: 260px;" id="email-error"></span>
                 <div class="wrap-field form-group row">
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Email: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Email </label>
                     <div class="col-sm-8">
                     <input class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                         id="nhanvien-email"
@@ -117,7 +117,7 @@ if (!empty($_GET['id'])) {
                 </div>
 
                 <div class="wrap-field form-group row">
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Chức vụ: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Chức vụ </label>
                     <div class="col-sm-8">
                         <select class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" name="id_loainv">
                             <?php while ($row = mysqli_fetch_array($chucvu_result)) { ?>
@@ -128,7 +128,7 @@ if (!empty($_GET['id'])) {
                 </div>
 
                 <div class="wrap-field form-group row"> 
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Quyền: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Quyền </label>
                     <div class="col-sm-8">
                         <select class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" name="id_quyen">
                             <?php while ($row = mysqli_fetch_array($quyen_result)) { ?>
@@ -139,7 +139,7 @@ if (!empty($_GET['id'])) {
                 </div>
 
                 <div class="wrap-field form-group row"> 
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Ngày nhận việc: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Ngày nhận việc </label>
                     <div class="col-sm-8">
                         <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" 
                             value="<?= $ngay_tao ?>" readonly />
@@ -147,7 +147,7 @@ if (!empty($_GET['id'])) {
                 </div>
 
                 <div class="wrap-field form-group row"> 
-                    <label class="col-sm-4 col-form-label col-form-label-sm">Thời gian làm việc: </label>
+                    <label class="col-sm-4 col-form-label col-form-label-sm">Thời gian làm việc </label>
                     <div class="col-sm-8">
                         <input type="text" class="w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-300" 
                             value="<?= $days_worked ?>" readonly />
