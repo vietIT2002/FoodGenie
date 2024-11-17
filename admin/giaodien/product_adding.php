@@ -52,7 +52,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="gianhap_error"></span>
                             <div class="mb-4 flex items-center">
-                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá nhâp</label>
+                                <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá nhập</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                     id="gia_nhap" name="gia_nhap" value="">
                             </div>

@@ -42,28 +42,28 @@ if (isset($_SESSION['cart'])) {
             <div class="">
                 <div class=" w-full  grid grid-cols-2 gap-6 ">
                     <div class="mb-4">
-                        <label class="block  text-2xl text-gray-700">Tên cơ sở: </label>
+                        <label class="block  text-2xl text-gray-700">Tên cơ sở </label>
                         <input
                             class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             type="text" name="namenv" value="" />
 
                     </div>
                     <div class="mb-4">
-                        <label class="block  text-2xl text-gray-700">Địa chỉ: </label>
+                        <label class="block  text-2xl text-gray-700">Địa chỉ </label>
                         <input
                             class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             type="text" name="diachi" value="" />
 
                     </div>
                     <div class="mb-4">
-                        <label class="block  text-2xl text-gray-700">SĐT: </label>
+                        <label class="block  text-2xl text-gray-700">Số điện thoại </label>
                         <input
                             class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            type="tel" name="sdt" pattern="[0]{1}[0-9]{9}" value="" placeholder="VD: 0123456789" />
+                            type="number" name="sdt" pattern="" value="" placeholder="" />
                         <div class="clear-both"></div>
                     </div>
                     <div class="mb-4">
-                        <label class="block  text-2xl text-gray-700">Ghi chú: </label>
+                        <label class="block  text-2xl text-gray-700">Ghi chú </label>
                         <input
                             class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             type="text" name="ghichu" value="" />
@@ -79,7 +79,7 @@ if (isset($_SESSION['cart'])) {
                             <th class="font-normal px-6 py-3">STT</th>
                             <th class="font-normal px-6 py-3">Mã sản phẩm</th>
                             <th class="font-normal px-6 py-3">Hình ảnh</th>
-                            <th class="font-normal px-6 py-3">Đơn giá</th>
+                            <th class="font-normal px-6 py-3">Giá Nhập</th>
                             <th class="font-normal px-6 py-3">Số lượng</th>
                             <th class="font-normal px-6 py-3">Thành tiền </th>
                             <th class="font-normal px-6 py-3">Xóa</th>
@@ -104,8 +104,9 @@ if (isset($_SESSION['cart'])) {
                                     src=" ../img/<?= $val['Pic'] ?>">
                             </td>
                             <td class="px-6 py-4"><?php echo $val['price'] ?></td>
-                            <td class="px-6 py-4"><input type="number" name="qty[<?= $key ?>]"
-                                    value="<?php echo $val['qty'] ?>"></td>
+                            <td class="px-6 py-4">
+                                <input type="number" name="qty[<?= $key ?>]" value="<?php echo $val['qty'] ?>" min="1" step="1" id="qty-<?= $key ?>" oninput="validateQuantity(this)" required>
+                            </td>
                             <td class="px-6 py-4"><?= $val['qty'] * $val['price'] ?></td>
                             <td class="px-6 py-4"><a href="./admin.php?act=ncccartlist&xoa=y&id=<?= $key ?>"><i
                                         class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
@@ -133,7 +134,7 @@ if (isset($_SESSION['cart'])) {
                     </button>
                     <button class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
                         type="submit" name="update_click">
-                        Hủy
+                        Cập nhật
                     </button>
                 </div>
             </div>
@@ -150,7 +151,7 @@ if (isset($_SESSION['cart'])) {
             $orderProducts = array();
             while ($row = mysqli_fetch_array($products)) {
                 $orderProducts[] = $row;
-                $total += $row['don_gia'] * $_POST['qty'][$row['id']];
+                $total += $row['gia_nhap'] * $_POST['qty'][$row['id']];
             }
 
             // Insert into phieunhap table
@@ -232,4 +233,17 @@ function showErrorToast() {
 showErrorToast();
 </script>');
 <?php } ?>
+
+<script>
+    function validateQuantity(input) {
+        // Kiểm tra giá trị của ô input
+        if (input.value < 1) {
+            // Nếu giá trị nhỏ hơn 1, hiển thị thông báo lỗi
+            input.setCustomValidity("Vui lòng nhập số lượng lớn hơn 0");
+        } else {
+            // Nếu giá trị hợp lệ, xóa thông báo lỗi
+            input.setCustomValidity("");
+        }
+    }
+</script>
 </div>

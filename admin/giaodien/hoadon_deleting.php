@@ -53,6 +53,10 @@ function showSuccessToast() {
 // Gọi hàm để hiển thị toast khi thành công
 showSuccessToast();
 </script>
+
+
+
+
 <?php } else { ?>
 <div id="toast-error"
     class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"

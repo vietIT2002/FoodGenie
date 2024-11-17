@@ -83,7 +83,7 @@
 } elseif ($value['trang_thai'] == 0 && $value['trang_thai_hien_thi'] == 1) {
     echo '<td align="center" style="color:grey">Bị hủy</td><td></td>';
 }elseif ($value['trang_thai'] == 1 && $value['trang_thai_hien_thi'] == 1) {
-    echo '<td align="center" style="color:grey">Đã giao</td><td></td>';
+    echo '<td align="center" style="color:#07ea03">Xác nhận giao</td><td></td>';
 }
                     echo '</tr>';
                 }

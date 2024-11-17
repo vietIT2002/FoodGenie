@@ -16,12 +16,12 @@ if ($product > 0) {
 
 			$_SESSION['cart'][$id]['qty'] += 1;
 			$_SESSION['cart'][$id]['name'] = $obj->ten_sp;
-			$_SESSION['cart'][$id]['price'] = $obj->don_gia;
+			$_SESSION['cart'][$id]['price'] = $obj->gia_nhap;
 			$_SESSION['cart'][$id]['Pic'] = $obj->hinh_anh;
 		} else {
 			$_SESSION['cart'][$id]['qty'] = 1;
 			$_SESSION['cart'][$id]['name'] = $obj->ten_sp;
-			$_SESSION['cart'][$id]['price'] = $obj->don_gia;
+			$_SESSION['cart'][$id]['price'] = $obj->gia_nhap;
 			$_SESSION['cart'][$id]['Pic'] = $obj->hinh_anh;
 		}
 		$_SESSION['success'] = 'Ton tai gio hang! cap nhat thanh cong:';
@@ -73,7 +73,7 @@ showSuccessToast();
 		//$_SESSION['success']='Ton tai gio hang! cap nhat thanh cong:';
 		$_SESSION['cart'][$id]['qty'] = 1;
 		$_SESSION['cart'][$id]['name'] = $obj->ten_sp;
-		$_SESSION['cart'][$id]['price'] = $obj->don_gia;
+		$_SESSION['cart'][$id]['price'] = $obj->gia_nhap;
 		$_SESSION['cart'][$id]['Pic'] = $obj->hinh_anh;
 		?>
 <div id="error-notify" class="box-content">

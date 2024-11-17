@@ -7,6 +7,6 @@
 </head>
 <body>
 <body>
-     <iframe src="http://localhost:8050" width="100%" height="100%"></iframe>
+    <iframe src="http://localhost:8050" width="100%" height="100%"></iframe>
 </body>
 </html>

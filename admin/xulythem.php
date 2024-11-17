@@ -291,73 +291,79 @@ if (isset($_POST['btnadd'])) {
         $result = execute($sql);
         header("location:./admin.php?act=khtttc&dk=yes");
     }
-
     if (isset($_POST['btnnvadd'])) {
-        if (isset($_POST['id']))
-            if ($_POST['id'] != '') {
-                if (isset($_POST['name']))
-                    if ($_POST['name'] != '') {
-                        if (isset($_POST['id_loainv']))
-                            if ($_POST['id_loainv'] != '') {
-                                if (isset($_POST['id_quyen']))
-                                    if ($_POST['id_quyen'] != '') {
-                                        if (isset($_POST['mat_khau']))
-                                            if ($_POST['mat_khau'] != '') {
-                                                if (isset($_POST['phone']))
-                                                    if ($_POST['phone'] != '') {
-                                                        if (isset($_POST['email']))
-                                                            if ($_POST['email'] != '') {
-                                                                if ($_POST['tendangnhap'] != '')
-                                                                    $tendangnhap = null;
-                                                                $conn = mysqli_connect("localhost", "root", "", "foodgennie");
-                                                                $id = $_POST['id'];
-                                                                $namei = $_POST['name'];
-                                                                $id_loainv = $_POST['id_loainv'];
-                                                                $id_quyen = $_POST['id_quyen'];
-                                                                $mat_khau = $_POST['mat_khau'];
-                                                                $phone = $_POST['phone'];
-                                                                $email = $_POST['email'];
-                                                                $tendangnhap = $_POST['tendangnhap'];
-                                                                if ($_FILES['image']['name'] != NULL) {
-                                                                    // Kiểm tra file up lên có phải là ảnh không
-                                                                    if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
-
-                                                                        // Nếu là ảnh tiến hành code upload
-                                                                        $path1 = ""; // Ảnh sẽ lưu vào thư mục images
-                                                                        $path2 = "../img/";
-                                                                        $tmp_name = $_FILES['image']['tmp_name'];
-                                                                        $name = $_FILES['image']['name'];
-                                                                        // Upload ảnh vào thư mục images
-                                                                        move_uploaded_file($tmp_name, $path2 . $name);
-                                                                        $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-                                                                        // Insert ảnh vào cơ sở dữ liệu
+        if (isset($_POST['id']) && $_POST['id'] != '' && isset($_POST['name']) && $_POST['name'] != '' && 
+            isset($_POST['id_loainv']) && $_POST['id_loainv'] != '' && isset($_POST['id_quyen']) && $_POST['id_quyen'] != '' && 
+            isset($_POST['mat_khau']) && $_POST['mat_khau'] != '' && isset($_POST['phone']) && $_POST['phone'] != '' && 
+            isset($_POST['email']) && $_POST['email'] != '' && $_POST['tendangnhap'] != '') {
     
-
-                                                                        $sql1 = "INSERT INTO `nhanvien`(`id`,`ten_nv`, `hinh_anh`,  `ten_dangnhap`, `email`, `phone`, `mat_khau`,`id_loainv`,`id_quyen`) VALUES ('$id','$namei','$image_url','$tendangnhap','$email','$phone','$mat_khau','$id_loainv', '$id_quyen')";
-                                                                        // $sql1 = "INSERT INTO `nhanvien`(`id`,`ten_nv`, `hinh_anh`, `chuc_vu`, `ten_dangnhap`, `email`, `phone`, `mat_khau`) VALUES ('$id','$namei','$image_url','$chuc_vu','$tendangnhap','$email','$phone','$mat_khau')";
+            $conn = mysqli_connect("localhost", "root", "", "foodgennie");
     
-                                                                        $result = mysqli_query($con, $sql1);
-                                                                        if ($result)
-                                                                            header("location:./admin.php?act=addnvtc&dk=yes");
-                                                                        else
-                                                                            header("location:./admin.php?act=addnvtc&dk=no");
-                                                                    } else
-                                                                        header("location:./admin.php?act=addnvtc&dk=no");
-                                                                }
-                                                            }
-                                                    } else
-                                                        header("location:./admin.php?act=addnvtc&dk=no");
-                                            } else
-                                                header("location:./admin.php?act=addnvtc&dk=no");
-                                    } else
-                                        header("location:./admin.php?act=addnvtc&dk=no");
-                            } else
-                                header("location:./admin.php?act=addnvtc&dk=no");
-                    } else
+            // Lấy giá trị từ form
+            $id = $_POST['id'];
+            $namei = $_POST['name'];
+            $id_loainv = $_POST['id_loainv'];
+            $id_quyen = $_POST['id_quyen'];
+            $mat_khau = $_POST['mat_khau'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $tendangnhap = $_POST['tendangnhap'];
+    
+            // Kiểm tra mã nhân viên đã tồn tại chưa
+            $sql_check = "SELECT * FROM `nhanvien` WHERE `id` = '$id'";
+            $result_check = mysqli_query($conn, $sql_check);
+    
+            if (mysqli_num_rows($result_check) > 0) {
+                // Nếu mã nhân viên đã tồn tại
+                echo "<script>alert('Mã nhân viên đã tồn tại, vui lòng nhập mã khác!'); window.history.back();</script>";
+                exit();
+            }
+    
+            // Nếu không có lỗi, tiếp tục xử lý ảnh
+            if ($_FILES['image']['name'] != NULL) {
+                // Kiểm tra file up lên có phải là ảnh không
+                if ($_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png" || $_FILES['image']['type'] == "image/gif") {
+    
+                    // Nếu là ảnh tiến hành code upload
+                    $path1 = ""; // Ảnh sẽ lưu vào thư mục images
+                    $path2 = "../img/";
+                    $tmp_name = $_FILES['image']['tmp_name'];
+                    $name = $_FILES['image']['name'];
+                    // Upload ảnh vào thư mục images
+                    move_uploaded_file($tmp_name, $path2 . $name);
+                    $image_url = $path1 . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+    
+                    // Insert dữ liệu vào cơ sở dữ liệu
+                    $sql1 = "INSERT INTO `nhanvien`(`id`, `ten_nv`, `hinh_anh`, `ten_dangnhap`, `email`, `phone`, `mat_khau`, `id_loainv`, `id_quyen`) 
+                             VALUES ('$id', '$namei', '$image_url', '$tendangnhap', '$email', '$phone', '$mat_khau', '$id_loainv', '$id_quyen')";
+                    
+                    $result = mysqli_query($conn, $sql1);
+                    if ($result) {
+                        header("location:./admin.php?act=addnvtc&dk=yes");
+                    } else {
                         header("location:./admin.php?act=addnvtc&dk=no");
-            } else
-                header("location:./admin.php?act=addnvtc&dk=no");
+                    }
+                } else {
+                    header("location:./admin.php?act=addnvtc&dk=no");
+                }
+            } else {
+                // Nếu không có ảnh, chèn dữ liệu mà không có ảnh
+                $sql1 = "INSERT INTO `nhanvien`(`id`, `ten_nv`, `ten_dangnhap`, `email`, `phone`, `mat_khau`, `id_loainv`, `id_quyen`) 
+                         VALUES ('$id', '$namei', '$tendangnhap', '$email', '$phone', '$mat_khau', '$id_loainv', '$id_quyen')";
+                
+                $result = mysqli_query($conn, $sql1);
+                if ($result) {
+                    header("location:./admin.php?act=addnvtc&dk=yes");
+                } else {
+                    header("location:./admin.php?act=addnvtc&dk=no");
+                }
+            }
+        } else {
+            // Nếu thiếu thông tin, chuyển hướng và hiển thị thông báo
+            header("location:./admin.php?act=addnvtc&dk=no");
+        }
     }
+    
     
     if (isset($_POST['btnnvsua'])) {
         if (isset($_POST['id']))
@@ -376,6 +382,7 @@ if (isset($_POST['btnadd'])) {
                                             if ($_POST['email'] != '') {
                                                 if ($_POST['tendangnhap'] != '')
                                                     $tendangnhap = null;
+                                                
                                                 $conn = mysqli_connect("localhost", "root", "", "foodgennie");
                                                 $result4 = mysqli_query($con, "SELECT `id_loainv` FROM `nhanvien` WHERE `id`=" . $_GET['id'] . "");
                                                 $r2 = mysqli_fetch_array($result4);

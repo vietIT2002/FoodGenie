@@ -73,7 +73,7 @@ form.addEventListener('submit', (e) => {
         valid = false;
     } else if (parseFloat(price.value) > 0 && parseFloat(originalPrice.value) > 0 && parseFloat(price.value) > parseFloat(originalPrice.value)) {
         e.preventDefault();
-        original_price_error.innerHTML = "Giá gốc phải lớn hơn đơn giá";
+        original_price_error.innerHTML = "Giá gốc phải lớn hơn đơn giá bán";
         valid = false;
     }
 

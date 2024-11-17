@@ -1,102 +1,104 @@
 <?php
+$host = 'localhost'; // Địa chỉ máy chủ
+$username = 'root'; // Tên người dùng MySQL (mặc định là root)
+$password = ''; // Mật khẩu MySQL (mặc định là rỗng)
+$database = 'foodgennie'; // Tên cơ sở dữ liệu của bạn
 
+// Tạo kết nối
+$conn = mysqli_connect($host, $username, $password, $database);
+
+// Kiểm tra kết nối
+if (!$conn) {
+    die("Kết nối cơ sở dữ liệu thất bại: " . mysqli_connect_error());
+}
 if (!empty($_SESSION['nguoidung'])) {
-    ?>
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        include_once './connect_db.php';
+        include_once './function.php';
 
-<?php
-            $error = false;
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                include_once './connect_db.php';
-                include_once './function.php';
-                $result = execute("UPDATE  `hoadon` SET `trang_thai_hien_thi` = 1 WHERE `id` = " . $_GET['id']."");
-                if (!$result) {
-                    $error = "Không thể xóa hóa đơn.";
+        $error = false;
+        $hoadonId = $_GET['id'];
+
+        // Bắt đầu transaction để đảm bảo tính toàn vẹn dữ liệu
+        mysqli_begin_transaction($conn);
+
+        try {
+            // Lấy danh sách sản phẩm trong hóa đơn
+            $query = "SELECT id_sanpham, so_luong FROM cthoadon WHERE id_hoadon = $hoadonId";
+            $result = mysqli_query($conn, $query);
+
+            if (!$result) {
+                throw new Exception("Không thể lấy dữ liệu chi tiết hóa đơn.");
+            }
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $maSanPham = $row['id_sanpham'];
+                $soLuong = $row['so_luong'];
+
+                // Cập nhật lại số lượng và số lượng đã bán trong bảng `sanpham`
+                $updateQuery = "
+                    UPDATE sanpham 
+                    SET so_luong = so_luong + $soLuong, sl_da_ban = sl_da_ban - $soLuong 
+                    WHERE id = $maSanPham
+                ";
+                $updateResult = mysqli_query($conn, $updateQuery);
+
+                if (!$updateResult) {
+                    throw new Exception("Không thể cập nhật sản phẩm: $maSanPham.");
                 }
-                if ($error != false) {
-                    ?>
-<div id="toast-success"
-    class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-    role="alert" style="margin-top: 20px; margin-right: 20px;">
-    <div
-        class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-        <svg class="w-8 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 0 20 20">
-            <path
-                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-        </svg>
-        <span class="sr-only">Check icon</span>
-    </div>
-    <div class="ms-3 text-3xl font-normal">Xóa thành công</div>
-    <!-- <a href="./admin.php?tmuc=Thể loại" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Danh sách thể loại</a> -->
-    <button type="button"
-        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-        data-dismiss-target="#toast-success" aria-label="Close">
-        <span class="sr-only">Close</span>
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-        </svg>
-    </button>
-</div>
-<script>
-// Hiển thị thông báo thành công
-function showSuccessToast() {
-    const toast = document.getElementById("toast-success");
-    toast.style.display = "flex"; // Hiển thị thông báo
+            }
 
-    // Tự động chuyển hướng sau 1 giây
-    setTimeout(function() {
-        window.location.href = "admin.php?tmuc=Hóa đơn";
-    }, 1000);
+            // Cập nhật trạng thái hiển thị hóa đơn (coi như "xóa")
+            $updateHoaDonQuery = "UPDATE hoadon SET trang_thai_hien_thi = 1 WHERE id = $hoadonId";
+            $updateHoaDonResult = mysqli_query($conn, $updateHoaDonQuery);
+
+            if (!$updateHoaDonResult) {
+                throw new Exception("Không thể cập nhật trạng thái hóa đơn.");
+            }
+
+            // Commit transaction
+            mysqli_commit($conn);
+
+            // Hiển thị thông báo thành công
+            echo '<div id="toast-success"
+                class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                role="alert" style="margin-top: 20px; margin-right: 20px;">
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                    <svg class="w-8 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                    </svg>
+                    <span class="sr-only">Check icon</span>
+                </div>
+                <div class="ms-3 text-3xl font-normal">Xóa hóa đơn thành công và hoàn lại số lượng sản phẩm!</div>
+            </div>';
+            echo '<script>
+                setTimeout(function() {
+                    window.location.href = "admin.php?tmuc=Hóa đơn";
+                }, 2000);
+            </script>';
+        } catch (Exception $e) {
+            // Rollback transaction nếu có lỗi xảy ra
+            mysqli_rollback($conn);
+            $error = $e->getMessage();
+
+            // Hiển thị thông báo lỗi
+            echo '<div id="toast-error"
+                class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                role="alert" style="margin-top: 20px; margin-right: 20px;">
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                    <svg class="w-8 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                    </svg>
+                    <span class="sr-only">Error icon</span>
+                </div>
+                <div class="ms-3 text-3xl font-normal">Lỗi: ' . htmlspecialchars($error) . '</div>
+            </div>';
+            echo '<script>
+                setTimeout(function() {
+                    window.location.href = "admin.php?tmuc=Hóa đơn";
+                }, 2000);
+            </script>';
+        }
+    }
 }
-
-// Gọi hàm để hiển thị toast khi thành công
-showSuccessToast();
-</script>
-<?php } else { ?>
-<div id="toast-error"
-    class="fixed right-0 top-15 flex items-center w-full h-24 max-w-xl p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-    role="alert" style="display: none; margin-top: 20px; margin-right: 20px;">
-    <div
-        class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
-        <svg class="w-8 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 0 20 20">
-            <path
-                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-        </svg>
-        <span class="sr-only">Error icon</span>
-    </div>
-    <div class="ms-3 text-3xl font-normal">Xóa thất bại</div>
-    <!-- <a href="./admin.php?tmuc=Thể loại" class="ms-3 text-3xl font-normal text-blue-500 hover:underline">Quay lại danh sách thể loại</a> -->
-    <button type="button"
-        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-        data-dismiss-target="#toast-error" aria-label="Close">
-        <span class="sr-only">Close</span>
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-        </svg>
-    </button>
-</div>
-<script>
-// Hiển thị thông báo thất bại
-function showErrorToast() {
-    const toast = document.getElementById("toast-error");
-    toast.style.display = "flex"; // Hiển thị thông báo
-
-    // Tự động chuyển hướng sau 1 giây
-    setTimeout(function() {
-        window.location.href = "admin.php?tmuc=Hóa đơn";
-    }, 1000);
-}
-
-// Gọi hàm để hiển thị toast khi thất bại
-showErrorToast();
-</script>
-<?php } ?>
-<?php } ?>
-
-<?php
-}
-
 ?>

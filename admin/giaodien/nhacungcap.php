@@ -64,7 +64,6 @@
                                 <th class="font-normal px-6 py-3">Website</th>
                                 <th class="font-normal px-6 py-3">SĐT</th>
                                 <th class="font-normal px-6 py-3">Đặt hàng</th>
-                                <th class="font-normal px-6 py-3">Trả hàng</th>
                                 <th class="font-normal px-6 py-3"></th>
                             </tr>
                         </thead>
@@ -82,11 +81,14 @@
                             <td class="px-6 py-4"><?= $row['web_site'] ?></td>
                             <td class="px-6 py-4"><?= $row['phone'] ?></td>
                             <td class="px-6 py-4">
-                                <a href="admin.php?act=datncc&id=<?= $row['id'] ?>" class="font-bold">Đặt</a>
+                                <a href="admin.php?act=datncc&id=<?= $row['id'] ?>" 
+                                class="font-bold text-green-500 text-3xl no-underline hover:text-green-500 focus:outline-none">
+                                    <i class="fa-solid fa-store"></i>
+                                </a>
                             </td>
-                            <td class="px-6 py-4">
+                            <!-- <td class="px-6 py-4">
                                 <a href="admin.php?act=trancc&id=<?= $row['id'] ?>" class="font-bold">Trả</a>
-                            </td>
+                            </td> -->
                             <td>
                                 <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>"
                                     class="text-red-600 hover:text-red-800"

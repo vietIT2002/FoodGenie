@@ -56,7 +56,7 @@ if (!empty($_SESSION['nguoidung'])) {
                         <tr class="font-normal px-6 py-3">
                             <th class="font-normal px-6 py-3">Hình ảnh</th>
                             <th class="font-normal px-6 py-3">Tên sản phẩm</th>
-                            <th class="font-normal px-6 py-3">Giá</th>
+                            <th class="font-normal px-6 py-3">Giá nhập</th>
                             <th class="font-normal px-6 py-3">Số lượng tồn</th>
                             <th class="font-normal px-6 py-3">Thêm</th>
                         </tr>
@@ -70,7 +70,7 @@ if (!empty($_SESSION['nguoidung'])) {
                             <td><img class="h-36 w-36 rounded-full" src=".././img/<?= $row['hinh_anh'] ?>">
                             </td>
                             <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
-                            <td class="px-6 py-4"><?= $row['don_gia'] ?></td>
+                            <td class="px-6 py-4"><?= $row['gia_nhap'] ?></td>
                             <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
                             <td class="px-6 py-4">
                                 <a href="./admin.php?act=ncccart&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>">Thêm</a>

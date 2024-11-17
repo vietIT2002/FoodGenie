@@ -30,28 +30,28 @@
                                 name="id" value="">
                         </div> -->
 
-                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="name_error"></span>
+                        <span style="color: red; font-size: 0.75em; margin-left: 125px;" id="name_error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Tên nhà cung cấp</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 id="name_ncc" name="name" value="">
                         </div>
 
-                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="email_error"></span>
+                        <span style="color: red; font-size: 0.75em; margin-left: 125px;" id="email_error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Email</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                 id="email_ncc" name="email" value="" placeholder="">
                         </div>
 
-                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="website_error"></span>
+                        <span style="color: red; font-size: 0.75em; margin-left: 125px;" id="website_error"></span>
                         <div class="mb-4 flex items-center">
                             <label class="w-1/3  pl-4 text-2xl text-gray-700 dark:text-white">Website</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
                                id="website_ncc" name="website" value="" placeholder="" value="">
                         </div>
 
-                        <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="phone_error"></span>
+                        <span style="color: red; font-size: 0.75em; margin-left: 125px;" id="phone_error"></span>
                         <div class="mb-4 flex items-center ">
                             <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Số điện thoại</label>
                             <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"

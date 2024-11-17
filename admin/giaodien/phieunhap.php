@@ -13,6 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+    </style>
 </head>
 
 <body>
@@ -105,7 +108,9 @@
                                 <td class="px-6 py-4"><?= date('d/m/Y H:i', strtotime($row['ntpn'] ))?></td>
                                 <td class="px-6 py-4"><?= $row['sdt'] ?></td>
                                 <td class="px-6 py-4"><?= $row['diachi'] ?></td>
-                                <td class="px-6 py-4"><?= $row['ghichu'] ?></td>
+                                <td class="px-6 py-4">
+                                    <?= mb_strimwidth($row['ghichu'], 0, 40, '...') ?>
+                                </td>
                                 <td class="px-6 py-4"><?= number_format($row['tong_tien'], 0, '', '.') ?></td>
                                 <td class="px-6 py-4"><a class="text-green-500"
                                         href="./admin.php?act=ctphieunhap&id=<?= $row['idpn'] ?>"><i class="

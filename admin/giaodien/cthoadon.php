@@ -5,21 +5,24 @@ if (!empty($_SESSION['nguoidung'])) {
     $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
     $offset = ($current_page - 1) * $item_per_page;
 
-    $totalRecords = mysqli_query($con, "SELECT * FROM `cthoadon`,`sanpham` WHERE `id_sanpham`=`sanpham`.`id` AND `id_hoadon`=" . $_GET['id']);
+    $totalRecords = mysqli_query($con, "SELECT * FROM `cthoadon`, `sanpham` WHERE `id_sanpham` = `sanpham`.`id` AND `id_hoadon` = " . $_GET['id']);
     $totalRecords = $totalRecords->num_rows;
     $totalPages = ceil($totalRecords / $item_per_page);
 
-    $cthoadon = mysqli_query($con, "SELECT `id_hoadon`, `id_sanpham`, `cthoadon`.`so_luong`, `sanpham`.`id`, `ten_sp`, `don_gia` FROM `cthoadon`, `sanpham` WHERE `id_sanpham`=`sanpham`.`id` AND `id_hoadon`=" . $_GET['id'] . " ORDER BY `cthoadon`.`id_hoadon` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
-    
+    $cthoadon = mysqli_query($con, "SELECT `id_hoadon`, `id_sanpham`, `cthoadon`.`so_luong`, `sanpham`.`id`, `ten_sp`, `don_gia` FROM `cthoadon`, `sanpham` WHERE `id_sanpham` = `sanpham`.`id` AND `id_hoadon` = " . $_GET['id'] . " ORDER BY `cthoadon`.`id_hoadon` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+
+    // Lấy thông tin khách hàng
+    $id_hoadon = $_GET['id'];
+    $khachhang_query = mysqli_query($con, "SELECT `khachhang`.`ten_kh`, `khachhang`.`phone`,  `khachhang`.`dia_chi` FROM `hoadon`, `khachhang` WHERE `hoadon`.`id_khachhang` = `khachhang`.`id` AND `hoadon`.`id` = $id_hoadon");
+    $khachhang_info = mysqli_fetch_assoc($khachhang_query);
+
     $total_so_luong = 0;
     $total_don_gia = 0;
     $total_tien = 0;
     ?>
 
-
-
 <div class="max-w-full mx-auto p-6 bg-white shadow-lg rounded-lg">
-    <div class="flex items-center justify-between border-b pb-4 mb-6">
+<div class="flex items-center justify-between border-b pb-4 mb-6">
         <p class="text-4xl py-5 font-medium text-red-800 dark:text-white" style="color: #0099cc">
             Chi tiết hóa đơn
         </p>
@@ -30,20 +33,15 @@ if (!empty($_SESSION['nguoidung'])) {
         </a>
     </div>
 
-
-
-
-    <div class="card w-full m-10px  overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
-
+    <div class="card w-full m-10px overflow-hidden divide-slate-200 bg-base-100 shadow-xl">
         <div class="flex pt-10 p pl-8">
-            <p class="pb-4 pt-0 text-gray-900 font-bold dark:text-white text-4xl"> Hóa đơn: </p>
+            <p class="pb-4 pt-0 text-gray-900 font-bold dark:text-white text-4xl">Hóa đơn:</p>
             <?php if ($row = mysqli_fetch_assoc($cthoadon)) { ?>
-            <p class="pb-4 pt-0 text-red-500  font-bold dark:text-red text-4xl pl-5">
+            <p class="pb-4 pt-0 text-red-500 font-bold dark:text-red text-4xl pl-5">
                 <?= $row['id_hoadon'] ?>
             </p>
             <?php } ?>
         </div>
-
 
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <table class="min-w-full bg-white">
@@ -52,24 +50,22 @@ if (!empty($_SESSION['nguoidung'])) {
                         <th class="font-normal px-6 py-3">Tên sản phẩm</th>
                         <th class="font-normal px-6 py-3">Số lượng</th>
                         <th class="font-normal px-6 py-3">Đơn giá</th>
-                        <th class="font-normal px-6 py-3 ">Tổng tiền</th>
+                        <th class="font-normal px-6 py-3">Tổng tiền</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
-                        mysqli_data_seek($cthoadon, 0); 
-                        while ($row = mysqli_fetch_assoc($cthoadon)) {
-                            $total_so_luong += $row['so_luong'];
-                            $total_don_gia += $row['don_gia'];
-                            $total_tien += $row['don_gia'] * $row['so_luong'];
-                        ?>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    mysqli_data_seek($cthoadon, 0); 
+                    while ($row = mysqli_fetch_assoc($cthoadon)) {
+                        $total_so_luong += $row['so_luong'];
+                        $total_don_gia += $row['don_gia'];
+                        $total_tien += $row['don_gia'] * $row['so_luong'];
+                    ?>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4"><?= $row['ten_sp'] ?></td>
                         <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
                         <td class="px-6 py-4"><?= number_format($row['don_gia'], 0, ',', '.') ?></td>
-                        <td class="px-6 py-4"><?= number_format($row['don_gia'] * $row['so_luong'], 0, ',', '.') ?>
-                        </td>
+                        <td class="px-6 py-4"><?= number_format($row['don_gia'] * $row['so_luong'], 0, ',', '.') ?></td>
                     </tr>
                     <?php } ?>
                     <tr class="font-bold bg-gray-200">
@@ -81,13 +77,29 @@ if (!empty($_SESSION['nguoidung'])) {
                 </tbody>
             </table>
         </div>
-        <?php include './pagination2.php'; ?>
-
-
-
     </div>
+
+    <div class="bg-white shadow-md rounded-lg overflow-hidden p-4">
+        <h3 class="text-2xl text-gray-900 font-bold mb-4">Thông tin giao hàng</h3>
+        <div class="space-y-2">
+            <div class="flex ">
+                <p class="font-medium text-gray-600 w-1/6">Tên khách hàng:</p>
+                <p class="text-lg text-gray-900 font-semibold"><?= $khachhang_info['ten_kh'] ?></p>
+            </div>
+            <div class="flex">
+                <p class="font-medium text-gray-600 w-1/6">Số điện thoại:</p>
+                <p class="text-lg text-gray-900 font-semibold"><?= $khachhang_info['phone'] ?></p>
+            </div>
+            <div class="flex items-center">
+                <p class="font-medium text-gray-600 w-1/6">Địa chỉ:</p>
+                <p class="text-lg text-gray-900 font-semibold"><?= $khachhang_info['dia_chi'] ?></p>
+            </div>
+        </div>
+    </div>
+
+    <?php include './pagination2.php'; ?>
 </div>
 <?php
-    mysqli_close($con); 
+    mysqli_close($con);
 }
 ?>

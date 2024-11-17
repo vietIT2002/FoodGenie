@@ -40,7 +40,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 
             <div class=" w-full  grid grid-cols-3 gap-6  ">
                 <div class="mb-4">
-                    <label class="block  text-2xl text-gray-700">Tên sản phẩm:</label>
+                    <label class="block  text-2xl text-gray-700">Tên sản phẩm</label>
                     <input
                         class=" w-full px-4 py-2 border text-2xl rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         id="product-name" type="text" name="name"
@@ -176,7 +176,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     <label>Nội dung </label>
                     <textarea
                         class="w-full px-4 py-2 border text-2xl h-72 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 overflow-auto resize-vertical"
-                        name="content" required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')"
+                        id="product-content" name="content" required oninvalid="this.setCustomValidity('Vui lòng nhập nội dung')"
                         oninput="this.setCustomValidity('')"><?php if (!empty($product)) { echo htmlspecialchars($product['noi_dung']); } ?></textarea>
                 </div>
 

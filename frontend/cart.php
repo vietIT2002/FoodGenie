@@ -47,66 +47,59 @@
 									<td  align=center ><strong>SỐ LƯỢNG</strong></td>
 									<td></td>
 								</tr>';
-								$total=0;
-									if(isset($_SESSION['cart'])){
-										$cart=$_SESSION['cart'];
-										foreach($cart as $key =>$value){
-											$soLuongTonKho=executeSingleResult('SELECT so_luong FROM sanpham WHERE id='.$key)['so_luong'];
-											echo '
-												<tr class="content-shopping">
-													<td width=150px>
-														
-														<img src="./img/'.$value['img'].'" width="100%">
-														
-													</td>
-													<td width=40%>'.$value['name'].'</td>
-													<td>'.currency_format($value['price']).'</td>
-													<td  align=center style="width:140px">
-														<div class="row" style="display: inline-block;">
-															<input type="button" value="-" onclick="addCart('.$key.',0);location.reload();">
-															<input style="width:40px;" type="number"  id="soLuong'.$key.'" value="'.$value['qty'].'" min=1 style="width:30px;" readonly onchange="kiemTraSoLuong1('.$soLuongTonKho.','.$key.');" >
-															<input type="button" value="+" onclick="addCart('.$key.',1);kiemTraSoLuong1('.$soLuongTonKho.','.$key.');location.reload();">
-														</div>
-														<p id="tbQty'.$key.'" style="color:red"></p>
-													</td>
-													<td width=10% align=right>
-														
-														<button class="deleted" onclick="addCart('.$key.',-1);location.reload();"><i class="fa-solid fa-trash"></i></button>
-													</td>
-												</tr>';
-											
-
-											$shippingFee = 15000;
-											$totalPrice = $value['price'] * $value['qty'];
-											$total += $totalPrice + $shippingFee;
-
-											// Kiểm tra nếu tổng giá trị mua hàng vượt qua 1000000
-											if ($totalPrice > 1000000) {
-												// Giảm phí vận chuyển
-												$total -= $shippingFee;
-											}
-
-											// $total giờ chứa tổng số tiền cần thanh toán, đã áp dụng giảm phí nếu tổng giá trị mua hàng vượt qua 1000000
-
-										}
+								$total = 0; // Khởi tạo tổng tiền
+								$shippingFee = 15000; // Phí giao hàng
+								
+								if (isset($_SESSION['cart'])) {
+									$cart = $_SESSION['cart'];
+									foreach ($cart as $key => $value) {
+										$soLuongTonKho = executeSingleResult('SELECT so_luong FROM sanpham WHERE id=' . $key)['so_luong'];
+										$totalPrice = $value['price'] * $value['qty']; // Tính tiền cho sản phẩm
+										$total += $totalPrice; // Cộng vào tổng tiền
+								
+										echo '
+											<tr class="content-shopping">
+												<td width="150px">
+													<img src="./img/' . $value['img'] . '" width="100%">
+												</td>
+												<td width="40%">' . $value['name'] . '</td>
+												<td>' . currency_format($value['price']) . '</td>
+												<td align="center" style="width:140px">
+													<div class="row" style="display: inline-block;">
+														<input type="button" value="-" onclick="addCart(' . $key . ', 0); location.reload();">
+														<input style="width:40px;" type="number" id="soLuong' . $key . '" value="' . $value['qty'] . '" min="1" readonly onchange="kiemTraSoLuong1(' . $soLuongTonKho . ',' . $key . ');">
+														<input type="button" value="+" onclick="addCart(' . $key . ', 1); kiemTraSoLuong1(' . $soLuongTonKho . ',' . $key . '); location.reload();">
+													</div>
+													<p id="tbQty' . $key . '" style="color:red"></p>
+												</td>
+												<td width="10%" align="right">
+													<button class="deleted" onclick="addCart(' . $key . ',-1); location.reload();"><i class="fa-solid fa-trash"></i></button>
+												</td>
+											</tr>';
 									}
-									echo '</table>';
+								
+									// Xử lý phí giao hàng sau khi tính tổng giá trị sản phẩm
+									if ($total <= 1000000) {
+										$total += $shippingFee; // Chỉ cộng phí giao hàng nếu tổng giá trị <= 1.000.000 VNĐ
+									}
+								}
+								
+								echo '</table>';
+								?>								
+							</div>
+							<div class="order-col">
+								<div>PHÍ GIAO HÀNG</div>
+								<?php
+								if ($total > 1000000) {
+									echo '<div><strong>Miễn phí</strong></div>';
+								} else {
+									echo '<div><strong>' . currency_format($shippingFee) . '</strong></div>';
+								}
 								?>
 							</div>
 							<div class="order-col">
-							<div>PHÍ GIAO HÀNG</div>
-							<?php
-							if ($total > 1000000) {
-								echo '<div><strong>Miễn phí</strong></div>';
-							} else {
-								echo '<div><strong>' . currency_format(15000) . '</strong></div>';
-							}
-							?>
-							</div>
-
-							<div class="order-col">
 								<div><h4>TỔNG TIỀN</h4></div>
-								<div><strong class="order-total"><?=currency_format($total)?></strong></div>
+								<div><strong class="order-total"><?= currency_format($total) ?></strong></div>
 							</div>
 						</div>
 						
