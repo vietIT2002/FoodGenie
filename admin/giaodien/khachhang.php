@@ -32,14 +32,7 @@
 
 
     <div class="flex py-8 pr-6">
-        <!-- <button data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
-                class="w-52 h-24 p-2 rounded-[15px] bg-red-600 hover:bg-rose-400 text-white text-3xl rounded-full "
-                type="button">
-                Thêm mới
-            </button> -->
-        <!-- <div class="buttons">
-            <a href="admin.php?act=addncc"> <i class="fa fa-plus" aria-hidden="true"> Thêm nhà cung cấp </i> </a>
-        </div> -->
+     
     </div>
 </div>
 
