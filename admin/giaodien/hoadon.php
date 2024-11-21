@@ -19,9 +19,9 @@
     <?php
     include_once("./connect_db.php");
     if (!empty($_SESSION['nguoidung'])) {
-        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
+        // $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
-        $offset = ($current_page - 1) * $item_per_page;
+        // $offset = ($current_page - 1) * $item_per_page;
 
         // Tính tổng số hóa đơn và tổng doanh thu
         $totalRevenueQuery = "SELECT COUNT(id) AS total_orders, SUM(tong_tien) AS total_revenue FROM hoadon WHERE trang_thai = 1";
@@ -40,13 +40,20 @@
         $totalRevenue = $totalRevenue !== NULL ? $totalRevenue : 0;
 
         // Tính tổng số trang
-        $totalPages = ceil($totalOrders / $item_per_page);
+        // $totalPages = ceil($totalOrders / $item_per_page);
 
         // Lọc theo ngày
         if (isset($_POST['timebd']) && isset($_POST['timekt'])) {
-            $query = "SELECT `hoadon`.`id` AS `idhoadon`, `id_khachhang`, `tong_tien`, `hoadon`.`ngay_tao`, 
-                      `id_nhanvien`, `trang_thai`, `ten_nv`, `trang_thai_hien_thi`,`nhanvien`.`id` 
-                      FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) ";
+            $query = "SELECT `hoadon`.`id` AS `idhoadon`, 
+                                                            `id_khachhang`, 
+                                                            `tong_tien`, 
+                                                            `hoadon`.`ngay_tao`, 
+                                                            `id_nhanvien`, 
+                                                            `hoadon`.`trang_thai`, 
+                                                            `ten_nv`,  
+                                                            `hoadon`.`trang_thai_hien_thi`,
+                                                            `nhanvien`.`id`
+                                                        FROM (hoadon LEFT JOIN nhanvien ON `id_nhanvien`=`nhanvien`.`id`) ";
             if ($_POST['timebd'] && $_POST['timekt']) {
                 $query .= "WHERE `hoadon`.`ngay_tao` BETWEEN '" . $_POST['timebd'] . "' AND DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
             } elseif ($_POST['timebd']) {
@@ -54,7 +61,7 @@
             } elseif ($_POST['timekt']) {
                 $query .= "WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
             }
-            $query .= "ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset;
+            $query .= "ORDER BY `hoadon`.`ngay_tao`";
             $hoadon = mysqli_query($con, $query);
         } else {
             
@@ -72,8 +79,7 @@
                                                         WHERE `hoadon`.`trang_thai` = 1 
                                                         AND `hoadon`.`trang_thai_hien_thi` = 0 
                                                         AND `hoadon`.`id` != 1
-                                                        ORDER BY `hoadon`.`ngay_tao` DESC 
-                                                        LIMIT " . $item_per_page . " OFFSET " . $offset);
+                                                        ORDER BY `hoadon`.`ngay_tao`  " );
         }
     ?>
 
@@ -186,7 +192,7 @@
                     </div>
 
                 </div>
-                <?php include './pagination.php'; ?>
+
             </div>
         </div>
     </form>

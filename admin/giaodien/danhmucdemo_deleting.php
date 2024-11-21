@@ -9,6 +9,7 @@ if (!empty($_SESSION['nguoidung'])) {
                 include_once './connect_db.php';
                 include_once './function.php';
                 $result = execute("DELETE FROM `quyen` WHERE `id` = " . $_GET['id']."");
+                // UPDATE  `theloai` SET `trang_thai` = 1 WHERE `id` = " . $_GET['id'].""
                 if (!$result) {
                     $error = "Không thể xóa Quyền.";
                 }
