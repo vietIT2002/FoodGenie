@@ -11,13 +11,13 @@ $quyen_result = mysqli_query($con, $quyen_query);
 ?>
 
 <div id="extralarge-modal" tabindex="-1"
-    class="fixed top-1 right-0 z-50 hidden h-auto md:w-1/3  overflow-x-hidden overflow-y-auto justify-content: end h-[calc(100%-1rem)] max-h-full ">
-    <div class="relative  h-auto max-h-full overflow-hidden">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-full">
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 ">
+    class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full">
+    <div class="relative h-full max-h-full w-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 overflow-x-hidden overflow-y-auto h-full">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <div class="divider mt-1"></div>
                 <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
-                    Thông tin nhân vien
+                    Thông tin nhân viên
                 </p>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-700 rounded-lg text-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"

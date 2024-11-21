@@ -12,9 +12,9 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
 <body>
 
     <div id="extralarge-modal" tabindex="-1"
-        class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full">
+        class="fixed top-0 right-0 z-50 hidden h-full md:w-1/4 overflow-x-hidden overflow-y-auto  max-h-auto">
         <div class="relative h-full max-h-full w-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 overflow-x-hidden overflow-y-auto h-full">
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <div class="divider mt-1"></div>
                     <p class="text-4xl py-5 font-medium text-red-800 dark:text-white">
@@ -32,8 +32,8 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                     </button>
                 </div>
 
-                <form name="product-formadd" id="form" method="POST" action="./xulythem.php" enctype="multipart/form-data"
-                    class="p-4 md:p-5">
+                <form name="product-formadd" id="form" method="POST" action="./xulythem.php"
+                    enctype="multipart/form-data" class=" p-4 md:p-5">
                     <div class="flex flex-wrap gap-4">
                         <div class="w-full md:w-1/2">
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="id_error"></span>
@@ -56,7 +56,7 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
                                     id="gia_nhap" name="gia_nhap" value="">
                             </div>
-                                     
+
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="price_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá bán</label>
@@ -64,7 +64,8 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                                     id="product-price" name="price" value="">
                             </div>
 
-                            <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="original_price_error"></span>
+                            <span style="color: red; font-size: 0.75em; margin-left: 135px;"
+                                id="original_price_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Giá gốc</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="number"
@@ -116,14 +117,14 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Khối lượng</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                    id ="product-weight" name="khoi_luong" value="">
+                                    id="product-weight" name="khoi_luong" value="">
                             </div>
 
                             <span style="color: red; font-size: 0.75em; margin-left: 135px;" id="origin_error"></span>
                             <div class="mb-4 flex items-center">
                                 <label class="w-1/3 pl-4 text-2xl text-gray-700 dark:text-white">Xuất xứ</label>
                                 <input class="w-2/3 text-2xl pl-4 h-16 p-[9px 13px] focus:outline-none" type="text"
-                                    id="product-origin" name="xuat_xu"  value="">
+                                    id="product-origin" name="xuat_xu" value="">
                             </div>
                         </div>
                     </div>
@@ -141,4 +142,5 @@ $nhacungcap = mysqli_query($con, "SELECT * FROM `nhacungcap`");
         <script src="./js/binding_product.js"></script>
     </div>
 </body>
+
 </html>
