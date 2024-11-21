@@ -72,7 +72,7 @@ if (!empty($_SESSION['nguoidung'])) {
                                     class="fa fa-pencil-square-o text-green-500" aria-hidden="true"></i></a>
                         </td>
                         <td class="px-6 py-4"><a href="admin.php?act=xoaquyen&id=<?= $row['id'] ?>"
-                                onclick="return confirm('Are you sure you want to delete this item?');"> <i
+                                onclick="return confirm('Bạn có muốn xóa quyền này không?');"> <i
                                     class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
                         <div class="clear-both"></div>
                     </tr>

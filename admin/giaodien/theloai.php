@@ -96,7 +96,7 @@ if (!empty($_SESSION['nguoidung'])) {
                                 </td>
                                 <td class="px-6 py-4">
                                     <a class="btn btn-outline-danger" href="admin.php?act=xoatl&id=<?= $row['id'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                        onclick="return confirm('Bạn có muốn xóa thể loại này không?');">
                                         <i class="fa fa-trash-o text-red-600" aria-hidden="true"></i>
                                     </a>
                                 </td>

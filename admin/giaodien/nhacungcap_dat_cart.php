@@ -1,9 +1,7 @@
 <?php
 
 require_once("./connect_db.php");
-// $sanpham = mysqli_query($con, "SELECT * FROM `sanpham`");
-// $row = mysqli_fetch_array($sanpham);
-//$cart=[];
+
 if (isset($_SESSION['cart'])) {
 	if (isset($_GET['xoa'])) {
 		if (isset($_GET['id'])) {
@@ -105,9 +103,15 @@ if (isset($_SESSION['cart'])) {
                             </td>
                             <td class="px-6 py-4"><?php echo $val['price'] ?></td>
                             <td class="px-6 py-4">
-                                <input type="number" name="qty[<?= $key ?>]" value="<?php echo $val['qty'] ?>" min="1" step="1" id="qty-<?= $key ?>" oninput="validateQuantity(this)" required>
+                                <input type="number" name="qty[<?= $key ?>]" value="<?= $val['qty'] ?>" min="1" step="1"
+                                    id="qty-<?= $key ?>" oninput="updateTotal(<?= $key ?>, <?= $val['price'] ?>)"
+                                    required />
                             </td>
-                            <td class="px-6 py-4"><?= $val['qty'] * $val['price'] ?></td>
+                            <td class="px-6 py-4" id="total-<?= $key ?>">
+                                <?= $val['qty'] * $val['price'] ?>
+                            </td>
+
+
                             <td class="px-6 py-4"><a href="./admin.php?act=ncccartlist&xoa=y&id=<?= $key ?>"><i
                                         class="fa fa-trash-o text-red-600" aria-hidden="true"></i></a></td>
                         </tr>
@@ -121,25 +125,23 @@ if (isset($_SESSION['cart'])) {
                 </table>
             </div>
             <div class="flex justify-between items-center space-x-4">
-                <!-- Label bên trái -->
-                <label class="text-4xl py-5 font-medium text-red-800 dark:text-white">
+
+
+                <label class="text-4xl py-5 font-medium text-red-800 dark:text-white" id="grand-total">
                     Tổng tiền là: <?= $total ?>
                 </label>
 
-                <!-- Nhóm các nút bên phải -->
+
                 <div class="flex space-x-4">
                     <button class="w-44 h-16 p-2 bg-red-600 hover:bg-rose-400 text-white text-2xl rounded-xl"
                         type="submit" name="order_click">
                         Đặt hàng
                     </button>
-                    <button class="w-44 h-16 p-2 bg-blue-600 hover:bg-blue-400 text-white text-2xl rounded-xl"
-                        type="submit" name="update_click">
-                        Cập nhật
-                    </button>
+
                 </div>
             </div>
 
-            <!-- <button type="button" name="order_click" value="Đặt hàng">Đặt hàng</button> -->
+
         </div>
     </form>
 </div>
@@ -234,16 +236,40 @@ showErrorToast();
 </script>');
 <?php } ?>
 
+
 <script>
-    function validateQuantity(input) {
-        // Kiểm tra giá trị của ô input
-        if (input.value < 1) {
-            // Nếu giá trị nhỏ hơn 1, hiển thị thông báo lỗi
-            input.setCustomValidity("Vui lòng nhập số lượng lớn hơn 0");
-        } else {
-            // Nếu giá trị hợp lệ, xóa thông báo lỗi
-            input.setCustomValidity("");
-        }
-    }
+// Hàm cập nhật thành tiền cho một sản phẩm
+function updateTotal(productId, price) {
+    // Lấy số lượng từ ô input
+    const qtyInput = document.getElementById(`qty-${productId}`);
+    const quantity = parseInt(qtyInput.value) || 0;
+
+    // Tính toán lại thành tiền
+    const total = quantity * price;
+
+    // Cập nhật cột "Thành tiền" của sản phẩm này
+    const totalCell = document.getElementById(`total-${productId}`);
+    totalCell.textContent = total;
+
+    // Cập nhật tổng tiền toàn bộ
+    updateGrandTotal();
+}
+
+// Hàm cập nhật tổng tiền toàn bộ
+function updateGrandTotal() {
+    // Lấy tất cả các thành tiền (theo ID)
+    const totalCells = document.querySelectorAll("[id^='total-']");
+    let grandTotal = 0;
+
+    // Tính tổng tiền từ các cột "Thành tiền"
+    totalCells.forEach(cell => {
+        grandTotal += parseInt(cell.textContent) || 0;
+    });
+
+    // Cập nhật hiển thị tổng tiền
+    const grandTotalLabel = document.getElementById("grand-total");
+    grandTotalLabel.textContent = "Tổng tiền là: " + grandTotal;
+}
 </script>
+
 </div>

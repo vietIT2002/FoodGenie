@@ -161,7 +161,7 @@
                                     <div class="pts-abl">
                                         <?php if ($row['trangthai'] == '0') { ?><a class="btn btn-outline-danger"
                                             href="admin.php?act=xoa&id=<?= $row['id'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                            onclick="return confirm('Bạn có muốn xóa sản phẩm này không?');"><i
                                                 class="fa fa-trash-o text-red-500" aria-hidden="true"></i></a><?php } ?>
                                     </div>
                                 </td>

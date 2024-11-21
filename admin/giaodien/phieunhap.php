@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <style>
     </style>
 </head>
@@ -25,23 +25,23 @@
         $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
         $offset = ($current_page - 1) * $item_per_page;
-        $totalRecords = mysqli_query($con, "SELECT * FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`");
+        $totalRecords = mysqli_query($con, "SELECT * FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND `phieunhap`.`trang_thai` = 0");
         $totalRecords = $totalRecords->num_rows;
         $totalPages = ceil($totalRecords / $item_per_page);
-        $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+        $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
         if (isset($_GET['sapxep'])) {
             if ($_GET['sapxep'] == 'idgiam')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`id` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`id` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'idtang')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`id` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tggiam')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tgtang')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`ngay_tao` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`ngay_tao` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tiengiam')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`tong_tien` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`tong_tien` DESC LIMIT " . $item_per_page . " OFFSET " . $offset);
             if ($_GET['sapxep'] == 'tientang')
-                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv` ORDER BY `phieunhap`.`tong_tien` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+                $phieunhap = mysqli_query($con, "SELECT `phieunhap`.`id` AS `idpn`,`id_nv`, `tong_tien`, `phieunhap`.`ngay_tao` AS `ntpn`, `nguoi_nhan`, `sdt`, `diachi`, `ghichu`,`nhanvien`.`id`, `ten_nv` FROM `phieunhap`,`nhanvien` WHERE `nhanvien`.`id`=`id_nv`AND phieunhap.trang_thai = 0 ORDER BY `phieunhap`.`tong_tien` ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
         }
         mysqli_close($con);
         ?>
@@ -117,7 +117,7 @@
                                         fa-regular fa-file-lines fa-lg text-green-500"> </a></td>
                                 <td class=" px-6 py-4"><a class="text-red-600 hover:text-red-800"
                                         href="./admin.php?act=xoapn&id=<?= $row['idpn'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');"><i
+                                        onclick="return confirm('Bạn có muốn xóa phiếu nhập này không?');"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                 <div class="clear-both"></div>
                             </tr>

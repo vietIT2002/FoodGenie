@@ -19,9 +19,9 @@
     <?php
     include_once("./connect_db.php");
     if (!empty($_SESSION['nguoidung'])) {
-        $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
+        // $item_per_page = (!empty($_GET['per_page'])) ? $_GET['per_page'] : 10;
         $current_page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
-        $offset = ($current_page - 1) * $item_per_page;
+        // $offset = ($current_page - 1) * $item_per_page;
 
         // Tính tổng số hóa đơn và tổng doanh thu
         $totalRevenueQuery = "SELECT COUNT(id) AS total_orders, SUM(tong_tien) AS total_revenue FROM hoadon WHERE trang_thai = 1";
@@ -40,7 +40,7 @@
         $totalRevenue = $totalRevenue !== NULL ? $totalRevenue : 0;
 
         // Tính tổng số trang
-        $totalPages = ceil($totalOrders / $item_per_page);
+        // $totalPages = ceil($totalOrders / $item_per_page);
 
         // Lọc theo ngày
         if (isset($_POST['timebd']) && isset($_POST['timekt'])) {
@@ -54,7 +54,7 @@
             } elseif ($_POST['timekt']) {
                 $query .= "WHERE `hoadon`.`ngay_tao` <= DATE_ADD('" . $_POST['timekt'] . "', INTERVAL 1 DAY) ";
             }
-            $query .= "ORDER BY `hoadon`.`ngay_tao` DESC LIMIT " . $item_per_page . " OFFSET " . $offset;
+            $query .= "ORDER BY `hoadon`.`ngay_tao` " ;
             $hoadon = mysqli_query($con, $query);
         } else {
             $hoadon = mysqli_query($con, "SELECT `hoadon`.`id` AS `idhoadon`, 
@@ -71,8 +71,7 @@
                                                         WHERE `hoadon`.`trang_thai` = 0 
                                                         AND `hoadon`.`trang_thai_hien_thi` = 0
                                                         AND `hoadon`.`id` != 1
-                                                        ORDER BY `hoadon`.`ngay_tao` DESC 
-                                                        LIMIT " . $item_per_page . " OFFSET " . $offset
+                                                        ORDER BY `hoadon`.`ngay_tao` " 
 );
         }
     ?>
@@ -170,13 +169,13 @@
                                     <td class="px-6 py-4">
                                         <?php if ($row['trang_thai'] == "0") { ?>
                                         <a href="./admin.php?act=xoahdcxn&id=<?= $row['idhoadon'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            onclick="return confirm('Bạn có muốn xóa hóa đơn này không?');">
                                             <i class="fa fa-trash-o text-red-600 hover:text-red-800"
                                                 aria-hidden="true"></i>
                                         </a>
                                         <?php } else if ($row['trang_thai'] == "1") { ?>
                                         <a href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            onclick="return confirm('Bạn có muốn xóa hóa đơn này không?');">
                                             <i class="fa fa-trash-o text-red-600 hover:text-red-800"
                                                 aria-hidden="true"></i>
                                         </a>
@@ -190,7 +189,7 @@
                     </div>
 
                 </div>
-                <?php include './pagination.php'; ?>
+
             </div>
         </div>
     </form>
