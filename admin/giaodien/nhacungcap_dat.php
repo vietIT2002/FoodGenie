@@ -73,7 +73,7 @@ if (!empty($_SESSION['nguoidung'])) {
                             <td class="px-6 py-4"><?= $row['gia_nhap'] ?></td>
                             <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
                             <td class="px-6 py-4">
-                                <a href="./admin.php?act=ncccart&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>">Thêm</a>
+                                <a href="./admin.php?act=ncccart&id=<?= $row['id'] ?>&idncc=<?= $_GET['id'] ?>"><i class="fas fa-plus" style="color: green;"></i> </i></a>
                                 <div class="clear-both"></div>
                         </tr>
                         <?php } ?>
