@@ -125,7 +125,7 @@ $quyen_result = mysqli_query($con, $quyen_query);
     </div>
 </div>
 <script>
-const fileInput = document.getElementById('fileInput');
+const fileInput = document.getElementById('nhanvien_images');
 const imageDisplay = document.getElementById('imageDisplay');
 
 fileInput.addEventListener('change', function(event) {
