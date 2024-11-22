@@ -80,34 +80,24 @@ fig.update_layout(
 # Biểu đồ 1
 # Lấy dữ liệu 
 data = get_product_categorys()
-# Biểu đồ Đường
-fig1 = px.line(
-    data, 
-    x='thang', 
-    y='so_luong_ban', 
-    color='ten_tl', 
-    title='Sản phẩm bán theo danh mục', 
-    labels={'thang': 'Tháng', 'so_luong_ban': 'Số lượng bán'}
-)
 
-# Tùy chỉnh biểu đồ
-fig1.update_traces(
-    line=dict(width=3),  
-    mode='lines+markers', 
-    marker=dict(size=6),  
+# Biểu đồ Vòng (Donut Chart)
+fig1 = px.pie(
+    data, 
+    names='ten_tl', 
+    values='so_luong_ban', 
+    title='Tỷ lệ sản phẩm bán theo danh mục',
+    labels={'ten_tl': 'Danh mục', 'so_luong_ban': 'Số lượng bán'},
+    hole=0.4  # Thiết lập tỷ lệ kích thước vòng tròn trống ở giữa
 )
 
 # Tùy chỉnh layout cho dễ nhìn
 fig1.update_layout(
-    title='Sản phẩm bán theo danh mục',
+    title='Tỷ lệ sản phẩm bán theo danh mục',
     title_font_size=20,
     title_x=0.5,  # Căn giữa tiêu đề
     title_y=0.95,  # Điều chỉnh vị trí tiêu đề
-    margin=dict(t=40, b=40, l=40, r=40),
     font=dict(family="Arial", size=14),
-    xaxis_title='Tháng',
-    yaxis_title='Số lượng bán',
-    xaxis=dict(tickmode='linear'),  
     showlegend=True, 
 )
 
