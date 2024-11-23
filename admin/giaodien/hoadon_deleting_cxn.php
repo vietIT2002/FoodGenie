@@ -69,7 +69,7 @@ if (!empty($_SESSION['nguoidung'])) {
                     </svg>
                     <span class="sr-only">Check icon</span>
                 </div>
-                <div class="ms-3 text-3xl font-normal">Xóa hóa đơn thành công và hoàn lại số lượng sản phẩm!</div>
+                <div class="ms-3 text-3xl font-normal">Xóa hóa đơn thành công và hoàn lại số lượng sản phẩm vào kho</div>
             </div>';
             echo '<script>
                 setTimeout(function() {

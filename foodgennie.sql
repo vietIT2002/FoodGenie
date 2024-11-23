@@ -1037,7 +1037,8 @@ INSERT INTO `theloai` (`id`, `ten_tl`, `ngay_tao`, `ngay_sua`, `status`) VALUES
 --
 ALTER TABLE `cthoadon`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_sanpham` (`id_sanpham`),
+  ADD KEY `id_
+  ` (`id_sanpham`),
   ADD KEY `cthoadon_ibfk_1` (`id_hoadon`);
 
 --

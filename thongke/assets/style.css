@@ -1,0 +1,159 @@
+.cards-container {
+    display: flex;
+    justify-content: space-between; /* Khoảng cách đều giữa các thẻ */
+    gap: 10px; /* Giảm khoảng cách giữa các thẻ */
+    padding: 10px;
+    flex-wrap: nowrap; /* Không cho phép xuống hàng */
+    overflow-x: auto; /* Thêm thanh cuộn ngang nếu không đủ không gian */
+}
+
+.card {
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 5px;
+    height: 60px; 
+    width: 180px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0; /* Ngăn thẻ bị co lại */
+}
+
+.custom-header {
+    font-size: 36px; 
+    color: #295F98; 
+    text-align: center; 
+    font-weight: bold; 
+    padding: 20px; 
+    margin-top: 20px; 
+    background-color: #f4f4f4; 
+    border-radius: 10px; 
+}
+
+.card-blue2 {
+    background-color: #2c7e8e;
+}
+
+.card-blue {
+    background-color: #5dd2c1;
+}
+
+.card-three {
+    background-color: #ffde59;
+}
+
+.card-red {
+    background-color: #f1a150;
+}
+
+.card-green{
+    background-color: #c91f14;
+}
+
+.card h4, .card p {
+    margin-bottom: 7px;
+}
+
+.card h4 {
+    color: #ffffff; 
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    margin-top: 0;
+}
+
+.card p {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 0;
+}
+
+/* Phần thống kê kho dưới dạng bảng */
+.inventory-container {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+
+/* Tiêu đề thống kê kho */
+.statistics-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Định dạng bảng thống kê */
+.inventory-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Định dạng các ô trong bảng */
+.inventory-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Định dạng tiêu đề cột */
+.table-header {
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Định dạng giá trị trong bảng */
+.table-value {
+    text-align: right;
+    padding-right: 20px;
+}
+
+/* Đảm bảo phần tử chứa inventory_stats và biểu đồ chiếm tỷ lệ 30% và 70% */
+.layout-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.layout-container > .inventory-stats {
+    flex: 0 0 30%; /* Chiếm 30% */
+    padding: 10px;
+}
+
+.layout-container > .graph {
+    flex: 0 0 70%; /* Chiếm 70% */
+    padding: 10px;
+}
+/* Container cho các biểu đồ */
+.graph-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* Căn giữa các biểu đồ theo chiều dọc */
+    gap: 20px;  /* Thêm khoảng cách giữa các biểu đồ */
+    flex-wrap: wrap;  /* Đảm bảo các biểu đồ có thể cuộn xuống khi không đủ không gian */
+}
+
+/* Quy tắc cho mỗi biểu đồ */
+.graph-item {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+    .cards-container {
+        flex-wrap: wrap; /* Cho phép xuống hàng trên màn hình nhỏ */
+    }
+
+    .card {
+        width: 100%; /* Thẻ sẽ chiếm toàn bộ chiều rộng */
+    }
+}
+
