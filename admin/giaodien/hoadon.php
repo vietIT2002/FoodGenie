@@ -138,7 +138,6 @@
                                     <th class="font-normal px-6 py-3">Nhân viên xác nhận</th>
                                     <th class="font-normal px-6 py-3">Trạng thái</th>
                                     <th class="font-normal px-6 py-3">Xem chi tiết</th>
-                                    <!-- <th class="font-normal px-6 py-3">Xác nhận</th> -->
                                     <th class="font-normal px-6 py-3"></th>
                                 </tr>
                             </thead>
@@ -169,6 +168,7 @@
                                             nhận</a>
                                         <?php endif; ?>
                                     </td> -->
+
                                     <td class="px-6 py-4">
                                         <?php if ($row['trang_thai'] == "0") { ?>
                                         <a href="./admin.php?act=xoahdcxn&id=<?= $row['idhoadon'] ?>"
