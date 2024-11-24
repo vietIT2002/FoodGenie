@@ -11,15 +11,14 @@ if (!empty($_SESSION['nguoidung'])) {
                 // Xóa các bản ghi trong bảng lichsutrahang trước khi xóa bản ghi trong bảng phieunhap
                 $id_phieunhap = $_GET['id'];
 
-<<<<<<< HEAD
+
                 // Xóa các bản ghi liên quan trong bảng lichsutrahang
                 mysqli_query($con, "DELETE FROM `lichsutrahang` WHERE `id_phieunhap` = $id_phieunhap");
                 
-=======
+
                 // // Xóa các bản ghi liên quan trong bảng lichsutrahang
                 // mysqli_query($con, "DELETE FROM `lichsutrahang` WHERE `id_phieunhap` = $id_phieunhap");
 
->>>>>>> c07440afc68b394ca163547e070c8c75b2a106ad
                 // Sau đó xóa bản ghi trong bảng phieunhap
                 $result = execute("UPDATE  `phieunhap` SET `trang_thai` = 1 WHERE `id` = " . $_GET['id']."");
                 if (!$result) {
