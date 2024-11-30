@@ -54,7 +54,7 @@ if (!empty($_SESSION['nguoidung'])) {
                         $new_stock = $current_stock - $return_qty;
                         $update_stock_query = "UPDATE sanpham SET so_luong = $new_stock WHERE id = $product_id";
                         if (mysqli_query($con, $update_stock_query)) {
-                            // Lưu lịch sử trả hàng vào bảng lichsutrahang
+                           
                             $ngay_tra = date('Y-m-d');
                             $insert_history_query = "INSERT INTO cttrahang (id_phieunhap, id_sp, so_luong_tra, ngay_tra, tien_hoan_tra, ghi_chu) 
                                                      VALUES (" . $_GET['id'] . ", $product_id, $return_qty, '$ngay_tra', $tien_hoan_tra, '$return_reason')";
@@ -98,9 +98,9 @@ if (!empty($_SESSION['nguoidung'])) {
 
     <!-- Hiển thị thông báo nếu có -->
     <?php if (!empty($messages)) { ?>
-        <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
-            <?php foreach ($messages as $message) { echo "<p>$message</p>"; } ?>
-        </div>
+    <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
+        <?php foreach ($messages as $message) { echo "<p>$message</p>"; } ?>
+    </div>
     <?php } ?>
 
     <form id="returnForm" method="POST">
@@ -111,38 +111,54 @@ if (!empty($_SESSION['nguoidung'])) {
                         <thead class="h-20 bg-gray-300">
                             <tr>
                                 <th class="font-normal px-6 py-3">Tên sản phẩm</th>
-                                <th class="font-normal px-6 py-3">Số lượng</th>
+                                <th class="font-normal px-6 py-3">Số lượng nhập</th>
                                 <th class="font-normal px-6 py-3">Đơn giá(VNĐ)</th>
                                 <th class="font-normal px-6 py-3">Thành tiền</th>
                                 <th class="font-normal px-6 py-3">Số lượng trả</th>
+                                <th class="font-normal px-6 py-3">Còn lại</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
                             <?php 
-                            $total_payment = 0; // Biến lưu tổng tiền cần thanh toán
-                            while ($row = mysqli_fetch_array($ctphieunhap)) { 
-                                $thanh_tien = $row['so_luong'] * $row['gia_nhap']; // Tính thành tiền cho mỗi sản phẩm
-                                $total_payment += $thanh_tien; // Cộng dồn vào tổng tiền cần thanh toán
-                            ?>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+    $total_payment = 0; // Biến để lưu tổng tiền cần thanh toán
+    while ($row = mysqli_fetch_array($ctphieunhap)) { 
+        $thanh_tien = $row['so_luong'] * $row['gia_nhap']; // Tính thành tiền cho mỗi sản phẩm
+        $total_payment += $thanh_tien; // Cộng dồn vào tổng tiền cần thanh toán
+    ?>
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="pl-8"><?= $row['ten_sp'] ?></td>
                                 <td class="px-6 py-4"><?= $row['so_luong'] ?></td>
                                 <td class="px-6 py-4"><?= number_format($row['gia_nhap'], 0, '', '.') ?></td>
-                                <td class="px-6 py-4"><?= number_format($row['so_luong'] * $row['gia_nhap'], 0, '', '.') ?></td>
+                                <td class="px-6 py-4">
+                                    <?= number_format($row['so_luong'] * $row['gia_nhap'], 0, '', '.') ?>
+                                </td>
                                 <td class="px-6 py-4">
                                     <input type="hidden" name="product_id[]" value="<?= $row['id_sp'] ?>">
-                                    <input type="hidden" name="don_gia[]" value="<?= $row['gia_nhap'] ?>"> <!-- Lưu đơn giá -->
+                                    <input type="hidden" name="don_gia[]" value="<?= $row['gia_nhap'] ?>">
+                                    <!-- Lưu đơn giá -->
                                     <input type="hidden" name="current_qty[]" value="<?= $row['so_luong'] ?>">
-                                    <input type="number" name="return_qty[]" placeholder="Số lượng trả" value="0" min="0" max="<?= $row['so_luong'] ?>" required>
+                                    <input type="number" name="return_qty[]" placeholder="Số lượng trả" value="0"
+                                        min="0" max="<?= $row['so_luong'] ?>" required>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?php 
+                // Tính số lượng còn lại: số lượng nhập - số lượng trả
+                $remaining_qty = $row['so_luong']; 
+                if (isset($_POST['return_qty'][$index])) {
+                    $remaining_qty -= $_POST['return_qty'][$index]; // Trừ đi số lượng trả hàng
+                }
+                echo $remaining_qty; // Hiển thị số lượng còn lại
+            ?>
                                 </td>
                             </tr>
                             <?php } ?>
                         </tbody>
+
                         <tr class="font-bold text-right">
                             <td colspan="3" class="px-6 py-3">Tổng tiền cần thanh toán</td>
                             <td class="px-6 py-4"><?= number_format($total_payment, 0, '', '.') ?> VNĐ</td>
-                            <td></td> 
+                            <td></td>
                         </tr>
                     </table>
                 </div>
@@ -154,19 +170,22 @@ if (!empty($_SESSION['nguoidung'])) {
             </div>
             <?php } ?>
 
-    
+
         </div>
 
         <div class="mt-4">
-            <textarea name="return_reason" id="return_reason" rows="4" placeholder="Nhập lý do trả hàng..." required class="w-full p-2 border border-gray-300 rounded"></textarea>
+            <textarea name="return_reason" id="return_reason" rows="4" placeholder="Nhập lý do trả hàng..." required
+                class="w-full p-2 border border-gray-300 rounded"></textarea>
             <br><br>
             <?php if ($is_return_allowed) { ?>
-                <button type="submit" class="btn btn-primary" style="background-color:#4682B4; color: white; border: none; padding: 5px 10px; font-size: 16px;">
-                        Trả hàng
-                    </button>
+            <button type="submit" class="btn btn-primary"
+                style="background-color:#4682B4; color: white; border: none; padding: 5px 10px; font-size: 16px;">
+                Trả hàng
+            </button>
             <?php } else { ?>
-                <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded cursor-not-allowed" disabled>Trả hàng</button>
-                <p class="text-red-600 italic">Đã quá hạn 7 ngày, hàng không thể hoàn trả.</p>
+            <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded cursor-not-allowed" disabled>Trả
+                hàng</button>
+            <p class="text-red-600 italic">Đã quá hạn 7 ngày, hàng không thể hoàn trả.</p>
             <?php } ?>
         </div>
     </form>
@@ -175,45 +194,45 @@ if (!empty($_SESSION['nguoidung'])) {
 </div>
 
 <?php if (!empty($history)) { // Kiểm tra nếu có lịch sử trả hàng ?>
-    <h2 class="text-2xl mt-6 font-semibold">Lịch sử trả hàng</h2>
-    <div class="overflow-y-auto max-h-96 border border-gray-200 rounded-lg">
-        <table class="min-w-full bg-white border-collapse">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="px-4 py-2 text-left font-medium text-gray-600">Tên sản phẩm</th>
-                    <th class="px-4 py-2 text-left font-medium text-gray-600">Số lượng trả</th>
-                    <th class="px-4 py-2 text-left font-medium text-gray-600">Ngày trả</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
+<h2 class="text-2xl mt-6 font-semibold">Lịch sử trả hàng</h2>
+<div class="overflow-y-auto max-h-96 border border-gray-200 rounded-lg">
+    <table class="min-w-full bg-white border-collapse">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="px-4 py-2 text-left font-medium text-gray-600">Tên sản phẩm</th>
+                <th class="px-4 py-2 text-left font-medium text-gray-600">Số lượng trả</th>
+                <th class="px-4 py-2 text-left font-medium text-gray-600">Ngày trả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
                 $total_refund = 0; // Initialize total refund
                 foreach ($history as $record) {
                     $total_refund += $record['tien_hoan_tra']; // Sum the refund amount
                 ?>
-                    <tr class="border-t">
-                        <td class="px-4 py-2 text-gray-800"><?= $record['ten_sp'] ?></td>
-                        <td class="px-4 py-2 text-gray-800"><?= $record['so_luong_tra'] ?></td>
-                        <td class="px-4 py-2 text-gray-800"><?= date('d-m-Y H:i:s', strtotime($record['ngay_tra'])) ?></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+            <tr class="border-t">
+                <td class="px-4 py-2 text-gray-800"><?= $record['ten_sp'] ?></td>
+                <td class="px-4 py-2 text-gray-800"><?= $record['so_luong_tra'] ?></td>
+                <td class="px-4 py-2 text-gray-800"><?= date('d-m-Y H:i:s', strtotime($record['ngay_tra'])) ?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 
-        <?php if ($total_refund > 0) { ?>
-            <div class="px-4 py-2 mt-4 text-right font-medium text-gray-800">
-                <strong>Tổng tiền hoàn trả:</strong> <?= number_format($total_refund, 0, ',', '.') ?> VNĐ
-            </div>
-        <?php } ?>
+    <?php if ($total_refund > 0) { ?>
+    <div class="px-4 py-2 mt-4 text-right font-medium text-gray-800">
+        <strong>Tổng tiền hoàn trả:</strong> <?= number_format($total_refund, 0, ',', '.') ?> VNĐ
     </div>
+    <?php } ?>
+</div>
 <?php } else { // Nếu không có lịch sử trả hàng thì ẩn form ?>
-    <p class="text-center text-gray-500 mt-4"></p>
+<p class="text-center text-gray-500 mt-4"></p>
 <?php } ?>
 
 
 
 <?php } else { ?>
-    <p class="text-red-500 text-center">Bạn không có quyền truy cập vào trang này.</p>
+<p class="text-red-500 text-center">Bạn không có quyền truy cập vào trang này.</p>
 <?php } ?>
 
 <!-- jQuery Script -->
