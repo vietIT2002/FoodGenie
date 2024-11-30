@@ -92,7 +92,7 @@
                             <td>
                                 <a href="admin.php?act=xoancc&id=<?= $row['id'] ?>"
                                     class="text-red-600 hover:text-red-800"
-                                    onclick="return confirm('Are you sure you want to delete this item?' );"><i
+                                    onclick="return confirm('Bạn có muốn xóa nhà cung cấp này không' );"><i
                                         class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                             </tr>

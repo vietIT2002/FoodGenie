@@ -107,7 +107,7 @@
                                 </td>
                                 <td>
                                     <a href="admin.php?act=xoanv&id=<?= $row['id'] ?>"
-                                        onclick="return confirm('Are you sure you want to delete this item?');"
+                                        onclick="return confirm('Bạn có muốn xóa nhân viên này không?');"
                                         class="text-red-600 hover:text-red-800">
                                         <i class="fa fa-trash-o"></i>
                                     </a>

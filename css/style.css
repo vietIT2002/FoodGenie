@@ -1685,7 +1685,7 @@ textarea.input {
 }
 
 .product-details .product-rating>i.fa-star {
-  color: #ffb703;
+  color: #D10024;
 }
 
 .product-details .review-link {
@@ -2140,6 +2140,31 @@ color: white;
   content: "\f005";
   color: #D10024;
 }
+
+.copy-btn {
+  background-color: transparent; /* Nền trong suốt */
+  border: none;                  /* Bỏ viền */
+  font-size: 18px;               /* Kích thước icon */
+  cursor: pointer;               /* Con trỏ chuột thay đổi */
+  color: #32bdeb;                /* Màu icon */
+  transition: color 0.3s;        /* Hiệu ứng màu khi hover */
+}
+
+.copy-btn:hover {
+  color: #32bdeb;                /* Màu khi di chuột qua */
+}
+
+.product-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.product-links li {
+  margin-right: 10px;
+}
+
 
 /*=========================================================
 	09 -> CHECKOUT PAGE

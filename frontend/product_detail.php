@@ -128,18 +128,32 @@
 							</ul>
 
 							<ul class="product-links">
-								<li>Chia sẽ:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+								<li>Chia sẻ:</li>
+								<li>
+									<button onclick="copyProductLink()" class="copy-btn">
+									<i class="fas fa-link"></i> <!-- Icon liên kết -->
+									</button>
+								</li>
 							</ul>
 
 						</div>
 					</div>
 					<!-- /Product details -->
-				
-
+					<script>
+						function copyProductLink() {
+							const productUrl = window.location.href;
+							const tempInput = document.createElement('input');
+							document.body.appendChild(tempInput);
+							tempInput.value = productUrl;
+							tempInput.select();
+							document.execCommand('copy');
+							document.body.removeChild(tempInput);
+							
+							// Hiển thị thông báo tùy chỉnh thay vì console
+							alert('Liên kết sản phẩm đã được sao chép vào clipboard!');
+							}
+					</script>
+					
 					<!-- Product tab -->
 					<div class="col-md-12">
 						<div id="product-tab">

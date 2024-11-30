@@ -295,6 +295,11 @@
         }
     }
 
+    if (isset($_GET['act'])) {
+        if ($_GET['act'] == 'indonh')
+            include('indonhang.php');
+    } 
+
 
     if (isset($_GET['act'])) {
         if ($_GET['act'] == 'xoanv')

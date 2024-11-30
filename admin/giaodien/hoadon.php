@@ -138,7 +138,6 @@
                                     <th class="font-normal px-6 py-3">Nhân viên xác nhận</th>
                                     <th class="font-normal px-6 py-3">Trạng thái</th>
                                     <th class="font-normal px-6 py-3">Xem chi tiết</th>
-                                    <!-- <th class="font-normal px-6 py-3">Xác nhận</th> -->
                                     <th class="font-normal px-6 py-3"></th>
                                 </tr>
                             </thead>
@@ -169,16 +168,17 @@
                                             nhận</a>
                                         <?php endif; ?>
                                     </td> -->
+
                                     <td class="px-6 py-4">
                                         <?php if ($row['trang_thai'] == "0") { ?>
                                         <a href="./admin.php?act=xoahdcxn&id=<?= $row['idhoadon'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            onclick="return confirm('Bạn có muốn xóa hóa đơn này không?');">
                                             <i class="fa fa-trash-o text-red-600 hover:text-red-800"
                                                 aria-hidden="true"></i>
                                         </a>
                                         <?php } else if ($row['trang_thai'] == "1") { ?>
                                         <a href="./admin.php?act=xoahd&id=<?= $row['idhoadon'] ?>"
-                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                            onclick="return confirm('Bạn có muốn xóa hóa đơn này không?');">
                                             <i class="fa fa-trash-o text-red-600 hover:text-red-800"
                                                 aria-hidden="true"></i>
                                         </a>

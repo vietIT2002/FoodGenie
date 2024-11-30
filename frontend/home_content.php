@@ -88,7 +88,7 @@ if ($customer_id) {
                     </div>
                     <div class="shop-body">
                         <a href="news.php">
-                            <h3>Tin tức<br>Thực phẩm</h3>
+                            <h3>TIN TỨC<br>THỰC PHẨM</h3>
                         </a>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ if ($customer_id) {
                     </div>
                     <div class="shop-body">
                         <a href="thuonghieu.php">
-                            <h3>Trái cây<br>dinh dưỡng</h3>
+                            <h3>TRÁI CÂY<br>DINH DƯỠNG</h3>
                         </a>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ if ($customer_id) {
                     </div>
                     <div class="shop-body">
                         <a href="Lienhe.php">
-                            <h3>Mỗi ngày<br>một món ăn</h3>
+                            <h3>MỖI NGÀY<br>MỘT MÓN ĂN</h3>
                         </a>
                     </div>
                 </div>
