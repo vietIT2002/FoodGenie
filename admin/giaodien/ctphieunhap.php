@@ -115,7 +115,7 @@ if (!empty($_SESSION['nguoidung'])) {
                                 <th class="font-normal px-6 py-3">Đơn giá(VNĐ)</th>
                                 <th class="font-normal px-6 py-3">Thành tiền</th>
                                 <th class="font-normal px-6 py-3">Số lượng trả</th>
-                                <th class="font-normal px-6 py-3">Còn lại</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -141,16 +141,7 @@ if (!empty($_SESSION['nguoidung'])) {
                                     <input type="number" name="return_qty[]" placeholder="Số lượng trả" value="0"
                                         min="0" max="<?= $row['so_luong'] ?>" required>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <?php 
-                // Tính số lượng còn lại: số lượng nhập - số lượng trả
-                $remaining_qty = $row['so_luong']; 
-                if (isset($_POST['return_qty'][$index])) {
-                    $remaining_qty -= $_POST['return_qty'][$index]; // Trừ đi số lượng trả hàng
-                }
-                echo $remaining_qty; // Hiển thị số lượng còn lại
-            ?>
-                                </td>
+
                             </tr>
                             <?php } ?>
                         </tbody>

@@ -30,9 +30,12 @@
     
     if (isset($_POST['search']) && !empty($_POST['search'])) {
         $search = mysqli_real_escape_string($con, $_POST['search']);
-        $query .= " AND `id` = '$search'";
+        $query .= " AND (
+            `ten_sp` LIKE '%$search%' OR 
+            `so_luong` LIKE '%$search%' OR 
+            `xuat_xu` = '$search' -- Chỉ khớp chính xác cho xuất xứ
+        )";
     }
-
    
     if (isset($_GET['sapxep'])) {
         $sort = $_GET['sapxep'];
@@ -76,9 +79,12 @@
 
    
     $totalRecordsQuery = "SELECT * FROM `sanpham` WHERE `trangthai` = 0";
-    if (isset($_POST['search']) && !empty($_POST['search'])) {
-        $search = mysqli_real_escape_string($con, $_POST['search']);
-        $totalRecordsQuery .= " AND `id` = '$search'";
+     if (isset($_POST['search']) && !empty($_POST['search'])) {
+        $totalRecordsQuery .= " AND (
+            `ten_sp` LIKE '%$search%' OR 
+            `so_luong` LIKE '%$search%' OR 
+            `xuat_xu` = '$search' -- Chỉ khớp chính xác cho xuất xứ
+        )";
     }
     $totalRecords = mysqli_query($con, $totalRecordsQuery);
     $totalRecords = $totalRecords->num_rows;
