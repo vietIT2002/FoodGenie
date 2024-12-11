@@ -204,7 +204,7 @@ if (!empty($_SESSION['nguoidung'])) {
             <tr class="border-t">
                 <td class="px-4 py-2 text-gray-800"><?= $record['ten_sp'] ?></td>
                 <td class="px-4 py-2 text-gray-800"><?= $record['so_luong_tra'] ?></td>
-                <td class="px-4 py-2 text-gray-800"><?= date('d-m-Y H:i:s', strtotime($record['ngay_tra'])) ?></td>
+                <td class="px-4 py-2 text-gray-800"><?= date('d-m-Y', strtotime($record['ngay_tra'])) ?></td>
             </tr>
             <?php } ?>
         </tbody>

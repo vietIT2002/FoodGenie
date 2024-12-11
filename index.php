@@ -232,7 +232,7 @@
                             else document.getElementById("tbQty"+b).innerText="";
                 }
                 function huydonhang(id){
-                    var option=confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?');
+                    var option=confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
                     if(!option) return;
                     $.post('frontend/delete_bill.php',{'id_hoadon':id},
                     function data(){
