@@ -251,7 +251,7 @@ if (isset($_SESSION['id'])) {
     if ($recommendations) {
         displayRecommendedProducts($recommendations);
     } else {
-        echo '<p>Không có sản phẩm gợi ý cho bạn vào lúc này.</p>';
+        echo '<p></p>';
     }
 } else {
 }

@@ -24,10 +24,12 @@ if (!empty($_GET['id'])) {
         $days_worked = "$days ngày";
     }
 
-    $chucvu_query = "SELECT * FROM loainhanvien";
+    // Cập nhật câu lệnh SQL để loại trừ quyền có id = 1
+    $chucvu_query = "SELECT * FROM loainhanvien WHERE id != 2";
     $chucvu_result = mysqli_query($con, $chucvu_query);
-    
-    $quyen_query = "SELECT * FROM quyen";
+      
+    // Cập nhật câu lệnh SQL để loại trừ quyền có id = 1
+    $quyen_query = "SELECT * FROM quyen WHERE id != 1";
     $quyen_result = mysqli_query($con, $quyen_query);
     
     $quyen_id = $nhanvien['id_quyen'];

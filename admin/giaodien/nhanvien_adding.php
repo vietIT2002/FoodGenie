@@ -4,9 +4,13 @@ if (mysqli_connect_errno()) {
     echo "Connection Fail: " . mysqli_connect_errno();
     exit;
 }
-$chucvu_query = "SELECT * FROM `loainhanvien`";
+
+// Cập nhật câu lệnh SQL để loại trừ nhân viên có id = 2
+$chucvu_query = "SELECT * FROM `loainhanvien` WHERE `id` != 2";
 $chucvu_result = mysqli_query($con, $chucvu_query);
-$quyen_query = "SELECT * FROM `quyen`";
+
+// Cập nhật câu lệnh SQL để loại trừ quyền có id = 1
+$quyen_query = "SELECT * FROM `quyen` WHERE `id` != 1";
 $quyen_result = mysqli_query($con, $quyen_query);
 ?>
 

@@ -76,7 +76,8 @@ if (isset($_POST['btnadd'])) {
                                                     
                                                     $sql1 = "INSERT INTO `sanpham` (`id`, `ten_sp`, `hinh_anh`, `don_gia`, `gia_goc`, `noi_dung`, `gia_nhap`, `id_the_loai`, `id_nha_cc`, `trangthai`, `khoi_luong`, `xuat_xu`) 
                                                              VALUES ('$id', '$namei', '$image_url', " . str_replace('.', '', $price) . ", " . str_replace('.', '', $gia_goc) . ", '$content', " . str_replace('.', '', $gia_nhap) . ", '$idtl', '$idncc', 0, '$khoi_luong', '$xuat_xu');";
-
+                                                    
+                                                    
                                                     if (mysqli_query($conn, $sql1)) {
                                                         echo "<script>window.location.href = 'admin.php?act=addsptc&dk=yes';</script>";
                                                     } else {

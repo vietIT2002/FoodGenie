@@ -299,7 +299,7 @@
 				</div>
 
 				<div class="membership-tier" onclick="toggleDetails('diamond-member')">
-					<h4><i class="fa fa-diamond"></i> Thành viên Kim Cương</h4>
+					<h4><i class="fa-regular fa-gem"></i>Thành viên Kim Cương</h4>
 					<p id="diamond-member" class="details">Với mức chi tiêu từ 15.000.000 VNĐ trở lên, bạn sẽ gia nhập thành viên Kim Cương với giảm giá 30%.</p>
 				</div>
 			</div>
